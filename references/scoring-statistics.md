@@ -29,6 +29,38 @@ This cross-validation is your protection against:
 
 The exact metrics depend on your domain. The principle: **each metric should measure one clearly defined construct**, not a grab bag of heuristics.
 
+### Score Family Separation
+
+When comparing groups with different information access (e.g., baseline vs. knowledge-augmented), never mix access-dependent metrics into an undifferentiated total score.
+
+Separate scoring into distinct families:
+
+| Family | Purpose | Fair across all groups? |
+|--------|---------|------------------------|
+| `planning_quality` | Completeness, coherence, structure | Yes — any group can produce a well-formed plan |
+| `evidence_discipline` | Citation behavior, unsupported claims | Informative but favors augmented groups |
+| `domain_correctness` | Domain-specific accuracy | Conditional — requires human review |
+| `execution_specificity` | Precision of tools, steps, parameters | Yes — any group can be specific |
+| `traceability` | Source provenance, run lineage | Only relevant for augmented groups |
+
+**Rule**: Report each family separately before any composite score. Never claim broad planning-quality improvement from a win driven mainly by evidence-access metrics. Each metric should annotate whether it requires evidence access (`evidence_access_required: true/false`).
+
+### Metric Fairness Annotation
+
+Every metric in a multi-group comparison must declare whether it is **fair** across all groups or **condition-dependent**. This prevents the most common evaluation error: claiming global improvement from a metric that only one group can access.
+
+Annotate each metric with:
+
+| Field | Values | Purpose |
+|-------|--------|---------|
+| `evidence_access_required` | `true` / `false` | Does this metric need card IDs, evidence references, or provenance logs that only augmented groups can provide? |
+| `compare_mode` | `fair` / `evidence_aware` | Should this metric be interpreted as a fair comparison or as a comparison of evidence-use behavior? |
+| `review_mode` | `auto` / `human_sample` / `hybrid` | Can this metric be trusted automatically, or does it need human review before forming conclusions? |
+
+**Consequence**: A score family like `planning_quality` should only contain metrics with `evidence_access_required: false`. Metrics like `evidence_citation_rate` belong in `evidence_discipline`, annotated as `evidence_aware`. The global total score is demoted to a secondary descriptive statistic — never the primary thesis claim.
+
+This pattern was implemented in scoring v3 as the five-family separation, where `planning_quality` and `execution_specificity` are annotated as `fair`, while `evidence_discipline` and `traceability_provenance` are annotated as `evidence_aware`.
+
 ### Track B Additions
 
 | Metric | What it measures |
