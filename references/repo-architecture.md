@@ -63,6 +63,7 @@ Example invariants for the Assets module:
 - Every taxonomy ID exists in the canonical taxonomy file
 - Every artifact has an evidence_registry entry
 - Artifacts marked "verified" must have a source citation
+- **Derived representations** (vector indexes, graph relations, ontology projections) are projections from canonical artifacts, not replacements. Each derived representation must preserve: source artifact IDs, evidence IDs, projection rules, projection version, and retrieval/traversal logs
 
 ## Experiment Manifest
 
@@ -88,6 +89,43 @@ scripts/validate_repo_state.py  ← aggregator
 ```
 
 Phase gate rule: `python scripts/validate_repo_state.py` must report 0 FAIL before any formal execution.
+
+## Artifact Creation QA
+
+Artifact quality is governed at two levels:
+
+1. **Card-level evidence**: The card JSON has `evidence_type`, `confidence_level`, `review_status`. A card may appear structurally correct but have no traceable evidence for any individual claim.
+2. **Claim-level evidence**: Each critical factual claim in a card has its own row in a claims registry (e.g., `config/card_claims.csv`) with `source_ref`, `evidence_span`, and `verification_action`.
+
+Card-level evidence is necessary but not sufficient. Claim-level evidence is the audit trail.
+
+### Claim-First Workflow
+
+Never write the card text before establishing the claims. The correct order:
+
+```text
+coverage need
+→ claim draft (3-5 critical claims per card)
+→ source packet (find and document sources per claim)
+→ claim-level evidence rows (config/card_claims.csv)
+→ card JSON (projection of the claim table)
+→ domain red-team review (construct validity)
+→ validate_cards --strict
+→ human approval for batch pattern
+```
+
+### Scaffold → Validate → Commit Micro-Cycle
+
+1. **Scaffold**: Create the artifact from a template or taxonomy definition. Apply web search for domain-specific facts (formulas, thresholds, data specifications). Mark all claims as `candidate` evidence.
+2. **Validate**: Run local validators. Common failures to watch for:
+   - Unescaped special characters in JSON/YAML string values (especially Chinese quotation marks)
+   - Enum values that don't match the canonical schema (check `belonging_task`, `spatial_composition`, etc.)
+   - Registry sync: `literature_source`, `evidence_type`, `confidence_level`, `review_status` must match between the artifact and its registry entry
+   - `related_assets` pointing to non-existent artifacts
+3. **Fix**: Resolve all FAIL-level issues. WARN-level issues can remain as known gaps.
+4. **Commit**: Only commit when validators pass 0 FAIL.
+
+This pattern is especially important when creating artifacts in bulk. The temptation to create "perfect" artifacts in one pass leads to analysis paralysis. Create skeleton artifacts first (passing validators), then enrich with content in subsequent passes.
 
 ## Protected Surfaces
 
