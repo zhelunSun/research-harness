@@ -1,6 +1,6 @@
 ---
 name: research-harness
-version: 1.3.1
+version: 1.3.2
 agent_created: true
 description: >
   Cognitive discipline for AI-native scientific experimentation.
@@ -13,7 +13,7 @@ description: >
 
 # research-harness
 
-> Version: 1.3.1
+> Version: 1.3.2
 > Cognitive discipline for AI-native scientific experimentation — guardrails, not recipes.
 
 ## When to Use

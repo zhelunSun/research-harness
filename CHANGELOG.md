@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3.2 — 2026-06-02
+
+### Changed
+- Slug renamed: `agent-research-harness` → `ai-research-harness` (old slug preserved as redirect)
+- Display name fixed: "Research Harness Sync" → "research-harness"
+
 ## v1.3.1 — 2026-06-01
 
 ### Added
