@@ -1,5 +1,8 @@
 # research-harness
 
+> Version note: the reusable skill is `v1.3.2`; the local thesis control plane
+> currently uses `idea-v2026.08.02` (see `IDEA_VERSION.md`).
+
 > A cognitive discipline framework for AI-native scientific experimentation.
 >
 > [中文版](README_zh.md)

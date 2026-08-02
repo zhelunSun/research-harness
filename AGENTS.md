@@ -10,17 +10,17 @@ This repository has three deliberately separated surfaces:
 
 For thesis-facing work, read in this order:
 
-1. `THESIS_STATE.md`;
-2. `decisions/DEC-2026-0729-eval-driven-experience-ready-storyline.md`;
-3. `decisions/DEC-2026-0730-working-title-and-content-names.md`;
+1. `IDEA_VERSION.md`;
+2. `THESIS_STATE.md`;
+3. `process/current_execution_plan_20260802.md`;
 4. `ideas/chapter_ideas.md`;
-5. `ideas/agent_frontier_alignment.md`;
-6. `claims/key_claims.md`;
-7. `evidence/opening_evidence_matrix.md`;
+5. `claims/key_claims.md`;
+6. `evidence/opening_evidence_matrix.md`.
 
-`decisions/DEC-2026-0717-three-layer-storyline.md` remains historical context.
-Its planning--constraint relationship is retained, while its third-content
-"scenario application" role is partially superseded by the 2026-07-29 decision.
+Use `decisions/README.md` when a task changes the idea or needs historical
+rationale. Read only the linked decisions relevant to that change. Read
+`ideas/agent_frontier_alignment.md` when evaluating a frontier direction; it is
+context, not an additional thesis commitment.
 
 The formal Chinese thesis outline is maintained separately in
 `thesis/outline_zh.md` once created. It must translate an accepted idea version;
@@ -50,6 +50,16 @@ target study file and its referenced rows in `sources.csv`.
 - `studies/` is an incubation surface between idea and stable reference.
   Study findings do not change thesis claims or the reusable skill until a human
   accepts an explicit proposal.
+- Thesis idea releases use date-based labels such as `idea-v2026.08.02`.
+  They are independent from the reusable skill version in `SKILL.md`.
+- A substantive change to titles, chapter roles, core claims, evidence status or
+  execution priority requires a new decision, then synchronized updates to
+  `IDEA_VERSION.md`, `THESIS_STATE.md`, canonical idea, claims and evidence.
+- Historical decisions and reports remain immutable in substance. Add status or
+  supersession metadata instead of rewriting the earlier record.
+- A cloud-ready thesis release contains governance and cross-repository pointers
+  only. Downstream code, runs and result changes are committed in their owning
+  repositories.
 
 ## Downstream map
 

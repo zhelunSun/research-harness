@@ -1,5 +1,8 @@
 # research-harness
 
+> 版本说明：可复用 skill 当前为 `v1.3.2`；本地论文总控当前为
+> `idea-v2026.08.02`（见 `IDEA_VERSION.md`）。
+
 > 面向 AI-Native 科研实验的认知纪律框架
 >
 > [English Version](README.md)

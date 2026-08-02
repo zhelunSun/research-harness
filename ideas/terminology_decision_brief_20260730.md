@@ -1,7 +1,7 @@
 # 第二、三项研究术语决策简报
 
 > 日期：2026-07-30
-> 状态：decision brief，尚未替代 2026-07-30 已接受的工作标题
+> 状态：历史 decision brief；当前命名已由 `DEC-2026-0802-advisor-reported-frame-and-ch2-priority.md` 决定
 > 目标：先由 Codex 完成术语证据和方案比较，再由研究者一次性批阅。
 
 ## 1. 决策标准
