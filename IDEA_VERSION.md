@@ -36,7 +36,7 @@
 | 总控状态 | `THESIS_STATE.md` | 对齐 `idea-v2026.08.02` |
 | Canonical idea | `ideas/chapter_ideas.md` | 对齐 `idea-v2026.08.02` |
 | 工作性论断 | `claims/key_claims.md` | 对齐 `idea-v2026.08.02` |
-| 中文工作提纲 | `thesis/outline_zh.md` | `v0.1` |
+| 中文工作提纲 | `thesis/outline_zh.md` | `v0.2` |
 | 开题证据矩阵 | `evidence/opening_evidence_matrix.md` | `v0.3` |
 | 当前执行计划 | `process/current_execution_plan_20260802.md` | `v2026.08.02` |
 

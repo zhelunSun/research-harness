@@ -7,6 +7,19 @@
 >
 > [English Version](README.md)
 
+## 本地论文材料导航
+
+本仓同时保存可复用的 `research-harness` skill 与本地博士论文 Idea 总控；两者版本独立。
+论文的当前权威入口依次为：
+
+1. [`IDEA_VERSION.md`](IDEA_VERSION.md)：当前正式工作版本与发布清单；
+2. [`THESIS_STATE.md`](THESIS_STATE.md)：慢更新的总体科学问题、章节边界与风险；
+3. [`process/current_execution_plan_20260802.md`](process/current_execution_plan_20260802.md)：快更新的当前里程碑与单一下一动作；
+4. [`thesis/outline_zh.md`](thesis/outline_zh.md)：可直接阅读的中文工作提纲。
+
+`reports/` 保存历史汇报材料，`sync/upstream_proposals/` 保存待人工接受的跨仓提案；二者都不自动
+改变当前论文版本。`process/` 中的职业材料是独立 sidecar，不属于论文研究内容或证据状态。
+
 ## 解决什么问题
 
 用 LLM 跑实验很容易。但要让实验*可复现*、*可追踪*、*不夸大结论*，很难。Agent 做科研时经常犯这些错误：

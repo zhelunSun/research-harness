@@ -17,6 +17,19 @@ For thesis-facing work, read in this order:
 5. `claims/key_claims.md`;
 6. `evidence/opening_evidence_matrix.md`.
 
+`THESIS_STATE.md` and `process/current_execution_plan_20260802.md` are the only
+thesis-wide surfaces that should be maintained continuously. The former is the
+slow strategic source; the latter is the fast execution and session-resume
+source. Keep the dated execution-plan filename as a stable entry point. Do not
+create a new thesis-wide roadmap, status memo, or handoff merely because a new
+chat or calendar date begins.
+
+For a routine continuation, read `THESIS_STATE.md` and the execution plan's
+`## 0. Resume here` first, then enter only the chapter repository and active
+brief named there. At the end of any session with material progress, update the
+snapshot and single next action in that section. Chat history is not a source
+of truth.
+
 Use `decisions/README.md` when a task changes the idea or needs historical
 rationale. Read only the linked decisions relevant to that change. Read
 `ideas/agent_frontier_alignment.md` when evaluating a frontier direction; it is
