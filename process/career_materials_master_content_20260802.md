@@ -54,7 +54,7 @@
 
 ### 4.1 Sheaf — Agent 知识与上下文基础设施
 
-**状态：Released / maintained**  
+**状态：Released / maintained**
 **链接：** `https://github.com/zhelunSun/sheaf-ai`
 
 - 独立设计并开发 Local-First 的 Agent 知识基础设施，发布至 PyPI v0.7.0；构建多源内容
@@ -85,8 +85,8 @@
 
 ### 4.3 ExpertsRS / URSA — LLM 多智能体遥感分析
 
-**状态：Published + verified assets**  
-**论文：** `https://doi.org/10.1080/20964471.2025.2600178`  
+**状态：Published + verified assets**
+**论文：** `https://doi.org/10.1080/20964471.2025.2600178`
 **代码：** `https://github.com/zhelunSun/URSA`
 
 - 基于 AutoGen 构建多智能体遥感分析系统，实现需求澄清、任务定义、工具执行和结果报告
@@ -109,7 +109,7 @@
 
 ### 4.5 Skill Factory — Agent Skill 生命周期工具
 
-**状态：Released**  
+**状态：Released**
 **链接：** `https://github.com/zhelunSun/skill-factory`
 
 - 开源 Agent Skill meta-skill，将 Skill 开发抽象为需求锁定、资料收集、知识蒸馏和版本发布
@@ -117,7 +117,7 @@
 
 ### 4.6 Agent OS
 
-**状态：需核实后决定是否保留**  
+**状态：需核实后决定是否保留**
 **网站当前链接：** `https://github.com/zhelunSun/agent-os`
 
 网站当前将其描述为 file-based multi-agent coordination layer，并声称用于 daily production
@@ -184,7 +184,7 @@ coordination。该项目未出现在当前工业简历和本地核心证据矩�
 
 **Title**
 
-> Ph.D. Candidate at Tsinghua University  
+> Ph.D. Candidate at Tsinghua University
 > Agent Harness · Evaluation · Scientific Workflows
 
 **Short introduction**
@@ -236,4 +236,3 @@ Delivered 等状态，避免与已验证结果混淆。
 - 个人网站公开更新需要独立发布确认，不因简历投递自动上线；
 - 网站或简历对正在进行研究的描述，不得反向升级论文 claim；
 - 每次版本更新同时检查简历 PDF、网站 profile/projects/publications 和下载链接是否一致。
-

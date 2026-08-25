@@ -82,4 +82,3 @@ Yes.
 3. 是否接受先做 Ch2 diagnostic behavior change、Ch3 deterministic MVP，再分别进入正式效果与
    用户研究；
 4. 是否接受 `v0.7.0` 只表示跨章研究系统演示完成，不表示第二、三章科学结论完成。
-

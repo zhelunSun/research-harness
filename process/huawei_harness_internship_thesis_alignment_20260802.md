@@ -39,7 +39,7 @@
 
 对求职和跨项目技术沟通，采用：
 
-> **Scientific Agent Harness for Observation-Intensive Science**  
+> **Scientific Agent Harness for Observation-Intensive Science**
 > **面向观测密集型科学任务的执行、科学约束与可靠性评测基础设施**
 
 该名称承接当前论文的“轨迹原生、科学约束、评测驱动、经验可学习”原则，但不是新的
