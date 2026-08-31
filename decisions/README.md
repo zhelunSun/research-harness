@@ -9,6 +9,10 @@
 | `DEC-2026-0729-eval-driven-experience-ready-storyline.md` | 现行 | 第三项升级为可靠性评测；保留 experience-ready 边界 | 命名与优先级由 `DEC-2026-0802` 补充 |
 | `DEC-2026-0730-working-title-and-content-names.md` | 部分被替代 | 保留中文标题规则和目标用户定义 | 总题目及第三项名称由 `DEC-2026-0802` 替代 |
 | `DEC-2026-0802-advisor-reported-frame-and-ch2-priority.md` | 现行 | 采用已汇报框架；研究内容二为当前 P0 | 构成 `idea-v2026.08.02` 发布依据 |
+| `DEC-2026-0829-ch1-v053-opening-evidence-admission.md` | 现行 | 接受第一章工程与小规模 live 集成闭环为开题证据；正式效果仍为 open | 不改变 Idea、章节角色与优先级 |
+| `DEC-2026-0830-opening-source-definitions-and-chapter-core-scope.md` | 现行 | 建立章级源定义；校准第一项核心＋增量、第二项可计算知识与行为约束、第三项复杂开放场景验证 | 不改标题、优先级和证据状态；第三项问题继续人工审核 |
+| `DEC-2026-0831-opening-objectives-content-and-route-alignment.md` | 部分被替代 | 保留研究目标、研究内容与技术路线的职责区分及最低可执行验证路径 | 第二项章级术语、三项工作标题与共同对象链由后续简洁共识更新；证据状态不变 |
+| `DEC-2026-0831-opening-consensus-and-working-titles.md` | 现行 | 冻结开题源定义的简洁对象链、用户边界、三项工作标题及局部／系统验证分工 | 不冻结最终送审题目；第三项下一步进入所属仓库的资产—评测—结论核对 |
 
 ## 读取规则
 
