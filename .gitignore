@@ -11,3 +11,7 @@ Thumbs.db
 # Temp
 *.tmp
 *.log
+
+# Python audit/test caches
+__pycache__/
+*.py[cod]

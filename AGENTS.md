@@ -81,3 +81,18 @@ target study file and its referenced rows in `sources.csv`.
 - Research content 2 product substrate: `D:/projects/phd-thesis/sheaf-ai/`
 - Research content 3 task/evaluation assets and mapping case:
   `D:/projects/phd-thesis/urbfo-agent-demo/`
+
+## Git cloud-sync gate
+
+GitHub backup is separate from academic upstream-proposal synchronization. Read
+`process/repository_sync_policy.md` before cross-repository maintenance.
+
+- Start non-trivial work with
+  `python scripts/audit_repo_sync.py --repo <repo-path> --fetch`.
+- Before a large run, push a recoverable checkpoint. At the end of a materially
+  productive session, validate, commit, push, and verify `ahead=0`.
+- A local commit is not a backup. Local-only commits must not persist longer
+  than three days; network failures remain explicitly reported as not backed up.
+- Commit and push downstream changes before recording their branch/SHA here.
+- Never auto-commit research content, force-push thesis history, or delete a
+  remote checkpoint/tag without a verified replacement.

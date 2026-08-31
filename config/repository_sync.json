@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "max_local_only_days": 3,
+  "repositories": [
+    {
+      "name": "idea-control-plane",
+      "path": ".",
+      "expected_branch": "codex/thesis-idea-v20260802"
+    },
+    {
+      "name": "chapter-1-ursa",
+      "path": "../URSA",
+      "expected_branch": "codex/ch1-v2-e1-structured-planning"
+    },
+    {
+      "name": "chapter-2-knowledge",
+      "path": "../chapter2-urban-forest-knowledge",
+      "expected_branch": "l2-task-distillation"
+    },
+    {
+      "name": "chapter-3-evaluation",
+      "path": "../urbfo-agent-demo",
+      "expected_branch": "backup/ch3-routeb-20260831"
+    }
+  ]
+}
