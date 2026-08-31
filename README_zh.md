@@ -15,7 +15,10 @@
 1. [`IDEA_VERSION.md`](IDEA_VERSION.md)：当前正式工作版本与发布清单；
 2. [`THESIS_STATE.md`](THESIS_STATE.md)：慢更新的总体科学问题、章节边界与风险；
 3. [`process/current_execution_plan_20260802.md`](process/current_execution_plan_20260802.md)：快更新的当前里程碑与单一下一动作；
-4. [`thesis/outline_zh.md`](thesis/outline_zh.md)：可直接阅读的中文工作提纲。
+4. [`thesis/README.md`](thesis/README.md)：正式写作时按章节取用材料、证据和版本边界的索引；
+5. [`thesis/opening_report_outline_zh.md`](thesis/opening_report_outline_zh.md)：导师汇报与人工润色用简明大纲；
+6. [`thesis/opening_report_draft_zh.md`](thesis/opening_report_draft_zh.md)：详细论证与证据边界工作稿；
+7. [`thesis/outline_zh.md`](thesis/outline_zh.md)：可直接阅读的中文工作提纲。
 
 `reports/` 保存历史汇报材料，`sync/upstream_proposals/` 保存待人工接受的跨仓提案；二者都不自动
 改变当前论文版本。`process/` 中的职业材料是独立 sidecar，不属于论文研究内容或证据状态。
