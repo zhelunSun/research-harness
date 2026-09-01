@@ -505,6 +505,31 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self.assertIn("incomplete_packet_ready_acquisition", codes)
         self.assertIn("inactive_acquisition_pointer", codes)
 
+    def test_exhausted_acquisition_queue_allows_null_active_pointer(self) -> None:
+        acquisition = json.loads(self.acquisition.read_text(encoding="utf-8"))
+        item = acquisition["work_items"][0]
+        item["status"] = "packet_ready"
+        item["downstream_packet_id"] = "sample-packet"
+        item["candidate_sources"] = [
+            {
+                "candidate_id": f"CAND-{index}",
+                "packet_source_id": f"S-{index}",
+                "title": f"Candidate {index}",
+                "stable_identity": f"doi:10.example/candidate-{index}",
+                "official_url": f"https://example.org/candidate-{index}",
+                "read_state": "full_text",
+                "entailment_status": "verified",
+                "screening_decision": "retain_for_packet",
+            }
+            for index in range(1, 4)
+        ]
+        acquisition["active_work_item_id"] = None
+        self._write_json(self.acquisition, acquisition)
+        result = self.audit()
+        self.assertEqual(result["exit_code"], 0)
+        self.assertIsNone(result["acquisition_queue"]["active_work_item_id"])
+        self.assertEqual(result["acquisition_queue"]["ready_items"], [])
+
 
 if __name__ == "__main__":
     unittest.main()

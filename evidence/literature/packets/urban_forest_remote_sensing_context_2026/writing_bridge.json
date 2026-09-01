@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "urban-forest-remote-sensing-context-2026",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "dobbs_framework_2011",
+      "garcia-pardo_remote-sensing-assessment_2022",
+      "li_remote-sensing-urban-forestry_2019",
+      "zhang_object-based-tree-species_2016"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "UFR-C1",
+      "marker": "[CLAIM:UFR-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "li_remote-sensing-urban-forestry_2019"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "UFR-C2",
+      "marker": "[CLAIM:UFR-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "garcia-pardo_remote-sensing-assessment_2022"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "UFR-C3",
+      "marker": "[CLAIM:UFR-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "zhang_object-based-tree-species_2016"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "UFR-C4",
+      "marker": "[CLAIM:UFR-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "dobbs_framework_2011"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "UFR-C5",
+      "marker": "[CLAIM:UFR-C5]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:UFR-C5]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[REF-MISSING:UFR-C5]"
+    ]
+  }
+}

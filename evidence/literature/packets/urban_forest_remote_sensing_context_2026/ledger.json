@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "urban-forest-remote-sensing-context-2026",
+  "research_question": "城市森林遥感与城市生态分析为何具有多源、多尺度和多阶段依赖，方法与结论又受到哪些用途条件和跨学科解释边界约束？",
+  "sources": [
+    {
+      "source_id": "S-UFR-001",
+      "title": "Remote Sensing in Urban Forestry: Recent Applications and Future Directions",
+      "bibtex_key": "li_remote-sensing-urban-forestry_2019",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.3390/rs11101144",
+      "identifiers": {"doi": "10.3390/rs11101144"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-UFR-002",
+      "title": "Remote Sensing for the Assessment of Ecosystem Services Provided by Urban Vegetation: A Review of the Methods Applied",
+      "bibtex_key": "garcia-pardo_remote-sensing-assessment_2022",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.1016/j.ufug.2022.127636",
+      "identifiers": {"doi": "10.1016/j.ufug.2022.127636"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-UFR-003",
+      "title": "Object-Based Tree Species Classification in Urban Ecosystems Using LiDAR and Hyperspectral Data",
+      "bibtex_key": "zhang_object-based-tree-species_2016",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.3390/f7060122",
+      "identifiers": {"doi": "10.3390/f7060122"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-UFR-004",
+      "title": "A Framework for Developing Urban Forest Ecosystem Services and Goods Indicators",
+      "bibtex_key": "dobbs_framework_2011",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.1016/j.landurbplan.2010.11.004",
+      "identifiers": {"doi": "10.1016/j.landurbplan.2010.11.004"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "UFR-C1",
+      "text": "城市森林遥感应用同时涉及多源、多时相和多尺度输入。光学影像与 LiDAR 可提供互补的光谱和结构信息，但多源融合需要处理传感器分辨率、配准、获取成本与数据融合；尺度变化也会改变生态服务关系的估计和土地利用政策解释。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "UFR-C2",
+      "text": "面向城市植被生态服务评估时，遥感方法不能脱离具体用途选择；应同时明确目标方法、研究地理尺度和可用影像分辨率，并完成相应的影像校正、城市阴影或建成区污染处理、配准、质量控制和结果交叉检查。生态服务解释还需要地面观测及规划、植被和其他学科共同参与。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "UFR-C3",
+      "text": "一个城市树种多传感器实证流程依次完成 LiDAR 冠层分割、冠层对象上的高光谱值提取与降维、分类和精度评价。其结果受样本量、数据维度、空间分辨率、地理配准、冠幅重叠和研究地树种条件影响，因而不能把一次融合实验的分类精度直接外推为跨城市通用能力。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "UFR-C4",
+      "text": "城市森林生态服务指标把实地树木与土壤测量、功能模型和既有文献连接起来，并受到土地利用、城市化时间、当地物种与气候、数据可得性以及居民偏好和社会政治语境约束。异地应用需要当地算法、参数和重新标度，遥感结构指标本身不能决定服务、负服务或治理价值。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "UFR-C5",
+      "text": "这四项来源共同支持把城市森林遥感／城市生态分析描述为受多源、多尺度、多阶段依赖、用途条件和跨学科解释边界共同约束的任务域；但它们不证明存在唯一标准工作流，也不证明加入智能体、知识表示或自动规划必然改善产品正确性、生态有效性或决策效用。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:UFR-C5]"
+    }
+  ],
+  "links": [
+    {
+      "claim_id": "UFR-C1",
+      "source_id": "S-UFR-001",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "scale variations should be carefully considered",
+      "source_location": "Abstract, PDF p. 1; Sections 2.3 and 3, PDF pp. 8--10; Table 2, PDF p. 12",
+      "note": "The review directly organizes 63 empirical studies by multi-source, multi-temporal, and multi-scale inputs and tabulates source-, scale-, registration-, cost-, and processing-specific limitations."
+    },
+    {
+      "claim_id": "UFR-C2",
+      "source_id": "S-UFR-002",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "the approach(es), the urban scale ... and the image resolution",
+      "source_location": "Abstract and Section 1, PDF pp. 1--2; Table 1, PDF p. 8; Discussion and Table 2, PDF pp. 9--10",
+      "note": "The review makes method selection conditional on purpose, scale, and resolution; it also lists correction, alignment, QA/QC, and transdisciplinary interpretation requirements."
+    },
+    {
+      "claim_id": "UFR-C3",
+      "source_id": "S-UFR-003",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "the results should be compared carefully",
+      "source_location": "Workflow and Figure 1, PDF p. 3; classification design, PDF p. 8; limitations and conclusion, PDF pp. 11--13",
+      "note": "This primary study locates a staged LiDAR-hyperspectral pipeline and explicitly bounds comparison by site, species, sensor density, resolution, and small sample size."
+    },
+    {
+      "claim_id": "UFR-C4",
+      "source_id": "S-UFR-004",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "preferences, and socio-political as well as biophysical contexts",
+      "source_location": "Abstract and Sections 1.1--1.2, PDF pp. 1--2; Section 4.5, PDF p. 9; conclusion, PDF p. 10",
+      "note": "The Gainesville framework is primary empirical evidence for joining field data, a functional model, and literature while retaining local ecological, social, and valuation conditions."
+    },
+    {
+      "claim_id": "UFR-C5",
+      "source_id": "S-UFR-001",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Supports source, time, and scale dependencies in urban forestry; it does not evaluate an Agent or a unique scientific workflow."
+    },
+    {
+      "claim_id": "UFR-C5",
+      "source_id": "S-UFR-002",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Supports application-conditioned method choice and cross-disciplinary interpretation for urban vegetation ecosystem services only."
+    },
+    {
+      "claim_id": "UFR-C5",
+      "source_id": "S-UFR-003",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Supplies one staged multi-sensor classification workflow; it is not evidence for every urban-forest task or city."
+    },
+    {
+      "claim_id": "UFR-C5",
+      "source_id": "S-UFR-004",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Supplies ecological-service and social-context boundaries; it does not test remote-sensing automation or agentic planning."
+    }
+  ]
+}

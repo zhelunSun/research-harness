@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T19:29:22+08:00",
+  "updated_at": "2026-09-01T19:46:00+08:00",
   "policy": {
     "active_work_item_limit": 1,
     "minimum_sources_per_packet": 3,
@@ -11,7 +11,7 @@
     "writing_merge_gate": "task_specific_contract_review",
     "candidate_discovery_does_not_remove_ref_missing": true
   },
-  "active_work_item_id": "AQ-OI-D1-BACKGROUND",
+  "active_work_item_id": null,
   "work_items": [
     {
       "work_item_id": "AQ-OI-D6-EVALUATION",
@@ -277,34 +277,91 @@
     {
       "work_item_id": "AQ-OI-D1-BACKGROUND",
       "priority": "P2",
-      "status": "ready_for_search",
+      "status": "packet_ready",
       "target_intake_id": "opening-report-v05-literature-intake-20260901",
       "target_decision_ids": ["OI-D1"],
       "target_sections": ["1.1 研究背景"],
-      "research_question": "哪些一手遥感或地理空间 Agent 研究能够谨慎支持自然语言需求、分析计划和工具调用降低复杂分析操作门槛这一背景判断？",
-      "source_target_count": 3,
+      "research_question": "城市森林遥感与城市生态分析为何具有多源、多尺度和多阶段依赖，方法与结论又受到哪些用途条件和跨学科解释边界约束？",
+      "source_target_count": 4,
       "search_queries": [
-        "natural language remote sensing analysis agent tool use non-expert",
-        "geospatial agent natural language workflow accessibility"
+        "urban forest remote sensing multi-source multi-temporal multi-scale review",
+        "urban vegetation ecosystem services remote sensing method scale resolution",
+        "urban tree species LiDAR hyperspectral workflow validation",
+        "urban forest ecosystem service indicators social ecological context"
       ],
       "source_requirements": [
-        "3 篇以内一手遥感或 geospatial Agent 论文",
-        "原文明确讨论 natural-language access 或 non-expert use",
-        "与 ExpertsRS 重复时优先使用已有全文证据而不是扩充数量"
+        "3--5 篇一手研究、方法论文或正式综述，并取得可定位全文",
+        "至少一项直接覆盖多源／多时相／多尺度数据条件",
+        "至少一项直接展示校正、分割、特征、分类与验证等多阶段依赖",
+        "至少一项明确区分遥感观测与生态服务、规划用途或社会解释"
       ],
       "exclusions": [
-        "宽泛 LLM 评论文章",
-        "仅凭自然语言界面存在就宣称降低科学门槛",
-        "未评价用户或任务可达性的营销材料"
+        "仅用城市森林重要性口号而无数据、方法或用途边界的来源",
+        "只凭多源数据数量宣称方法充分或科学结论可靠",
+        "把单城市或单任务分类精度外推为跨城市普适能力",
+        "把遥感结构指标直接等同为生态服务、社会价值或治理决策"
       ],
-      "candidate_sources": [],
-      "downstream_packet_id": null,
+      "candidate_sources": [
+        {
+          "candidate_id": "UFR-001",
+          "packet_source_id": "S-UFR-001",
+          "title": "Remote Sensing in Urban Forestry: Recent Applications and Future Directions",
+          "stable_identity": "doi:10.3390/rs11101144",
+          "official_url": "https://doi.org/10.3390/rs11101144",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "multi-source, multi-temporal, multi-scale input trade-offs and scale effects",
+          "boundary": "formal review, not a universal workflow or Agent evaluation"
+        },
+        {
+          "candidate_id": "UFR-002",
+          "packet_source_id": "S-UFR-002",
+          "title": "Remote Sensing for the Assessment of Ecosystem Services Provided by Urban Vegetation: A Review of the Methods Applied",
+          "stable_identity": "doi:10.1016/j.ufug.2022.127636",
+          "official_url": "https://doi.org/10.1016/j.ufug.2022.127636",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "purpose-, scale-, resolution-conditioned method selection, processing and transdisciplinary assessment",
+          "boundary": "review synthesis does not prescribe one method or eliminate ground evidence"
+        },
+        {
+          "candidate_id": "UFR-003",
+          "packet_source_id": "S-UFR-003",
+          "title": "Object-Based Tree Species Classification in Urban Ecosystems Using LiDAR and Hyperspectral Data",
+          "stable_identity": "doi:10.3390/f7060122",
+          "official_url": "https://doi.org/10.3390/f7060122",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "staged LiDAR-hyperspectral crown segmentation, feature processing, classification and accuracy assessment",
+          "boundary": "two sites, seven species, small samples and sensor-resolution conditions limit transfer"
+        },
+        {
+          "candidate_id": "UFR-004",
+          "packet_source_id": "S-UFR-004",
+          "title": "A Framework for Developing Urban Forest Ecosystem Services and Goods Indicators",
+          "stable_identity": "doi:10.1016/j.landurbplan.2010.11.004",
+          "official_url": "https://doi.org/10.1016/j.landurbplan.2010.11.004",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "field-model-literature integration and local ecological, social and governance conditions",
+          "boundary": "Gainesville indicators require site-specific parameters and do not exhaust all services or disservices"
+        }
+      ],
+      "downstream_packet_id": "urban-forest-remote-sensing-context-2026",
       "blocking_gate_id": null,
-      "next_action": "最后处理背景句；优先复用已核验 ExpertsRS，并只补足无法由现有来源承担的窄义陈述。",
+      "next_action": "证据包已形成并通过审计；原 OI-D1 的总体门槛下降判断仍保留未决，只等待单独的 Zotero 导入授权与后续 writing-contract 审阅。",
       "stop_conditions": [
-        "达到 3 篇去重候选即停止扩搜",
-        "若来源只证明可用性实例，仍保留对总体门槛下降的限定或 REF-MISSING",
-        "背景来源不进入核心 novelty 论证"
+        "达到 4 篇互补且全文可定位的去重来源即停止扩搜",
+        "跨来源综合必须保留 needs_review，不把任务域复杂性自动升级为 Agent 方法效果",
+        "不删除原 OI-D1 的 REF-MISSING 或把背景来源写入核心 novelty 论证"
       ]
     },
     {

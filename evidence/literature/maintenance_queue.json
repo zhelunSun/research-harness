@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T19:29:22+08:00",
+  "updated_at": "2026-09-01T19:46:00+08:00",
   "policy": {
     "zotero_write_gate": "explicit_user_authorization",
     "writing_merge_gate": "task_specific_contract_review",
@@ -105,6 +105,26 @@
         "arXiv:2501.04227",
         "arXiv:2405.17631",
         "10.1038/s41586-023-06792-0"
+      ],
+      "completion_evidence": [
+        "four Zotero parent item keys",
+        "four stable BibTeX keys",
+        "official linked PDFs resolved through SeaDrive",
+        "registry and ledger identities reconciled"
+      ]
+    },
+    {
+      "action_id": "lit-urban-forest-background-zotero-import",
+      "kind": "zotero_write",
+      "packet_id": "urban-forest-remote-sensing-context-2026",
+      "status": "pending_authorization",
+      "gate": "explicit_user_authorization",
+      "recommended_target": "Phd_thesis_new/backgroud",
+      "records": [
+        "10.3390/rs11101144",
+        "10.1016/j.ufug.2022.127636",
+        "10.3390/f7060122",
+        "10.1016/j.landurbplan.2010.11.004"
       ],
       "completion_evidence": [
         "four Zotero parent item keys",

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T19:29:22+08:00",
+  "updated_at": "2026-09-01T19:46:00+08:00",
   "source_of_truth": {
     "bibliography": "local Zotero Desktop",
     "linked_attachments": "SeaDrive",
@@ -84,6 +84,21 @@
         "opening-section-2.1-large-language-model-and-scientific-agents",
         "chapter-1-planning-feedback-and-workflow-state-comparators",
         "scientific-harness-research-agent-lifecycle-boundaries"
+      ],
+      "writing_eligibility": "blocked_on_zotero_identity_reconciliation_and_task_specific_review",
+      "last_audited": "2026-09-01"
+    },
+    {
+      "packet_id": "urban-forest-remote-sensing-context-2026",
+      "path": "evidence/literature/packets/urban_forest_remote_sensing_context_2026",
+      "research_question": "城市森林遥感与城市生态分析为何具有多源、多尺度和多阶段依赖，方法与结论又受到哪些用途条件和跨学科解释边界约束？",
+      "status": "audited_pending_zotero_authorization",
+      "source_count": 4,
+      "zotero_item_keys": [],
+      "candidate_routes": [
+        "opening-section-1.1-urban-forest-remote-sensing-background",
+        "chapter-2-task-conditioned-knowledge-requirements",
+        "chapter-3-real-task-validity-boundaries"
       ],
       "writing_eligibility": "blocked_on_zotero_identity_reconciliation_and_task_specific_review",
       "last_audited": "2026-09-01"

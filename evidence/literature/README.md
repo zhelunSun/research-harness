@@ -59,7 +59,8 @@ python scripts/audit_thesis_workspace.py --fetch
 
 It combines Git/upstream state, workspace navigation, the literature control
 audit, the current path-redacted Zotero/SeaDrive snapshot, and pending human
-gates. Its literature line also reports the single active acquisition work item.
+gates. Its literature line also reports the active acquisition work item or an
+explicit null pointer when the actionable queue is exhausted.
 For literature-only diagnosis, run the repository-level control audit.
 It validates every registered packet,
 the Zotero/SeaDrive source-of-truth split, identity reconciliation, forbidden local
@@ -143,3 +144,14 @@ tool execution. `SAW-C5` remains `needs_review`: the packet does not turn these
 examples into a universal defect claim about one-shot planning, implicit state, or
 self-evaluation, and it creates neither a thesis novelty claim nor a Zotero write
 approval.
+
+The completed `AQ-OI-D1-BACKGROUND` acquisition is preserved as
+`packets/urban_forest_remote_sensing_context_2026/`. Its four-source ledger
+separates multi-source/time/scale conditions, purpose-scale-resolution method
+selection, a staged LiDAR--hyperspectral classification workflow, and locally
+conditioned ecosystem-service interpretation. `UFR-C5` remains `needs_review`:
+the packet establishes neither a universal urban-forest workflow nor an Agent,
+knowledge-representation, or planning effect. The original OI-D1 claim that a
+natural-language interface lowers the overall analysis barrier remains
+unsupported. All actionable acquisition items are now exhausted;
+`active_work_item_id` is intentionally null until a new writing gap is routed.

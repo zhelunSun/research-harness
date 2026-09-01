@@ -1096,12 +1096,15 @@ def _audit_acquisition_queue(
     if extra_coverage:
         _add_issue(result, "non_content_gap_acquisition_route", f"acquisition queue routes non-content decisions {extra_coverage}")
     active_id = acquisition.get("active_work_item_id")
-    active_item = item_map.get(active_id)
-    if active_item is None:
+    active_item = item_map.get(active_id) if active_id is not None else None
+    if active_id is None:
+        if result["acquisition_queue"]["ready_items"]:
+            _add_issue(result, "missing_active_acquisition_item", "actionable acquisition items exist but active_work_item_id is null")
+    elif active_item is None:
         _add_issue(result, "missing_active_acquisition_item", f"active acquisition item {active_id!r} is missing")
     elif active_item.get("status") not in {"ready_for_search", "candidate_screening", "full_text_review"}:
         _add_issue(result, "inactive_acquisition_pointer", f"active acquisition item {active_id} is not actionable")
-    active_count = sum(1 for item in work_items if item.get("work_item_id") == active_id)
+    active_count = sum(1 for item in work_items if active_id is not None and item.get("work_item_id") == active_id)
     if active_count > int(policy.get("active_work_item_limit", 1)):
         _add_issue(result, "acquisition_active_limit_exceeded", "acquisition queue exceeds active work-item limit")
     result["acquisition_queue"]["status_counts"] = dict(statuses)

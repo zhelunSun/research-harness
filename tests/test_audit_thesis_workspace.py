@@ -25,13 +25,13 @@ def repository_result(*, issues: list[dict[str, str]] | None = None) -> dict[str
 def literature_result(*, exit_code: int = 0) -> dict[str, object]:
     return {
         "exit_code": exit_code,
-        "packets_total": 5,
-        "sources_total": 21,
+        "packets_total": 6,
+        "sources_total": 25,
         "runtime_scan": {"registered_zotero_items": 5},
         "acquisition_queue": {
-            "active_work_item_id": "AQ-OI-D1-BACKGROUND",
+            "active_work_item_id": None,
             "work_items_total": 5,
-            "ready_items": ["AQ-OI-D1-BACKGROUND"],
+            "ready_items": [],
         },
         "open_actions": [],
         "issues": [],
@@ -45,13 +45,14 @@ def human_gate_result(*, exit_code: int = 0) -> dict[str, object]:
         ("lit-agent-evaluation-zotero-import", "zotero_write", "pending_authorization"),
         ("lit-knowledge-governance-zotero-import", "zotero_write", "pending_authorization"),
         ("lit-scientific-agent-workflows-zotero-import", "zotero_write", "pending_authorization"),
+        ("lit-urban-forest-background-zotero-import", "zotero_write", "pending_authorization"),
         ("lit-opening-v05-contract-merge", "writing_acceptance", "pending_task_specific_review"),
         ("ch2-g4-batch-a-researcher-review", "scientific_evidence", "pending_researcher_review"),
         ("ch3-first-evaluation-route-selection", "scientific_route", "pending_researcher_decision"),
     ]
     return {
         "exit_code": exit_code,
-        "gates_total": 8,
+        "gates_total": 9,
         "category_counts": {category: sum(1 for _, item_category, _ in gates if item_category == category) for _, category, _ in gates},
         "open_gates": [
             {
@@ -111,9 +112,9 @@ class ThesisControlAuditTests(unittest.TestCase):
     def test_ready_workspace_preserves_pending_human_gate(self) -> None:
         result = self.run_audit(repository_result(), literature_result())
         self.assertEqual((result["exit_code"], result["readiness"]), (0, "ready"))
-        self.assertEqual(len(result["pending_human_gates"]), 8)
+        self.assertEqual(len(result["pending_human_gates"]), 9)
         rendered = render_text(result)
-        self.assertIn("acquisition_active=AQ-OI-D1-BACKGROUND", rendered)
+        self.assertIn("acquisition_active=None", rendered)
         self.assertIn("ch2-g4-batch-a-researcher-review", rendered)
         self.assertIn("ch3-first-evaluation-route-selection", rendered)
 
