@@ -116,7 +116,8 @@
 意图满足、严重科学错误和不必要干预；不能只以“行动发生变化”判定成功。
 当前 C0 决策与 opening handoff 已推送到
 `chapter2-urban-forest-knowledge:l2-task-distillation@bc0ce42`；完成 G3 记录归档和
-JSONL 可复现性修复后的 canonical 同步 tip 为 `807d593`，不改变 C0 方法或证据结论。
+JSONL 可复现性修复的证据基线为 `807d593`，不改变 C0 方法或证据结论；当前可恢复远端 tip
+只由 `registry/core_repo_checkpoints.json` 和同步审计判定。
 
 ### 研究内容三
 
@@ -131,7 +132,7 @@ manifest、决策日志和反馈在结构化之前统一称为 **episode reservo
 使用和人体参与研究门禁。
 当前研究内容 checkpoint 为
 `urbfo-agent-demo:backup/ch3-routeb-20260831@7b8e05d`；完成仓库治理与换行
-修复后的 canonical 分支已同步到
+修复后的仓库治理基线为
 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@4d841b7`，且继承该仓库
 `fix/audit-p0` 历史。无共同祖先的警告只适用于误放恢复历史的
 `zhelunSun/fewshot-rs-mapping/master`；该历史仅作为只读恢复源，不得与 canonical
