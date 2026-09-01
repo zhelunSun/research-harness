@@ -1,8 +1,8 @@
 # 开题三章技术路线对照矩阵
 
-> 版本：v0.1，2026-09-01  
-> 对齐：`idea-v2026.08.02`  
-> 状态：导师讨论前的派生工作稿，不替代 `opening_report_draft_zh.md` 第 0 节的章级源定义  
+> 版本：v0.1，2026-09-01
+> 对齐：`idea-v2026.08.02`
+> 状态：导师讨论前的派生工作稿，不替代 `opening_report_draft_zh.md` 第 0 节的章级源定义
 > 写作合同：[`writing_contracts/opening_three_chapter_route_matrix_v0.1.contract.json`](writing_contracts/opening_three_chapter_route_matrix_v0.1.contract.json)
 
 ## 1. 总体问题牵引与递进关系
