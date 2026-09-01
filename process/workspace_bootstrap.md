@@ -1,0 +1,86 @@
+# Thesis workspace bootstrap
+
+## Purpose
+
+This repository defines a portable, non-submodule workspace with one Idea
+control plane and three required chapter repositories. The layout is named
+`sibling-v1`:
+
+```text
+<workspace-root>/
+  research-harness/
+  URSA/
+  chapter2-urban-forest-knowledge/
+  urbfo-agent-demo/
+  satellites/                 # optional; not part of the default gate
+```
+
+`config/repository_sync.json` lists only the four required core repositories.
+It records each canonical GitHub `origin_repo`, expected working branch, and
+relative path. `registry/core_repo_checkpoints.json` records the immutable
+downstream chapter SHA last verified by the control plane. The control plane's
+own branch is checked directly against its upstream because recording its own
+commit SHA in the same commit would create a self-reference cycle. These files
+have different jobs: structure changes rarely; downstream checkpoints change
+after a verified cross-repository handoff.
+
+## Safe bootstrap
+
+Run the plan first from an existing, trusted `research-harness` checkout:
+
+```powershell
+python scripts/bootstrap_workspace.py --workspace-root D:/Projects/phd-thesis
+```
+
+The default is dry-run only. Review every destination and remote/branch. The
+script creates no directories until `--apply` is supplied. It refuses any
+pre-existing destination; `--skip-existing` merely leaves that directory
+untouched after the operator has checked it. It never moves a legacy checkout,
+merges histories, rewrites branches, or pushes data.
+
+```powershell
+python scripts/bootstrap_workspace.py --workspace-root D:/Projects/phd-thesis --apply
+python scripts/audit_repo_sync.py --all --fetch
+```
+
+If a private GitHub repository requires authentication, configure Git access
+before `--apply`; do not embed credentials in the registry or command line.
+
+## Existing workspaces and recovery material
+
+Existing directories such as `thesis-harness`, `ch1-agent-workflow`,
+`ch1-ursa`, `ch2-knowledge-enhancement`, `urbfo-mapping`, and
+`exp-fewshot-mapping` are legacy or recovery checkouts, not bootstrap targets.
+Preserve them until the new sibling workspace has passed the core audit and its
+required checkpoints have been verified.
+
+For Chapter 3, `backup/ch3-routeb-20260831` is now backed up on the canonical
+`PandaBro666/urbfo-agent-demo` origin and descends from that repository's
+`fix/audit-p0` history. The no-common-ancestor warning applies only when
+comparing it with the legacy, mistaken `zhelunSun/fewshot-rs-mapping` master.
+Keep that legacy history as a recovery source; do not merge, rebase, or
+force-push it merely to make repository names look tidy. The current canonical
+checkpoint is recorded in the registry rather than copied into this procedure.
+
+## Satellites
+
+Add a satellite only when it has a stable ownership and backup need. Put it in
+`satellites` with `kind: satellite`, `required: false`, an `origin_repo`, and a
+relative path. It is skipped by default; audit enabled satellites only with:
+
+```powershell
+python scripts/audit_repo_sync.py --all --include-satellites --fetch
+```
+
+An unavailable optional satellite reports a warning, not a core failure. A
+satellite must never become a hidden dependency of a thesis chapter without
+being promoted deliberately into the required registry.
+
+## Daily use
+
+Open `phd-thesis.code-workspace` for a single four-repository editor view. At
+the start of substantive work, run the core audit with `--fetch`. At the end,
+validate in the owning repository, commit and push there, verify `ahead=0`, and
+then update the downstream SHA registry here. Keep the old
+`D:/Projects/phd-research` workspace read-only as a recovery fallback until a
+later, explicit retirement decision.

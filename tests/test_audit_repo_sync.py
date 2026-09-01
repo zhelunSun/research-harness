@@ -5,7 +5,15 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.audit_repo_sync import audit_repository, exit_code, lfs_findings, parse_lfs_pending
+from scripts.audit_repo_sync import (
+    audit_repository,
+    exit_code,
+    lfs_findings,
+    load_targets,
+    origin_repo_identity,
+    parse_lfs_pending,
+)
+from scripts.bootstrap_workspace import build_plan
 
 
 def git(path: Path, *args: str) -> str:
@@ -112,6 +120,103 @@ class SyncAuditTests(unittest.TestCase):
         self.assertEqual(len(parse_lfs_pending(status)), 1)
         findings = lfs_findings(status, 1, "pointer: missingObject: asset.tif")
         self.assertEqual(len(findings), 2)
+
+    def test_origin_identity_accepts_https_and_ssh_aliases(self) -> None:
+        self.assertEqual(
+            origin_repo_identity("https://token@example.invalid/Owner/Repository.git"),
+            "Owner/Repository",
+        )
+        self.assertEqual(
+            origin_repo_identity("git@github-big:Owner/Repository.git"),
+            "Owner/Repository",
+        )
+        result = audit_repository(
+            self.work,
+            "test",
+            "main",
+            False,
+            expected_origin_repo="Owner/Repository",
+        )
+        self.assertIn("unexpected_origin", {item["code"] for item in result["issues"]})
+
+    def test_checkpoint_stale_is_warning_or_strict_critical(self) -> None:
+        checkpoint = {"branch": "main", "remote_sha": "0" * 40}
+        warning = audit_repository(self.work, "test", "main", False, checkpoint=checkpoint)
+        self.assertEqual(exit_code([warning]), 2)
+        self.assertIn("checkpoint_stale", {item["code"] for item in warning["issues"]})
+        strict = audit_repository(
+            self.work,
+            "test",
+            "main",
+            False,
+            checkpoint=checkpoint,
+            strict_checkpoints=True,
+        )
+        self.assertEqual(exit_code([strict]), 1)
+
+    def test_v1_config_remains_supported(self) -> None:
+        config = self.root / "repository_sync.json"
+        config.write_text(
+            '{"schema_version": 1, "repositories": [{"name": "legacy", "path": ".", "expected_branch": "main"}]}',
+            encoding="utf-8",
+        )
+        targets = load_targets(config)
+        self.assertEqual(targets[0]["id"], "legacy")
+        self.assertEqual(targets[0]["expected_origin_repo"], None)
+
+    def test_satellites_are_opt_in_and_optional(self) -> None:
+        config_dir = self.root / "harness" / "config"
+        config_dir.mkdir(parents=True)
+        config = config_dir / "repository_sync.json"
+        config.write_text(
+            """{
+              "schema_version": 2,
+              "workspace": {"layout": "sibling-v1"},
+              "repositories": [{
+                "id": "core", "name": "core", "kind": "control_plane", "required": true,
+                "path": ".", "origin_repo": "owner/core", "expected_branch": "main"
+              }],
+              "satellites": [{
+                "id": "portfolio", "name": "portfolio", "kind": "satellite", "required": false,
+                "path": "../missing-portfolio", "origin_repo": "owner/portfolio", "enabled": true
+              }]
+            }""",
+            encoding="utf-8",
+        )
+        self.assertEqual([item["id"] for item in load_targets(config)], ["core"])
+        targets = load_targets(config, include_satellites=True)
+        satellite = next(item for item in targets if item["id"] == "portfolio")
+        result = audit_repository(
+            satellite["path"],
+            satellite["name"],
+            satellite["expected_branch"],
+            False,
+            required=satellite["required"],
+        )
+        self.assertEqual(exit_code([result]), 2)
+        self.assertIn("optional_repository_unavailable", {item["code"] for item in result["issues"]})
+
+    def test_bootstrap_plan_is_dry_run_only(self) -> None:
+        config_dir = self.root / "source-harness" / "config"
+        config_dir.mkdir(parents=True)
+        config = config_dir / "repository_sync.json"
+        config.write_text(
+            """{
+              "schema_version": 2,
+              "workspace": {"layout": "sibling-v1"},
+              "repositories": [{
+                "id": "control", "name": "control", "kind": "control_plane", "required": true,
+                "path": ".", "origin_repo": "owner/control", "expected_branch": "main"
+              }],
+              "satellites": []
+            }""",
+            encoding="utf-8",
+        )
+        destination_root = self.root / "new-workspace"
+        plan = build_plan(config, destination_root)
+        self.assertEqual(len(plan), 1)
+        self.assertFalse(destination_root.exists())
+        self.assertEqual(plan[0]["destination"], (destination_root / "source-harness").resolve())
 
 
 if __name__ == "__main__":

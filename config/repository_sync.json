@@ -1,26 +1,81 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "max_local_only_days": 3,
+  "workspace": {
+    "layout": "sibling-v1",
+    "description": "research-harness and required chapter repositories are siblings"
+  },
   "repositories": [
     {
+      "id": "idea-control-plane",
       "name": "idea-control-plane",
+      "kind": "control_plane",
+      "required": true,
       "path": ".",
+      "origin_repo": "zhelunSun/research-harness",
       "expected_branch": "codex/thesis-idea-v20260802"
     },
     {
+      "id": "chapter-1-ursa",
       "name": "chapter-1-ursa",
+      "kind": "chapter",
+      "required": true,
       "path": "../URSA",
+      "origin_repo": "zhelunSun/URSA",
       "expected_branch": "codex/ch1-v2-e1-structured-planning"
     },
     {
+      "id": "chapter-2-knowledge",
       "name": "chapter-2-knowledge",
+      "kind": "chapter",
+      "required": true,
       "path": "../chapter2-urban-forest-knowledge",
+      "origin_repo": "zhelunSun/chapter2-urban-forest-knowledge",
       "expected_branch": "l2-task-distillation"
     },
     {
+      "id": "chapter-3-evaluation",
       "name": "chapter-3-evaluation",
+      "kind": "chapter",
+      "required": true,
       "path": "../urbfo-agent-demo",
+      "origin_repo": "PandaBro666/urbfo-agent-demo",
       "expected_branch": "backup/ch3-routeb-20260831"
+    }
+  ],
+  "satellites": [
+    {
+      "id": "satellite-product-sheaf-ai",
+      "name": "satellite-product-sheaf-ai",
+      "kind": "satellite",
+      "required": false,
+      "enabled": false,
+      "path": "../satellites/sheaf-ai",
+      "origin_repo": "zhelunSun/sheaf-ai",
+      "expected_branch": "main",
+      "role": "optional product substrate"
+    },
+    {
+      "id": "satellite-historical-fewshot",
+      "name": "satellite-historical-fewshot",
+      "kind": "satellite",
+      "required": false,
+      "enabled": false,
+      "path": "../satellites/fewshot-rs-mapping",
+      "origin_repo": "zhelunSun/fewshot-rs-mapping",
+      "expected_branch": "master",
+      "role": "historical method and recovery source"
+    },
+    {
+      "id": "satellite-cv",
+      "name": "satellite-cv",
+      "kind": "satellite",
+      "required": false,
+      "enabled": false,
+      "path": "../satellites/zhelun-cv",
+      "origin_repo": "zhelunSun/zhelun-cv",
+      "expected_branch": "main",
+      "role": "optional CV and future homepage surface"
     }
   ]
 }

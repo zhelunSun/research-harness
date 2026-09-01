@@ -76,11 +76,16 @@ target study file and its referenced rows in `sources.csv`.
 
 ## Downstream map
 
-- Research content 1 prototype/method: `D:/projects/phd-thesis/URSA/`
-- Research content 2 execution: `D:/projects/phd-thesis/chapter2-urban-forest-knowledge/`
-- Research content 2 product substrate: `D:/projects/phd-thesis/sheaf-ai/`
+- Required core workspace uses the portable `sibling-v1` layout documented in
+  `process/workspace_bootstrap.md`: this control plane, `URSA`,
+  `chapter2-urban-forest-knowledge`, and `urbfo-agent-demo` are sibling
+  checkouts.
+- Research content 1 prototype/method: `../URSA/`
+- Research content 2 execution: `../chapter2-urban-forest-knowledge/`
+- Research content 2 product substrate, CV/homepage, and historical method
+  repositories are optional satellites unless explicitly promoted.
 - Research content 3 task/evaluation assets and mapping case:
-  `D:/projects/phd-thesis/urbfo-agent-demo/`
+  `../urbfo-agent-demo/`
 
 ## Git cloud-sync gate
 
@@ -94,5 +99,10 @@ GitHub backup is separate from academic upstream-proposal synchronization. Read
 - A local commit is not a backup. Local-only commits must not persist longer
   than three days; network failures remain explicitly reported as not backed up.
 - Commit and push downstream changes before recording their branch/SHA here.
+- Record verified downstream chapter branch/SHA pairs in
+  `registry/core_repo_checkpoints.json`; the control plane itself is gated by
+  its configured branch/upstream divergence because a self-SHA checkpoint
+  would be recursive. Use `--include-satellites` only when optional
+  repositories are in scope.
 - Never auto-commit research content, force-push thesis history, or delete a
   remote checkpoint/tag without a verified replacement.

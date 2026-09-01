@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "name": "Idea control plane",
+      "path": "."
+    },
+    {
+      "name": "Chapter 1 - URSA",
+      "path": "../URSA"
+    },
+    {
+      "name": "Chapter 2 - Knowledge",
+      "path": "../chapter2-urban-forest-knowledge"
+    },
+    {
+      "name": "Chapter 3 - Evaluation",
+      "path": "../urbfo-agent-demo"
+    }
+  ],
+  "settings": {
+    "files.eol": "\n"
+  }
+}
