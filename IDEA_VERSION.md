@@ -47,7 +47,7 @@
 | 选题报告简版提纲 | `thesis/opening_report_outline_zh.md` | `v0.4` |
 | 选题报告后台工作稿 | `thesis/opening_report_draft_zh.md` | `v0.4` |
 | 开题证据矩阵 | `evidence/opening_evidence_matrix.md` | `v0.7` |
-| 当前执行计划 | `process/current_execution_plan_20260802.md` | `v2026.08.31` |
+| 当前执行计划 | `process/current_execution_plan_20260802.md` | `v2026.09.01` |
 
 局部版本表示文档自身的修订次数，不与论文 Idea 版本竞争。仓库根目录 `SKILL.md`
 中的 `v1.3.2` 是可复用 research-harness 工具版本，与论文 Idea 版本相互独立。

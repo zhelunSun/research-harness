@@ -1,6 +1,6 @@
-# 当前执行计划：开题源定义收口与研究内容二无悔推进
+# 当前执行计划：开题源定义收口与三章最小闭环
 
-> 版本：v2026.08.31
+> 版本：v2026.09.01
 > 对齐 Idea：`idea-v2026.08.02`
 > 状态：active；保留原文件名作为稳定入口，不再按日期新建论文总执行计划
 > 触发：固定简历与面试路径已形成；研究内容一已有最小原型；研究内容二核心机制仍待验证
@@ -19,14 +19,14 @@
 除非总题目、章节角色或核心 claim 发生变化，不再新建 thesis-wide roadmap、handoff 或
 “最新版计划”。新会话通过本节恢复，不依赖翻找历史 chat。
 
-### 0.2 2026-08-31 当前快照
+### 0.2 2026-09-01 当前快照
 
 | 里程碑 | 状态 | 已有证据 | 当前缺口 |
 | --- | --- | --- | --- |
 | M0 固定简历与证据边界 | completed | 固定华为 PDF、claims、面试风险口径 | 不作为论文结果升级 |
-| M1 面向用户的多智能体科学分析系统 | opening evidence accepted；formal effect open | ExpertsRS 提供角色分工与基本工作流的已发表基础；URSA v0.5.3、代码基线 `0efd090`、121/121 主／clean 环境检查和冻结 5×3 live 集成闭环支持新增运行机制；材料 checkpoint 已推送到 `codex/ch1-v2-e1-structured-planning@4a881a2` | 完整系统叙事需与增量机制分层；正式匹配效果、科学精度和跨任务泛化仍为 open |
-| M2 遥感科学知识表示与推理 | core method accepted；formal effect open | Chapter 2 已形成知识／证据资产，章级主术语统一为面向智能体的遥感科学知识表示与推理；五来源任务接入、版本化抽样框和人工浅审队列已形成；C0 handoff 已推送到 `l2-task-distillation@bc0ce42` | 人工浅审、scientific gold、最小表示与运行界面、知识推理闭环和分层匹配效果均未完成 |
-| M3 城市森林遥感任务系统评测 | core direction and minimum path accepted | 2026-08-29 资产盘点确认真实制图环境、冻结专业基线、运行／结果／决策记录和故障种子可定位；本地历史已保全到 `backup/ch3-routeb-20260831@7b8e05d` | 仍需在所属仓库完成资产—评测—结论核对；首组任务链、版本化环境、可重放故障、确定性检查器和跨方法试跑未实现 |
+| M1 面向用户的多智能体科学分析系统 | opening evidence accepted；formal effect open | ExpertsRS 提供角色分工与基本工作流的已发表基础；URSA v0.5.3、代码基线 `0efd090`、冻结 5×3 live 集成闭环支持新增运行机制；当前电脑的 repo-local `.venv`、121 项测试、两个 no-API closeout 和 LFS 已复核，canonical tip 为 `codex/ch1-v2-e1-structured-planning@0ccc3fc` | 完整系统叙事需与增量机制分层；正式匹配效果、科学精度和跨任务泛化仍为 open |
+| M2 遥感科学知识表示与推理 | core method accepted；formal effect open | Chapter 2 已形成知识／证据资产，章级主术语统一为面向智能体的遥感科学知识表示与推理；G3 已完成 150 条高召回筛选并形成 60 条 G4 人工浅审队列；C0 handoff 为 `bc0ce42`，canonical tip 为 `l2-task-distillation@807d593`，仓库验证为 41 PASS | 当前先完成 G4 的 10 条低／边界抽查和 50 条核心浅审；scientific gold、最小表示与运行界面、知识推理闭环和分层匹配效果均未完成 |
+| M3 城市森林遥感任务系统评测 | core direction and minimum path accepted | 2026-08-29 资产盘点确认真实制图环境、冻结专业基线、运行／结果／决策记录和故障种子可定位；研究 handoff 为 `backup/ch3-routeb-20260831@7b8e05d`，canonical 工作分支已同步到 `PandaBro666/urbfo-agent-demo@4d841b7` | 仍需在所属仓库完成资产—评测—结论核对；首组任务链、版本化环境、可重放故障、确定性检查器和跨方法试跑未实现 |
 | M4 用户／专家校准与经验驱动适应 | deferred increment | 目标用户／专家角色与 episode reservoir 已界定 | 二者均不进入第三章最低承诺；伦理／数据门禁、rubric 校准、episode 化和学习实验均未启动 |
 | O0 选题材料 | source definition and working titles aligned | `opening_report_outline_zh.md` v0.4 用于汇报和人工润色；`opening_report_draft_zh.md` v0.4 维护唯一章级源定义、对象链、用户边界与验证分工 | 最终送审题目、引用、图件和连续正文仍待人工收口 |
 
@@ -35,8 +35,10 @@
 当前唯一下一动作是进入 `urbfo-agent-demo` 所属仓库完成第三项研究的“资产—评测—结论”核对，
 确认现有数据、代码、制品、运行记录和历史故障能够支撑哪些多阶段任务、检查器、比较条件和结论。
 执行入口为 `../urbfo-agent-demo/docs/plans/ch3_asset_eval_claim_audit_handoff_20260831.md`；
-所属仓库当前安全入口为 `backup/ch3-routeb-20260831@7b8e05d`，不得与无共同祖先的
-`origin/master` 直接合并或互相覆盖。
+所属仓库当前安全入口为 canonical
+`PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@4d841b7`；它继承正确
+Chapter 3 的 `fix/audit-p0` 历史。无共同祖先的警告只适用于误放恢复历史的
+`zhelunSun/fewshot-rs-mapping/master`，不得将二者直接合并或互相覆盖。
 核对结果先形成下游提案，再由总控接收；不在核对前扩建任务库、正式用户研究或自演进实验。
 第二章随后从少量完整任务冻结任务条件化知识表示、知识—证据运行界面和等知识内容的分层匹配
 验证，不扩建完整知识库，也不把 `ScientificContract` 预设为唯一方法。

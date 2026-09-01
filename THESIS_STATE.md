@@ -96,9 +96,11 @@
 检查点和交付终态的工程与小规模真实模型集成闭环。该状态可作为开题的 `VERIFIED-ASSET /`
 `DIAGNOSTIC` 证据，但不支持规划优越性、检查点独立效应、遥感专题精度或跨任务泛化。接受边界见
 `decisions/DEC-2026-0829-ch1-v053-opening-evidence-admission.md`。
-当前云端材料 checkpoint 为
-`URSA:codex/ch1-v2-e1-structured-planning@4a881a2`；prototype 与工程 closeout
-分别由 `prototype-notebook-v0-20250307` 和 `ch1-v053-closeout-20260819` 保护。
+当前开题材料 checkpoint 为
+`URSA:codex/ch1-v2-e1-structured-planning@4a881a2`；完成当前电脑隔离环境、
+121 项测试、LFS 和仓库快照收口后的 canonical 同步 tip 为 `0ccc3fc`。这次环境收口
+不升级科学证据状态；prototype 与工程 closeout 分别由
+`prototype-notebook-v0-20250307` 和 `ch1-v053-closeout-20260819` 保护。
 
 ### 研究内容二
 
@@ -113,7 +115,8 @@
 任务相关表示和当前证据状态，但不预先规定唯一专家流程。评价同时覆盖流程执行、产品结果、科学
 意图满足、严重科学错误和不必要干预；不能只以“行动发生变化”判定成功。
 当前 C0 决策与 opening handoff 已推送到
-`chapter2-urban-forest-knowledge:l2-task-distillation@bc0ce42`。
+`chapter2-urban-forest-knowledge:l2-task-distillation@bc0ce42`；完成 G3 记录归档和
+JSONL 可复现性修复后的 canonical 同步 tip 为 `807d593`，不改变 C0 方法或证据结论。
 
 ### 研究内容三
 
@@ -126,9 +129,13 @@
 manifest、决策日志和反馈在结构化之前统一称为 **episode reservoir / trajectory candidates**，
 不直接称为 RL 数据集。若后续开展正式用户研究或经验驱动更新，仍需单独通过评价有效性、数据
 使用和人体参与研究门禁。
-当前本地研究历史已保全到
-`urbfo-agent-demo:backup/ch3-routeb-20260831@7b8e05d`；该分支与现有
-`origin/master` 无共同祖先，禁止直接合并或强推覆盖。
+当前研究内容 checkpoint 为
+`urbfo-agent-demo:backup/ch3-routeb-20260831@7b8e05d`；完成仓库治理与换行
+修复后的 canonical 分支已同步到
+`PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@4d841b7`，且继承该仓库
+`fix/audit-p0` 历史。无共同祖先的警告只适用于误放恢复历史的
+`zhelunSun/fewshot-rs-mapping/master`；该历史仅作为只读恢复源，不得与 canonical
+Chapter 3 历史直接合并或强推覆盖。
 
 ## 7. 弱耦合与最低共享接口
 

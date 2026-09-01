@@ -5,9 +5,9 @@
     {
       "id": "chapter-1-ursa",
       "branch": "codex/ch1-v2-e1-structured-planning",
-      "remote_sha": "351adf137ef54fcbeb66def4c8d3c31e1ef0740d",
+      "remote_sha": "0ccc3fcc10f90527ef9b71aa76dba2c96c24251f",
       "verified_at": "2026-09-01",
-      "purpose": "Chapter 1 structured-planning checkpoint"
+      "purpose": "Chapter 1 structured-planning checkpoint after isolated development-environment verification"
     },
     {
       "id": "chapter-2-knowledge",
