@@ -12,9 +12,9 @@
     {
       "id": "chapter-2-knowledge",
       "branch": "l2-task-distillation",
-      "remote_sha": "4f8e8fff29b5a33f570ffe6ba0035e9cde112f8b",
+      "remote_sha": "8bc34f68c7d17edaa543b0c3a26c3ba4559a26d5",
       "verified_at": "2026-09-01",
-      "purpose": "Chapter 2 G4 reviewer-ready state with tightened fresh-agent navigation and immutable legacy snapshots"
+      "purpose": "Chapter 2 G4 reviewer-ready state with reconciled legacy literature boundaries and 41-pass repository validation"
     },
     {
       "id": "chapter-3-evaluation",
