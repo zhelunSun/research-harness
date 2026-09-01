@@ -46,6 +46,7 @@
 | 中文工作提纲 | `thesis/outline_zh.md` | `v0.4` |
 | 选题报告简版提纲 | `thesis/opening_report_outline_zh.md` | `v0.4` |
 | 选题报告后台工作稿 | `thesis/opening_report_draft_zh.md` | `v0.4` |
+| 开题三章技术路线对照矩阵 | `thesis/opening_three_chapter_route_matrix_zh.md` | `v0.1` |
 | 开题证据矩阵 | `evidence/opening_evidence_matrix.md` | `v0.7` |
 | 当前执行计划 | `process/current_execution_plan_20260802.md` | `v2026.09.01` |
 
