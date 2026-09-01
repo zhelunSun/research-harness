@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "geospatial-agent-comparators-2026",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "bao_spatial-agent_2026",
+      "hasan_geodisaster_2026",
+      "sun_llm-based_2026",
+      "yu_geoagentbench_2026"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "GAC-C1",
+      "marker": "[CLAIM:GAC-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "sun_llm-based_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "GAC-C2",
+      "marker": "[CLAIM:GAC-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "bao_spatial-agent_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "GAC-C3",
+      "marker": "[CLAIM:GAC-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "bao_spatial-agent_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "GAC-C4",
+      "marker": "[CLAIM:GAC-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "yu_geoagentbench_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "GAC-C5",
+      "marker": "[CLAIM:GAC-C5]",
+      "marker_required": false,
+      "required_citations": [
+        "hasan_geodisaster_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "GAC-C6",
+      "marker": "[CLAIM:GAC-C6]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:GAC-C6]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[REF-MISSING:GAC-C6]"
+    ]
+  }
+}

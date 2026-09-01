@@ -1,0 +1,899 @@
+#!/usr/bin/env python3
+"""Audit the thesis literature maintenance control plane.
+
+Exit ``0`` means packet integrity, maintenance gates, and scan freshness pass.
+Exit ``2`` means the audit completed and found repairable drift. Exit ``1``
+means the registry or queue could not be interpreted safely. The command is
+read-only and never calls or writes Zotero.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from collections import Counter
+from datetime import date, datetime
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_REGISTRY = ROOT / "evidence" / "literature" / "packet_registry.json"
+DEFAULT_QUEUE = ROOT / "evidence" / "literature" / "maintenance_queue.json"
+DEFAULT_ROUTES = ROOT / "evidence" / "literature" / "consumer_routes.json"
+DEFAULT_WRITING_INTAKES = ROOT / "evidence" / "literature" / "writing_intakes.json"
+DEFAULT_REPO_CONFIG = ROOT / "config" / "repository_sync.json"
+REQUIRED_PACKET_FILES = (
+    "README.md",
+    "references.bib",
+    "ledger.json",
+    "evidence_cards.md",
+    "audit.json",
+    "writing_bridge.json",
+)
+ALLOWED_PACKET_STATUSES = {
+    "draft",
+    "needs_review",
+    "audited",
+    "audited_pending_zotero_authorization",
+    "archived",
+}
+ALLOWED_WRITING_ELIGIBILITY = {
+    "not_merged_into_any_writing_contract",
+    "blocked_on_zotero_identity_reconciliation_and_task_specific_review",
+    "task_specific_review_required",
+    "accepted_by_writing_contract",
+}
+ALLOWED_ACTION_STATUSES = {
+    "pending_authorization",
+    "pending_external_verification",
+    "pending_task_specific_review",
+    "authorized",
+    "completed",
+    "cancelled",
+}
+ALLOWED_ROUTE_STATUSES = {
+    "candidate",
+    "reconciliation_required",
+    "reconciled_candidate",
+    "accepted",
+    "retired",
+}
+ALLOWED_INTAKE_STATUSES = {"draft", "reviewed_candidate", "accepted", "retired"}
+ALLOWED_INTAKE_DECISIONS = {
+    "candidate_support",
+    "partial_split_required",
+    "context_only",
+    "insufficient_keep_marker",
+    "defer",
+}
+BIB_KEY_RE = re.compile(r"@\w+\s*\{\s*([^,\s]+)", re.IGNORECASE)
+BIB_FILE_FIELD_RE = re.compile(r"(?:^|[,\{\s])file\s*=", re.IGNORECASE | re.MULTILINE)
+WINDOWS_ABSOLUTE_RE = re.compile(r"(?<![A-Za-z0-9])(?:[A-Za-z]:[\\/])")
+UNC_PATH_RE = re.compile(r"(?<![A-Za-z0-9:])(?:\\\\|//)[^/\\\s]+[/\\]")
+
+
+class ControlError(RuntimeError):
+    """A control-plane input cannot be read or interpreted safely."""
+
+
+def _read_json(path: Path, label: str) -> dict[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise ControlError(f"cannot read {label} at {path}: {exc}") from exc
+    if not isinstance(value, dict):
+        raise ControlError(f"{label} must contain a JSON object")
+    return value
+
+
+def _read_text(path: Path, label: str) -> str:
+    try:
+        return path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        raise ControlError(f"cannot read {label} at {path}: {exc}") from exc
+
+
+def _add_issue(
+    result: dict[str, Any],
+    code: str,
+    message: str,
+    *,
+    path: Path | None = None,
+) -> None:
+    issue: dict[str, Any] = {"code": code, "message": message}
+    if path is not None:
+        issue["path"] = str(path)
+    result["issues"].append(issue)
+
+
+def _inside(path: Path, root: Path, label: str) -> Path:
+    resolved = path.resolve()
+    try:
+        resolved.relative_to(root.resolve())
+    except ValueError as exc:
+        raise ControlError(f"{label} escapes control-plane root: {resolved}") from exc
+    return resolved
+
+
+def _parse_iso_date(value: Any, label: str) -> date:
+    if not isinstance(value, str):
+        raise ControlError(f"{label} must be an ISO date")
+    try:
+        return date.fromisoformat(value)
+    except ValueError as exc:
+        raise ControlError(f"{label} must be an ISO date: {value!r}") from exc
+
+
+def _packet_path(root: Path, value: Any, packet_id: str) -> Path:
+    if not isinstance(value, str) or not value:
+        raise ControlError(f"packet {packet_id} needs a non-empty path")
+    candidate = Path(value.replace("\\", "/"))
+    if candidate.is_absolute():
+        raise ControlError(f"packet {packet_id} path must be repository-relative")
+    return _inside(root / candidate, root, f"packet {packet_id}")
+
+
+def _audit_packet(
+    result: dict[str, Any],
+    root: Path,
+    packet: dict[str, Any],
+    seen_packet_ids: set[str],
+    seen_packet_paths: set[Path],
+    global_zotero_keys: dict[str, str],
+    packet_claim_ids: dict[str, set[str]],
+    packet_claim_statuses: dict[str, dict[str, str]],
+) -> None:
+    packet_id = packet.get("packet_id")
+    if not isinstance(packet_id, str) or not packet_id:
+        raise ControlError("every packet needs a non-empty packet_id")
+    if packet_id in seen_packet_ids:
+        _add_issue(result, "duplicate_packet_id", f"duplicate packet_id {packet_id!r}")
+    seen_packet_ids.add(packet_id)
+
+    packet_path = _packet_path(root, packet.get("path"), packet_id)
+    if packet_path in seen_packet_paths:
+        _add_issue(result, "duplicate_packet_path", f"multiple packets use {packet_path}")
+    seen_packet_paths.add(packet_path)
+    if not packet_path.is_dir():
+        _add_issue(result, "missing_packet_directory", f"packet directory is missing for {packet_id}", path=packet_path)
+        return
+
+    status = packet.get("status")
+    if status not in ALLOWED_PACKET_STATUSES:
+        _add_issue(result, "invalid_packet_status", f"packet {packet_id} has unsupported status {status!r}")
+    writing_eligibility = packet.get("writing_eligibility")
+    if writing_eligibility not in ALLOWED_WRITING_ELIGIBILITY:
+        _add_issue(
+            result,
+            "invalid_writing_eligibility",
+            f"packet {packet_id} has unsupported writing_eligibility {writing_eligibility!r}",
+        )
+    _parse_iso_date(packet.get("last_audited"), f"packet {packet_id} last_audited")
+
+    missing = [name for name in REQUIRED_PACKET_FILES if not (packet_path / name).is_file()]
+    for name in missing:
+        _add_issue(result, "missing_packet_file", f"packet {packet_id} is missing {name}", path=packet_path / name)
+    if missing:
+        return
+
+    pdfs = sorted(packet_path.rglob("*.pdf"))
+    for pdf in pdfs:
+        _add_issue(result, "committed_pdf_binary", f"packet {packet_id} contains a PDF binary", path=pdf)
+
+    for candidate in packet_path.rglob("*"):
+        if not candidate.is_file() or candidate.suffix.lower() == ".pdf":
+            continue
+        text = _read_text(candidate, f"packet file for {packet_id}")
+        if WINDOWS_ABSOLUTE_RE.search(text) or UNC_PATH_RE.search(text):
+            _add_issue(
+                result,
+                "workstation_path_in_packet",
+                f"packet {packet_id} contains a workstation-specific path",
+                path=candidate,
+            )
+
+    bib_path = packet_path / "references.bib"
+    bib_text = _read_text(bib_path, f"bibliography for {packet_id}")
+    if BIB_FILE_FIELD_RE.search(bib_text):
+        _add_issue(result, "bibtex_file_field", f"packet {packet_id} bibliography contains a file field", path=bib_path)
+    bib_keys = BIB_KEY_RE.findall(bib_text)
+    duplicate_bib_keys = sorted(key for key, count in Counter(bib_keys).items() if count > 1)
+    if duplicate_bib_keys:
+        _add_issue(result, "duplicate_bibtex_key", f"packet {packet_id} repeats BibTeX keys: {duplicate_bib_keys}")
+
+    ledger = _read_json(packet_path / "ledger.json", f"ledger for {packet_id}")
+    audit = _read_json(packet_path / "audit.json", f"audit for {packet_id}")
+    bridge = _read_json(packet_path / "writing_bridge.json", f"writing bridge for {packet_id}")
+    if ledger.get("ledger_id") != packet_id:
+        _add_issue(result, "ledger_id_mismatch", f"packet {packet_id} ledger_id does not match")
+    if audit.get("ledger_id") != packet_id:
+        _add_issue(result, "audit_ledger_id_mismatch", f"packet {packet_id} audit ledger_id does not match")
+    if bridge.get("source_ledger_id") != packet_id:
+        _add_issue(result, "bridge_ledger_id_mismatch", f"packet {packet_id} writing bridge does not match")
+
+    sources = ledger.get("sources")
+    claims = ledger.get("claims")
+    links = ledger.get("links")
+    if not isinstance(sources, list) or not isinstance(claims, list) or not isinstance(links, list):
+        raise ControlError(f"packet {packet_id} ledger sources, claims, and links must be lists")
+    claim_ids = {
+        claim.get("claim_id")
+        for claim in claims
+        if isinstance(claim, dict) and isinstance(claim.get("claim_id"), str)
+    }
+    packet_claim_ids[packet_id] = claim_ids
+    packet_claim_statuses[packet_id] = {
+        claim["claim_id"]: claim.get("evidence_status", "")
+        for claim in claims
+        if isinstance(claim, dict) and isinstance(claim.get("claim_id"), str)
+    }
+    if len(claim_ids) != len(claims):
+        _add_issue(result, "invalid_or_duplicate_claim_id", f"packet {packet_id} has invalid or duplicate claim IDs")
+    declared_source_count = packet.get("source_count")
+    if declared_source_count != len(sources):
+        _add_issue(
+            result,
+            "source_count_mismatch",
+            f"packet {packet_id} declares {declared_source_count!r} sources but ledger has {len(sources)}",
+        )
+
+    source_ids: list[str] = []
+    source_bib_keys: list[str] = []
+    source_zotero_keys: list[str] = []
+    for source in sources:
+        if not isinstance(source, dict):
+            raise ControlError(f"packet {packet_id} contains a non-object source")
+        source_id = source.get("source_id")
+        bib_key = source.get("bibtex_key")
+        zotero_key = source.get("zotero_item_key")
+        if not isinstance(source_id, str) or not source_id:
+            _add_issue(result, "missing_source_id", f"packet {packet_id} contains a source without source_id")
+        else:
+            source_ids.append(source_id)
+        if not isinstance(bib_key, str) or not bib_key:
+            _add_issue(result, "missing_bibtex_key", f"packet {packet_id} source {source_id!r} has no BibTeX key")
+        else:
+            source_bib_keys.append(bib_key)
+            if bib_key not in bib_keys:
+                _add_issue(
+                    result,
+                    "bibtex_key_missing_from_snapshot",
+                    f"packet {packet_id} source {source_id!r} key {bib_key!r} is absent from references.bib",
+                )
+        if zotero_key is not None:
+            if not isinstance(zotero_key, str) or not zotero_key:
+                _add_issue(result, "invalid_zotero_item_key", f"packet {packet_id} source {source_id!r} has an invalid Zotero key")
+            else:
+                source_zotero_keys.append(zotero_key)
+                owner = global_zotero_keys.get(zotero_key)
+                if owner and owner != packet_id:
+                    _add_issue(
+                        result,
+                        "zotero_key_reused_across_packets",
+                        f"Zotero key {zotero_key} is used by packets {owner} and {packet_id}",
+                    )
+                global_zotero_keys[zotero_key] = packet_id
+    if len(source_ids) != len(set(source_ids)):
+        _add_issue(result, "duplicate_source_id", f"packet {packet_id} contains duplicate source IDs")
+    if len(source_bib_keys) != len(set(source_bib_keys)):
+        _add_issue(result, "source_bibtex_key_reuse", f"packet {packet_id} assigns one BibTeX key to multiple sources")
+
+    registry_zotero_keys = packet.get("zotero_item_keys")
+    if not isinstance(registry_zotero_keys, list) or not all(
+        isinstance(item, str) and item for item in registry_zotero_keys
+    ):
+        _add_issue(result, "invalid_registry_zotero_keys", f"packet {packet_id} zotero_item_keys must be a string list")
+    elif sorted(registry_zotero_keys) != sorted(source_zotero_keys):
+        _add_issue(
+            result,
+            "zotero_key_mismatch",
+            f"packet {packet_id} registry and ledger Zotero keys differ",
+        )
+
+    audit_summary = audit.get("summary")
+    if audit.get("ok") is not True or not isinstance(audit_summary, dict):
+        _add_issue(result, "packet_audit_not_ok", f"packet {packet_id} does not have a passing audit")
+    else:
+        expected_summary = {"sources": len(sources), "claims": len(claims), "links": len(links)}
+        for field, expected in expected_summary.items():
+            if audit_summary.get(field) != expected:
+                _add_issue(
+                    result,
+                    "packet_audit_count_mismatch",
+                    f"packet {packet_id} audit {field}={audit_summary.get(field)!r}, expected {expected}",
+                )
+        if audit_summary.get("errors") != 0 or audit_summary.get("warnings") != 0:
+            _add_issue(result, "packet_audit_findings", f"packet {packet_id} audit reports errors or warnings")
+
+    result["sources_total"] += len(sources)
+    result["claims_total"] += len(claims)
+    result["links_total"] += len(links)
+
+
+def _audit_queue(
+    result: dict[str, Any],
+    queue: dict[str, Any],
+    packet_ids: set[str],
+    as_of: date,
+) -> None:
+    if queue.get("schema_version") != "1.0":
+        raise ControlError("maintenance queue requires schema_version '1.0'")
+    policy = queue.get("policy")
+    if not isinstance(policy, dict):
+        raise ControlError("maintenance queue policy must be an object")
+    expected_policy = {
+        "zotero_write_gate": "explicit_user_authorization",
+        "writing_merge_gate": "task_specific_contract_review",
+        "linked_attachment_transport": "SeaDrive",
+    }
+    for field, expected in expected_policy.items():
+        if policy.get(field) != expected:
+            _add_issue(result, "maintenance_policy_drift", f"policy {field} must remain {expected!r}")
+    interval = policy.get("read_only_scan_interval_days")
+    if not isinstance(interval, int) or interval < 1:
+        raise ControlError("read_only_scan_interval_days must be a positive integer")
+
+    scan = queue.get("read_only_scan")
+    if not isinstance(scan, dict):
+        raise ControlError("maintenance queue read_only_scan must be an object")
+    last_completed = _parse_iso_date(scan.get("last_completed"), "read_only_scan.last_completed")
+    required_checks = {
+        "zotero_status",
+        "selected_target",
+        "doi_or_exact_title_dedup",
+        "linked_pdf_resolution",
+        "packet_audit",
+    }
+    checks = scan.get("checks")
+    if not isinstance(checks, list) or not required_checks.issubset(set(checks)):
+        _add_issue(result, "incomplete_read_only_scan", "weekly scan omits one or more required checks")
+    age = (as_of - last_completed).days
+    result["read_only_scan"] = {
+        "last_completed": last_completed.isoformat(),
+        "age_days": age,
+        "interval_days": interval,
+    }
+    if age < 0:
+        _add_issue(result, "future_read_only_scan", "last_completed is later than the audit date")
+    elif age > interval:
+        _add_issue(
+            result,
+            "read_only_scan_overdue",
+            f"read-only Zotero/packet scan is {age} days old; interval is {interval} days",
+        )
+
+    actions = queue.get("actions")
+    if not isinstance(actions, list):
+        raise ControlError("maintenance queue actions must be a list")
+    seen_ids: set[str] = set()
+    for action in actions:
+        if not isinstance(action, dict):
+            raise ControlError("maintenance queue contains a non-object action")
+        action_id = action.get("action_id")
+        if not isinstance(action_id, str) or not action_id:
+            raise ControlError("every maintenance action needs a non-empty action_id")
+        if action_id in seen_ids:
+            _add_issue(result, "duplicate_action_id", f"duplicate maintenance action {action_id!r}")
+        seen_ids.add(action_id)
+        status = action.get("status")
+        if status not in ALLOWED_ACTION_STATUSES:
+            _add_issue(result, "invalid_action_status", f"action {action_id} has unsupported status {status!r}")
+        packet_id = action.get("packet_id")
+        if packet_id is not None and packet_id not in packet_ids:
+            _add_issue(result, "unknown_action_packet", f"action {action_id} references unknown packet {packet_id!r}")
+        kind = action.get("kind")
+        gate = action.get("gate")
+        if not isinstance(kind, str) or not isinstance(gate, str) or not gate:
+            _add_issue(result, "invalid_action_gate", f"action {action_id} needs kind and gate")
+        if kind == "zotero_write":
+            if gate != "explicit_user_authorization":
+                _add_issue(result, "zotero_write_gate_drift", f"action {action_id} lacks the explicit Zotero write gate")
+            if status in {"authorized", "completed"}:
+                authorization = action.get("authorization")
+                if not isinstance(authorization, dict) or not authorization.get("authorized_at"):
+                    _add_issue(
+                        result,
+                        "missing_zotero_authorization_evidence",
+                        f"action {action_id} is {status} without recorded authorization evidence",
+                    )
+        if kind == "external_verification":
+            required = action.get("evidence_required")
+            if not isinstance(required, list) or not required:
+                _add_issue(
+                    result,
+                    "missing_external_verification_evidence",
+                    f"action {action_id} has no explicit evidence requirements",
+                )
+        if kind == "route_reconciliation" and status == "completed":
+            completed_at = action.get("completed_at")
+            completion_evidence = action.get("completion_evidence")
+            if not isinstance(completed_at, str) or not completed_at:
+                _add_issue(
+                    result,
+                    "missing_reconciliation_completion_date",
+                    f"completed reconciliation action {action_id} lacks completed_at",
+                )
+            if not isinstance(completion_evidence, list) or not completion_evidence:
+                _add_issue(
+                    result,
+                    "missing_reconciliation_completion_evidence",
+                    f"completed reconciliation action {action_id} lacks completion evidence",
+                )
+        if status not in {"completed", "cancelled"}:
+            result["open_actions"].append(
+                {
+                    "action_id": action_id,
+                    "kind": kind,
+                    "status": status,
+                    "gate": gate,
+                }
+            )
+
+
+def _load_repository_roots(root: Path, config_path: Path) -> dict[str, Path]:
+    config = _read_json(config_path, "repository sync configuration")
+    if config.get("schema_version") != 2:
+        raise ControlError("consumer route audit requires repository sync schema_version 2")
+    repositories = config.get("repositories")
+    if not isinstance(repositories, list):
+        raise ControlError("repository sync configuration repositories must be a list")
+    workspace_root = root.resolve().parent
+    roots: dict[str, Path] = {}
+    for repository in repositories:
+        if not isinstance(repository, dict):
+            raise ControlError("repository sync configuration contains a non-object repository")
+        repository_id = repository.get("id")
+        relative_path = repository.get("path")
+        if not isinstance(repository_id, str) or not repository_id:
+            raise ControlError("each repository needs a non-empty id")
+        if repository_id in roots:
+            raise ControlError(f"duplicate repository id {repository_id!r}")
+        if not isinstance(relative_path, str) or not relative_path:
+            raise ControlError(f"repository {repository_id} needs a non-empty path")
+        roots[repository_id] = _inside(
+            root / Path(relative_path.replace("\\", "/")),
+            workspace_root,
+            f"repository {repository_id}",
+        )
+    return roots
+
+
+def _audit_consumer_routes(
+    result: dict[str, Any],
+    root: Path,
+    routes: dict[str, Any],
+    repository_roots: dict[str, Path],
+    packet_claim_ids: dict[str, set[str]],
+) -> None:
+    if routes.get("schema_version") != "1.0":
+        raise ControlError("consumer route registry requires schema_version '1.0'")
+    policy = routes.get("policy")
+    if not isinstance(policy, dict) or policy.get("accepted_route_gate") != "task_specific_contract_review":
+        _add_issue(
+            result,
+            "consumer_route_policy_drift",
+            "accepted routes must remain gated by task_specific_contract_review",
+        )
+    route_items = routes.get("routes")
+    if not isinstance(route_items, list):
+        raise ControlError("consumer route registry routes must be a list")
+    result["routes_total"] = len(route_items)
+    result["route_statuses"] = dict(
+        Counter(item.get("status") for item in route_items if isinstance(item, dict))
+    )
+    seen_ids: set[str] = set()
+    for route in route_items:
+        if not isinstance(route, dict):
+            raise ControlError("consumer route registry contains a non-object route")
+        route_id = route.get("route_id")
+        if not isinstance(route_id, str) or not route_id:
+            raise ControlError("every consumer route needs a non-empty route_id")
+        if route_id in seen_ids:
+            _add_issue(result, "duplicate_consumer_route", f"duplicate consumer route {route_id!r}")
+        seen_ids.add(route_id)
+        status = route.get("status")
+        if status not in ALLOWED_ROUTE_STATUSES:
+            _add_issue(result, "invalid_consumer_route_status", f"route {route_id} has unsupported status {status!r}")
+        packet_id = route.get("packet_id")
+        if packet_id not in packet_claim_ids:
+            _add_issue(result, "unknown_route_packet", f"route {route_id} references unknown packet {packet_id!r}")
+            known_claim_ids: set[str] = set()
+        else:
+            known_claim_ids = packet_claim_ids[packet_id]
+        claim_ids = route.get("claim_ids")
+        if not isinstance(claim_ids, list) or not claim_ids or not all(isinstance(item, str) for item in claim_ids):
+            _add_issue(result, "invalid_route_claims", f"route {route_id} needs a non-empty claim_ids list")
+        else:
+            unknown_claims = sorted(set(claim_ids) - known_claim_ids)
+            if unknown_claims:
+                _add_issue(
+                    result,
+                    "unknown_route_claim",
+                    f"route {route_id} references unknown claims {unknown_claims}",
+                )
+        repository_id = route.get("repository_id")
+        repository_root = repository_roots.get(repository_id)
+        if repository_root is None:
+            _add_issue(result, "unknown_route_repository", f"route {route_id} references unknown repository {repository_id!r}")
+            continue
+        artifact_value = route.get("artifact_path")
+        if not isinstance(artifact_value, str) or not artifact_value:
+            _add_issue(result, "invalid_route_artifact", f"route {route_id} needs artifact_path")
+            continue
+        artifact_relative = Path(artifact_value.replace("\\", "/"))
+        if artifact_relative.is_absolute():
+            _add_issue(result, "absolute_route_artifact", f"route {route_id} artifact_path must be repository-relative")
+            continue
+        artifact = _inside(repository_root / artifact_relative, repository_root, f"route {route_id} artifact")
+        if not artifact.is_file():
+            _add_issue(result, "missing_route_artifact", f"route {route_id} artifact is missing", path=artifact)
+        if status == "accepted":
+            acceptance = route.get("acceptance")
+            if not isinstance(acceptance, dict) or not acceptance.get("accepted_at"):
+                _add_issue(result, "missing_route_acceptance", f"accepted route {route_id} lacks acceptance evidence")
+            contract_value = route.get("writing_contract_path")
+            if not isinstance(contract_value, str) or not contract_value:
+                _add_issue(result, "missing_route_writing_contract", f"accepted route {route_id} lacks writing_contract_path")
+            else:
+                contract = _inside(
+                    repository_root / Path(contract_value.replace("\\", "/")),
+                    repository_root,
+                    f"route {route_id} writing contract",
+                )
+                if not contract.is_file():
+                    _add_issue(result, "missing_route_writing_contract", f"route {route_id} writing contract is missing", path=contract)
+        if status == "reconciled_candidate":
+            _parse_iso_date(route.get("reconciled_at"), f"route {route_id} reconciled_at")
+            reconciliation_value = route.get("reconciliation_artifact")
+            if not isinstance(reconciliation_value, str) or not reconciliation_value:
+                _add_issue(
+                    result,
+                    "missing_route_reconciliation_artifact",
+                    f"reconciled route {route_id} lacks reconciliation_artifact",
+                )
+            else:
+                reconciliation = _inside(
+                    root / Path(reconciliation_value.replace("\\", "/")),
+                    root,
+                    f"route {route_id} reconciliation artifact",
+                )
+                if not reconciliation.is_file():
+                    _add_issue(
+                        result,
+                        "missing_route_reconciliation_artifact",
+                        f"route {route_id} reconciliation artifact is missing",
+                        path=reconciliation,
+                    )
+        if status in {"candidate", "reconciliation_required"}:
+            result["route_actions"].append(
+                {
+                    "route_id": route_id,
+                    "packet_id": packet_id,
+                    "repository_id": repository_id,
+                    "status": status,
+                    "artifact_path": artifact_value,
+                }
+            )
+
+
+def _audit_writing_intakes(
+    result: dict[str, Any],
+    root: Path,
+    intakes: dict[str, Any],
+    repository_roots: dict[str, Path],
+    packet_claim_statuses: dict[str, dict[str, str]],
+) -> None:
+    if intakes.get("schema_version") != "1.0":
+        raise ControlError("writing intake registry requires schema_version '1.0'")
+    policy = intakes.get("policy")
+    if not isinstance(policy, dict) or policy.get("merge_gate") != "task_specific_contract_review":
+        _add_issue(
+            result,
+            "writing_intake_policy_drift",
+            "writing intakes must remain gated by task_specific_contract_review",
+        )
+    items = intakes.get("intakes")
+    if not isinstance(items, list):
+        raise ControlError("writing intake registry intakes must be a list")
+    result["writing_intakes_total"] = len(items)
+    result["writing_intake_statuses"] = dict(
+        Counter(item.get("status") for item in items if isinstance(item, dict))
+    )
+    seen_ids: set[str] = set()
+    for intake in items:
+        if not isinstance(intake, dict):
+            raise ControlError("writing intake registry contains a non-object intake")
+        intake_id = intake.get("intake_id")
+        if not isinstance(intake_id, str) or not intake_id:
+            raise ControlError("every writing intake needs a non-empty intake_id")
+        if intake_id in seen_ids:
+            _add_issue(result, "duplicate_writing_intake", f"duplicate writing intake {intake_id!r}")
+        seen_ids.add(intake_id)
+        status = intake.get("status")
+        if status not in ALLOWED_INTAKE_STATUSES:
+            _add_issue(result, "invalid_writing_intake_status", f"intake {intake_id} has unsupported status {status!r}")
+        _parse_iso_date(intake.get("reviewed_at"), f"intake {intake_id} reviewed_at")
+
+        source_packets = intake.get("source_packets")
+        if not isinstance(source_packets, list) or not source_packets or not all(
+            isinstance(packet_id, str) for packet_id in source_packets
+        ):
+            _add_issue(result, "invalid_intake_packets", f"intake {intake_id} needs source_packets")
+            source_packets = []
+        for packet_id in source_packets:
+            if packet_id not in packet_claim_statuses:
+                _add_issue(result, "unknown_intake_packet", f"intake {intake_id} references unknown packet {packet_id!r}")
+
+        repository_id = intake.get("target_repository_id")
+        repository_root = repository_roots.get(repository_id)
+        if repository_root is None:
+            _add_issue(result, "unknown_intake_repository", f"intake {intake_id} references unknown repository {repository_id!r}")
+            continue
+
+        target_files: dict[str, Path] = {}
+        for field in ("target_document", "target_contract"):
+            value = intake.get(field)
+            if not isinstance(value, str) or not value:
+                _add_issue(result, "invalid_intake_target", f"intake {intake_id} needs {field}")
+                continue
+            relative = Path(value.replace("\\", "/"))
+            if relative.is_absolute():
+                _add_issue(result, "absolute_intake_target", f"intake {intake_id} {field} must be repository-relative")
+                continue
+            target = _inside(repository_root / relative, repository_root, f"intake {intake_id} {field}")
+            target_files[field] = target
+            if not target.is_file():
+                _add_issue(result, "missing_intake_target", f"intake {intake_id} {field} is missing", path=target)
+
+        control_files: dict[str, Path] = {}
+        for field in ("decision_artifact", "contract_fragment"):
+            value = intake.get(field)
+            if not isinstance(value, str) or not value:
+                _add_issue(result, "invalid_intake_artifact", f"intake {intake_id} needs {field}")
+                continue
+            relative = Path(value.replace("\\", "/"))
+            if relative.is_absolute():
+                _add_issue(result, "absolute_intake_artifact", f"intake {intake_id} {field} must be repository-relative")
+                continue
+            artifact = _inside(root / relative, root, f"intake {intake_id} {field}")
+            control_files[field] = artifact
+            if not artifact.is_file():
+                _add_issue(result, "missing_intake_artifact", f"intake {intake_id} {field} is missing", path=artifact)
+
+        target_document = target_files.get("target_document")
+        observed_markers = intake.get("observed_ref_missing_occurrences")
+        if target_document and target_document.is_file():
+            actual_markers = _read_text(target_document, f"intake target for {intake_id}").count("[REF-MISSING]")
+            if observed_markers != actual_markers:
+                _add_issue(
+                    result,
+                    "intake_marker_count_drift",
+                    f"intake {intake_id} records {observed_markers!r} REF-MISSING occurrences but target has {actual_markers}",
+                    path=target_document,
+                )
+
+        merged = intake.get("writing_contract_merged")
+        removable = intake.get("content_markers_removable_now")
+        if not isinstance(merged, bool) or not isinstance(removable, int) or removable < 0:
+            _add_issue(result, "invalid_intake_merge_state", f"intake {intake_id} needs boolean merge state and non-negative removable count")
+        elif removable > 0 and not merged:
+            _add_issue(result, "unmerged_marker_removal", f"intake {intake_id} cannot authorize marker removal before contract merge")
+        if status == "reviewed_candidate" and merged is not False:
+            _add_issue(result, "candidate_intake_marked_merged", f"reviewed candidate {intake_id} must remain unmerged")
+
+        decision_path = control_files.get("decision_artifact")
+        if not decision_path or not decision_path.is_file():
+            continue
+        decision_artifact = _read_json(decision_path, f"decision artifact for {intake_id}")
+        if decision_artifact.get("intake_id") != intake_id:
+            _add_issue(result, "intake_id_mismatch", f"decision artifact for {intake_id} has a different intake_id", path=decision_path)
+        decisions = decision_artifact.get("decisions")
+        if not isinstance(decisions, list) or not decisions:
+            _add_issue(result, "missing_intake_decisions", f"intake {intake_id} has no decisions", path=decision_path)
+            continue
+        seen_decision_ids: set[str] = set()
+        for decision in decisions:
+            if not isinstance(decision, dict):
+                raise ControlError(f"intake {intake_id} contains a non-object decision")
+            decision_id = decision.get("decision_id")
+            if not isinstance(decision_id, str) or not decision_id:
+                _add_issue(result, "invalid_intake_decision_id", f"intake {intake_id} has a decision without an ID")
+                continue
+            if decision_id in seen_decision_ids:
+                _add_issue(result, "duplicate_intake_decision", f"intake {intake_id} repeats decision {decision_id!r}")
+            seen_decision_ids.add(decision_id)
+            outcome = decision.get("outcome")
+            if outcome not in ALLOWED_INTAKE_DECISIONS:
+                _add_issue(result, "invalid_intake_decision", f"decision {decision_id} has unsupported outcome {outcome!r}")
+            if outcome in {"partial_split_required", "insufficient_keep_marker"} and decision.get("marker_retained") is not True:
+                _add_issue(result, "intake_marker_boundary_drift", f"decision {decision_id} must retain its unresolved marker")
+            source_claims = decision.get("source_claims", [])
+            if not isinstance(source_claims, list):
+                raise ControlError(f"decision {decision_id} source_claims must be a list")
+            for claim_ref in source_claims:
+                if not isinstance(claim_ref, dict):
+                    raise ControlError(f"decision {decision_id} has a non-object source claim")
+                packet_id = claim_ref.get("packet_id")
+                claim_id = claim_ref.get("claim_id")
+                status_map = packet_claim_statuses.get(packet_id, {})
+                if claim_id not in status_map:
+                    _add_issue(result, "unknown_intake_claim", f"decision {decision_id} references unknown claim {packet_id}:{claim_id}")
+                elif outcome == "candidate_support" and status_map[claim_id] != "verified":
+                    _add_issue(
+                        result,
+                        "unverified_candidate_support",
+                        f"decision {decision_id} treats {packet_id}:{claim_id} ({status_map[claim_id]}) as candidate support",
+                    )
+
+
+def audit_literature_control(
+    root: Path = ROOT,
+    registry_path: Path | None = None,
+    queue_path: Path | None = None,
+    routes_path: Path | None = None,
+    repo_config_path: Path | None = None,
+    writing_intakes_path: Path | None = None,
+    *,
+    as_of: date | None = None,
+) -> dict[str, Any]:
+    """Return a machine-readable, non-mutating literature-control audit."""
+
+    resolved_root = root.resolve()
+    registry_file = (registry_path or resolved_root / "evidence" / "literature" / "packet_registry.json").resolve()
+    queue_file = (queue_path or resolved_root / "evidence" / "literature" / "maintenance_queue.json").resolve()
+    routes_file = (routes_path or resolved_root / "evidence" / "literature" / "consumer_routes.json").resolve()
+    writing_intakes_file = (
+        writing_intakes_path or resolved_root / "evidence" / "literature" / "writing_intakes.json"
+    ).resolve()
+    repo_config_file = (repo_config_path or resolved_root / "config" / "repository_sync.json").resolve()
+    _inside(registry_file, resolved_root, "packet registry")
+    _inside(queue_file, resolved_root, "maintenance queue")
+    _inside(routes_file, resolved_root, "consumer route registry")
+    _inside(writing_intakes_file, resolved_root, "writing intake registry")
+    _inside(repo_config_file, resolved_root, "repository sync configuration")
+    registry = _read_json(registry_file, "packet registry")
+    queue = _read_json(queue_file, "maintenance queue")
+    routes = _read_json(routes_file, "consumer route registry")
+    writing_intakes = _read_json(writing_intakes_file, "writing intake registry")
+    repository_roots = _load_repository_roots(resolved_root, repo_config_file)
+    if registry.get("schema_version") != "1.0":
+        raise ControlError("packet registry requires schema_version '1.0'")
+    source_of_truth = registry.get("source_of_truth")
+    expected_truth = {
+        "bibliography": "local Zotero Desktop",
+        "linked_attachments": "SeaDrive",
+        "evidence_packets": "research-harness/evidence/literature/packets",
+    }
+    if not isinstance(source_of_truth, dict):
+        raise ControlError("packet registry source_of_truth must be an object")
+
+    result: dict[str, Any] = {
+        "control_root": str(resolved_root),
+        "registry": str(registry_file),
+        "queue": str(queue_file),
+        "consumer_routes": str(routes_file),
+        "writing_intakes": str(writing_intakes_file),
+        "repository_config": str(repo_config_file),
+        "packets_total": 0,
+        "sources_total": 0,
+        "claims_total": 0,
+        "links_total": 0,
+        "packet_statuses": {},
+        "read_only_scan": {},
+        "open_actions": [],
+        "routes_total": 0,
+        "route_statuses": {},
+        "route_actions": [],
+        "writing_intakes_total": 0,
+        "writing_intake_statuses": {},
+        "issues": [],
+    }
+    for field, expected in expected_truth.items():
+        if source_of_truth.get(field) != expected:
+            _add_issue(result, "source_of_truth_drift", f"source_of_truth.{field} must remain {expected!r}")
+
+    packets = registry.get("packets")
+    if not isinstance(packets, list):
+        raise ControlError("packet registry packets must be a list")
+    result["packets_total"] = len(packets)
+    result["packet_statuses"] = dict(Counter(packet.get("status") for packet in packets if isinstance(packet, dict)))
+    seen_packet_ids: set[str] = set()
+    seen_packet_paths: set[Path] = set()
+    global_zotero_keys: dict[str, str] = {}
+    packet_claim_ids: dict[str, set[str]] = {}
+    packet_claim_statuses: dict[str, dict[str, str]] = {}
+    for packet in packets:
+        if not isinstance(packet, dict):
+            raise ControlError("packet registry contains a non-object packet")
+        _audit_packet(
+            result,
+            resolved_root,
+            packet,
+            seen_packet_ids,
+            seen_packet_paths,
+            global_zotero_keys,
+            packet_claim_ids,
+            packet_claim_statuses,
+        )
+    _audit_queue(result, queue, seen_packet_ids, as_of or date.today())
+    _audit_consumer_routes(
+        result,
+        resolved_root,
+        routes,
+        repository_roots,
+        packet_claim_ids,
+    )
+    _audit_writing_intakes(
+        result,
+        resolved_root,
+        writing_intakes,
+        repository_roots,
+        packet_claim_statuses,
+    )
+    result["exit_code"] = 2 if result["issues"] else 0
+    return result
+
+
+def render_text(result: dict[str, Any]) -> str:
+    label = "OK" if result["exit_code"] == 0 else "WARN"
+    scan = result.get("read_only_scan", {})
+    lines = [
+        f"[{label}] literature control: packets={result['packets_total']} "
+        f"sources={result['sources_total']} claims={result['claims_total']} links={result['links_total']} "
+        f"routes={result['routes_total']} writing_intakes={result['writing_intakes_total']}",
+        f"  read-only scan: last={scan.get('last_completed')} age={scan.get('age_days')}d "
+        f"interval={scan.get('interval_days')}d",
+    ]
+    for action in result["open_actions"]:
+        lines.append(
+            f"  - WAIT {action['action_id']}: {action['status']} "
+            f"(gate={action['gate']})"
+        )
+    for route in result["route_actions"]:
+        lines.append(
+            f"  - ROUTE {route['route_id']}: {route['status']} "
+            f"({route['repository_id']}:{route['artifact_path']})"
+        )
+    for issue in result["issues"]:
+        location = f" [{issue['path']}]" if issue.get("path") else ""
+        lines.append(f"  - {issue['code']}: {issue['message']}{location}")
+    lines.append(
+        f"summary: exit={result['exit_code']} issues={len(result['issues'])} "
+        f"open_actions={len(result['open_actions'])} route_actions={len(result['route_actions'])}"
+    )
+    return "\n".join(lines)
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=ROOT)
+    parser.add_argument("--registry", type=Path, default=None)
+    parser.add_argument("--queue", type=Path, default=None)
+    parser.add_argument("--routes", type=Path, default=None)
+    parser.add_argument("--repo-config", type=Path, default=None)
+    parser.add_argument("--writing-intakes", type=Path, default=None)
+    parser.add_argument("--as-of", type=lambda value: datetime.strptime(value, "%Y-%m-%d").date(), default=None)
+    parser.add_argument("--json", action="store_true", help="write machine-readable JSON")
+    args = parser.parse_args(argv)
+    try:
+        result = audit_literature_control(
+            args.root,
+            args.registry,
+            args.queue,
+            args.routes,
+            args.repo_config,
+            args.writing_intakes,
+            as_of=args.as_of,
+        )
+    except ControlError as exc:
+        payload = {"exit_code": 1, "configuration_error": str(exc), "issues": []}
+        print(json.dumps(payload, ensure_ascii=False, indent=2) if args.json else f"[CRITICAL] literature control: {exc}")
+        return 1
+    print(json.dumps(result, ensure_ascii=False, indent=2) if args.json else render_text(result))
+    return int(result["exit_code"])
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

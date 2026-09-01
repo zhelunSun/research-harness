@@ -1,0 +1,12 @@
+# Change ledger
+
+| ID | Type | Before | After | Evidence or authorization |
+| --- | --- | --- | --- | --- |
+| R1 | argument / provenance | Co-Scientist note began with a WebFetch candidate label but no stable Zotero/BibTeX identity or permitted claim | Added `ETGXFWI5`, `gottweis_accelerating_2026`, `AFS-C1`, the `full_text` master-packet state, and an explicit non-writing-eligible boundary | `S-AFS-001`, `AFS-C1`, and its verified ledger link |
+| R2 | argument / provenance | Robin note did not bind the semi-autonomous claim to its human laboratory boundary | Added `8QJVIQLW`, `ghareeb_multi-agent_2026`, `AFS-C2`, the human review/laboratory boundary, and an explicit non-writing-eligible boundary | `S-AFS-002`, `AFS-C2`, and its verified ledger link |
+| R3 | factual correction | ExpertsRS note conflated `Data--Tools--Brain` system modules with Agent roles and described `Brain + Supervisor + Worker` as three modules | Separated `Data--Tools--Brain`, `Manager--Scientist--Engineer`, and `Clarify--Define--Solve--Report`; added the two-case / 20-request preliminary-evaluation boundary | `S-GAC-001`, `GAC-C1`, full-text section locations in the ledger |
+| R4 | scope correction | ExpertsRS note described the paper as a direct competitor and used stale `URSA (Ch3)` / `Sheaf Ch1` mappings | Reframed it as a published Chapter 1 historical feasibility baseline; left novelty synthesis unresolved as `[REF-MISSING:GAC-C6]` | current `THESIS_STATE.md` and `GAC-C6` boundary |
+| R5 | status clarification | Chapter 2 literature index displayed the three notes as complete with an unqualified check mark | Changed the three rows to evidence-boundary reconciled / writing review required | Chapter 2 evidence-state invariant and the reconciliation contracts |
+| R6 | repository governance | Chapter 2 validator still required the superseded July `task-conditioned epistemic contracts` route and a literal Chinese phrase that the current English workflow no longer used | Validator now checks the canonical C0 brief, G4 Batch A human gate, proposal path, and explicit no-direct-upstream-edit rule; four regression tests cover pass/fail cases | current `AGENTS.md`, `PLAN.md`, `README.md`, and `WORKFLOW.md` |
+
+No legacy numerical claim or comparative interpretation is upgraded by these edits. The unchanged historical body remains candidate material and requires claim-specific review before reuse.

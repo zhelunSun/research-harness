@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "ai4science-frontier-2026",
+  "research_question": "这 5 篇 2026 AI4Science 原文分别把 AI 放在科研流程的哪个位置，并提供了何种人工参与、实验或形式化验证与可追溯归属证据？",
+  "sources": [
+    {
+      "source_id": "S-AFS-001",
+      "title": "Accelerating scientific discovery with Co-Scientist",
+      "bibtex_key": "gottweis_accelerating_2026",
+      "zotero_item_key": "ETGXFWI5",
+      "locator": "https://doi.org/10.1038/s41586-026-10644-y",
+      "identifiers": {"doi": "10.1038/s41586-026-10644-y"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-AFS-002",
+      "title": "A multi-agent system for automating scientific discovery",
+      "bibtex_key": "ghareeb_multi-agent_2026",
+      "zotero_item_key": "8QJVIQLW",
+      "locator": "https://doi.org/10.1038/s41586-026-10652-y",
+      "identifiers": {"doi": "10.1038/s41586-026-10652-y"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-AFS-003",
+      "title": "An AI system to help scientists write expert-level empirical software",
+      "bibtex_key": "aygun_ai_2026",
+      "zotero_item_key": "4HG5DK62",
+      "locator": "https://doi.org/10.1038/s41586-026-10658-6",
+      "identifiers": {"doi": "10.1038/s41586-026-10658-6"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-AFS-004",
+      "title": "Ten Advances in Mathematics and Theoretical Computer Science",
+      "bibtex_key": "openai_ten_2026",
+      "zotero_item_key": "57QKXZ9P",
+      "locator": "https://openai.com/index/ten-advances-in-mathematics/",
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-AFS-005",
+      "title": "More Than Two Thirds of the Zeros of the Riemann Zeta Function Are Simple and on the Critical Line",
+      "bibtex_key": "claude_more_2026",
+      "zotero_item_key": "NZ6FBBAC",
+      "locator": "https://www.anthropic.com/research/riemann-zeta",
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "AFS-C1",
+      "text": "Co-Scientist 论文将系统界定为由科学家持续提供目标、约束和反馈的多智能体假设生成协作系统。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AFS-C2",
+      "text": "Robin 论文报告了连接文献检索、假设生成、实验数据分析和假设更新的半自主实验循环，但实验协议执行仍有人类环节。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AFS-C3",
+      "text": "ERA 将经验软件开发形式化为在机器可评分任务上搜索并优化质量分数的程序生成问题。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AFS-C4",
+      "text": "ERA 的评测任务集合包含复杂卫星影像上的像素级多标签地理空间分割。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AFS-C5",
+      "text": "OpenAI 官方 253 页主文稿汇集了由其内部模型得到的十项数学与理论计算机科学结果。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AFS-C6",
+      "text": "Anthropic 数学论文在原文中将 Claude 列为作者，并把问题提出、研究引导、复核和传播责任分别记录给人类参与者。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AFS-C7",
+      "text": "Anthropic 数学论文报告了针对主要定理的 Lean 4 形式化，并在附录中给出工具链和仓库版本信息。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AFS-C8",
+      "text": "这五项材料可以共同支撑遥感博士论文中的 AI4Science 前沿背景和比较维度，但不足以直接支持开放式遥感工作流、科学知识表示或城市森林系统评测的专门论断。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:AFS-C8]"
+    }
+  ],
+  "links": [
+    {
+      "claim_id": "AFS-C1",
+      "source_id": "S-AFS-001",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "Co-Scientist is purpose-built for a ‘scientist-in-the-loop’ collaborative paradigm.",
+      "source_location": "p. 489, system description",
+      "note": "The discussion on p. 495 separately limits provenance, factuality, and generalizability; this claim is only about the reported interaction design."
+    },
+    {
+      "claim_id": "AFS-C2",
+      "source_id": "S-AFS-002",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "achieving a semi-autonomous approach to scientific discovery",
+      "source_location": "p. 497, abstract; pp. 499 and 504 for human protocol boundary",
+      "note": "Human scientists review candidates and execute or translate experimental protocols; do not describe Robin as a fully autonomous laboratory."
+    },
+    {
+      "claim_id": "AFS-C3",
+      "source_id": "S-AFS-003",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "a program whose output maximizes a quality score",
+      "source_location": "p. 915, Discussion",
+      "note": "The paper explicitly distinguishes empirical predictive optimization from genuine scientific discovery."
+    },
+    {
+      "claim_id": "AFS-C4",
+      "source_id": "S-AFS-003",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "dense pixel-wise multi-label semantic segmentation on complex satellite imagery",
+      "source_location": "p. 910, Overview of scorable tasks",
+      "note": "This is a remote-sensing-adjacent benchmark example, not evidence of open-ended remote-sensing workflow reliability."
+    },
+    {
+      "claim_id": "AFS-C5",
+      "source_id": "S-AFS-004",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "a collection of results obtained by an internal OpenAI model",
+      "source_location": "PDF p. 2 (roman p. i), Abstract",
+      "note": "The locally verified official manuscript has 253 PDF pages and records an August 6, 2026 update."
+    },
+    {
+      "claim_id": "AFS-C6",
+      "source_id": "S-AFS-005",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "The argument and its verification are the author’s.",
+      "source_location": "p. 1, authorship and contribution note",
+      "note": "The paper identifies Claude as author and separately records human problem posing, guidance, independent re-derivation, context, and communication responsibility."
+    },
+    {
+      "claim_id": "AFS-C7",
+      "source_id": "S-AFS-005",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "The results extend to primitive Dirichlet L-functions and are formally verified in Lean 4.",
+      "source_location": "p. 1, Abstract; p. 14, Appendix A",
+      "note": "Appendix A records toolchain v4.33.0-rc2, a Mathlib revision, repository tag v1.0, and top-level declarations."
+    },
+    {
+      "claim_id": "AFS-C8",
+      "source_id": "S-AFS-001",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Biomedical hypothesis-generation evidence; remote-sensing transfer remains unassessed."
+    },
+    {
+      "claim_id": "AFS-C8",
+      "source_id": "S-AFS-002",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Biology lab-loop evidence; remote-sensing transfer remains unassessed."
+    },
+    {
+      "claim_id": "AFS-C8",
+      "source_id": "S-AFS-003",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Scorable empirical-software evidence; open scientific workflow transfer remains unassessed."
+    },
+    {
+      "claim_id": "AFS-C8",
+      "source_id": "S-AFS-004",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Primary mathematical-result artifact; system and evaluation details are not established by this packet."
+    },
+    {
+      "claim_id": "AFS-C8",
+      "source_id": "S-AFS-005",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Authorship and formalization example; direct remote-sensing relevance remains unassessed."
+    }
+  ]
+}

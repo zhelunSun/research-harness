@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "geospatial-agent-comparators-2026",
+  "research_question": "ExpertsRS、Spatial-Agent、GeoAgentBench 与 GeoDisaster 已经覆盖了哪些地理／遥感 Agent 工作流表示、执行反馈和评测能力，第一章与第三章还必须额外证明什么？",
+  "sources": [
+    {
+      "source_id": "S-GAC-001",
+      "title": "An LLM-based multi-agent system for remote sensing analysis",
+      "bibtex_key": "sun_llm-based_2026",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.1080/20964471.2025.2600178",
+      "identifiers": {"doi": "10.1080/20964471.2025.2600178"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-GAC-002",
+      "title": "Spatial-Agent: Agentic Geo-spatial Reasoning with Scientific Core Concepts",
+      "bibtex_key": "bao_spatial-agent_2026",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2601.16965",
+      "identifiers": {"arxiv": "2601.16965"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-GAC-003",
+      "title": "GeoAgentBench: A Dynamic Execution Benchmark for Tool-Augmented Agents in Spatial Analysis",
+      "bibtex_key": "yu_geoagentbench_2026",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2604.13888",
+      "identifiers": {"arxiv": "2604.13888"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-GAC-004",
+      "title": "GeoDisaster: Benchmarking Orchestrated Agents for Operational Disaster Geo-Intelligence",
+      "bibtex_key": "hasan_geodisaster_2026",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2606.17246",
+      "identifiers": {"arxiv": "2606.17246"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "GAC-C1",
+      "text": "ExpertsRS 论文报告了 Data--Tools--Brain 框架、Manager--Scientist--Engineer 三角色与 Clarify--Define--Solve--Report 四阶段工作流，并通过两项案例和 20 条请求开展初步评价。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "GAC-C2",
+      "text": "Spatial-Agent 将地理分析问题映射为可执行 GeoFlow Graph，并以无环性、角色顺序、类型兼容、数据可用性和连通性约束工作流结构。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "GAC-C3",
+      "text": "Spatial-Agent 的原文局限包括外部 API 与数据质量、模板覆盖、跨域标注成本，以及只在英文城市环境中评测。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "GAC-C4",
+      "text": "GeoAgentBench 在动态 GIS 沙箱中组织 117 个原子工具和 53 个任务，并同时评价工具调用轨迹、参数执行和最终地图产品。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "GAC-C5",
+      "text": "GeoDisaster 以可执行地理工作流和确定性一致性检查构造 2,921 个实例，并在 18 个工具的多智能体系统中引入显式执行契约和步级评价。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "GAC-C6",
+      "text": "现有工作已经覆盖自然语言到工作流、多角色协作、可执行图、运行反馈、确定性检查和执行契约，因此第一章与第三章不能再把这些共性能力本身作为新颖性依据，而需在城市森林任务、科学证据边界、定向修复、评价有效性与真实用户／故障证据上形成增量。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:GAC-C6]"
+    }
+  ],
+  "links": [
+    {
+      "claim_id": "GAC-C1",
+      "source_id": "S-GAC-001",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "three main modules: Data, Tools, and Brain",
+      "source_location": "Abstract; Section 3.1; Section 4.1; evaluation setup",
+      "note": "The full article reports three agent roles, four workflow phases, two case studies, and 20 validation requests; these do not establish the later typed-workflow or recovery mechanisms."
+    },
+    {
+      "claim_id": "GAC-C2",
+      "source_id": "S-GAC-002",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "executable workflows represented as GeoFlow Graphs",
+      "source_location": "Abstract; Section 3.3, Geo-agentic workflow constraints",
+      "note": "Section 3.3 enumerates acyclicity, role ordering, type compatibility, data availability, and connectivity."
+    },
+    {
+      "claim_id": "GAC-C3",
+      "source_id": "S-GAC-002",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "performance on specialized geographic domains remains unexplored",
+      "source_location": "Section 5, Limitations",
+      "note": "The same section records API/data-quality dependence, template coverage, and annotation-effort limits."
+    },
+    {
+      "claim_id": "GAC-C4",
+      "source_id": "S-GAC-003",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "117 atomic GIS tools, encompassing 53 typical spatial analysis tasks across 6 core GIS domains",
+      "source_location": "Abstract; Sections 3 and 4",
+      "note": "The benchmark combines step-level tool metrics including PEA with reference-based VLM comparison of final map accuracy and cartographic style."
+    },
+    {
+      "claim_id": "GAC-C5",
+      "source_id": "S-GAC-004",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "2,921 verified instances across 43 question types and five task families",
+      "source_location": "Abstract; Sections 1 and 3",
+      "note": "Instances use executable workflows and deterministic checks; the proposed multi-agent framework has 18 tools and explicit role-conditioned execution contracts."
+    },
+    {
+      "claim_id": "GAC-C6",
+      "source_id": "S-GAC-001",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Historical feasibility baseline; novelty synthesis requires thesis-specific comparison."
+    },
+    {
+      "claim_id": "GAC-C6",
+      "source_id": "S-GAC-002",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Workflow-representation comparator; transfer to urban-forest tasks remains unassessed."
+    },
+    {
+      "claim_id": "GAC-C6",
+      "source_id": "S-GAC-003",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Dynamic execution benchmark comparator; scientific sufficiency and real-user validity remain separate."
+    },
+    {
+      "claim_id": "GAC-C6",
+      "source_id": "S-GAC-004",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Operational disaster comparator; city-forest domain and evaluation-construct transfer remain unassessed."
+    }
+  ]
+}

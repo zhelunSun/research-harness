@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-01T18:04:04+08:00",
+  "policy": {
+    "accepted_route_gate": "task_specific_contract_review",
+    "candidate_route_is_not_writing_eligible": true,
+    "chapter_assets_remain_in_owning_repository": true
+  },
+  "routes": [
+    {
+      "route_id": "afs-opening-background",
+      "packet_id": "ai4science-frontier-2026",
+      "repository_id": "idea-control-plane",
+      "artifact_path": "thesis/opening_report_draft_zh.md",
+      "claim_ids": ["AFS-C1", "AFS-C2", "AFS-C3", "AFS-C4", "AFS-C5", "AFS-C6", "AFS-C7", "AFS-C8"],
+      "status": "candidate",
+      "relation": "adjacent_background_and_boundary_only",
+      "boundary": "AFS-C8 remains needs_review and no current REF-MISSING marker is removed",
+      "writing_intake": "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json"
+    },
+    {
+      "route_id": "afs-ch2-co-scientist-note",
+      "packet_id": "ai4science-frontier-2026",
+      "repository_id": "chapter-2-knowledge",
+      "artifact_path": "literature/paper-notes/KC-CO-SCIENTIST.md",
+      "claim_ids": ["AFS-C1"],
+      "status": "reconciled_candidate",
+      "relation": "existing_chapter_note_for_same_source",
+      "boundary": "chapter note remains EVIDENCE-CANDIDATE and not writing eligible after identity/boundary reconciliation",
+      "reconciled_at": "2026-09-01",
+      "reconciliation_artifact": "evidence/literature/reconciliations/ch2_legacy_notes_2026/change_ledger.md"
+    },
+    {
+      "route_id": "afs-ch2-robin-note",
+      "packet_id": "ai4science-frontier-2026",
+      "repository_id": "chapter-2-knowledge",
+      "artifact_path": "literature/paper-notes/KC-ROBIN.md",
+      "claim_ids": ["AFS-C2"],
+      "status": "reconciled_candidate",
+      "relation": "existing_chapter_note_for_same_source",
+      "boundary": "chapter note remains EVIDENCE-CANDIDATE and not writing eligible after identity/boundary reconciliation",
+      "reconciled_at": "2026-09-01",
+      "reconciliation_artifact": "evidence/literature/reconciliations/ch2_legacy_notes_2026/change_ledger.md"
+    },
+    {
+      "route_id": "gac-opening-related-work",
+      "packet_id": "geospatial-agent-comparators-2026",
+      "repository_id": "idea-control-plane",
+      "artifact_path": "thesis/opening_report_draft_zh.md",
+      "claim_ids": ["GAC-C1", "GAC-C2", "GAC-C3", "GAC-C4", "GAC-C5", "GAC-C6"],
+      "status": "candidate",
+      "relation": "remote_sensing_agent_comparator_candidate",
+      "boundary": "GAC-C6 remains needs_review and cannot establish thesis novelty",
+      "writing_intake": "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json"
+    },
+    {
+      "route_id": "gac-ch1-claim-registry",
+      "packet_id": "geospatial-agent-comparators-2026",
+      "repository_id": "chapter-1-ursa",
+      "artifact_path": "docs/thesis/ch1_evidence_system/claim_registry.md",
+      "claim_ids": ["GAC-C1", "GAC-C2", "GAC-C3", "GAC-C4"],
+      "status": "candidate",
+      "relation": "workflow_representation_and_execution_comparators",
+      "boundary": "candidate route only; it does not alter the frozen Chapter 1 claim registry"
+    },
+    {
+      "route_id": "gac-ch2-expertsrs-note",
+      "packet_id": "geospatial-agent-comparators-2026",
+      "repository_id": "chapter-2-knowledge",
+      "artifact_path": "literature/paper-notes/KC-RS-MULTI-AGENT-BED.md",
+      "claim_ids": ["GAC-C1"],
+      "status": "reconciled_candidate",
+      "relation": "existing_chapter_note_for_same_source",
+      "boundary": "chapter note now separates system modules, Agent roles, and workflow stages, but remains EVIDENCE-CANDIDATE and not writing eligible",
+      "reconciled_at": "2026-09-01",
+      "reconciliation_artifact": "evidence/literature/reconciliations/ch2_legacy_notes_2026/change_ledger.md"
+    },
+    {
+      "route_id": "gac-ch2-benchmark-landscape",
+      "packet_id": "geospatial-agent-comparators-2026",
+      "repository_id": "chapter-2-knowledge",
+      "artifact_path": "literature/2026-06-26_rs-agent-benchmark-landscape.md",
+      "claim_ids": ["GAC-C4", "GAC-C5"],
+      "status": "candidate",
+      "relation": "newer_dynamic_execution_and_disaster_benchmark_context",
+      "boundary": "candidate update only; the existing landscape remains a dated source map until task-specific review"
+    },
+    {
+      "route_id": "gac-ch3-evaluation-audit",
+      "packet_id": "geospatial-agent-comparators-2026",
+      "repository_id": "chapter-3-evaluation",
+      "artifact_path": "docs/reports/ch3_asset_eval_claim_audit_20260831.md",
+      "claim_ids": ["GAC-C4", "GAC-C5", "GAC-C6"],
+      "status": "candidate",
+      "relation": "dynamic_execution_grader_and_system_evaluation_comparators",
+      "boundary": "candidate route only; it does not change the current Route B or evaluation-path decision"
+    }
+  ]
+}

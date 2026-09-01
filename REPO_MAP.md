@@ -36,6 +36,7 @@ All four checkouts are siblings under `D:/Projects/phd-thesis`. Chapter reposito
 | What is the current milestone, next action, and human gate? | `process/current_execution_plan_20260802.md` |
 | Which files are currently locked for parallel work? | `registry/active_work.json` |
 | Which branch, remote, entry docs, and checkpoint should automation verify? | `config/repository_sync.json` and `registry/core_repo_checkpoints.json` |
+| Which bibliography, linked PDF, evidence packet, literature gate, chapter route, and writing intake is authoritative? | Zotero Desktop, SeaDrive, `evidence/literature/packet_registry.json`, `evidence/literature/maintenance_queue.json`, `evidence/literature/consumer_routes.json`, and `evidence/literature/writing_intakes.json`, respectively |
 
 `config/repository_sync.json` is the machine-readable mirror of this map. A path,
 repository role, or required-entry change is incomplete until both surfaces agree

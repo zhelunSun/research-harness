@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "ch2-kc-expertsrs-reconciliation-20260901",
+    "title": "KC-RS-MULTI-AGENT-BED evidence-boundary reconciliation",
+    "mode": "argument-edit",
+    "authority": [
+      "evidence/literature/packets/geospatial_agent_comparators_2026/ledger.json#GAC-C1"
+    ]
+  },
+  "terms": [],
+  "abbreviations": [],
+  "protected_literals": [
+    {"value": "[EVIDENCE-CANDIDATE]", "aliases": [], "required": true, "label": "chapter note status"},
+    {"value": "Zotero item key: pending import", "aliases": [], "required": true, "label": "pending Zotero identity"},
+    {"value": "sun_llm-based_2026", "aliases": [], "required": true, "label": "intake BibTeX key"},
+    {"value": "[CLAIM:GAC-C1]", "aliases": [], "required": true, "label": "bounded claim marker"},
+    {"value": "full_text", "aliases": [], "required": true, "label": "master read state"},
+    {"value": "Data--Tools--Brain", "aliases": [], "required": true, "label": "system modules"},
+    {"value": "Manager--Scientist--Engineer", "aliases": [], "required": true, "label": "agent roles"},
+    {"value": "Clarify--Define--Solve--Report", "aliases": [], "required": true, "label": "workflow phases"},
+    {"value": "not writing eligible", "aliases": [], "required": true, "label": "writing boundary"},
+    {"value": "[REF-MISSING:GAC-C6]", "aliases": [], "required": true, "label": "unresolved novelty synthesis"},
+    {"value": "10.1080/20964471.2025.2600178", "aliases": [], "required": true, "label": "DOI"}
+  ],
+  "protected_numbers": [
+    {"value": "20", "aliases": [], "required": true, "label": "validation requests"}
+  ],
+  "comparison": {
+    "preserve_all_numbers": false,
+    "preserve_all_measurements": false,
+    "preserve_all_citations": true,
+    "preserve_all_reference_tokens": true,
+    "preserve_cross_reference_sequence": true,
+    "preserve_markers": ["[EVIDENCE-CANDIDATE]", "[REF-MISSING:GAC-C6]"]
+  },
+  "citations": {"require_known_keys": true, "required_keys": [], "forbidden_keys": []},
+  "claims": [
+    {
+      "id": "GAC-C1",
+      "marker": "[CLAIM:GAC-C1]",
+      "marker_required": true,
+      "required_citations": [],
+      "required_literals": ["Data--Tools--Brain", "Manager--Scientist--Engineer", "Clarify--Define--Solve--Report", "20"],
+      "forbidden_patterns": ["Brain.*Supervisor.*Worker.*三模块", "证明.*新颖性"]
+    }
+  ],
+  "method_states": [],
+  "cross_references": {"require_targets": false, "required_labels": []},
+  "style": {"max_sentence_chars": 300, "max_paragraph_chars": 1200, "forbidden_patterns": []}
+}

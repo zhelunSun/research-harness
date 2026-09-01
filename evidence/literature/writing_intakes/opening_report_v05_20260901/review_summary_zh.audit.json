@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "command": "audit",
+  "files": {
+    "text": "evidence\\literature\\writing_intakes\\opening_report_v05_20260901\\review_summary_zh.md",
+    "contract": "evidence\\literature\\writing_intakes\\opening_report_v05_20260901\\candidate_contract_fragment.json",
+    "bib": "evidence\\literature\\writing_intakes\\opening_report_v05_20260901\\references.bib"
+  },
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "total": 0
+  },
+  "issues": [],
+  "extracted": {
+    "numbers": [
+      "5",
+      "5",
+      "7",
+      "1",
+      "6",
+      "0",
+      "1.2",
+      "2.2",
+      "2.4",
+      "1.2",
+      "2.2",
+      "2.4",
+      "32",
+      "212",
+      "340",
+      "1.1",
+      "1.2",
+      "2.1",
+      "2.2",
+      "2.3",
+      "2.4",
+      "5"
+    ],
+    "measurements": [
+      "7 个",
+      "1 个",
+      "6 个",
+      "340 行"
+    ],
+    "citations": [],
+    "reference_tokens": [],
+    "cross_references": [],
+    "cross_reference_sequence": [],
+    "cross_reference_targets": []
+  },
+  "limitations": [
+    "Does not establish scientific truth or evidence quality.",
+    "Does not verify that a citation entails the adjacent claim.",
+    "Readability warnings are heuristic and require human review."
+  ]
+}

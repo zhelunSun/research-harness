@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "command": "audit",
+  "files": {
+    "text": "..\\chapter2-urban-forest-knowledge\\literature\\paper-notes\\KC-ROBIN.md",
+    "contract": "evidence\\literature\\reconciliations\\ch2_legacy_notes_2026\\robin.contract.json",
+    "bib": "evidence\\literature\\packets\\ai4science_frontier_2026\\references.bib"
+  },
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "total": 0
+  },
+  "issues": [],
+  "extracted": {
+    "numbers": [
+      "2026",
+      "05",
+      "31",
+      "2026",
+      "09",
+      "01",
+      "002",
+      "10.1038",
+      "026",
+      "10652",
+      "2",
+      "2026",
+      "10.1038",
+      "026",
+      "10652",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "170",
+      "1",
+      "2",
+      "3",
+      "469",
+      "5",
+      "12",
+      "4",
+      "29",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "1",
+      "2",
+      "6",
+      "2026",
+      "05",
+      "31"
+    ],
+    "measurements": [
+      "170 个",
+      "12 天"
+    ],
+    "citations": [],
+    "reference_tokens": [
+      "doi:10.1038/s41586-026-10652-y",
+      "url:https://doi.org/10.1038/s41586-026-10652-y",
+      "doi:10.1038/s41586-026-10652-y"
+    ],
+    "cross_references": [],
+    "cross_reference_sequence": [
+      "表12"
+    ],
+    "cross_reference_targets": []
+  },
+  "limitations": [
+    "Does not establish scientific truth or evidence quality.",
+    "Does not verify that a citation entails the adjacent claim.",
+    "Readability warnings are heuristic and require human review."
+  ]
+}

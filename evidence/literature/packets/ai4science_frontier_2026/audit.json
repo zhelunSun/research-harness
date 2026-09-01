@@ -1,0 +1,12 @@
+{
+  "ledger_id": "ai4science-frontier-2026",
+  "ok": true,
+  "summary": {
+    "sources": 5,
+    "claims": 8,
+    "links": 12,
+    "errors": 0,
+    "warnings": 0
+  },
+  "findings": []
+}

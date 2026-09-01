@@ -1,0 +1,12 @@
+{
+  "ledger_id": "geospatial-agent-comparators-2026",
+  "ok": true,
+  "summary": {
+    "sources": 4,
+    "claims": 6,
+    "links": 9,
+    "errors": 0,
+    "warnings": 0
+  },
+  "findings": []
+}

@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "intake_id": "opening-report-v05-literature-intake-20260901",
+  "research_question": "当前两批文献能支持哪些开题报告证据缺口，哪些段落需要拆分，哪些 [REF-MISSING] 必须保留？",
+  "target": {
+    "document": "thesis/opening_report_draft_zh.md",
+    "contract": "thesis/writing_contracts/opening_report_o1_v0.5.contract.json",
+    "snapshot": "2026-09-01",
+    "observed_ref_missing_occurrences": 7,
+    "content_ref_missing_markers": 6
+  },
+  "decisions": [
+    {
+      "decision_id": "OI-D1",
+      "target_section": "1.1 研究背景",
+      "snapshot_line": 89,
+      "outcome": "insufficient_keep_marker",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C1"}
+      ],
+      "candidate_bibtex_keys": ["sun_llm-based_2026"],
+      "rationale": "ExpertsRS 可提供自然语言到遥感工具工作流的实例背景，但不能单独支撑大语言模型降低复杂遥感分析门槛这一宽泛范式论断。"
+    },
+    {
+      "decision_id": "OI-D2",
+      "target_section": "1.2 问题提出",
+      "snapshot_line": 102,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "ai4science-frontier-2026", "claim_id": "AFS-C2"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C1"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C2"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C4"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C5"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C6"}
+      ],
+      "stable_candidate_bibtex_keys": ["ghareeb_multi-agent_2026"],
+      "provisional_candidate_bibtex_keys": [
+        "sun_llm-based_2026",
+        "bao_spatial-agent_2026",
+        "yu_geoagentbench_2026",
+        "hasan_geodisaster_2026"
+      ],
+      "rationale": "AFS-C2 与 GAC-C1/C2/C4/C5 可支持能力实例；计划调整、知识、恢复和系统验证仍不足的综合判断依赖 needs_review 的 GAC-C6。未来应拆分能力句与缺口句。"
+    },
+    {
+      "decision_id": "OI-D3",
+      "target_section": "2.1 大语言模型智能体与科学智能体研究",
+      "snapshot_line": 123,
+      "outcome": "insufficient_keep_marker",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "ai4science-frontier-2026", "claim_id": "AFS-C1"},
+        {"packet_id": "ai4science-frontier-2026", "claim_id": "AFS-C2"}
+      ],
+      "candidate_bibtex_keys": ["gottweis_accelerating_2026", "ghareeb_multi-agent_2026"],
+      "rationale": "两项来源可作科学智能体实例，但不足以覆盖通用规划、工具、反馈、多智能体研究及一次性规划和隐式状态等局限。"
+    },
+    {
+      "decision_id": "OI-D4",
+      "target_section": "2.2 面向遥感与地理空间分析的智能体研究",
+      "snapshot_line": 129,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C1"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C2"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C3"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C4"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C5"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C6"}
+      ],
+      "provisional_candidate_bibtex_keys": [
+        "sun_llm-based_2026",
+        "bao_spatial-agent_2026",
+        "yu_geoagentbench_2026",
+        "hasan_geodisaster_2026"
+      ],
+      "rationale": "GAC-C1 至 GAC-C5 可构成能力和局限样例；现有研究主要覆盖什么、仍普遍缺什么属于 GAC-C6 的未接受综合。未来应拆分来源事实与领域综合。"
+    },
+    {
+      "decision_id": "OI-D5",
+      "target_section": "2.3 科学知识表示、检索与推理研究",
+      "snapshot_line": 134,
+      "outcome": "insufficient_keep_marker",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "ai4science-frontier-2026", "claim_id": "AFS-C5"},
+        {"packet_id": "ai4science-frontier-2026", "claim_id": "AFS-C6"},
+        {"packet_id": "ai4science-frontier-2026", "claim_id": "AFS-C7"}
+      ],
+      "candidate_bibtex_keys": ["openai_ten_2026", "claude_more_2026"],
+      "rationale": "数学报告可提供归属、复核和形式化的相邻案例，但不建立一般科学知识表示、来源、适用条件、冲突或结论边界的研究缺口。"
+    },
+    {
+      "decision_id": "OI-D6",
+      "target_section": "2.4 智能体系统评测与真实用户验证",
+      "snapshot_line": 144,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C4"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C5"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C6"}
+      ],
+      "provisional_candidate_bibtex_keys": ["yu_geoagentbench_2026", "hasan_geodisaster_2026"],
+      "rationale": "GAC-C4/C5 支持动态执行、过程评价与确定性检查实例；对静态短任务局限和用户校准有效性的宽泛判断仍需更完整的评测与用户研究证据。"
+    },
+    {
+      "decision_id": "OI-D7",
+      "target_section": "ExpertsRS feasibility statements",
+      "snapshot_lines": [32, 212, 340],
+      "outcome": "candidate_support",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C1"}
+      ],
+      "provisional_candidate_bibtex_keys": ["sun_llm-based_2026"],
+      "rationale": "GAC-C1 直接支持角色、工具、阶段、案例和初步评价的历史可行性，但当前 O1 contract 不允许新增外部引文，且 Zotero 稳定身份尚待授权导入。"
+    },
+    {
+      "decision_id": "OI-D8",
+      "target_section": "opening-report load-bearing claims",
+      "outcome": "defer",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "ai4science-frontier-2026", "claim_id": "AFS-C5"},
+        {"packet_id": "ai4science-frontier-2026", "claim_id": "AFS-C6"},
+        {"packet_id": "ai4science-frontier-2026", "claim_id": "AFS-C7"}
+      ],
+      "candidate_bibtex_keys": ["openai_ten_2026", "claude_more_2026"],
+      "rationale": "两项数学报告当前不承担开题 v0.5 的核心论证；优先保留为 Chapter 2 的 provenance、审计与科学发现背景。"
+    }
+  ],
+  "summary": {
+    "content_markers_removable_now": 0,
+    "future_split_candidates": ["1.2", "2.2", "2.4"],
+    "direct_expertsrs_candidate_locations": [32, 212, 340],
+    "writing_contract_merged": false,
+    "zotero_write_performed": false
+  }
+}

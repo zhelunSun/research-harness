@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "ai4science-frontier-2026",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "aygun_ai_2026",
+      "claude_more_2026",
+      "ghareeb_multi-agent_2026",
+      "gottweis_accelerating_2026",
+      "openai_ten_2026"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "AFS-C1",
+      "marker": "[CLAIM:AFS-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "gottweis_accelerating_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AFS-C2",
+      "marker": "[CLAIM:AFS-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "ghareeb_multi-agent_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AFS-C3",
+      "marker": "[CLAIM:AFS-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "aygun_ai_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AFS-C4",
+      "marker": "[CLAIM:AFS-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "aygun_ai_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AFS-C5",
+      "marker": "[CLAIM:AFS-C5]",
+      "marker_required": false,
+      "required_citations": [
+        "openai_ten_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AFS-C6",
+      "marker": "[CLAIM:AFS-C6]",
+      "marker_required": false,
+      "required_citations": [
+        "claude_more_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AFS-C7",
+      "marker": "[CLAIM:AFS-C7]",
+      "marker_required": false,
+      "required_citations": [
+        "claude_more_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AFS-C8",
+      "marker": "[CLAIM:AFS-C8]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:AFS-C8]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[REF-MISSING:AFS-C8]"
+    ]
+  }
+}

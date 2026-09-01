@@ -28,7 +28,8 @@
 | M2 遥感科学知识表示与推理 | core method accepted；formal effect open | Chapter 2 已形成知识／证据资产，章级主术语统一为面向智能体的遥感科学知识表示与推理；G3 已完成 150 条高召回筛选和 60 条 G4 队列；低／边界优先、来源平衡的六个十条浅审批次已形成，G4 evidence baseline 为 `l2-task-distillation@9dc0e01`，仓库验证为 41 PASS；当前远端 tip 由 checkpoint registry 判定 | 先由研究者完成批次 A 的 10 条低／边界抽查，再决定是否继续五个核心批次；scientific gold、最小表示与运行界面、知识推理闭环和分层匹配效果均未完成 |
 | M3 城市森林遥感任务系统评测 | core direction and minimum path accepted | 静态资产—任务—grader—claim 审计已完成，确认 Route B 只读离线治理链为最低新增工作的推荐首路，RSS 故障状态链为备选；static-audit baseline 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@d560bb0`，当前远端 tip 由 checkpoint registry 判定 | 需研究者确认首轮路径；随后才实现首批 task/environment/outcome schema、确定性 grader 与公平比较适配器；用户研究、生态有效性和正式系统效果仍未开始 |
 | M4 用户／专家校准与经验驱动适应 | deferred increment | 目标用户／专家角色与 episode reservoir 已界定 | 二者均不进入第三章最低承诺；伦理／数据门禁、rubric 校准、episode 化和学习实验均未启动 |
-| O0 选题材料 | source definition and working titles aligned | `opening_report_outline_zh.md` v0.4 用于汇报和人工润色；`opening_report_draft_zh.md` v0.5 维护唯一章级源定义并完成 O1 连续正文 writer pass；三章路线矩阵 v0.1 与开题证据矩阵 v0.8 已对齐；本轮确定性写作审计为 0 error / 0 warning | O1 尚需独立 fresh-context V1 审阅；最终送审题目、引用、图件和导师讨论包仍待收口 |
+| L0 文献证据控制面 | two packets audited; maintenance, routing, reconciliation, and first writing intake implemented | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；`evidence/literature/` 已形成 packet registry、唯一 maintenance queue、8 条 exact consumer routes、writing-intake registry、证据状态门禁、BibTeX 快照、ledger audit 和 writing bridge；`scripts/audit_literature_control.py` 统一检查包完整性、身份、路径/PDF 禁入、周扫 freshness、人工门禁、跨仓消费文件、准入 claim 状态与 `[REF-MISSING]` 数量漂移；两包合计 9 source / 14 claim / 21 link，均为 0 error / 0 warning；3 份 Ch2 旧 `EVIDENCE-CANDIDATE` 笔记已完成身份／边界 reconcile；开题 v0.5 准入审查记录 7 个字面标记、6 个正文缺口和 0 个当前可删除标记 | 跨设备同构尚需在另一台电脑实测；第二包 Zotero 身份与附件写入等待明确授权；旧笔记与开题准入均非 writing eligible，`GAC-C6` 仍为 `needs_review`，writing bridge 未进入任何正式写作 contract |
+| O0 选题材料 | source definition and working titles aligned | `opening_report_outline_zh.md` v0.4 用于汇报和人工润色；`opening_report_draft_zh.md` v0.5 维护唯一章级源定义并完成 O1 连续正文 writer pass；三章路线矩阵 v0.1 与开题证据矩阵 v0.8 已对齐；文献准入审查确认第 1.2、2.2 与 2.4 节为未来拆段候选，但未修改正文或 O1 contract | O1 尚需独立 fresh-context V1 审阅；新增引文、拆段和标记移除均须在后续 writing contract 中显式接受；最终送审题目、引用、图件和导师讨论包仍待收口 |
 
 ### 0.3 当前唯一下一动作
 
@@ -37,6 +38,14 @@
 按 claim–evidence、章节衔接、范围漂移、限定语附着和三章评价责任报告 findings，不在同一遍审阅中重写正文。
 若无 P1 或更高问题，再以 v0.5 和路线矩阵形成导师讨论包首轮；不得删除 `[REF-MISSING]`、补写未核验引用，
 或把候选路线、预期创新和诊断证据改成已冻结方法或已验证效果。
+
+V1 可把 `evidence/literature/packets/ai4science_frontier_2026/` 作为 AI4Science 相邻背景与比较维度的候选输入；
+其 writing bridge 当前不得直接并入 O1 contract。只有任务特定审阅接受 AFS claim 与引用键后，才允许替换对应
+`[REF-MISSING]`；AFS-C8 自身仍保留 `[REF-MISSING:AFS-C8]`。
+
+`evidence/literature/packets/geospatial_agent_comparators_2026/` 已补齐 ExpertsRS、Spatial-Agent、GeoAgentBench 与
+GeoDisaster 的第一轮对照证据；当前 BibTeX 键为临时 intake 身份，Zotero 去重未发现既有条目，但导入与 PDF 关联须等
+研究者明确授权后执行。其 GAC-C6 仍保留 `[REF-MISSING:GAC-C6]`，不得据此提前宣称 Ch1 或 Ch3 的新颖性。
 
 与该动作并行只保留两个低带宽人工门：Ch3 是否接受 Route B 为首轮 Evaluation MVP，以及 Ch2
 批次 A 的 10 条低／边界浅审。前者没有确认前不实现评测 MVP；后者不阻塞 O1 正文与导师讨论包。

@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "ch2-kc-co-scientist-reconciliation-20260901",
+    "title": "KC-CO-SCIENTIST evidence-boundary reconciliation",
+    "mode": "argument-edit",
+    "authority": [
+      "evidence/literature/packets/ai4science_frontier_2026/ledger.json#AFS-C1"
+    ]
+  },
+  "terms": [],
+  "abbreviations": [],
+  "protected_literals": [
+    {"value": "[EVIDENCE-CANDIDATE]", "aliases": [], "required": true, "label": "legacy note status"},
+    {"value": "ETGXFWI5", "aliases": [], "required": true, "label": "Zotero item key"},
+    {"value": "gottweis_accelerating_2026", "aliases": [], "required": true, "label": "BibTeX key"},
+    {"value": "[CLAIM:AFS-C1]", "aliases": [], "required": true, "label": "bounded claim marker"},
+    {"value": "full_text", "aliases": [], "required": true, "label": "master read state"},
+    {"value": "not writing eligible", "aliases": [], "required": true, "label": "writing boundary"},
+    {"value": "[REF-MISSING:AFS-C8]", "aliases": [], "required": true, "label": "unresolved synthesis"},
+    {"value": "10.1038/s41586-026-10644-y", "aliases": [], "required": true, "label": "DOI"}
+  ],
+  "protected_numbers": [],
+  "comparison": {
+    "preserve_all_numbers": false,
+    "preserve_all_measurements": false,
+    "preserve_all_citations": true,
+    "preserve_all_reference_tokens": true,
+    "preserve_cross_reference_sequence": true,
+    "preserve_markers": ["[EVIDENCE-CANDIDATE]", "[REF-MISSING:AFS-C8]"]
+  },
+  "citations": {"require_known_keys": true, "required_keys": [], "forbidden_keys": []},
+  "claims": [
+    {
+      "id": "AFS-C1",
+      "marker": "[CLAIM:AFS-C1]",
+      "marker_required": true,
+      "required_citations": [],
+      "required_literals": ["scientist-in-the-loop", "初步"],
+      "forbidden_patterns": ["证明.*城市森林", "证实.*遥感工作流"]
+    }
+  ],
+  "method_states": [],
+  "cross_references": {"require_targets": false, "required_labels": []},
+  "style": {"max_sentence_chars": 300, "max_paragraph_chars": 1200, "forbidden_patterns": []}
+}

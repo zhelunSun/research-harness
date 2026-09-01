@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-01T17:10:15+08:00",
+  "source_of_truth": {
+    "bibliography": "local Zotero Desktop",
+    "linked_attachments": "SeaDrive",
+    "evidence_packets": "research-harness/evidence/literature/packets"
+  },
+  "packets": [
+    {
+      "packet_id": "ai4science-frontier-2026",
+      "path": "evidence/literature/packets/ai4science_frontier_2026",
+      "research_question": "这 5 篇 2026 AI4Science 原文分别把 AI 放在科研流程的哪个位置，并提供了何种人工参与、实验或形式化验证与可追溯归属证据？",
+      "status": "audited",
+      "source_count": 5,
+      "zotero_item_keys": [
+        "ETGXFWI5",
+        "8QJVIQLW",
+        "4HG5DK62",
+        "57QKXZ9P",
+        "NZ6FBBAC"
+      ],
+      "candidate_routes": [
+        "opening-background-ai4science",
+        "chapter-1-adjacent-system-comparators",
+        "chapter-2-provenance-and-evidence-state-examples",
+        "chapter-3-evaluation-boundary-examples"
+      ],
+      "writing_eligibility": "not_merged_into_any_writing_contract",
+      "last_audited": "2026-09-01"
+    },
+    {
+      "packet_id": "geospatial-agent-comparators-2026",
+      "path": "evidence/literature/packets/geospatial_agent_comparators_2026",
+      "research_question": "ExpertsRS、Spatial-Agent、GeoAgentBench 与 GeoDisaster 已经覆盖了哪些地理／遥感 Agent 工作流表示、执行反馈和评测能力，第一章与第三章还必须额外证明什么？",
+      "status": "audited_pending_zotero_authorization",
+      "source_count": 4,
+      "zotero_item_keys": [],
+      "candidate_routes": [
+        "opening-section-1.2-scientific-and-remote-sensing-agents",
+        "opening-section-2.2-geospatial-agent-related-work",
+        "chapter-1-workflow-representation-comparators",
+        "chapter-3-dynamic-execution-and-system-evaluation-comparators"
+      ],
+      "writing_eligibility": "blocked_on_zotero_identity_reconciliation_and_task_specific_review",
+      "last_audited": "2026-09-01"
+    }
+  ]
+}

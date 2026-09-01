@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "opening-report-v05-literature-intake-20260901",
+    "title": "开题报告 v0.5 文献写作准入审查",
+    "mode": "argument-edit",
+    "authority": [
+      "thesis/writing_contracts/opening_report_o1_v0.5.contract.json",
+      "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json"
+    ]
+  },
+  "terms": [],
+  "abbreviations": [],
+  "protected_literals": [
+    {"value": "reviewed_candidate", "aliases": [], "required": true, "label": "intake status"},
+    {"value": "not merged", "aliases": [], "required": true, "label": "contract boundary"},
+    {"value": "[REF-MISSING]", "aliases": [], "required": true, "label": "preserved evidence marker"},
+    {"value": "现阶段可删除的正文标记数为 0", "aliases": [], "required": true, "label": "no-removal decision"},
+    {"value": "GAC-C6", "aliases": [], "required": true, "label": "unresolved synthesis"},
+    {"value": "needs_review", "aliases": [], "required": true, "label": "claim state"},
+    {"value": "sun_llm-based_2026", "aliases": [], "required": true, "label": "provisional ExpertsRS key"},
+    {"value": "ghareeb_multi-agent_2026", "aliases": [], "required": true, "label": "stable imported key"},
+    {"value": "provisional", "aliases": [], "required": true, "label": "identity boundary"},
+    {"value": "不修改开题正文", "aliases": [], "required": true, "label": "scope boundary"},
+    {"value": "不写入 Zotero", "aliases": [], "required": true, "label": "write gate"}
+  ],
+  "protected_numbers": [
+    {"value": "7", "aliases": [], "required": true, "label": "literal REF-MISSING occurrences"},
+    {"value": "6", "aliases": [], "required": true, "label": "content evidence gaps"},
+    {"value": "0", "aliases": [], "required": true, "label": "removable content markers"}
+  ],
+  "comparison": {
+    "preserve_all_numbers": false,
+    "preserve_all_measurements": false,
+    "preserve_all_citations": true,
+    "preserve_all_reference_tokens": true,
+    "preserve_cross_reference_sequence": true,
+    "preserve_markers": ["[REF-MISSING]", "[CLAIM:OI-C1]", "[CLAIM:OI-C2]", "[CLAIM:OI-C3]"]
+  },
+  "citations": {"require_known_keys": true, "required_keys": [], "forbidden_keys": []},
+  "claims": [
+    {
+      "id": "OI-C1",
+      "marker": "[CLAIM:OI-C1]",
+      "marker_required": true,
+      "required_citations": [],
+      "required_literals": ["7", "6", "现阶段可删除的正文标记数为 0"],
+      "forbidden_patterns": ["可删除.*[1-9]", "全部补齐"]
+    },
+    {
+      "id": "OI-C2",
+      "marker": "[CLAIM:OI-C2]",
+      "marker_required": true,
+      "required_citations": [],
+      "required_literals": ["第 1.2、2.2 和 2.4 节", "GAC-C6"],
+      "forbidden_patterns": ["GAC-C6.*verified", "已经建立领域缺口"]
+    },
+    {
+      "id": "OI-C3",
+      "marker": "[CLAIM:OI-C3]",
+      "marker_required": true,
+      "required_citations": [],
+      "required_literals": ["第 32、212 和 340 行", "sun_llm-based_2026", "provisional"],
+      "forbidden_patterns": ["已完成.*Zotero.*导入", "稳定 BibTeX key"]
+    }
+  ],
+  "method_states": [],
+  "cross_references": {"require_targets": false, "required_labels": []},
+  "style": {"max_sentence_chars": 300, "max_paragraph_chars": 1200, "forbidden_patterns": ["全面证明", "填补空白"]}
+}

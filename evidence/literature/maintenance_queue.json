@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-01T18:04:04+08:00",
+  "policy": {
+    "zotero_write_gate": "explicit_user_authorization",
+    "writing_merge_gate": "task_specific_contract_review",
+    "linked_attachment_transport": "SeaDrive",
+    "read_only_scan_interval_days": 7
+  },
+  "read_only_scan": {
+    "last_completed": "2026-09-01",
+    "checks": [
+      "zotero_status",
+      "selected_target",
+      "doi_or_exact_title_dedup",
+      "linked_pdf_resolution",
+      "packet_audit"
+    ],
+    "result": "Zotero Desktop and local API healthy; five AI4Science parent items and linked PDFs verified locally; four geospatial-agent candidates absent by DOI or exact title; packet audits pass"
+  },
+  "actions": [
+    {
+      "action_id": "lit-cross-device-seadrive-verification",
+      "kind": "external_verification",
+      "status": "pending_external_verification",
+      "gate": "second_device_access",
+      "evidence_required": [
+        "Zotero data library contains item ETGXFWI5 on the second computer",
+        "linked attachment base resolves through the local SeaDrive mount",
+        "the linked PDF for item ETGXFWI5 opens on the second computer",
+        "one official-report PDF, preferably item 57QKXZ9P or NZ6FBBAC, also opens"
+      ],
+      "completion_effect": "cross-device data and linked-attachment equivalence may be reported as verified"
+    },
+    {
+      "action_id": "lit-geospatial-agent-zotero-import",
+      "kind": "zotero_write",
+      "packet_id": "geospatial-agent-comparators-2026",
+      "status": "pending_authorization",
+      "gate": "explicit_user_authorization",
+      "recommended_target": "AI_for_Science/scientific agent",
+      "records": [
+        "10.1080/20964471.2025.2600178",
+        "arXiv:2601.16965",
+        "arXiv:2604.13888",
+        "arXiv:2606.17246"
+      ],
+      "completion_evidence": [
+        "four Zotero parent item keys",
+        "four stable BibTeX keys",
+        "official linked PDFs resolved through SeaDrive",
+        "registry and ledger identities reconciled"
+      ]
+    },
+    {
+      "action_id": "lit-geospatial-agent-writing-review",
+      "kind": "writing_review",
+      "packet_id": "geospatial-agent-comparators-2026",
+      "status": "completed",
+      "gate": "task_specific_contract_review",
+      "unresolved_markers": [
+        "[REF-MISSING:GAC-C6]"
+      ],
+      "completion_effect": "opening-report v0.5 intake records candidate support and retained evidence gaps; no source-claim link was merged into the O1 contract",
+      "completed_at": "2026-09-01T18:04:04+08:00",
+      "completion_evidence": [
+        "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json",
+        "content_markers_removable_now=0",
+        "GAC-C6 remains needs_review"
+      ]
+    },
+    {
+      "action_id": "lit-opening-v05-contract-merge",
+      "kind": "writing_merge",
+      "status": "pending_task_specific_review",
+      "gate": "fresh_context_v1_and_explicit_contract_acceptance",
+      "intake_id": "opening-report-v05-literature-intake-20260901",
+      "completion_effect": "accepted candidate citations and paragraph splits may be merged into a future opening-report contract; marker removal remains separately justified"
+    },
+    {
+      "action_id": "lit-ch2-existing-note-reconciliation",
+      "kind": "route_reconciliation",
+      "status": "completed",
+      "gate": "chapter2_claim_review",
+      "artifacts": [
+        "literature/paper-notes/KC-CO-SCIENTIST.md",
+        "literature/paper-notes/KC-ROBIN.md",
+        "literature/paper-notes/KC-RS-MULTI-AGENT-BED.md"
+      ],
+      "completion_effect": "older EVIDENCE-CANDIDATE notes are reconciled against the full-text packet without silently inheriting verified status",
+      "completed_at": "2026-09-01T17:48:00+08:00",
+      "completion_evidence": [
+        "evidence/literature/reconciliations/ch2_legacy_notes_2026/change_ledger.md",
+        "three zh-scientific-writing audits with 0 errors and 0 warnings",
+        "chapter-local index rows explicitly marked writing review pending",
+        "Chapter 2 repository validator reports 41 PASS, 0 WARN, 0 FAIL"
+      ]
+    }
+  ]
+}
