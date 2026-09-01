@@ -44,6 +44,7 @@ machine checkout; it never repurposes an existing directory.
 From `research-harness`:
 
 ```powershell
+python scripts/audit_thesis_workspace.py --fetch
 python scripts/audit_repo_sync.py --all --fetch
 python scripts/audit_repo_sync.py --repo ../URSA --fetch
 python scripts/audit_repo_sync.py --all --no-fetch --json
@@ -51,6 +52,12 @@ python scripts/audit_repo_sync.py --all --include-satellites --fetch
 python scripts/audit_repo_sync.py --all --strict-checkpoints --fetch
 python scripts/bootstrap_workspace.py --workspace-root D:/Projects/phd-thesis
 ```
+
+`audit_thesis_workspace.py` is the routine first command. It composes the
+repository sync audit, sibling-workspace navigation audit, literature control
+audit, Zotero/SeaDrive runtime-snapshot freshness, and pending human gates into
+one read-only result. Use the component commands only when the unified result
+identifies a specific surface that needs diagnosis.
 
 The audit never commits or pushes. Exit `0` is clean and synchronized; exit `2`
 is a non-blocking warning such as a dirty tree, behind-only state, or temporary

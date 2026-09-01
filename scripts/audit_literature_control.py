@@ -23,6 +23,7 @@ DEFAULT_REGISTRY = ROOT / "evidence" / "literature" / "packet_registry.json"
 DEFAULT_QUEUE = ROOT / "evidence" / "literature" / "maintenance_queue.json"
 DEFAULT_ROUTES = ROOT / "evidence" / "literature" / "consumer_routes.json"
 DEFAULT_WRITING_INTAKES = ROOT / "evidence" / "literature" / "writing_intakes.json"
+DEFAULT_RUNTIME_SCAN = ROOT / "evidence" / "literature" / "runtime_scan.json"
 DEFAULT_REPO_CONFIG = ROOT / "config" / "repository_sync.json"
 REQUIRED_PACKET_FILES = (
     "README.md",
@@ -124,6 +125,15 @@ def _parse_iso_date(value: Any, label: str) -> date:
         return date.fromisoformat(value)
     except ValueError as exc:
         raise ControlError(f"{label} must be an ISO date: {value!r}") from exc
+
+
+def _parse_iso_datetime(value: Any, label: str) -> datetime:
+    if not isinstance(value, str):
+        raise ControlError(f"{label} must be an ISO datetime")
+    try:
+        return datetime.fromisoformat(value)
+    except ValueError as exc:
+        raise ControlError(f"{label} must be an ISO datetime: {value!r}") from exc
 
 
 def _packet_path(root: Path, value: Any, packet_id: str) -> Path:
@@ -728,6 +738,150 @@ def _audit_writing_intakes(
                     )
 
 
+def _audit_runtime_scan(
+    result: dict[str, Any],
+    snapshot: dict[str, Any],
+    snapshot_path: Path,
+    queue: dict[str, Any],
+    registered_zotero_keys: set[str],
+) -> None:
+    if snapshot.get("schema_version") != "1.0":
+        raise ControlError("literature runtime scan requires schema_version '1.0'")
+    if snapshot.get("scope") != "current_local_device":
+        _add_issue(result, "runtime_scope_drift", "runtime scan scope must remain current_local_device")
+    observed_at = _parse_iso_datetime(snapshot.get("observed_at"), "runtime_scan.observed_at")
+    queue_scan = queue.get("read_only_scan")
+    if not isinstance(queue_scan, dict):
+        raise ControlError("maintenance queue read_only_scan must be an object")
+    queue_date = _parse_iso_date(queue_scan.get("last_completed"), "read_only_scan.last_completed")
+    if observed_at.date() != queue_date:
+        _add_issue(
+            result,
+            "runtime_scan_date_drift",
+            f"runtime snapshot date {observed_at.date()} differs from queue date {queue_date}",
+            path=snapshot_path,
+        )
+    expected_snapshot = queue_scan.get("runtime_snapshot")
+    if expected_snapshot != "evidence/literature/runtime_scan.json":
+        _add_issue(
+            result,
+            "runtime_scan_pointer_drift",
+            "maintenance queue must point to evidence/literature/runtime_scan.json",
+        )
+
+    zotero = snapshot.get("zotero")
+    if not isinstance(zotero, dict):
+        raise ControlError("runtime scan zotero must be an object")
+    required_health = {
+        "local_api_enabled_pref": True,
+        "api_running": True,
+        "connector_running": True,
+    }
+    for field, expected in required_health.items():
+        if zotero.get(field) is not expected:
+            _add_issue(result, "zotero_runtime_unhealthy", f"runtime scan zotero.{field} must be {expected}")
+    if zotero.get("api_status") != 200:
+        _add_issue(result, "zotero_runtime_unhealthy", "runtime scan api_status must be 200")
+
+    selected_target = snapshot.get("selected_target")
+    if not isinstance(selected_target, dict) or not all(
+        selected_target.get(field) not in {None, ""}
+        for field in ("library_id", "library_name", "collection_id", "collection_name")
+    ):
+        _add_issue(result, "invalid_runtime_target", "runtime scan needs a selected library and collection")
+    elif selected_target.get("editable") is not True:
+        _add_issue(result, "runtime_target_not_editable", "selected Zotero target is not editable")
+
+    items = snapshot.get("items")
+    if not isinstance(items, list):
+        raise ControlError("runtime scan items must be a list")
+    observed_keys: list[str] = []
+    resolved = 0
+    seadrive_resolved = 0
+    for item in items:
+        if not isinstance(item, dict):
+            raise ControlError("runtime scan contains a non-object item")
+        parent_key = item.get("parent_item_key")
+        if not isinstance(parent_key, str) or not parent_key:
+            _add_issue(result, "invalid_runtime_item_key", "runtime scan item lacks parent_item_key")
+            continue
+        observed_keys.append(parent_key)
+        attachment_key = item.get("attachment_item_key")
+        if not isinstance(attachment_key, str) or not attachment_key:
+            _add_issue(result, "missing_runtime_attachment", f"runtime item {parent_key} has no attachment key")
+        exists = item.get("linked_file_exists") is True
+        if not exists:
+            _add_issue(result, "unresolved_runtime_attachment", f"runtime item {parent_key} linked file is unavailable")
+        else:
+            resolved += 1
+        if exists and item.get("transport") == "SeaDrive":
+            seadrive_resolved += 1
+        elif item.get("transport") != "SeaDrive":
+            _add_issue(result, "runtime_transport_drift", f"runtime item {parent_key} is not resolved through SeaDrive")
+    if len(observed_keys) != len(set(observed_keys)):
+        _add_issue(result, "duplicate_runtime_item", "runtime scan repeats a Zotero parent key")
+    if set(observed_keys) != registered_zotero_keys:
+        _add_issue(
+            result,
+            "runtime_registry_identity_drift",
+            "runtime parent keys differ from registered packet Zotero identities",
+        )
+
+    summary = snapshot.get("summary")
+    expected_summary = {
+        "registered_zotero_items": len(items),
+        "linked_files_resolved": resolved,
+        "seadrive_linked_files_resolved": seadrive_resolved,
+        "all_registered_items_ready": bool(items)
+        and resolved == len(items)
+        and seadrive_resolved == len(items),
+    }
+    if not isinstance(summary, dict):
+        raise ControlError("runtime scan summary must be an object")
+    for field, expected in expected_summary.items():
+        if summary.get(field) != expected:
+            _add_issue(
+                result,
+                "runtime_summary_mismatch",
+                f"runtime summary {field}={summary.get(field)!r}, expected {expected!r}",
+            )
+
+    if snapshot.get("path_disclosure") != "omitted":
+        _add_issue(result, "runtime_path_disclosure", "runtime scan must omit workstation-specific paths")
+    serialized = json.dumps(snapshot, ensure_ascii=False)
+    if WINDOWS_ABSOLUTE_RE.search(serialized) or UNC_PATH_RE.search(serialized):
+        _add_issue(result, "runtime_path_disclosure", "runtime scan contains a workstation-specific path")
+
+    cross_device = snapshot.get("cross_device_equivalence_verified")
+    if not isinstance(cross_device, bool):
+        _add_issue(result, "invalid_cross_device_state", "cross-device equivalence must be boolean")
+    external_actions = [
+        action
+        for action in queue.get("actions", [])
+        if isinstance(action, dict) and action.get("action_id") == "lit-cross-device-seadrive-verification"
+    ]
+    external_completed = bool(external_actions and external_actions[0].get("status") == "completed")
+    if cross_device is True and not external_completed:
+        _add_issue(
+            result,
+            "unverified_cross_device_claim",
+            "runtime scan claims cross-device equivalence before the external gate is completed",
+        )
+    if cross_device is False and external_completed:
+        _add_issue(
+            result,
+            "cross_device_state_drift",
+            "external cross-device gate is completed but runtime snapshot remains false",
+        )
+    result["runtime_scan"] = {
+        "observed_at": snapshot.get("observed_at"),
+        "registered_zotero_items": len(items),
+        "linked_files_resolved": resolved,
+        "seadrive_linked_files_resolved": seadrive_resolved,
+        "cross_device_equivalence_verified": cross_device,
+    }
+
+
 def audit_literature_control(
     root: Path = ROOT,
     registry_path: Path | None = None,
@@ -735,6 +889,7 @@ def audit_literature_control(
     routes_path: Path | None = None,
     repo_config_path: Path | None = None,
     writing_intakes_path: Path | None = None,
+    runtime_scan_path: Path | None = None,
     *,
     as_of: date | None = None,
 ) -> dict[str, Any]:
@@ -747,16 +902,21 @@ def audit_literature_control(
     writing_intakes_file = (
         writing_intakes_path or resolved_root / "evidence" / "literature" / "writing_intakes.json"
     ).resolve()
+    runtime_scan_file = (
+        runtime_scan_path or resolved_root / "evidence" / "literature" / "runtime_scan.json"
+    ).resolve()
     repo_config_file = (repo_config_path or resolved_root / "config" / "repository_sync.json").resolve()
     _inside(registry_file, resolved_root, "packet registry")
     _inside(queue_file, resolved_root, "maintenance queue")
     _inside(routes_file, resolved_root, "consumer route registry")
     _inside(writing_intakes_file, resolved_root, "writing intake registry")
+    _inside(runtime_scan_file, resolved_root, "literature runtime scan")
     _inside(repo_config_file, resolved_root, "repository sync configuration")
     registry = _read_json(registry_file, "packet registry")
     queue = _read_json(queue_file, "maintenance queue")
     routes = _read_json(routes_file, "consumer route registry")
     writing_intakes = _read_json(writing_intakes_file, "writing intake registry")
+    runtime_scan = _read_json(runtime_scan_file, "literature runtime scan")
     repository_roots = _load_repository_roots(resolved_root, repo_config_file)
     if registry.get("schema_version") != "1.0":
         raise ControlError("packet registry requires schema_version '1.0'")
@@ -775,6 +935,7 @@ def audit_literature_control(
         "queue": str(queue_file),
         "consumer_routes": str(routes_file),
         "writing_intakes": str(writing_intakes_file),
+        "runtime_scan_file": str(runtime_scan_file),
         "repository_config": str(repo_config_file),
         "packets_total": 0,
         "sources_total": 0,
@@ -788,6 +949,7 @@ def audit_literature_control(
         "route_actions": [],
         "writing_intakes_total": 0,
         "writing_intake_statuses": {},
+        "runtime_scan": {},
         "issues": [],
     }
     for field, expected in expected_truth.items():
@@ -832,6 +994,13 @@ def audit_literature_control(
         repository_roots,
         packet_claim_statuses,
     )
+    _audit_runtime_scan(
+        result,
+        runtime_scan,
+        runtime_scan_file,
+        queue,
+        set(global_zotero_keys),
+    )
     result["exit_code"] = 2 if result["issues"] else 0
     return result
 
@@ -846,6 +1015,13 @@ def render_text(result: dict[str, Any]) -> str:
         f"  read-only scan: last={scan.get('last_completed')} age={scan.get('age_days')}d "
         f"interval={scan.get('interval_days')}d",
     ]
+    runtime = result.get("runtime_scan", {})
+    lines.append(
+        f"  runtime: items={runtime.get('registered_zotero_items')} "
+        f"resolved={runtime.get('linked_files_resolved')} "
+        f"seadrive={runtime.get('seadrive_linked_files_resolved')} "
+        f"cross_device={runtime.get('cross_device_equivalence_verified')}"
+    )
     for action in result["open_actions"]:
         lines.append(
             f"  - WAIT {action['action_id']}: {action['status']} "
@@ -874,6 +1050,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--routes", type=Path, default=None)
     parser.add_argument("--repo-config", type=Path, default=None)
     parser.add_argument("--writing-intakes", type=Path, default=None)
+    parser.add_argument("--runtime-scan", type=Path, default=None)
     parser.add_argument("--as-of", type=lambda value: datetime.strptime(value, "%Y-%m-%d").date(), default=None)
     parser.add_argument("--json", action="store_true", help="write machine-readable JSON")
     args = parser.parse_args(argv)
@@ -885,6 +1062,7 @@ def main(argv: list[str] | None = None) -> int:
             args.routes,
             args.repo_config,
             args.writing_intakes,
+            args.runtime_scan,
             as_of=args.as_of,
         )
     except ControlError as exc:

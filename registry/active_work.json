@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-01T18:04:04+08:00",
+  "updated_at": "2026-09-01T18:20:36+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,33 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260901-thesis-maintenance-unified-audit",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "evidence/literature/runtime_scan.json",
+        "evidence/literature/maintenance_queue.json",
+        "evidence/literature/README.md",
+        "scripts/refresh_literature_runtime.py",
+        "scripts/audit_literature_control.py",
+        "scripts/audit_thesis_workspace.py",
+        "tests/test_refresh_literature_runtime.py",
+        "tests/test_audit_literature_control.py",
+        "tests/test_audit_thesis_workspace.py",
+        "REPO_MAP.md",
+        "process/repository_sync_policy.md",
+        "process/current_execution_plan_20260802.md",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "read-only Zotero/SeaDrive evidence refresh and unified repository health audit only; no Zotero write, thesis claim promotion, scientific gold, method version, or opening-report edit",
+      "status": "completed",
+      "dependency": "current literature control plane, Zotero local API, SeaDrive linked attachments, and repository sync/navigation auditors",
+      "stop_condition": "one portable command reports repository, navigation, literature freshness, and open human gates with deterministic tests",
+      "expires_on": "2026-09-02",
+      "closed_at": "2026-09-01T18:20:36+08:00",
+      "result": "uncommitted working tree; live current-device scan 5/5 registered items and 5/5 SeaDrive files; literature and navigation audits 0 issues; 41 tests pass"
+    },
     {
       "task_id": "20260901-opening-literature-writing-intake",
       "owner": "root",

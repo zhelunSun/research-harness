@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "observed_at": "2026-09-01T18:11:18+08:00",
+  "scope": "current_local_device",
+  "zotero": {
+    "version": "9.0.5",
+    "local_api_enabled_pref": true,
+    "api_running": true,
+    "api_status": 200,
+    "connector_running": true
+  },
+  "selected_target": {
+    "library_id": 1,
+    "library_name": "我的文库",
+    "collection_id": 19,
+    "collection_name": "AI_for_Science",
+    "editable": true
+  },
+  "items": [
+    {
+      "parent_item_key": "4HG5DK62",
+      "attachment_item_key": "9ZC3IL4M",
+      "linked_file_exists": true,
+      "transport": "SeaDrive"
+    },
+    {
+      "parent_item_key": "57QKXZ9P",
+      "attachment_item_key": "ZYT8AIVU",
+      "linked_file_exists": true,
+      "transport": "SeaDrive"
+    },
+    {
+      "parent_item_key": "8QJVIQLW",
+      "attachment_item_key": "CDTRB42Z",
+      "linked_file_exists": true,
+      "transport": "SeaDrive"
+    },
+    {
+      "parent_item_key": "ETGXFWI5",
+      "attachment_item_key": "VMVDDZ2T",
+      "linked_file_exists": true,
+      "transport": "SeaDrive"
+    },
+    {
+      "parent_item_key": "NZ6FBBAC",
+      "attachment_item_key": "DK2MWBQW",
+      "linked_file_exists": true,
+      "transport": "SeaDrive"
+    }
+  ],
+  "summary": {
+    "registered_zotero_items": 5,
+    "linked_files_resolved": 5,
+    "seadrive_linked_files_resolved": 5,
+    "all_registered_items_ready": true
+  },
+  "path_disclosure": "omitted",
+  "cross_device_equivalence_verified": false,
+  "limitations": [
+    "This snapshot verifies only the current local device.",
+    "Zotero local API health does not prove account-level cloud sync completion.",
+    "Second-device SeaDrive path resolution remains an external verification gate."
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T18:04:04+08:00",
+  "updated_at": "2026-09-01T18:11:18+08:00",
   "policy": {
     "zotero_write_gate": "explicit_user_authorization",
     "writing_merge_gate": "task_specific_contract_review",
@@ -9,6 +9,7 @@
   },
   "read_only_scan": {
     "last_completed": "2026-09-01",
+    "runtime_snapshot": "evidence/literature/runtime_scan.json",
     "checks": [
       "zotero_status",
       "selected_target",
@@ -16,7 +17,7 @@
       "linked_pdf_resolution",
       "packet_audit"
     ],
-    "result": "Zotero Desktop and local API healthy; five AI4Science parent items and linked PDFs verified locally; four geospatial-agent candidates absent by DOI or exact title; packet audits pass"
+    "result": "Zotero Desktop/local API healthy; 5 registered parent items have current-device SeaDrive linked files; cross-device equivalence remains unverified; four geospatial-agent candidates remain absent by DOI or exact title"
   },
   "actions": [
     {

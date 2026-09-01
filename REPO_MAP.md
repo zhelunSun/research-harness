@@ -47,6 +47,11 @@ freshness and recoverability are determined only by `audit_repo_sync.py` and
 `registry/core_repo_checkpoints.json`. A prose label that says "current tip" but
 disagrees with those machine surfaces is navigation drift, not a second tip.
 
+For routine maintenance, start with `python scripts/audit_thesis_workspace.py
+--fetch`. It combines repository, navigation, literature freshness, local
+Zotero/SeaDrive evidence, and pending human gates without writing Zotero or
+tracked content.
+
 ## Recovery boundary
 
 `D:/Projects/phd-research` is recovery-only and read-only. Its historical

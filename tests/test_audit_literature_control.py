@@ -20,6 +20,7 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self.queue = self.literature / "maintenance_queue.json"
         self.routes = self.literature / "consumer_routes.json"
         self.intakes = self.literature / "writing_intakes.json"
+        self.runtime = self.literature / "runtime_scan.json"
         self.repo_config = self.root / "config" / "repository_sync.json"
         self.consumer = self.root.parent / "chapter" / "consumer.md"
         self.consumer.parent.mkdir(parents=True)
@@ -37,6 +38,7 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self._write_queue()
         self._write_routes()
         self._write_intakes()
+        self._write_runtime()
         self._write_repo_config()
 
     def tearDown(self) -> None:
@@ -117,6 +119,7 @@ class LiteratureControlAuditTests(unittest.TestCase):
                 },
                 "read_only_scan": {
                     "last_completed": last_completed,
+                    "runtime_snapshot": "evidence/literature/runtime_scan.json",
                     "checks": [
                         "zotero_status",
                         "selected_target",
@@ -134,6 +137,47 @@ class LiteratureControlAuditTests(unittest.TestCase):
                         "gate": "explicit_user_authorization",
                     }
                 ],
+            },
+        )
+
+    def _write_runtime(self) -> None:
+        self._write_json(
+            self.runtime,
+            {
+                "schema_version": "1.0",
+                "observed_at": "2026-09-01T12:00:00+08:00",
+                "scope": "current_local_device",
+                "zotero": {
+                    "version": "9.0.5",
+                    "local_api_enabled_pref": True,
+                    "api_running": True,
+                    "api_status": 200,
+                    "connector_running": True,
+                },
+                "selected_target": {
+                    "library_id": 1,
+                    "library_name": "Library",
+                    "collection_id": 19,
+                    "collection_name": "AI_for_Science",
+                    "editable": True,
+                },
+                "items": [
+                    {
+                        "parent_item_key": "ABC12345",
+                        "attachment_item_key": "ATT12345",
+                        "linked_file_exists": True,
+                        "transport": "SeaDrive",
+                    }
+                ],
+                "summary": {
+                    "registered_zotero_items": 1,
+                    "linked_files_resolved": 1,
+                    "seadrive_linked_files_resolved": 1,
+                    "all_registered_items_ready": True,
+                },
+                "path_disclosure": "omitted",
+                "cross_device_equivalence_verified": False,
+                "limitations": ["current device only"],
             },
         )
 
@@ -223,6 +267,7 @@ class LiteratureControlAuditTests(unittest.TestCase):
             self.routes,
             self.repo_config,
             self.intakes,
+            self.runtime,
             as_of=as_of,
         )
 
@@ -233,6 +278,7 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self.assertEqual(len(result["open_actions"]), 1)
         self.assertEqual((result["routes_total"], len(result["route_actions"])), (1, 1))
         self.assertEqual(result["writing_intakes_total"], 1)
+        self.assertEqual(result["runtime_scan"]["seadrive_linked_files_resolved"], 1)
 
     def test_missing_packet_file_is_reported(self) -> None:
         (self.packet / "evidence_cards.md").unlink()
@@ -323,6 +369,26 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self._write_json(decision_path, decision)
         result = self.audit()
         self.assertIn("unverified_candidate_support", {item["code"] for item in result["issues"]})
+
+    def test_missing_seadrive_file_is_reported(self) -> None:
+        runtime = json.loads(self.runtime.read_text(encoding="utf-8"))
+        runtime["items"][0]["linked_file_exists"] = False
+        runtime["items"][0]["transport"] = "missing"
+        runtime["summary"]["linked_files_resolved"] = 0
+        runtime["summary"]["seadrive_linked_files_resolved"] = 0
+        runtime["summary"]["all_registered_items_ready"] = False
+        self._write_json(self.runtime, runtime)
+        result = self.audit()
+        codes = {item["code"] for item in result["issues"]}
+        self.assertIn("unresolved_runtime_attachment", codes)
+        self.assertIn("runtime_transport_drift", codes)
+
+    def test_runtime_snapshot_date_must_match_queue(self) -> None:
+        runtime = json.loads(self.runtime.read_text(encoding="utf-8"))
+        runtime["observed_at"] = "2026-08-31T12:00:00+08:00"
+        self._write_json(self.runtime, runtime)
+        result = self.audit()
+        self.assertIn("runtime_scan_date_drift", {item["code"] for item in result["issues"]})
 
 
 if __name__ == "__main__":

@@ -50,7 +50,16 @@ Every source moves through the following states; no later state is implied by an
 
 ## Verification command
 
-Run the repository-level control audit first. It validates every registered packet,
+For routine thesis-workspace maintenance, run the unified read-only audit:
+
+```powershell
+python scripts/audit_thesis_workspace.py --fetch
+```
+
+It combines Git/upstream state, workspace navigation, the literature control
+audit, the current path-redacted Zotero/SeaDrive snapshot, and pending human
+gates. For literature-only diagnosis, run the repository-level control audit.
+It validates every registered packet,
 the Zotero/SeaDrive source-of-truth split, identity reconciliation, forbidden local
 paths/PDF binaries, the weekly scan age, every pending human gate, and the existence
 of every exact cross-repository consumer route without writing to Zotero or a chapter
@@ -64,6 +73,18 @@ Use `--json` for a machine-readable result and `--as-of YYYY-MM-DD` for determin
 freshness checks. Open actions are reported as `WAIT` but do not fail the audit; a
 missing authorization record, stale weekly scan, broken packet, or identity mismatch
 returns exit `2`.
+
+Refresh the current-device runtime snapshot with the installed Zotero skill
+helper. The command is read-only against Zotero; `--write` updates only the
+path-redacted repository snapshot and scan date after every registered linked
+file resolves through SeaDrive:
+
+```powershell
+python scripts/refresh_literature_runtime.py --write
+```
+
+`runtime_scan.json` never stores local PDF paths. It proves only current-device
+resolution. Second-device equivalence remains a separate external gate.
 
 For an individual evidence ledger, run the installed skill audit from
 `research-harness`:
