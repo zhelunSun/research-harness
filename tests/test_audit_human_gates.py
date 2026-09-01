@@ -36,6 +36,7 @@ class HumanGateAuditTests(unittest.TestCase):
             "evidence/literature/packets/geospatial_agent_comparators_2026/intake_decision.md",
             "evidence/literature/packets/agent_evaluation_user_validity_2026/intake_decision.md",
             "evidence/literature/packets/knowledge_evidence_governance_2026/intake_decision.md",
+            "evidence/literature/packets/scientific_agent_workflow_boundaries_2026/intake_decision.md",
             "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json",
         ]
         for relative in control_artifacts:
@@ -84,6 +85,12 @@ class HumanGateAuditTests(unittest.TestCase):
             },
             {
                 "action_id": "lit-knowledge-governance-zotero-import",
+                "kind": "zotero_write",
+                "status": "pending_authorization",
+                "gate": "explicit_user_authorization",
+            },
+            {
+                "action_id": "lit-scientific-agent-workflows-zotero-import",
                 "kind": "zotero_write",
                 "status": "pending_authorization",
                 "gate": "explicit_user_authorization",
@@ -162,6 +169,15 @@ class HumanGateAuditTests(unittest.TestCase):
                 "lit-knowledge-governance-zotero-import",
             ),
             self._gate(
+                "lit-scientific-agent-workflows-zotero-import",
+                "zotero_write",
+                "pending_authorization",
+                "idea-control-plane",
+                "evidence/literature/packets/scientific_agent_workflow_boundaries_2026/intake_decision.md",
+                "explicit_user_authorization",
+                "lit-scientific-agent-workflows-zotero-import",
+            ),
+            self._gate(
                 "lit-opening-v05-contract-merge",
                 "writing_acceptance",
                 "pending_task_specific_review",
@@ -211,11 +227,11 @@ class HumanGateAuditTests(unittest.TestCase):
     def audit(self) -> dict[str, object]:
         return audit_human_gates(self.root, self.gates_file, self.queue_file, self.config_file)
 
-    def test_current_seven_gate_registry_passes(self) -> None:
+    def test_current_eight_gate_registry_passes(self) -> None:
         result = self.audit()
         self.assertEqual(result["exit_code"], 0)
-        self.assertEqual((result["gates_total"], len(result["open_gates"])), (7, 7))
-        self.assertEqual(result["category_counts"]["zotero_write"], 3)
+        self.assertEqual((result["gates_total"], len(result["open_gates"])), (8, 8))
+        self.assertEqual(result["category_counts"]["zotero_write"], 4)
         self.assertEqual(len(result["category_counts"]), 5)
 
     def test_missing_current_gate_is_reported(self) -> None:

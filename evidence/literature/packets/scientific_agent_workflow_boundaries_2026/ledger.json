@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "scientific-agent-workflow-boundaries-2026",
+  "research_question": "科学智能体研究如何实现规划、工具、反馈和多智能体协作，哪些原文局限能直接支持一次性规划、隐式状态或结果自评不足的表述？",
+  "sources": [
+    {
+      "source_id": "S-SAW-001",
+      "title": "The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search",
+      "bibtex_key": "yamada_ai-scientist-v2_2025",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2504.08066",
+      "identifiers": {"arxiv": "2504.08066"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-SAW-002",
+      "title": "Agent Laboratory: Using LLM Agents as Research Assistants",
+      "bibtex_key": "schmidgall_agent-laboratory_2025",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2501.04227",
+      "identifiers": {"arxiv": "2501.04227"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-SAW-003",
+      "title": "BioDiscoveryAgent: An AI Agent for Designing Genetic Perturbation Experiments",
+      "bibtex_key": "roohani_biodiscoveryagent_2025",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2405.17631",
+      "identifiers": {"arxiv": "2405.17631"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-SAW-004",
+      "title": "Autonomous Chemical Research with Large Language Models",
+      "bibtex_key": "boiko_autonomous_2023",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.1038/s41586-023-06792-0",
+      "identifiers": {"doi": "10.1038/s41586-023-06792-0"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "SAW-C1",
+      "text": "AI Scientist-v2 用四阶段 agentic tree search 组织实验；节点显式保存计划、代码、错误、运行时间、指标、LLM/VLM 反馈、图件路径和状态，并包含复现实验与聚合节点。其作者同时报告仅三篇投稿中的一篇达到 workshop 接收，且真正新颖假设、创新实验设计和深领域论证仍困难。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "SAW-C2",
+      "text": "Agent Laboratory 通过 PhD、Postdoc、工程与 reviewer 等角色把文献、计划、实验、解释和报告连接成可回退修订的流水线，并允许每阶段人工反馈；其原文同时报告自动评分高估真人评价、可能生成未发生的实验结果，且若干失败需要人工检测或移除。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "SAW-C3",
+      "text": "BioDiscoveryAgent 在每轮把既往扰动结果写入下一轮提示，并可调用文献检索、数据库检索和 LLM critic；但论文评测是从既有扰动数据集中回放观测的模拟实验，工具收益随模型和数据集变化，部分设置中使用工具反而降低结果。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "SAW-C4",
+      "text": "Coscientist 的 Planner 能调用网页检索、文档检索、隔离代码执行和实验自动化模块，并在真实液体处理任务中通过文档反馈修正错误 API 方法；作者将其界定为半自主 proof of concept，实验仍有人工搬板，评分存在主观性，完整数据、代码和提示也因安全原因未公开。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "SAW-C5",
+      "text": "这四个系统共同提供了显式分支或阶段、工具执行反馈、跨轮观测、角色协作和人工或外部评价的互补实例；但它们不足以证明一次性规划、隐式状态或结果自评在所有科学智能体中普遍失败，也不能证明这些机制能改善城市森林遥感任务中的规划或科学正确性。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:SAW-C5]"
+    }
+  ],
+  "links": [
+    {
+      "claim_id": "SAW-C1",
+      "source_id": "S-SAW-001",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "an execution error trace ... and the node's final status",
+      "source_location": "Sections 3.2.1-3.2.2, PDF pp. 5-7; Section 5, PDF p. 13",
+      "note": "The explicit tree state and replication nodes are system facts; workshop acceptance and LLM-guided node selection do not establish scientific validity or consistent research quality."
+    },
+    {
+      "claim_id": "SAW-C2",
+      "source_id": "S-SAW-002",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "automated scores significantly overestimating quality",
+      "source_location": "Sections 3.1-3.3, PDF pp. 5-10; Section 4, PDF pp. 11-18; Sections 5.1-5.2, PDF pp. 19-20",
+      "note": "The system supports staged collaboration and user feedback, while its own evaluation documents reviewer disagreement, hallucinated experimental results, and runtime failures."
+    },
+    {
+      "claim_id": "SAW-C3",
+      "source_id": "S-SAW-003",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "We simulate the perturbation ... from this dataset",
+      "source_location": "Sections 3-4, PDF pp. 4-5; Section 5, PDF pp. 6-9; Section 7, PDF p. 10",
+      "note": "The paper evaluates a genuine cross-round decision loop, but outcomes are replayed from existing datasets rather than produced by prospective autonomous wet-lab execution."
+    },
+    {
+      "claim_id": "SAW-C4",
+      "source_id": "S-SAW-004",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "modifies the protocol to a corrected version",
+      "source_location": "System architecture, PDF pp. 1-2; integrated chemical experiment design, PDF p. 5; Discussion, PDF p. 8; Data availability, PDF p. 10",
+      "note": "This is peer-reviewed evidence of tool-grounded laboratory planning and correction in six demonstrated tasks, bounded by proof-of-concept scope and partial automation/release."
+    },
+    {
+      "claim_id": "SAW-C5",
+      "source_id": "S-SAW-001",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Provides explicit branching, node state, execution feedback, and an internal evaluator; remote-sensing transfer and universal claims remain unassessed."
+    },
+    {
+      "claim_id": "SAW-C5",
+      "source_id": "S-SAW-002",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Provides role collaboration, human feedback, and direct self-evaluation failure evidence within an ML research pipeline only."
+    },
+    {
+      "claim_id": "SAW-C5",
+      "source_id": "S-SAW-003",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Provides cross-round observation conditioning and model-dependent tool effects in a retrospective genetic-perturbation setting."
+    },
+    {
+      "claim_id": "SAW-C5",
+      "source_id": "S-SAW-004",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Provides a real tool and laboratory correction example, but not a general comparison of planning or state-representation strategies."
+    }
+  ]
+}

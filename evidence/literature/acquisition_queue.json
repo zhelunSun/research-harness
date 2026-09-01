@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T19:14:31+08:00",
+  "updated_at": "2026-09-01T19:29:22+08:00",
   "policy": {
     "active_work_item_limit": 1,
     "minimum_sources_per_packet": 3,
@@ -11,7 +11,7 @@
     "writing_merge_gate": "task_specific_contract_review",
     "candidate_discovery_does_not_remove_ref_missing": true
   },
-  "active_work_item_id": "AQ-OI-D3-SCIENTIFIC-AGENTS",
+  "active_work_item_id": "AQ-OI-D1-BACKGROUND",
   "work_items": [
     {
       "work_item_id": "AQ-OI-D6-EVALUATION",
@@ -190,7 +190,7 @@
     {
       "work_item_id": "AQ-OI-D3-SCIENTIFIC-AGENTS",
       "priority": "P1",
-      "status": "ready_for_search",
+      "status": "packet_ready",
       "target_intake_id": "opening-report-v05-literature-intake-20260901",
       "target_decision_ids": ["OI-D3"],
       "target_sections": ["2.1 大语言模型智能体与科学智能体研究"],
@@ -211,10 +211,63 @@
         "没有系统或实验细节的观点文章",
         "重复当前 Co-Scientist 与 Robin 但不增加缺口证据的来源"
       ],
-      "candidate_sources": [],
-      "downstream_packet_id": null,
+      "candidate_sources": [
+        {
+          "candidate_id": "SAW-001",
+          "packet_source_id": "S-SAW-001",
+          "title": "The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search",
+          "stable_identity": "arxiv:2504.08066",
+          "official_url": "https://arxiv.org/abs/2504.08066",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "explicit tree branches, node state, execution/debug feedback, replication and aggregation",
+          "boundary": "LLM-guided best-node selection; one of three workshop submissions accepted; novelty and deep domain justification remain difficult"
+        },
+        {
+          "candidate_id": "SAW-002",
+          "packet_source_id": "S-SAW-002",
+          "title": "Agent Laboratory: Using LLM Agents as Research Assistants",
+          "stable_identity": "arxiv:2501.04227",
+          "official_url": "https://arxiv.org/abs/2501.04227",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "named research roles, stage feedback, review-driven return to earlier work, autonomous versus co-pilot comparison",
+          "boundary": "automated review overestimates human ratings; hallucinated results and manually handled runtime failures are reported"
+        },
+        {
+          "candidate_id": "SAW-003",
+          "packet_source_id": "S-SAW-003",
+          "title": "BioDiscoveryAgent: An AI Agent for Designing Genetic Perturbation Experiments",
+          "stable_identity": "arxiv:2405.17631",
+          "official_url": "https://arxiv.org/abs/2405.17631",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "cross-round observation conditioning, literature/database tools, code/data access and an LLM critic",
+          "boundary": "experimental rounds replay past perturbation datasets; tool benefits vary and can be negative"
+        },
+        {
+          "candidate_id": "SAW-004",
+          "packet_source_id": "S-SAW-004",
+          "title": "Autonomous Chemical Research with Large Language Models",
+          "stable_identity": "doi:10.1038/s41586-023-06792-0",
+          "official_url": "https://doi.org/10.1038/s41586-023-06792-0",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "web, documentation, isolated code and laboratory automation tools with error correction",
+          "boundary": "semi-autonomous proof of concept with manual plate movement, subjective grading and restricted full release"
+        }
+      ],
+      "downstream_packet_id": "scientific-agent-workflow-boundaries-2026",
       "blocking_gate_id": null,
-      "next_action": "在 P0 与知识表示包之后选择代表性系统，构建能力事实与局限事实两栏 evidence cards。",
+      "next_action": "证据包已形成并通过审计；等待单独的 Zotero 导入授权与开题 writing-contract 审阅，不再扩搜。",
       "stop_conditions": [
         "达到 5 篇去重候选即停止扩搜",
         "综合限制必须保留 needs_review，直到跨来源比较完成",

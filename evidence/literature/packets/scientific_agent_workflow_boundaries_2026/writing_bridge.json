@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "scientific-agent-workflow-boundaries-2026",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "boiko_autonomous_2023",
+      "roohani_biodiscoveryagent_2025",
+      "schmidgall_agent-laboratory_2025",
+      "yamada_ai-scientist-v2_2025"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "SAW-C1",
+      "marker": "[CLAIM:SAW-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "yamada_ai-scientist-v2_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "SAW-C2",
+      "marker": "[CLAIM:SAW-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "schmidgall_agent-laboratory_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "SAW-C3",
+      "marker": "[CLAIM:SAW-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "roohani_biodiscoveryagent_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "SAW-C4",
+      "marker": "[CLAIM:SAW-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "boiko_autonomous_2023"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "SAW-C5",
+      "marker": "[CLAIM:SAW-C5]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:SAW-C5]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[REF-MISSING:SAW-C5]"
+    ]
+  }
+}

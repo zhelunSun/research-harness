@@ -134,3 +134,12 @@ and context-sensitive applicability plus validation state. `KEG-C5` remains
 `needs_review`: the packet does not prove that combining these representation
 primitives improves a remote-sensing Agent, and it creates neither a Chapter 2
 method decision nor a Zotero write approval.
+
+The completed `AQ-OI-D3-SCIENTIFIC-AGENTS` acquisition is preserved as
+`packets/scientific_agent_workflow_boundaries_2026/`. Its four-source ledger keeps
+capability facts separate from limitation facts across explicit tree state, staged
+multi-agent collaboration, cross-round experimental observations, and real laboratory
+tool execution. `SAW-C5` remains `needs_review`: the packet does not turn these
+examples into a universal defect claim about one-shot planning, implicit state, or
+self-evaluation, and it creates neither a thesis novelty claim nor a Zotero write
+approval.
