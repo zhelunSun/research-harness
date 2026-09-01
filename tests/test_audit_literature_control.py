@@ -474,6 +474,37 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self.assertIn("missing_acquisition_gate", codes)
         self.assertIn("inactive_acquisition_pointer", codes)
 
+    def test_verified_candidate_requires_packet_ready_full_text_route(self) -> None:
+        acquisition = json.loads(self.acquisition.read_text(encoding="utf-8"))
+        acquisition["work_items"][0]["candidate_sources"] = [
+            {
+                "candidate_id": "CAND-1",
+                "title": "Candidate",
+                "stable_identity": "doi:10.example/candidate",
+                "official_url": "https://example.org/candidate",
+                "read_state": "full_text",
+                "entailment_status": "verified",
+                "screening_decision": "retain_for_packet",
+                "packet_source_id": "S-1",
+            }
+        ]
+        self._write_json(self.acquisition, acquisition)
+        result = self.audit()
+        self.assertIn("candidate_evidence_promotion", {item["code"] for item in result["issues"]})
+
+    def test_packet_ready_item_requires_target_count_full_text_candidates(self) -> None:
+        acquisition = json.loads(self.acquisition.read_text(encoding="utf-8"))
+        item = acquisition["work_items"][0]
+        item["status"] = "packet_ready"
+        item["downstream_packet_id"] = "sample-packet"
+        item["candidate_sources"] = []
+        acquisition["active_work_item_id"] = "AQ-D1"
+        self._write_json(self.acquisition, acquisition)
+        result = self.audit()
+        codes = {item["code"] for item in result["issues"]}
+        self.assertIn("incomplete_packet_ready_acquisition", codes)
+        self.assertIn("inactive_acquisition_pointer", codes)
+
 
 if __name__ == "__main__":
     unittest.main()

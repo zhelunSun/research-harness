@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "agent-evaluation-user-validity-2026",
+  "research_question": "哪些 Agent 评测研究直接说明静态题库、短任务或单一最终成功率不足，并为过程、状态变化、长程可靠性和真实用户校准提供可操作方法？",
+  "sources": [
+    {
+      "source_id": "S-AEV-001",
+      "title": "AgentBoard: An Analytical Evaluation Board of Multi-turn LLM Agents",
+      "bibtex_key": "ma_agentboard_2024",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.52202/079017-2365",
+      "identifiers": {"doi": "10.52202/079017-2365"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-AEV-002",
+      "title": "ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities",
+      "bibtex_key": "lu_toolsandbox_2025",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.18653/v1/2025.findings-naacl.65",
+      "identifiers": {"doi": "10.18653/v1/2025.findings-naacl.65"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-AEV-003",
+      "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+      "bibtex_key": "yao_tau-bench_2025",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2406.12045",
+      "identifiers": {"arxiv": "2406.12045"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-AEV-004",
+      "title": "How Can We Assess Human-Agent Interactions? Case Studies in Software Agent Design",
+      "bibtex_key": "chen_assess_2026",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2510.09801",
+      "identifiers": {"arxiv": "2510.09801"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "AEV-C1",
+      "text": "AgentBoard 指出最终成功率无法区分接近完成与仅有少量进展的失败，并通过人工标注子目标、逐步 progress rate、长程交互分析和人工轨迹核验提供过程级评价。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AEV-C2",
+      "text": "ToolSandbox 将可变 world state、工具间隐式状态依赖和对话式在线 rollout 纳入评测，并以具有时序依赖的 Milestones 与 Minefields 对任意轨迹的中间和最终状态评分。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AEV-C3",
+      "text": "τ-bench 通过模拟用户、数据库工具、领域规则和重复独立试验评价交互式 Agent 的一致性；pass^k 揭示平均单次成功率不能代表多次运行可靠性，但该研究不构成真实用户验证。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AEV-C4",
+      "text": "PULSE 在 OpenHands 平台的超过 36,000 个会话、15,000 名用户上采集真实用户评分并比较 Agent 设计，报告基准表现与实际用户体验可能不一致。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "AEV-C5",
+      "text": "上述来源共同表明城市森林遥感 Agent 评测至少需要区分最终结果、过程进展、状态依赖、跨重复运行可靠性和真实用户体验；但这些通用方法是否能形成有效的领域任务与评价构念仍须由第三章单独证明。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:AEV-C5]"
+    }
+  ],
+  "links": [
+    {
+      "claim_id": "AEV-C1",
+      "source_id": "S-AEV-001",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "does not differentiate between near-complete tasks and minimal task execution",
+      "source_location": "Section 2.2, PDF pp. 4-5; Figure 3, p. 6; long-range analysis, Section 4.2",
+      "note": "The metric depends on human-authored subgoals and mainly simulated environments; it is process evidence, not user-validity evidence."
+    },
+    {
+      "claim_id": "AEV-C2",
+      "source_id": "S-AEV-002",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "evaluate any trajectory with rich intermediate and final execution signals",
+      "source_location": "Sections 2.1-2.3, PDF pp. 3-5; Section 7, p. 10; Appendix A.7, pp. 16-17",
+      "note": "Milestone authoring requires domain knowledge and the user is simulated, with non-negligible simulator errors."
+    },
+    {
+      "claim_id": "AEV-C3",
+      "source_id": "S-AEV-003",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "pass^8 drops to < 25%",
+      "source_location": "Sections 3 and 5, PDF pp. 4-8; Directions for improvement, p. 9",
+      "note": "Evaluation primarily compares final database/output state and uses LM-simulated users; it supports reliability testing, not actual-user effectiveness."
+    },
+    {
+      "claim_id": "AEV-C4",
+      "source_id": "S-AEV-004",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "Across over 36k sessions and 15k users",
+      "source_location": "Abstract and Section 1, PDF pp. 1-2; Sections 3, 5 and 6; limitations, p. 9",
+      "note": "The study is real-user evidence but is limited to one software-agent platform and user ratings as the primary human-centered outcome."
+    },
+    {
+      "claim_id": "AEV-C5",
+      "source_id": "S-AEV-001",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Process-granularity comparator; transfer to city-forest tasks remains a thesis-specific construct-validity question."
+    },
+    {
+      "claim_id": "AEV-C5",
+      "source_id": "S-AEV-002",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Stateful tool benchmark; scientific-intent and ecological-validity transfer remain unassessed."
+    },
+    {
+      "claim_id": "AEV-C5",
+      "source_id": "S-AEV-003",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Repeated reliability comparator; simulated users cannot substitute for target-user evidence."
+    },
+    {
+      "claim_id": "AEV-C5",
+      "source_id": "S-AEV-004",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Human-centric evaluation comparator; domain and participant transfer require separate design and compliance review."
+    }
+  ]
+}

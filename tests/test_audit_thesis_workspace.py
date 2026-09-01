@@ -42,14 +42,15 @@ def human_gate_result(*, exit_code: int = 0) -> dict[str, object]:
     gates = [
         ("lit-cross-device-seadrive-verification", "maintenance_external", "pending_external_verification"),
         ("lit-geospatial-agent-zotero-import", "zotero_write", "pending_authorization"),
+        ("lit-agent-evaluation-zotero-import", "zotero_write", "pending_authorization"),
         ("lit-opening-v05-contract-merge", "writing_acceptance", "pending_task_specific_review"),
         ("ch2-g4-batch-a-researcher-review", "scientific_evidence", "pending_researcher_review"),
         ("ch3-first-evaluation-route-selection", "scientific_route", "pending_researcher_decision"),
     ]
     return {
         "exit_code": exit_code,
-        "gates_total": 5,
-        "category_counts": {category: 1 for _, category, _ in gates},
+        "gates_total": 6,
+        "category_counts": {category: sum(1 for _, item_category, _ in gates if item_category == category) for _, category, _ in gates},
         "open_gates": [
             {
                 "gate_id": gate_id,
@@ -108,7 +109,7 @@ class ThesisControlAuditTests(unittest.TestCase):
     def test_ready_workspace_preserves_pending_human_gate(self) -> None:
         result = self.run_audit(repository_result(), literature_result())
         self.assertEqual((result["exit_code"], result["readiness"]), (0, "ready"))
-        self.assertEqual(len(result["pending_human_gates"]), 5)
+        self.assertEqual(len(result["pending_human_gates"]), 6)
         rendered = render_text(result)
         self.assertIn("acquisition_active=AQ-OI-D6-EVALUATION", rendered)
         self.assertIn("ch2-g4-batch-a-researcher-review", rendered)

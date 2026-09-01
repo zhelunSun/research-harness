@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T18:35:40+08:00",
+  "updated_at": "2026-09-01T18:57:03+08:00",
   "policy": {
     "active_work_item_limit": 1,
     "minimum_sources_per_packet": 3,
@@ -11,12 +11,12 @@
     "writing_merge_gate": "task_specific_contract_review",
     "candidate_discovery_does_not_remove_ref_missing": true
   },
-  "active_work_item_id": "AQ-OI-D6-EVALUATION",
+  "active_work_item_id": "AQ-OI-D5-KNOWLEDGE",
   "work_items": [
     {
       "work_item_id": "AQ-OI-D6-EVALUATION",
       "priority": "P0",
-      "status": "ready_for_search",
+      "status": "packet_ready",
       "target_intake_id": "opening-report-v05-literature-intake-20260901",
       "target_decision_ids": ["OI-D6"],
       "target_sections": ["2.4 智能体系统评测与真实用户验证"],
@@ -37,10 +37,63 @@
         "仅有新闻、二手博客或未定位原文的综述性说法",
         "把 geospatial benchmark 个案外推为全部 Agent 评测领域结论"
       ],
-      "candidate_sources": [],
-      "downstream_packet_id": null,
+      "candidate_sources": [
+        {
+          "candidate_id": "AEV-001",
+          "packet_source_id": "S-AEV-001",
+          "title": "AgentBoard: An Analytical Evaluation Board of Multi-turn LLM Agents",
+          "stable_identity": "doi:10.52202/079017-2365",
+          "official_url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/877b40688e330a0e2a3fc24084208dfa-Abstract-Datasets_and_Benchmarks_Track.html",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "fine-grained progress, partial completion, long-range trajectory analysis",
+          "boundary": "human-authored subgoals and mainly simulated environments; no target-user validity"
+        },
+        {
+          "candidate_id": "AEV-002",
+          "packet_source_id": "S-AEV-002",
+          "title": "ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities",
+          "stable_identity": "doi:10.18653/v1/2025.findings-naacl.65",
+          "official_url": "https://aclanthology.org/2025.findings-naacl.65/",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "mutable world state, state dependency, milestone and minefield trajectory grading",
+          "boundary": "expert-authored milestones and an error-prone simulated user; no real-user validity"
+        },
+        {
+          "candidate_id": "AEV-003",
+          "packet_source_id": "S-AEV-003",
+          "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+          "stable_identity": "arxiv:2406.12045",
+          "official_url": "https://openreview.net/forum?id=roNSXZpUDN",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "tool-user-policy interaction and repeated-run reliability through pass^k",
+          "boundary": "LM-simulated users and primarily final-state reward; no actual-user effectiveness"
+        },
+        {
+          "candidate_id": "AEV-004",
+          "packet_source_id": "S-AEV-004",
+          "title": "How Can We Assess Human-Agent Interactions? Case Studies in Software Agent Design",
+          "stable_identity": "arxiv:2510.09801",
+          "official_url": "https://arxiv.org/abs/2510.09801",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "in-the-wild user ratings, human-agent trajectories, and benchmark-to-user comparison",
+          "boundary": "one software-agent platform and satisfaction outcome; no remote-sensing transfer"
+        }
+      ],
+      "downstream_packet_id": "agent-evaluation-user-validity-2026",
       "blocking_gate_id": null,
-      "next_action": "开展一次 3--5 篇上限的 primary-source 检索与全文筛选，先形成 metadata/abstract 候选表，再决定哪些进入 evidence ledger。",
+      "next_action": "证据包已形成并通过审计；等待单独的 Zotero 导入授权与开题 writing-contract 审阅，不再扩搜。",
       "stop_conditions": [
         "达到 5 篇去重候选即停止扩搜",
         "若没有用户研究来源，则保留用户校准子句的 REF-MISSING，不用相邻 benchmark 填充",

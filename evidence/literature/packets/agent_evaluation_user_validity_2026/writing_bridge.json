@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "agent-evaluation-user-validity-2026",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "chen_assess_2026",
+      "lu_toolsandbox_2025",
+      "ma_agentboard_2024",
+      "yao_tau-bench_2025"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "AEV-C1",
+      "marker": "[CLAIM:AEV-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "ma_agentboard_2024"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AEV-C2",
+      "marker": "[CLAIM:AEV-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "lu_toolsandbox_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AEV-C3",
+      "marker": "[CLAIM:AEV-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "yao_tau-bench_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AEV-C4",
+      "marker": "[CLAIM:AEV-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "chen_assess_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "AEV-C5",
+      "marker": "[CLAIM:AEV-C5]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:AEV-C5]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[REF-MISSING:AEV-C5]"
+    ]
+  }
+}

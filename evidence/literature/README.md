@@ -120,3 +120,9 @@ against a particular draft and writing contract. Its decision artifacts distingu
 direct candidate support, paragraph splitting, context-only use, retained evidence
 gaps, and deferral. An intake marked `reviewed_candidate` is not a merged writing
 contract and cannot authorize citation insertion or marker removal.
+
+The completed `AQ-OI-D6-EVALUATION` acquisition is preserved as
+`packets/agent_evaluation_user_validity_2026/`. Its four-source ledger separates
+process progress, mutable-state trajectory grading, repeated-run reliability, and
+actual-user satisfaction. The cross-domain transfer claim remains `needs_review`;
+the packet creates neither a Chapter 3 method decision nor a Zotero write approval.

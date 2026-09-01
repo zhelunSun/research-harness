@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-01T18:42:46+08:00",
+  "updated_at": "2026-09-01T19:01:33+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,33 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260901-agent-evaluation-literature-screening",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "evidence/literature/acquisition_queue.json",
+        "evidence/literature/packets/agent_evaluation_user_validity_2026/**",
+        "evidence/literature/README.md",
+        "evidence/literature/maintenance_queue.json",
+        "evidence/literature/packet_registry.json",
+        "registry/human_gates.json",
+        "scripts/audit_human_gates.py",
+        "scripts/audit_literature_control.py",
+        "tests/test_audit_human_gates.py",
+        "tests/test_audit_literature_control.py",
+        "tests/test_audit_thesis_workspace.py",
+        "process/current_execution_plan_20260802.md",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "bounded primary-source screening for AQ-OI-D6-EVALUATION only; no Zotero write, citation insertion, REF-MISSING removal, writing-contract acceptance, claim promotion, scientific gold, method version, or formal title change",
+      "status": "completed",
+      "dependency": "current opening-report OI-D6 content gap and primary official Agent evaluation papers",
+      "stop_condition": "three to five deduplicated sources have explicit read state, located evidence boundary, and unresolved user-calibration status without being presented as thesis-ready evidence",
+      "expires_on": "2026-09-02",
+      "closed_at": "2026-09-01T19:01:33+08:00",
+      "result": "uncommitted working tree; four official full texts deduplicated and screened; third packet has 4 sources, 5 claims, and 8 links with 0 audit findings; AEV-C5 remains needs_review; literature and human-gate audits 0 issues; 52 tests pass"
+    },
     {
       "task_id": "20260901-opening-literature-acquisition-queue",
       "owner": "root",

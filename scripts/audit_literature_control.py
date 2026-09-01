@@ -1031,12 +1031,33 @@ def _audit_acquisition_queue(
             candidates = []
         if len(candidates) > int(policy.get("maximum_sources_per_packet", 5)):
             _add_issue(result, "acquisition_candidate_cap_exceeded", f"item {work_item_id} exceeds the five-source cap")
+        candidate_ids: set[str] = set()
         for candidate in candidates:
             if not isinstance(candidate, dict):
                 raise ControlError(f"item {work_item_id} contains a non-object candidate")
-            if candidate.get("read_state") not in {"metadata", "abstract", "full_text"}:
+            candidate_id = candidate.get("candidate_id")
+            if not isinstance(candidate_id, str) or not candidate_id:
+                _add_issue(result, "invalid_acquisition_candidate", f"item {work_item_id} candidate lacks candidate_id")
+            elif candidate_id in candidate_ids:
+                _add_issue(result, "duplicate_acquisition_candidate", f"item {work_item_id} repeats {candidate_id!r}")
+            else:
+                candidate_ids.add(candidate_id)
+            for field in ("title", "stable_identity", "official_url"):
+                if not isinstance(candidate.get(field), str) or not candidate.get(field):
+                    _add_issue(result, "invalid_acquisition_candidate", f"item {work_item_id} candidate lacks {field}")
+            read_state = candidate.get("read_state")
+            entailment_status = candidate.get("entailment_status")
+            if read_state not in {"metadata", "abstract", "full_text"}:
                 _add_issue(result, "invalid_candidate_read_state", f"item {work_item_id} candidate has invalid read_state")
-            if candidate.get("entailment_status") not in {None, "unassessed", "abstract_consistent"}:
+            if entailment_status not in {None, "unassessed", "abstract_consistent", "verified"}:
+                _add_issue(result, "invalid_candidate_entailment", f"item {work_item_id} candidate has invalid entailment_status")
+            elif entailment_status == "verified" and not (
+                read_state == "full_text"
+                and status == "packet_ready"
+                and isinstance(item.get("downstream_packet_id"), str)
+                and isinstance(candidate.get("packet_source_id"), str)
+                and candidate.get("screening_decision") == "retain_for_packet"
+            ):
                 _add_issue(result, "candidate_evidence_promotion", f"item {work_item_id} candidate is prematurely promoted")
         downstream_packet_id = item.get("downstream_packet_id")
         if downstream_packet_id is not None and downstream_packet_id not in packet_ids:
@@ -1052,6 +1073,16 @@ def _audit_acquisition_queue(
             _add_issue(result, "unexpected_acquisition_gate", f"unblocked item {work_item_id} declares blocking_gate_id")
         if status == "packet_ready" and not downstream_packet_id:
             _add_issue(result, "missing_acquisition_packet", f"packet-ready item {work_item_id} lacks downstream_packet_id")
+        if status == "packet_ready" and (
+            len(candidates) != target_count
+            or any(candidate.get("read_state") != "full_text" for candidate in candidates)
+            or any(candidate.get("screening_decision") != "retain_for_packet" for candidate in candidates)
+        ):
+            _add_issue(
+                result,
+                "incomplete_packet_ready_acquisition",
+                f"packet-ready item {work_item_id} must retain exactly its target count of full-text candidates",
+            )
         if status in {"ready_for_search", "candidate_screening", "full_text_review"}:
             result["acquisition_queue"]["ready_items"].append(work_item_id)
 

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T18:11:18+08:00",
+  "updated_at": "2026-09-01T18:57:03+08:00",
   "policy": {
     "zotero_write_gate": "explicit_user_authorization",
     "writing_merge_gate": "task_specific_contract_review",
@@ -17,7 +17,7 @@
       "linked_pdf_resolution",
       "packet_audit"
     ],
-    "result": "Zotero Desktop/local API healthy; 5 registered parent items have current-device SeaDrive linked files; cross-device equivalence remains unverified; four geospatial-agent candidates remain absent by DOI or exact title"
+    "result": "Zotero Desktop/local API healthy; 5 registered parent items have current-device SeaDrive linked files; cross-device equivalence remains unverified; four geospatial-agent and four Agent-evaluation candidates remain absent by DOI or exact title"
   },
   "actions": [
     {
@@ -45,6 +45,26 @@
         "arXiv:2601.16965",
         "arXiv:2604.13888",
         "arXiv:2606.17246"
+      ],
+      "completion_evidence": [
+        "four Zotero parent item keys",
+        "four stable BibTeX keys",
+        "official linked PDFs resolved through SeaDrive",
+        "registry and ledger identities reconciled"
+      ]
+    },
+    {
+      "action_id": "lit-agent-evaluation-zotero-import",
+      "kind": "zotero_write",
+      "packet_id": "agent-evaluation-user-validity-2026",
+      "status": "pending_authorization",
+      "gate": "explicit_user_authorization",
+      "recommended_target": "AI_for_Science/scientific agent",
+      "records": [
+        "10.52202/079017-2365",
+        "10.18653/v1/2025.findings-naacl.65",
+        "arXiv:2406.12045",
+        "arXiv:2510.09801"
       ],
       "completion_evidence": [
         "four Zotero parent item keys",

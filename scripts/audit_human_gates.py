@@ -36,6 +36,7 @@ ALLOWED_CATEGORIES = {
 REQUIRED_CURRENT_GATE_IDS = {
     "lit-cross-device-seadrive-verification",
     "lit-geospatial-agent-zotero-import",
+    "lit-agent-evaluation-zotero-import",
     "lit-opening-v05-contract-merge",
     "ch2-g4-batch-a-researcher-review",
     "ch3-first-evaluation-route-selection",
