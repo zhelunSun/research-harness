@@ -28,6 +28,11 @@ def literature_result(*, exit_code: int = 0) -> dict[str, object]:
         "packets_total": 2,
         "sources_total": 9,
         "runtime_scan": {"registered_zotero_items": 5},
+        "acquisition_queue": {
+            "active_work_item_id": "AQ-OI-D6-EVALUATION",
+            "work_items_total": 5,
+            "ready_items": ["AQ-OI-D6-EVALUATION"],
+        },
         "open_actions": [],
         "issues": [],
     }
@@ -105,6 +110,7 @@ class ThesisControlAuditTests(unittest.TestCase):
         self.assertEqual((result["exit_code"], result["readiness"]), (0, "ready"))
         self.assertEqual(len(result["pending_human_gates"]), 5)
         rendered = render_text(result)
+        self.assertIn("acquisition_active=AQ-OI-D6-EVALUATION", rendered)
         self.assertIn("ch2-g4-batch-a-researcher-review", rendered)
         self.assertIn("ch3-first-evaluation-route-selection", rendered)
 

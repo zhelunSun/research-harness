@@ -122,12 +122,14 @@ def render_text(result: dict[str, Any]) -> str:
     literature = components["literature"]
     human_gates = components["human_gates"]
     runtime = literature.get("runtime_scan", {})
+    acquisition = literature.get("acquisition_queue", {})
     lines = [
         f"[{label}] thesis control: readiness={result['readiness']} root={result['workspace_root']}",
         f"  navigation: exit={navigation['exit_code']} issues={len(navigation['issues'])}",
         f"  repositories: exit={repositories['exit_code']} count={len(repositories['items'])}",
         f"  literature: exit={literature['exit_code']} packets={literature['packets_total']} "
-        f"sources={literature['sources_total']} runtime_items={runtime.get('registered_zotero_items')}",
+        f"sources={literature['sources_total']} runtime_items={runtime.get('registered_zotero_items')} "
+        f"acquisition_active={acquisition.get('active_work_item_id')}",
         f"  human gates: exit={human_gates['exit_code']} total={human_gates['gates_total']} "
         f"open={len(human_gates['open_gates'])}",
     ]

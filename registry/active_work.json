@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-01T18:31:40+08:00",
+  "updated_at": "2026-09-01T18:42:46+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,29 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260901-opening-literature-acquisition-queue",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "evidence/literature/acquisition_queue.json",
+        "evidence/literature/README.md",
+        "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json",
+        "scripts/audit_literature_control.py",
+        "scripts/audit_thesis_workspace.py",
+        "tests/test_audit_literature_control.py",
+        "tests/test_audit_thesis_workspace.py",
+        "process/current_execution_plan_20260802.md",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "writing-gap-driven literature acquisition planning only; no literature discovery presented as evidence, no Zotero write, citation insertion, marker removal, claim promotion, scientific gold, or method change",
+      "status": "completed",
+      "dependency": "opening-report v0.5 writing intake decisions OI-D1 through OI-D6 and current human-gate registry",
+      "stop_condition": "every content REF-MISSING decision has exactly one bounded acquisition route and unified audit exposes the single next literature action",
+      "expires_on": "2026-09-02",
+      "closed_at": "2026-09-01T18:42:46+08:00",
+      "result": "uncommitted working tree; six content gaps routed through five bounded acquisition items; active AQ-OI-D6-EVALUATION; literature, human-gate, and navigation audits 0 issues; 50 tests pass"
+    },
     {
       "task_id": "20260901-thesis-human-gate-registry",
       "owner": "root",

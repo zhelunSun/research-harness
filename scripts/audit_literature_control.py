@@ -24,6 +24,8 @@ DEFAULT_QUEUE = ROOT / "evidence" / "literature" / "maintenance_queue.json"
 DEFAULT_ROUTES = ROOT / "evidence" / "literature" / "consumer_routes.json"
 DEFAULT_WRITING_INTAKES = ROOT / "evidence" / "literature" / "writing_intakes.json"
 DEFAULT_RUNTIME_SCAN = ROOT / "evidence" / "literature" / "runtime_scan.json"
+DEFAULT_ACQUISITION_QUEUE = ROOT / "evidence" / "literature" / "acquisition_queue.json"
+DEFAULT_HUMAN_GATES = ROOT / "registry" / "human_gates.json"
 DEFAULT_REPO_CONFIG = ROOT / "config" / "repository_sync.json"
 REQUIRED_PACKET_FILES = (
     "README.md",
@@ -69,6 +71,15 @@ ALLOWED_INTAKE_DECISIONS = {
     "insufficient_keep_marker",
     "defer",
 }
+ALLOWED_ACQUISITION_STATUSES = {
+    "ready_for_search",
+    "blocked_on_gate",
+    "candidate_screening",
+    "full_text_review",
+    "packet_ready",
+    "retired",
+}
+ALLOWED_ACQUISITION_PRIORITIES = {"P0", "P1", "P2"}
 BIB_KEY_RE = re.compile(r"@\w+\s*\{\s*([^,\s]+)", re.IGNORECASE)
 BIB_FILE_FIELD_RE = re.compile(r"(?:^|[,\{\s])file\s*=", re.IGNORECASE | re.MULTILINE)
 WINDOWS_ABSOLUTE_RE = re.compile(r"(?<![A-Za-z0-9])(?:[A-Za-z]:[\\/])")
@@ -882,6 +893,189 @@ def _audit_runtime_scan(
     }
 
 
+def _audit_acquisition_queue(
+    result: dict[str, Any],
+    root: Path,
+    acquisition: dict[str, Any],
+    writing_intakes: dict[str, Any],
+    human_gates: dict[str, Any],
+    packet_ids: set[str],
+) -> None:
+    if acquisition.get("schema_version") != "1.0":
+        raise ControlError("literature acquisition queue requires schema_version '1.0'")
+    policy = acquisition.get("policy")
+    if not isinstance(policy, dict):
+        raise ControlError("literature acquisition queue policy must be an object")
+    expected_policy = {
+        "active_work_item_limit": 1,
+        "minimum_sources_per_packet": 3,
+        "maximum_sources_per_packet": 5,
+        "metadata_is_not_evidence": True,
+        "full_text_required_for_verified_entailment": True,
+        "zotero_write_gate": "explicit_user_authorization",
+        "writing_merge_gate": "task_specific_contract_review",
+        "candidate_discovery_does_not_remove_ref_missing": True,
+    }
+    for field, expected in expected_policy.items():
+        if policy.get(field) != expected:
+            _add_issue(result, "acquisition_policy_drift", f"acquisition policy {field} must remain {expected!r}")
+
+    intake_items = writing_intakes.get("intakes")
+    if not isinstance(intake_items, list):
+        raise ControlError("writing intake registry intakes must be a list")
+    intake_decisions: dict[str, dict[str, dict[str, Any]]] = {}
+    required_content_gaps: set[tuple[str, str]] = set()
+    for intake in intake_items:
+        if not isinstance(intake, dict):
+            raise ControlError("writing intake registry contains a non-object intake")
+        intake_id = intake.get("intake_id")
+        artifact_value = intake.get("decision_artifact")
+        if not isinstance(intake_id, str) or not isinstance(artifact_value, str):
+            continue
+        artifact = _inside(
+            root / Path(artifact_value.replace("\\", "/")),
+            root,
+            f"writing intake {intake_id} decision artifact",
+        )
+        decision_artifact = _read_json(artifact, f"decision artifact for acquisition {intake_id}")
+        decisions = decision_artifact.get("decisions")
+        if not isinstance(decisions, list):
+            raise ControlError(f"writing intake {intake_id} decisions must be a list")
+        decision_map = {
+            decision.get("decision_id"): decision
+            for decision in decisions
+            if isinstance(decision, dict) and isinstance(decision.get("decision_id"), str)
+        }
+        intake_decisions[intake_id] = decision_map
+        required_content_gaps.update(
+            (intake_id, decision_id)
+            for decision_id, decision in decision_map.items()
+            if decision.get("decision_scope") == "content_ref_missing_gap"
+        )
+
+    gate_items = human_gates.get("gates")
+    if not isinstance(gate_items, list):
+        raise ControlError("human-gate registry gates must be a list")
+    gate_map = {
+        gate.get("gate_id"): gate
+        for gate in gate_items
+        if isinstance(gate, dict) and isinstance(gate.get("gate_id"), str)
+    }
+    work_items = acquisition.get("work_items")
+    if not isinstance(work_items, list):
+        raise ControlError("literature acquisition queue work_items must be a list")
+    result["acquisition_queue"] = {
+        "work_items_total": len(work_items),
+        "active_work_item_id": acquisition.get("active_work_item_id"),
+        "status_counts": {},
+        "ready_items": [],
+    }
+    seen_ids: set[str] = set()
+    coverage: Counter[tuple[str, str]] = Counter()
+    statuses: Counter[str] = Counter()
+    item_map: dict[str, dict[str, Any]] = {}
+    for item in work_items:
+        if not isinstance(item, dict):
+            raise ControlError("literature acquisition queue contains a non-object work item")
+        work_item_id = item.get("work_item_id")
+        if not isinstance(work_item_id, str) or not work_item_id:
+            raise ControlError("every acquisition work item needs a non-empty work_item_id")
+        if work_item_id in seen_ids:
+            _add_issue(result, "duplicate_acquisition_work_item", f"duplicate acquisition item {work_item_id!r}")
+        seen_ids.add(work_item_id)
+        item_map[work_item_id] = item
+        status = item.get("status")
+        priority = item.get("priority")
+        statuses[str(status)] += 1
+        if status not in ALLOWED_ACQUISITION_STATUSES:
+            _add_issue(result, "invalid_acquisition_status", f"item {work_item_id} has status {status!r}")
+        if priority not in ALLOWED_ACQUISITION_PRIORITIES:
+            _add_issue(result, "invalid_acquisition_priority", f"item {work_item_id} has priority {priority!r}")
+        intake_id = item.get("target_intake_id")
+        decision_map = intake_decisions.get(intake_id)
+        if decision_map is None:
+            _add_issue(result, "unknown_acquisition_intake", f"item {work_item_id} references intake {intake_id!r}")
+            decision_map = {}
+        decision_ids = item.get("target_decision_ids")
+        if not isinstance(decision_ids, list) or not decision_ids or not all(
+            isinstance(decision_id, str) for decision_id in decision_ids
+        ):
+            _add_issue(result, "invalid_acquisition_decisions", f"item {work_item_id} needs target_decision_ids")
+            decision_ids = []
+        for decision_id in decision_ids:
+            if decision_id not in decision_map:
+                _add_issue(result, "unknown_acquisition_decision", f"item {work_item_id} references {intake_id}:{decision_id}")
+            else:
+                coverage[(str(intake_id), decision_id)] += 1
+        target_count = item.get("source_target_count")
+        if not isinstance(target_count, int) or not (
+            policy.get("minimum_sources_per_packet", 3)
+            <= target_count
+            <= policy.get("maximum_sources_per_packet", 5)
+        ):
+            _add_issue(result, "invalid_acquisition_source_cap", f"item {work_item_id} source_target_count must be 3--5")
+        for field in ("research_question", "next_action"):
+            if not isinstance(item.get(field), str) or not item.get(field):
+                _add_issue(result, "incomplete_acquisition_item", f"item {work_item_id} lacks {field}")
+        for field in ("target_sections", "source_requirements", "exclusions", "stop_conditions"):
+            if not isinstance(item.get(field), list) or not item.get(field):
+                _add_issue(result, "incomplete_acquisition_item", f"item {work_item_id} lacks {field}")
+        queries = item.get("search_queries")
+        if not isinstance(queries, list):
+            _add_issue(result, "invalid_acquisition_queries", f"item {work_item_id} search_queries must be a list")
+        elif status == "ready_for_search" and not queries:
+            _add_issue(result, "missing_acquisition_queries", f"ready item {work_item_id} has no search queries")
+        candidates = item.get("candidate_sources")
+        if not isinstance(candidates, list):
+            _add_issue(result, "invalid_acquisition_candidates", f"item {work_item_id} candidate_sources must be a list")
+            candidates = []
+        if len(candidates) > int(policy.get("maximum_sources_per_packet", 5)):
+            _add_issue(result, "acquisition_candidate_cap_exceeded", f"item {work_item_id} exceeds the five-source cap")
+        for candidate in candidates:
+            if not isinstance(candidate, dict):
+                raise ControlError(f"item {work_item_id} contains a non-object candidate")
+            if candidate.get("read_state") not in {"metadata", "abstract", "full_text"}:
+                _add_issue(result, "invalid_candidate_read_state", f"item {work_item_id} candidate has invalid read_state")
+            if candidate.get("entailment_status") not in {None, "unassessed", "abstract_consistent"}:
+                _add_issue(result, "candidate_evidence_promotion", f"item {work_item_id} candidate is prematurely promoted")
+        downstream_packet_id = item.get("downstream_packet_id")
+        if downstream_packet_id is not None and downstream_packet_id not in packet_ids:
+            _add_issue(result, "unknown_acquisition_packet", f"item {work_item_id} references packet {downstream_packet_id!r}")
+        blocking_gate_id = item.get("blocking_gate_id")
+        if status == "blocked_on_gate":
+            gate = gate_map.get(blocking_gate_id)
+            if gate is None:
+                _add_issue(result, "missing_acquisition_gate", f"blocked item {work_item_id} lacks a registered gate")
+            elif not str(gate.get("status", "")).startswith("pending_"):
+                _add_issue(result, "closed_acquisition_gate", f"blocked item {work_item_id} references a non-open gate")
+        elif blocking_gate_id is not None:
+            _add_issue(result, "unexpected_acquisition_gate", f"unblocked item {work_item_id} declares blocking_gate_id")
+        if status == "packet_ready" and not downstream_packet_id:
+            _add_issue(result, "missing_acquisition_packet", f"packet-ready item {work_item_id} lacks downstream_packet_id")
+        if status in {"ready_for_search", "candidate_screening", "full_text_review"}:
+            result["acquisition_queue"]["ready_items"].append(work_item_id)
+
+    missing_coverage = sorted(required_content_gaps - set(coverage))
+    duplicate_coverage = sorted(key for key, count in coverage.items() if count > 1)
+    extra_coverage = sorted(set(coverage) - required_content_gaps)
+    if missing_coverage:
+        _add_issue(result, "unrouted_content_gap", f"acquisition queue omits content gaps {missing_coverage}")
+    if duplicate_coverage:
+        _add_issue(result, "duplicate_content_gap_route", f"content gaps have multiple acquisition routes {duplicate_coverage}")
+    if extra_coverage:
+        _add_issue(result, "non_content_gap_acquisition_route", f"acquisition queue routes non-content decisions {extra_coverage}")
+    active_id = acquisition.get("active_work_item_id")
+    active_item = item_map.get(active_id)
+    if active_item is None:
+        _add_issue(result, "missing_active_acquisition_item", f"active acquisition item {active_id!r} is missing")
+    elif active_item.get("status") not in {"ready_for_search", "candidate_screening", "full_text_review"}:
+        _add_issue(result, "inactive_acquisition_pointer", f"active acquisition item {active_id} is not actionable")
+    active_count = sum(1 for item in work_items if item.get("work_item_id") == active_id)
+    if active_count > int(policy.get("active_work_item_limit", 1)):
+        _add_issue(result, "acquisition_active_limit_exceeded", "acquisition queue exceeds active work-item limit")
+    result["acquisition_queue"]["status_counts"] = dict(statuses)
+
+
 def audit_literature_control(
     root: Path = ROOT,
     registry_path: Path | None = None,
@@ -890,6 +1084,8 @@ def audit_literature_control(
     repo_config_path: Path | None = None,
     writing_intakes_path: Path | None = None,
     runtime_scan_path: Path | None = None,
+    acquisition_queue_path: Path | None = None,
+    human_gates_path: Path | None = None,
     *,
     as_of: date | None = None,
 ) -> dict[str, Any]:
@@ -905,18 +1101,26 @@ def audit_literature_control(
     runtime_scan_file = (
         runtime_scan_path or resolved_root / "evidence" / "literature" / "runtime_scan.json"
     ).resolve()
+    acquisition_queue_file = (
+        acquisition_queue_path or resolved_root / "evidence" / "literature" / "acquisition_queue.json"
+    ).resolve()
+    human_gates_file = (human_gates_path or resolved_root / "registry" / "human_gates.json").resolve()
     repo_config_file = (repo_config_path or resolved_root / "config" / "repository_sync.json").resolve()
     _inside(registry_file, resolved_root, "packet registry")
     _inside(queue_file, resolved_root, "maintenance queue")
     _inside(routes_file, resolved_root, "consumer route registry")
     _inside(writing_intakes_file, resolved_root, "writing intake registry")
     _inside(runtime_scan_file, resolved_root, "literature runtime scan")
+    _inside(acquisition_queue_file, resolved_root, "literature acquisition queue")
+    _inside(human_gates_file, resolved_root, "human-gate registry")
     _inside(repo_config_file, resolved_root, "repository sync configuration")
     registry = _read_json(registry_file, "packet registry")
     queue = _read_json(queue_file, "maintenance queue")
     routes = _read_json(routes_file, "consumer route registry")
     writing_intakes = _read_json(writing_intakes_file, "writing intake registry")
     runtime_scan = _read_json(runtime_scan_file, "literature runtime scan")
+    acquisition_queue = _read_json(acquisition_queue_file, "literature acquisition queue")
+    human_gates = _read_json(human_gates_file, "human-gate registry")
     repository_roots = _load_repository_roots(resolved_root, repo_config_file)
     if registry.get("schema_version") != "1.0":
         raise ControlError("packet registry requires schema_version '1.0'")
@@ -936,6 +1140,8 @@ def audit_literature_control(
         "consumer_routes": str(routes_file),
         "writing_intakes": str(writing_intakes_file),
         "runtime_scan_file": str(runtime_scan_file),
+        "acquisition_queue_file": str(acquisition_queue_file),
+        "human_gates_file": str(human_gates_file),
         "repository_config": str(repo_config_file),
         "packets_total": 0,
         "sources_total": 0,
@@ -950,6 +1156,7 @@ def audit_literature_control(
         "writing_intakes_total": 0,
         "writing_intake_statuses": {},
         "runtime_scan": {},
+        "acquisition_queue": {},
         "issues": [],
     }
     for field, expected in expected_truth.items():
@@ -1001,6 +1208,14 @@ def audit_literature_control(
         queue,
         set(global_zotero_keys),
     )
+    _audit_acquisition_queue(
+        result,
+        resolved_root,
+        acquisition_queue,
+        writing_intakes,
+        human_gates,
+        seen_packet_ids,
+    )
     result["exit_code"] = 2 if result["issues"] else 0
     return result
 
@@ -1021,6 +1236,12 @@ def render_text(result: dict[str, Any]) -> str:
         f"resolved={runtime.get('linked_files_resolved')} "
         f"seadrive={runtime.get('seadrive_linked_files_resolved')} "
         f"cross_device={runtime.get('cross_device_equivalence_verified')}"
+    )
+    acquisition = result.get("acquisition_queue", {})
+    lines.append(
+        f"  acquisition: items={acquisition.get('work_items_total')} "
+        f"active={acquisition.get('active_work_item_id')} "
+        f"actionable={len(acquisition.get('ready_items', []))}"
     )
     for action in result["open_actions"]:
         lines.append(
@@ -1051,6 +1272,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--repo-config", type=Path, default=None)
     parser.add_argument("--writing-intakes", type=Path, default=None)
     parser.add_argument("--runtime-scan", type=Path, default=None)
+    parser.add_argument("--acquisition-queue", type=Path, default=None)
+    parser.add_argument("--human-gates", type=Path, default=None)
     parser.add_argument("--as-of", type=lambda value: datetime.strptime(value, "%Y-%m-%d").date(), default=None)
     parser.add_argument("--json", action="store_true", help="write machine-readable JSON")
     args = parser.parse_args(argv)
@@ -1063,6 +1286,8 @@ def main(argv: list[str] | None = None) -> int:
             args.repo_config,
             args.writing_intakes,
             args.runtime_scan,
+            args.acquisition_queue,
+            args.human_gates,
             as_of=args.as_of,
         )
     except ControlError as exc:

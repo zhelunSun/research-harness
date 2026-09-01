@@ -12,6 +12,7 @@
   "decisions": [
     {
       "decision_id": "OI-D1",
+      "decision_scope": "content_ref_missing_gap",
       "target_section": "1.1 研究背景",
       "snapshot_line": 89,
       "outcome": "insufficient_keep_marker",
@@ -24,6 +25,7 @@
     },
     {
       "decision_id": "OI-D2",
+      "decision_scope": "content_ref_missing_gap",
       "target_section": "1.2 问题提出",
       "snapshot_line": 102,
       "outcome": "partial_split_required",
@@ -47,6 +49,7 @@
     },
     {
       "decision_id": "OI-D3",
+      "decision_scope": "content_ref_missing_gap",
       "target_section": "2.1 大语言模型智能体与科学智能体研究",
       "snapshot_line": 123,
       "outcome": "insufficient_keep_marker",
@@ -60,6 +63,7 @@
     },
     {
       "decision_id": "OI-D4",
+      "decision_scope": "content_ref_missing_gap",
       "target_section": "2.2 面向遥感与地理空间分析的智能体研究",
       "snapshot_line": 129,
       "outcome": "partial_split_required",
@@ -82,6 +86,7 @@
     },
     {
       "decision_id": "OI-D5",
+      "decision_scope": "content_ref_missing_gap",
       "target_section": "2.3 科学知识表示、检索与推理研究",
       "snapshot_line": 134,
       "outcome": "insufficient_keep_marker",
@@ -96,6 +101,7 @@
     },
     {
       "decision_id": "OI-D6",
+      "decision_scope": "content_ref_missing_gap",
       "target_section": "2.4 智能体系统评测与真实用户验证",
       "snapshot_line": 144,
       "outcome": "partial_split_required",
@@ -110,6 +116,7 @@
     },
     {
       "decision_id": "OI-D7",
+      "decision_scope": "direct_candidate_statement",
       "target_section": "ExpertsRS feasibility statements",
       "snapshot_lines": [32, 212, 340],
       "outcome": "candidate_support",
@@ -122,6 +129,7 @@
     },
     {
       "decision_id": "OI-D8",
+      "decision_scope": "deferred_context",
       "target_section": "opening-report load-bearing claims",
       "outcome": "defer",
       "marker_retained": true,

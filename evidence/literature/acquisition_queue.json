@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-01T18:35:40+08:00",
+  "policy": {
+    "active_work_item_limit": 1,
+    "minimum_sources_per_packet": 3,
+    "maximum_sources_per_packet": 5,
+    "metadata_is_not_evidence": true,
+    "full_text_required_for_verified_entailment": true,
+    "zotero_write_gate": "explicit_user_authorization",
+    "writing_merge_gate": "task_specific_contract_review",
+    "candidate_discovery_does_not_remove_ref_missing": true
+  },
+  "active_work_item_id": "AQ-OI-D6-EVALUATION",
+  "work_items": [
+    {
+      "work_item_id": "AQ-OI-D6-EVALUATION",
+      "priority": "P0",
+      "status": "ready_for_search",
+      "target_intake_id": "opening-report-v05-literature-intake-20260901",
+      "target_decision_ids": ["OI-D6"],
+      "target_sections": ["2.4 智能体系统评测与真实用户验证"],
+      "research_question": "哪些 Agent 评测研究直接证明了仅用静态题库、短任务或最终答案评分的覆盖不足，并提供过程、环境变化、长程依赖或用户校准的可操作评价方法？",
+      "source_target_count": 4,
+      "search_queries": [
+        "agent benchmark process trajectory environment change evaluation user study",
+        "LLM agent evaluation long horizon dynamic environment user calibration"
+      ],
+      "source_requirements": [
+        "3--5 篇一手论文或正式 benchmark 论文",
+        "至少一篇提供 step-level 或 trajectory-level 评价",
+        "至少一篇处理动态环境、长程依赖或交互失败",
+        "用户校准必须来自实际用户研究或明确的人机评价设计，不用模型自评替代"
+      ],
+      "exclusions": [
+        "只报告单一最终准确率且无过程定义的来源",
+        "仅有新闻、二手博客或未定位原文的综述性说法",
+        "把 geospatial benchmark 个案外推为全部 Agent 评测领域结论"
+      ],
+      "candidate_sources": [],
+      "downstream_packet_id": null,
+      "blocking_gate_id": null,
+      "next_action": "开展一次 3--5 篇上限的 primary-source 检索与全文筛选，先形成 metadata/abstract 候选表，再决定哪些进入 evidence ledger。",
+      "stop_conditions": [
+        "达到 5 篇去重候选即停止扩搜",
+        "若没有用户研究来源，则保留用户校准子句的 REF-MISSING，不用相邻 benchmark 填充",
+        "没有全文定位和 entailment 审核前不得生成 verified claim"
+      ]
+    },
+    {
+      "work_item_id": "AQ-OI-D5-KNOWLEDGE",
+      "priority": "P1",
+      "status": "ready_for_search",
+      "target_intake_id": "opening-report-v05-literature-intake-20260901",
+      "target_decision_ids": ["OI-D5"],
+      "target_sections": ["2.3 科学知识表示、检索与推理研究"],
+      "research_question": "哪些科学或遥感知识系统把来源、适用条件、证据状态、冲突、验证义务和结论边界显式带入检索或推理，而不是仅提供普通 RAG？",
+      "source_target_count": 4,
+      "search_queries": [
+        "scientific knowledge representation provenance applicability evidence conflict reasoning agents",
+        "remote sensing knowledge provenance evidence-aware reasoning RAG"
+      ],
+      "source_requirements": [
+        "3--5 篇一手方法论文",
+        "至少一篇明确建模 provenance 或 evidence status",
+        "至少一篇讨论 applicability、conflict 或 conclusion boundary",
+        "区分知识表示贡献与单纯检索增强"
+      ],
+      "exclusions": [
+        "只提高检索命中率但不表示证据边界",
+        "仅以知识图谱名称推断存在推理治理",
+        "无全文方法定位的 metadata 候选"
+      ],
+      "candidate_sources": [],
+      "downstream_packet_id": null,
+      "blocking_gate_id": null,
+      "next_action": "在完成 P0 评测包后开展有界 primary-source 检索，并优先复用 Chapter 2 已有 benchmark landscape 的直接来源。",
+      "stop_conditions": [
+        "达到 5 篇去重候选即停止扩搜",
+        "若来源只支持 provenance 个案，不得写成通用知识表示缺口",
+        "Chapter 2 scientific gold 门不因文献候选自动推进"
+      ]
+    },
+    {
+      "work_item_id": "AQ-OI-D3-SCIENTIFIC-AGENTS",
+      "priority": "P1",
+      "status": "ready_for_search",
+      "target_intake_id": "opening-report-v05-literature-intake-20260901",
+      "target_decision_ids": ["OI-D3"],
+      "target_sections": ["2.1 大语言模型智能体与科学智能体研究"],
+      "research_question": "科学智能体研究如何实现规划、工具、反馈和多智能体协作，哪些原文局限能直接支持一次性规划、隐式状态或结果自评不足的表述？",
+      "source_target_count": 4,
+      "search_queries": [
+        "scientific agents planning tool use feedback multi-agent limitations",
+        "AI scientist agent workflow implicit state self evaluation limitations"
+      ],
+      "source_requirements": [
+        "3--5 篇代表性一手系统论文",
+        "能力陈述与原文 limitations 分开摘录",
+        "至少覆盖规划、工具或反馈中的两个机制",
+        "不把单一系统局限外推为整个领域结论"
+      ],
+      "exclusions": [
+        "只依据项目宣传页",
+        "没有系统或实验细节的观点文章",
+        "重复当前 Co-Scientist 与 Robin 但不增加缺口证据的来源"
+      ],
+      "candidate_sources": [],
+      "downstream_packet_id": null,
+      "blocking_gate_id": null,
+      "next_action": "在 P0 与知识表示包之后选择代表性系统，构建能力事实与局限事实两栏 evidence cards。",
+      "stop_conditions": [
+        "达到 5 篇去重候选即停止扩搜",
+        "综合限制必须保留 needs_review，直到跨来源比较完成",
+        "不把 AI4Science 前沿性自动提升为博士论文 novelty"
+      ]
+    },
+    {
+      "work_item_id": "AQ-OI-D1-BACKGROUND",
+      "priority": "P2",
+      "status": "ready_for_search",
+      "target_intake_id": "opening-report-v05-literature-intake-20260901",
+      "target_decision_ids": ["OI-D1"],
+      "target_sections": ["1.1 研究背景"],
+      "research_question": "哪些一手遥感或地理空间 Agent 研究能够谨慎支持自然语言需求、分析计划和工具调用降低复杂分析操作门槛这一背景判断？",
+      "source_target_count": 3,
+      "search_queries": [
+        "natural language remote sensing analysis agent tool use non-expert",
+        "geospatial agent natural language workflow accessibility"
+      ],
+      "source_requirements": [
+        "3 篇以内一手遥感或 geospatial Agent 论文",
+        "原文明确讨论 natural-language access 或 non-expert use",
+        "与 ExpertsRS 重复时优先使用已有全文证据而不是扩充数量"
+      ],
+      "exclusions": [
+        "宽泛 LLM 评论文章",
+        "仅凭自然语言界面存在就宣称降低科学门槛",
+        "未评价用户或任务可达性的营销材料"
+      ],
+      "candidate_sources": [],
+      "downstream_packet_id": null,
+      "blocking_gate_id": null,
+      "next_action": "最后处理背景句；优先复用已核验 ExpertsRS，并只补足无法由现有来源承担的窄义陈述。",
+      "stop_conditions": [
+        "达到 3 篇去重候选即停止扩搜",
+        "若来源只证明可用性实例，仍保留对总体门槛下降的限定或 REF-MISSING",
+        "背景来源不进入核心 novelty 论证"
+      ]
+    },
+    {
+      "work_item_id": "AQ-OI-D2-D4-GEOSPATIAL-SYNTHESIS",
+      "priority": "P1",
+      "status": "blocked_on_gate",
+      "target_intake_id": "opening-report-v05-literature-intake-20260901",
+      "target_decision_ids": ["OI-D2", "OI-D4"],
+      "target_sections": ["1.2 问题提出", "2.2 面向遥感与地理空间分析的智能体研究"],
+      "research_question": "当前四项 geospatial Agent 来源能支持哪些能力事实，领域级计划调整、科学充分性、恢复与系统评价缺口还需要哪些直接证据？",
+      "source_target_count": 4,
+      "search_queries": [],
+      "source_requirements": [
+        "先稳定四项现有来源的 Zotero/BibTeX identity",
+        "复核 GAC-C6 的跨来源综合，不以新增数量替代比较",
+        "只有明确发现能力维度缺口时才追加最多一项新来源"
+      ],
+      "exclusions": [
+        "在既有四项尚未身份闭合时继续无界扩搜",
+        "把 GAC-C1 至 GAC-C5 的个案事实直接写成领域普遍不足",
+        "删除当前 REF-MISSING"
+      ],
+      "candidate_sources": [],
+      "downstream_packet_id": "geospatial-agent-comparators-2026",
+      "blocking_gate_id": "lit-geospatial-agent-zotero-import",
+      "next_action": "等待明确 Zotero 导入授权；身份闭合后进行 GAC-C6 fresh-context 综合复核，而不是立即新增来源。",
+      "stop_conditions": [
+        "未授权前不执行 Zotero write",
+        "GAC-C6 未通过任务特定复核前保持 needs_review",
+        "不以候选比较替代 Ch1 或 Ch3 自身实验"
+      ]
+    }
+  ]
+}

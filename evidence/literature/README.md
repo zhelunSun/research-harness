@@ -40,13 +40,14 @@ Every source moves through the following states; no later state is implied by an
 
 ## Update loop
 
-1. Run the Zotero skill's read-only checks: `status --json`, `selected-target --json`, then DOI/exact-title searches.
-2. Prepare a decision packet before any Zotero import, merge, bulk tag, attachment change, or delete. The researcher authorizes writes explicitly.
-3. After an authorized import, verify the parent item, BibTeX key, child attachment, and the resolved SeaDrive file.
-4. Create or update one packet for one narrow research question. Export only the cited items. Remove workstation-specific `file` fields from the committed BibTeX snapshot.
-5. Preserve the evidence ladder: `metadata < abstract < full_text`; preserve the entailment ladder: `unassessed < abstract_consistent < verified`.
-6. Run the audit and generate a writing bridge. Do not merge the bridge into a writing contract until that writing task accepts it.
-7. Update `packet_registry.json`; add only a pointer to the current thesis evidence matrix or chapter asset that actually consumes the packet.
+1. Start from a current writing gap in `acquisition_queue.json`, not from an unbounded topic search. Keep one active work item and a target packet of 3--5 primary sources.
+2. Run the Zotero skill's read-only checks: `status --json`, `selected-target --json`, then DOI/exact-title searches.
+3. Prepare a decision packet before any Zotero import, merge, bulk tag, attachment change, or delete. The researcher authorizes writes explicitly.
+4. After an authorized import, verify the parent item, BibTeX key, child attachment, and the resolved SeaDrive file.
+5. Create or update one packet for one narrow research question. Export only the cited items. Remove workstation-specific `file` fields from the committed BibTeX snapshot.
+6. Preserve the evidence ladder: `metadata < abstract < full_text`; preserve the entailment ladder: `unassessed < abstract_consistent < verified`. Discovery alone never removes a `[REF-MISSING]` marker.
+7. Run the audit and generate a writing bridge. Do not merge the bridge into a writing contract until that writing task accepts it.
+8. Update `packet_registry.json`; add only a pointer to the current thesis evidence matrix or chapter asset that actually consumes the packet.
 
 ## Verification command
 
@@ -58,7 +59,8 @@ python scripts/audit_thesis_workspace.py --fetch
 
 It combines Git/upstream state, workspace navigation, the literature control
 audit, the current path-redacted Zotero/SeaDrive snapshot, and pending human
-gates. For literature-only diagnosis, run the repository-level control audit.
+gates. Its literature line also reports the single active acquisition work item.
+For literature-only diagnosis, run the repository-level control audit.
 It validates every registered packet,
 the Zotero/SeaDrive source-of-truth split, identity reconciliation, forbidden local
 paths/PDF binaries, the weekly scan age, every pending human gate, and the existence
@@ -101,9 +103,12 @@ The absolute skill path is machine-specific; packet paths and the packet format 
 - Weekly read-only scan: inspect new Zotero items, missing PDFs, duplicate DOI/title candidates, and packets whose source metadata changed.
 - Before writing milestones: audit only the packets routed to that writing contract; do not refresh the whole library blindly.
 
-`packet_registry.json` is the packet identity surface. `maintenance_queue.json` is the
-only literature-specific action queue; it records read-only scan freshness, external
-verification gates, explicit Zotero write gates, and task-specific writing review.
+`packet_registry.json` is the packet identity surface. `maintenance_queue.json` records
+read-only scan freshness, external verification gates, explicit Zotero write gates,
+and task-specific writing review. `acquisition_queue.json` is the separate,
+writing-gap-driven literature search queue: each content-level intake gap must have
+exactly one route, only one route is active, and each source packet remains bounded to
+3--5 papers.
 `consumer_routes.json` maps packet claim IDs to exact artifacts in the repository that
 owns them. A `candidate`, `reconciliation_required`, or `reconciled_candidate` route is
 a pointer, not a write authorization or evidence upgrade. The last state means only

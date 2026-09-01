@@ -21,6 +21,8 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self.routes = self.literature / "consumer_routes.json"
         self.intakes = self.literature / "writing_intakes.json"
         self.runtime = self.literature / "runtime_scan.json"
+        self.acquisition = self.literature / "acquisition_queue.json"
+        self.human_gates = self.root / "registry" / "human_gates.json"
         self.repo_config = self.root / "config" / "repository_sync.json"
         self.consumer = self.root.parent / "chapter" / "consumer.md"
         self.consumer.parent.mkdir(parents=True)
@@ -39,6 +41,8 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self._write_routes()
         self._write_intakes()
         self._write_runtime()
+        self._write_acquisition()
+        self._write_human_gates()
         self._write_repo_config()
 
     def tearDown(self) -> None:
@@ -209,6 +213,7 @@ class LiteratureControlAuditTests(unittest.TestCase):
                 "decisions": [
                     {
                         "decision_id": "D-1",
+                        "decision_scope": "content_ref_missing_gap",
                         "outcome": "partial_split_required",
                         "marker_retained": True,
                         "source_claims": [{"packet_id": "sample-packet", "claim_id": "C-1"}],
@@ -259,6 +264,50 @@ class LiteratureControlAuditTests(unittest.TestCase):
             },
         )
 
+    def _write_acquisition(self) -> None:
+        self._write_json(
+            self.acquisition,
+            {
+                "schema_version": "1.0",
+                "policy": {
+                    "active_work_item_limit": 1,
+                    "minimum_sources_per_packet": 3,
+                    "maximum_sources_per_packet": 5,
+                    "metadata_is_not_evidence": True,
+                    "full_text_required_for_verified_entailment": True,
+                    "zotero_write_gate": "explicit_user_authorization",
+                    "writing_merge_gate": "task_specific_contract_review",
+                    "candidate_discovery_does_not_remove_ref_missing": True,
+                },
+                "active_work_item_id": "AQ-D1",
+                "work_items": [
+                    {
+                        "work_item_id": "AQ-D1",
+                        "priority": "P0",
+                        "status": "ready_for_search",
+                        "target_intake_id": "sample-writing-intake",
+                        "target_decision_ids": ["D-1"],
+                        "target_sections": ["opening background"],
+                        "research_question": "What primary evidence is needed for D-1?",
+                        "search_queries": ["sample primary research"],
+                        "source_target_count": 3,
+                        "source_requirements": ["primary sources"],
+                        "exclusions": ["metadata-only records"],
+                        "candidate_sources": [],
+                        "next_action": "Search and screen three primary sources.",
+                        "stop_conditions": ["three sources survive full-text screening"],
+                    }
+                ],
+            },
+        )
+
+    def _write_human_gates(self) -> None:
+        self.human_gates.parent.mkdir(parents=True)
+        self._write_json(
+            self.human_gates,
+            {"schema_version": "1.0", "gates": []},
+        )
+
     def audit(self, *, as_of: date = date(2026, 9, 1)) -> dict[str, object]:
         return audit_literature_control(
             self.root,
@@ -268,6 +317,8 @@ class LiteratureControlAuditTests(unittest.TestCase):
             self.repo_config,
             self.intakes,
             self.runtime,
+            self.acquisition,
+            self.human_gates,
             as_of=as_of,
         )
 
@@ -279,6 +330,8 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self.assertEqual((result["routes_total"], len(result["route_actions"])), (1, 1))
         self.assertEqual(result["writing_intakes_total"], 1)
         self.assertEqual(result["runtime_scan"]["seadrive_linked_files_resolved"], 1)
+        self.assertEqual(result["acquisition_queue"]["active_work_item_id"], "AQ-D1")
+        self.assertEqual(result["acquisition_queue"]["work_items_total"], 1)
 
     def test_missing_packet_file_is_reported(self) -> None:
         (self.packet / "evidence_cards.md").unlink()
@@ -389,6 +442,37 @@ class LiteratureControlAuditTests(unittest.TestCase):
         self._write_json(self.runtime, runtime)
         result = self.audit()
         self.assertIn("runtime_scan_date_drift", {item["code"] for item in result["issues"]})
+
+    def test_unrouted_content_gap_is_reported(self) -> None:
+        acquisition = json.loads(self.acquisition.read_text(encoding="utf-8"))
+        acquisition["work_items"] = []
+        acquisition["active_work_item_id"] = "AQ-MISSING"
+        self._write_json(self.acquisition, acquisition)
+        result = self.audit()
+        codes = {item["code"] for item in result["issues"]}
+        self.assertIn("unrouted_content_gap", codes)
+        self.assertIn("missing_active_acquisition_item", codes)
+
+    def test_unknown_acquisition_decision_is_reported(self) -> None:
+        acquisition = json.loads(self.acquisition.read_text(encoding="utf-8"))
+        acquisition["work_items"][0]["target_decision_ids"] = ["D-UNKNOWN"]
+        self._write_json(self.acquisition, acquisition)
+        result = self.audit()
+        codes = {item["code"] for item in result["issues"]}
+        self.assertIn("unknown_acquisition_decision", codes)
+        self.assertIn("unrouted_content_gap", codes)
+
+    def test_blocked_acquisition_item_requires_registered_gate(self) -> None:
+        acquisition = json.loads(self.acquisition.read_text(encoding="utf-8"))
+        item = acquisition["work_items"][0]
+        item["status"] = "blocked_on_gate"
+        item["blocking_gate_id"] = "missing-gate"
+        acquisition["active_work_item_id"] = "AQ-D1"
+        self._write_json(self.acquisition, acquisition)
+        result = self.audit()
+        codes = {item["code"] for item in result["issues"]}
+        self.assertIn("missing_acquisition_gate", codes)
+        self.assertIn("inactive_acquisition_pointer", codes)
 
 
 if __name__ == "__main__":
