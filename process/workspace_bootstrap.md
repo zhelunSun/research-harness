@@ -84,3 +84,26 @@ validate in the owning repository, commit and push there, verify `ahead=0`, and
 then update the downstream SHA registry here. Keep the old
 `D:/Projects/phd-research` workspace read-only as a recovery fallback until a
 later, explicit retirement decision.
+
+## Unified command routing
+
+The four directory names deliberately match their canonical GitHub repository
+names. A local directory rename would not rename a GitHub repository, but it
+would invalidate the relative paths in the sync registry, editor workspace,
+documentation, and automation prompts. Keep the physical names stable and use
+the friendly labels already defined in `phd-thesis.code-workspace`.
+
+The user may start a Codex task from `D:/Projects/phd-thesis` or its saved
+parent project and name only the research role. Resolve it as follows:
+
+| User shorthand | Owning checkout |
+| --- | --- |
+| Idea / thesis / opening report | `research-harness` |
+| Ch1 / URSA / workflow | `URSA` |
+| Ch2 / knowledge | `chapter2-urban-forest-knowledge` |
+| Ch3 / evaluation / Beijing assets | `urbfo-agent-demo` |
+
+Before editing, enter the owning checkout and run its sync gate. Keep code,
+experiments, and raw evidence in that repository; update the control-plane
+checkpoint only after the downstream commit is validated and pushed. A task
+must not require the user to switch the app manually between the four folders.
