@@ -1,6 +1,6 @@
 # 开题证据矩阵
 
-> 版本：v0.7，2026-08-31
+> 版本：v0.8，2026-09-01
 > 对齐 Idea：`idea-v2026.08.02`
 > 用途：回答“已经完成了什么、能支持什么、不能支持什么、开题 50% 还缺什么”。
 > 边界：本文件只维护跨仓库证据指针和状态，不复制或改写下游原始实验。
@@ -76,7 +76,7 @@
 | 北京 2025 Route B v1 方法与制图基线 | VERIFIED-ASSET | 多源弱标签、时序稳定性、空间纯度、分层抽样、RF 和制图流程已闭合并冻结 | 八类制图整体可靠；Agent 可靠性 | `urbfo-agent-demo/docs/reports/summary_routeb_v1_freeze_20260705.md` |
 | 7,351 行训练表与方法冻结 | VERIFIED-ASSET | 当前场景已存在可复现任务、真实数据限制和专业制品 | 新第三项研究的任务/评分有效性 | `urbfo-agent-demo/experiments/results/routeb_v1_method_freeze_20260705.json` |
 | 470 点历史回归诊断 | DIAGNOSTIC | Level 1 与八类结果的已知能力和错误类型 | 最终一次性未查看确认集；可靠性验证 gold | `urbfo-agent-demo/experiments/results/routeb_seasonal17_reused_v0_validation_20260705.json` |
-| 北京项目过程资产 | VERIFIED-ASSET / 待结构化 | 当前可定位 107 条 GEE 运行记录、64 条结果 manifest 和 2,538 行弱标签决策日志，可作为任务、故障、恢复和经验 episode 候选来源 | 已经构成标准 Agent trace、可回放 episode 或可训练 RL trajectory 数据集 | `urbfo-agent-demo/metadata/runs/gee_routeb_runs.jsonl`; `experiments/results/manifest.csv`; `docs/method_notes/weak_label_decision_log_2026-06-15.md` |
+| 北京项目过程资产 | VERIFIED-ASSET / 待结构化 | 当前可定位 107 条 GEE 运行记录、63 条结果 manifest 记录和持续更新的弱标签决策日志，可作为任务、故障、恢复和经验 episode 候选来源 | 已经构成标准 Agent trace、可回放 episode 或可训练 RL trajectory 数据集 | `urbfo-agent-demo/metadata/runs/gee_routeb_runs.jsonl`; `experiments/results/manifest.csv`; `docs/method_notes/weak_label_decision_log_2026-06-15.md` |
 | 第三项研究主线 | FROZEN-DESIGN | 城市森林遥感任务中的多阶段依赖、任务链组织与完整系统评测的核心边界及最低可执行路径已接受 | 可执行任务链、评价有效性和跨方法结果 | `research-harness/decisions/DEC-2026-0831-opening-consensus-and-working-titles.md` |
 | 制图资产到评测对象的映射 | FROZEN-DESIGN | 已将任务环境、弱样本方法、样本、制品、故障和过程历史分离；明确“trajectory candidate”边界 | 可执行任务集和已清洗 episode dataset | `urbfo-agent-demo/docs/plans/ch3_asset_to_eval_and_hitl_plan_20260731.md` |
 | 用户／专家校准候选增量 | FROZEN-DESIGN | 目标用户、领域专家和评测审计角色已经区分，可用于检查任务和评价构念 | 用户效用提升、正式样本设计、伦理／数据边界或人体参与结论 | `urbfo-agent-demo/docs/plans/ch3_asset_to_eval_and_hitl_plan_20260731.md` |

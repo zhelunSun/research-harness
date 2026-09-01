@@ -18,6 +18,8 @@
 `opening_report_draft_zh.md` 第 0 节是三项研究唯一的章级源定义，正文由该节向研究不足、科学
 问题、目标、内容、技术路线、创新与计划传播。章节仓继续维护事实、证据和实验，不另建三份
 重复的 thesis-wide 研究设计卡。
+当前 `opening_report_draft_zh.md` v0.5 已完成 O1 连续正文 writer pass 和 V0 确定性审计，写作合同、变更账和待闭合的 V1/V2 门见
+[`writing_contracts/opening_report_o1_v0.5.brief.md`](writing_contracts/opening_report_o1_v0.5.brief.md)；完成 fresh-context V1 审阅前不标记为 thesis-ready。
 
 ## 当前结构与章节材料包
 

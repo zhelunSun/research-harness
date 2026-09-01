@@ -116,7 +116,7 @@
 
 ### 方法与步骤
 
-`真实城市森林资产 → 2–3 条复合任务链 → 版本化 Environment → 可观察 TrialTrace → Outcome → 分层 Evaluation`
+`真实城市森林资产 → 少量复合任务链及冻结案例 → 版本化 Environment → 可观察 TrialTrace → Outcome → 分层 Evaluation`
 
 首轮候选采用 Route B 只读离线治理链，检查样本来源、方法版本、分支依赖、中间制品和禁止结论；
 该路线是**推荐但待研究者确认**的 Evaluation MVP。遥感空间网络分析（RSS）故障状态与边界化

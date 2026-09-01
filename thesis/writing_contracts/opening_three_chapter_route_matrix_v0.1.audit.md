@@ -43,8 +43,6 @@ No deterministic issues found.
     "1",
     "1",
     "4",
-    "2",
-    "3",
     "301",
     "301",
     "5",
@@ -56,8 +54,7 @@ No deterministic issues found.
     "150 条",
     "60 条",
     "10 条",
-    "20 条",
-    "3 条"
+    "20 条"
   ],
   "citations": [],
   "reference_tokens": [

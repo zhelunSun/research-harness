@@ -45,9 +45,9 @@
 | 工作性论断 | `claims/key_claims.md` | 对齐 `idea-v2026.08.02` |
 | 中文工作提纲 | `thesis/outline_zh.md` | `v0.4` |
 | 选题报告简版提纲 | `thesis/opening_report_outline_zh.md` | `v0.4` |
-| 选题报告后台工作稿 | `thesis/opening_report_draft_zh.md` | `v0.4` |
+| 选题报告后台工作稿 | `thesis/opening_report_draft_zh.md` | `v0.5` |
 | 开题三章技术路线对照矩阵 | `thesis/opening_three_chapter_route_matrix_zh.md` | `v0.1` |
-| 开题证据矩阵 | `evidence/opening_evidence_matrix.md` | `v0.7` |
+| 开题证据矩阵 | `evidence/opening_evidence_matrix.md` | `v0.8` |
 | 当前执行计划 | `process/current_execution_plan_20260802.md` | `v2026.09.01` |
 
 局部版本表示文档自身的修订次数，不与论文 Idea 版本竞争。仓库根目录 `SKILL.md`

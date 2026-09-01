@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0",
   "document": {
-    "id": "opening-three-chapter-route-matrix-v0.1",
-    "title": "开题三章技术路线对照矩阵",
-    "mode": "draft",
+    "id": "opening-report-o1-v0.5",
+    "title": "博士学位论文选题报告 O1 连续正文首轮",
+    "mode": "argument-edit",
     "authority": [
       "IDEA_VERSION.md",
       "THESIS_STATE.md",
       "decisions/DEC-2026-0831-opening-consensus-and-working-titles.md",
       "decisions/DEC-2026-0831-opening-objectives-content-and-route-alignment.md",
-      "thesis/opening_report_draft_zh.md",
+      "claims/key_claims.md",
       "evidence/opening_evidence_matrix.md",
-      "URSA/docs/thesis/ch1_evidence_system/claim_registry.md",
-      "chapter2-urban-forest-knowledge/sync/upstream_proposals/20260829_ch2_c0_idea_and_opening_handoff.md",
+      "thesis/opening_report_draft_zh.md section 0",
+      "thesis/opening_three_chapter_route_matrix_zh.md",
       "urbfo-agent-demo/docs/reports/ch3_asset_eval_claim_audit_20260831.md"
     ]
   },
@@ -53,72 +53,72 @@
       "label": "Idea 版本"
     },
     {
-      "value": "可调整的分层规划",
-      "aliases": [],
-      "required": true,
-      "label": "第一章方法对象"
-    },
-    {
-      "value": "任务条件化科学知识表示",
-      "aliases": [],
-      "required": true,
-      "label": "第二章方法对象"
-    },
-    {
       "value": "Route B 只读离线治理链",
       "aliases": [],
       "required": true,
-      "label": "第三章推荐候选路径"
+      "label": "Ch3 首轮候选"
     },
     {
       "value": "推荐但待研究者确认",
       "aliases": [],
       "required": true,
-      "label": "第三章路径状态"
+      "label": "Ch3 路线状态"
     },
     {
-      "value": "manual 301",
+      "value": "manual 301 误当独立验证",
       "aliases": [],
       "required": true,
-      "label": "人工校准样本角色"
+      "label": "manual 301 禁止边界"
     },
     {
       "value": "scientific gold",
       "aliases": [],
       "required": true,
-      "label": "第二章禁止晋级边界"
+      "label": "Ch2 人工证据门"
     },
     {
-      "value": "121/121",
+      "value": "quick corridor baseline",
       "aliases": [],
       "required": true,
-      "label": "第一章回归检查"
+      "label": "RSS 备选边界"
     },
     {
-      "value": "15/15",
-      "aliases": [],
+      "value": "2–3",
+      "aliases": ["2--3", "2—3"],
       "required": true,
-      "label": "第一章集成闭合"
+      "label": "Ch3 首轮冻结案例数"
     }
   ],
   "protected_numbers": [
     {
+      "value": "2228",
+      "aliases": ["2,228"],
+      "required": true,
+      "label": "Ch2 冻结任务池"
+    },
+    {
       "value": "150",
       "aliases": [],
       "required": true,
-      "label": "第二章 G3 队列"
+      "label": "Ch2 高召回排序"
     },
     {
       "value": "60",
       "aliases": [],
       "required": true,
-      "label": "第二章 G4 队列"
+      "label": "Ch2 G4 队列"
     },
     {
-      "value": "10",
+      "value": "107",
       "aliases": [],
       "required": true,
-      "label": "第二章首批人工浅审"
+      "label": "Ch3 GEE 运行记录"
+    },
+    {
+      "value": "63",
+      "aliases": [],
+      "required": true,
+      "label": "Ch3 manifest 数据记录"
     }
   ],
   "comparison": {
@@ -127,7 +127,7 @@
     "preserve_all_citations": true,
     "preserve_all_reference_tokens": true,
     "preserve_cross_reference_sequence": true,
-    "preserve_markers": ["[待验证]"]
+    "preserve_markers": ["[REF-MISSING]", "[待确认]"]
   },
   "citations": {
     "require_known_keys": false,
@@ -136,45 +136,45 @@
   },
   "claims": [
     {
-      "id": "ROUTE-C1",
-      "marker": "[CLAIM:ROUTE-C1]",
+      "id": "O1-C1",
+      "marker": "[CLAIM:O1-C1]",
       "marker_required": false,
       "required_citations": [],
-      "required_literals": ["工程与小规模真实模型集成闭环"],
-      "forbidden_patterns": ["已经证明规划优越", "已经证明跨任务泛化"]
+      "required_literals": ["正式机制效果仍待匹配实验"],
+      "forbidden_patterns": ["已经证明规划优越", "已经证明检查点独立增益"]
     },
     {
-      "id": "ROUTE-C2",
-      "marker": "[CLAIM:ROUTE-C2]",
+      "id": "O1-C2",
+      "marker": "[CLAIM:O1-C2]",
       "marker_required": false,
       "required_citations": [],
       "required_literals": ["不支持方法优越性"],
-      "forbidden_patterns": ["已经形成科学约束库", "已经冻结 scientific gold"]
+      "forbidden_patterns": ["scientific gold 已冻结", "跨遥感任务泛化已验证"]
     },
     {
-      "id": "ROUTE-C3",
-      "marker": "[CLAIM:ROUTE-C3]",
+      "id": "O1-C3",
+      "marker": "[CLAIM:O1-C3]",
       "marker_required": false,
       "required_citations": [],
-      "required_literals": ["不支持智能体系统已经得到验证"],
+      "required_literals": ["当前尚未形成可执行 Agent benchmark"],
       "forbidden_patterns": ["manual 301 是独立验证", "quick corridor baseline 等于完整 RSS"]
     }
   ],
   "method_states": [
     {
       "id": "CH1-STATE",
-      "required_literals": ["正式机制效果仍为 open"],
+      "required_literals": ["正式机制效果仍待匹配实验"],
       "forbidden_patterns": ["正式机制效果已验证"]
     },
     {
       "id": "CH2-STATE",
-      "required_literals": ["reviewer-ready; pending human shallow review"],
+      "required_literals": ["待人工浅审队列"],
       "forbidden_patterns": ["scientific gold 已冻结"]
     },
     {
       "id": "CH3-STATE",
-      "required_literals": ["只读离线"],
-      "forbidden_patterns": ["resistance-supported RSS result"]
+      "required_literals": ["推荐但待研究者确认"],
+      "forbidden_patterns": ["智能体系统已经得到验证"]
     }
   ],
   "cross_references": {
@@ -183,7 +183,7 @@
   },
   "style": {
     "max_sentence_chars": 180,
-    "max_paragraph_chars": 500,
+    "max_paragraph_chars": 700,
     "forbidden_patterns": ["全面提升", "填补了空白", "赋能", "国际领先"]
   }
 }
