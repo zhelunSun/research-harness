@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T18:57:03+08:00",
+  "updated_at": "2026-09-01T19:14:31+08:00",
   "policy": {
     "active_work_item_limit": 1,
     "minimum_sources_per_packet": 3,
@@ -11,7 +11,7 @@
     "writing_merge_gate": "task_specific_contract_review",
     "candidate_discovery_does_not_remove_ref_missing": true
   },
-  "active_work_item_id": "AQ-OI-D5-KNOWLEDGE",
+  "active_work_item_id": "AQ-OI-D3-SCIENTIFIC-AGENTS",
   "work_items": [
     {
       "work_item_id": "AQ-OI-D6-EVALUATION",
@@ -103,7 +103,7 @@
     {
       "work_item_id": "AQ-OI-D5-KNOWLEDGE",
       "priority": "P1",
-      "status": "ready_for_search",
+      "status": "packet_ready",
       "target_intake_id": "opening-report-v05-literature-intake-20260901",
       "target_decision_ids": ["OI-D5"],
       "target_sections": ["2.3 科学知识表示、检索与推理研究"],
@@ -124,10 +124,63 @@
         "仅以知识图谱名称推断存在推理治理",
         "无全文方法定位的 metadata 候选"
       ],
-      "candidate_sources": [],
-      "downstream_packet_id": null,
+      "candidate_sources": [
+        {
+          "candidate_id": "KEG-001",
+          "packet_source_id": "S-KEG-001",
+          "title": "Towards Provenance-Aware Earth Observation Workflows: the openEO Case Study",
+          "stable_identity": "doi:10.1109/eScience65000.2025.00016",
+          "official_url": "https://doi.org/10.1109/eScience65000.2025.00016",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "EO workflow provenance for inputs, outputs, parameters, data sources, timing, agents, and local or remote execution",
+          "boundary": "one openEO flood-mapping implementation; no claim conflict, applicability, or epistemic-status model"
+        },
+        {
+          "candidate_id": "KEG-002",
+          "packet_source_id": "S-KEG-002",
+          "title": "Micropublications: a Semantic Model for Claims, Evidence, Arguments and Annotations in Biomedical Communications",
+          "stable_identity": "doi:10.1186/2041-1480-5-28",
+          "official_url": "https://doi.org/10.1186/2041-1480-5-28",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "attribution, data, methods, qualifiers, support graphs, challenge graphs, and preserved disagreement",
+          "boundary": "biomedical semantic model and worked cases; no autonomous-agent or retrieval evaluation"
+        },
+        {
+          "candidate_id": "KEG-003",
+          "packet_source_id": "S-KEG-003",
+          "title": "Extracting Fine-Grained Knowledge Graphs of Scientific Claims: Dataset and Transformer-Based Results",
+          "stable_identity": "doi:10.18653/v1/2021.emnlp-main.381",
+          "official_url": "https://doi.org/10.18653/v1/2021.emnlp-main.381",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "fine-grained association, evidence mention, epistemic-status, and applicability or scope qualifier extraction",
+          "boundary": "textual extraction schema; evidence labels do not establish scientific validity or resolve contradiction"
+        },
+        {
+          "candidate_id": "KEG-004",
+          "packet_source_id": "S-KEG-004",
+          "title": "Actionable Understanding: Action Units for Bridging the Knowledge-Action Gap in Post-FAIR Knowledge Infrastructures",
+          "stable_identity": "arxiv:2605.01564",
+          "official_url": "https://arxiv.org/abs/2605.01564",
+          "zotero_match_count": 0,
+          "read_state": "full_text",
+          "entailment_status": "verified",
+          "screening_decision": "retain_for_packet",
+          "coverage": "typed applicability conditions, context, objectives, procedures, empirical validation state, and auditability for human or machine action",
+          "boundary": "conceptual framework preprint; implementation and empirical evaluation are explicitly deferred"
+        }
+      ],
+      "downstream_packet_id": "knowledge-evidence-governance-2026",
       "blocking_gate_id": null,
-      "next_action": "在完成 P0 评测包后开展有界 primary-source 检索，并优先复用 Chapter 2 已有 benchmark landscape 的直接来源。",
+      "next_action": "证据包已形成并通过审计；等待单独的 Zotero 导入授权与开题 writing-contract 审阅，不再扩搜。",
       "stop_conditions": [
         "达到 5 篇去重候选即停止扩搜",
         "若来源只支持 provenance 个案，不得写成通用知识表示缺口",

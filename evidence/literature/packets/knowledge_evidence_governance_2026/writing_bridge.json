@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "knowledge-evidence-governance-2026",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "clark_micropublications_2014",
+      "magnusson_extracting_2021",
+      "omidi_provenance-aware_2025",
+      "vogt_actionable_2026"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "KEG-C1",
+      "marker": "[CLAIM:KEG-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "omidi_provenance-aware_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "KEG-C2",
+      "marker": "[CLAIM:KEG-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "clark_micropublications_2014"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "KEG-C3",
+      "marker": "[CLAIM:KEG-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "magnusson_extracting_2021"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "KEG-C4",
+      "marker": "[CLAIM:KEG-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "vogt_actionable_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "KEG-C5",
+      "marker": "[CLAIM:KEG-C5]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:KEG-C5]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[REF-MISSING:KEG-C5]"
+    ]
+  }
+}

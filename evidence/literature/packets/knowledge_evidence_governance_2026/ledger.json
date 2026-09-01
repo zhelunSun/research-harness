@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "knowledge-evidence-governance-2026",
+  "research_question": "哪些科学或遥感知识系统把来源、适用条件、证据状态、冲突、验证义务和结论边界显式带入检索或推理，而不是仅提供普通 RAG？",
+  "sources": [
+    {
+      "source_id": "S-KEG-001",
+      "title": "Towards Provenance-Aware Earth Observation Workflows: the openEO Case Study",
+      "bibtex_key": "omidi_provenance-aware_2025",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.1109/eScience65000.2025.00016",
+      "identifiers": {"doi": "10.1109/eScience65000.2025.00016"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-KEG-002",
+      "title": "Micropublications: a Semantic Model for Claims, Evidence, Arguments and Annotations in Biomedical Communications",
+      "bibtex_key": "clark_micropublications_2014",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.1186/2041-1480-5-28",
+      "identifiers": {"doi": "10.1186/2041-1480-5-28"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-KEG-003",
+      "title": "Extracting Fine-Grained Knowledge Graphs of Scientific Claims: Dataset and Transformer-Based Results",
+      "bibtex_key": "magnusson_extracting_2021",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.18653/v1/2021.emnlp-main.381",
+      "identifiers": {"doi": "10.18653/v1/2021.emnlp-main.381"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-KEG-004",
+      "title": "Actionable Understanding: Action Units for Bridging the Knowledge-Action Gap in Post-FAIR Knowledge Infrastructures",
+      "bibtex_key": "vogt_actionable_2026",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2605.01564",
+      "identifiers": {"arxiv": "2605.01564"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "KEG-C1",
+      "text": "openEO 个案把遥感处理节点、输入输出、数据源、参数、执行时间与执行主体记录为工作流来历图，并在 Sentinel-1 洪水制图的本地和远程执行上展示该集成。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "KEG-C2",
+      "text": "Micropublications 将主张、归属、数据、方法、限定词以及支持与挑战关系组织成可计算论证图，使引用来源与经验性证据不再等同，也允许保留争议。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "KEG-C3",
+      "text": "SciClaim 的细粒度主张图谱把 association、evidence、epistemic status 与 qualifier 分开标注，其中 qualifier 明确约束断言的适用性或范围。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "KEG-C4",
+      "text": "Action Units 概念框架区分结构上可执行的 actionability 与特定情境中有效的 applicability，并把情境、目标、程序、适用条件、经验验证状态与审计义务列为显式组件；该论文未实现或实证评测该框架。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "KEG-C5",
+      "text": "这四项来源共同提供了来源来历、适用条件、证据／认知状态、冲突、验证记录和结论边界的互补表示原语；但尚不能证明把这些原语组合进城市森林遥感 Agent 会改善计划或科学正确性，第二章仍须单独验证表示可用性、行动变化与科学适当性。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:KEG-C5]"
+    }
+  ],
+  "links": [
+    {
+      "claim_id": "KEG-C1",
+      "source_id": "S-KEG-001",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "capturing not only what ... but also how, where, when, by whom, and why",
+      "source_location": "Introduction, PDF p. 1; Sections IV-VI, PDF pp. 5-8",
+      "note": "The paper validates workflow-level capture in one openEO flood-mapping case; it does not model claim conflict, applicability, or evidence status."
+    },
+    {
+      "claim_id": "KEG-C2",
+      "source_id": "S-KEG-002",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "A Representation supports or challenges other Representations.",
+      "source_location": "Model definition and Figure 5, PDF pp. 13-15; challenge example, pp. 23-25; Conclusions, pp. 29-30",
+      "note": "This is a biomedical semantic model and worked case analysis, not an evaluation of autonomous scientific-agent reasoning."
+    },
+    {
+      "claim_id": "KEG-C3",
+      "source_id": "S-KEG-003",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "Qualifiers constrain the applicability or scope of an assertion",
+      "source_location": "Section 3.3, PDF p. 3; Figures 1-3, pp. 1-3; results and conclusion, pp. 5-6",
+      "note": "SciClaim represents textual claim qualifiers and reported belief/evidence mentions; it does not verify that the extracted claim is scientifically true."
+    },
+    {
+      "claim_id": "KEG-C4",
+      "source_id": "S-KEG-004",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "actionability alone is insufficient without epistemic grounding",
+      "source_location": "Scope note, manuscript p. 4; Sections 4.2-4.3, p. 14; Section 5.2, pp. 28-32; Conclusion, pp. 54-55",
+      "note": "The paper explicitly identifies itself as a conceptual framework contribution and defers implementation and empirical evaluation."
+    },
+    {
+      "claim_id": "KEG-C5",
+      "source_id": "S-KEG-001",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Provides EO workflow lineage only; transfer from reproducibility metadata to evidence-constrained planning is untested."
+    },
+    {
+      "claim_id": "KEG-C5",
+      "source_id": "S-KEG-002",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Provides argument, evidence, attribution, qualifier, and challenge primitives; operational agent use remains unassessed."
+    },
+    {
+      "claim_id": "KEG-C5",
+      "source_id": "S-KEG-003",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Provides a claim-extraction schema, not an integrated scientific knowledge-governance system."
+    },
+    {
+      "claim_id": "KEG-C5",
+      "source_id": "S-KEG-004",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Directly motivates applicability and auditability for human and machine agents, but remains conceptual and unimplemented."
+    }
+  ]
+}

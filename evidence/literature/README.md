@@ -126,3 +126,11 @@ The completed `AQ-OI-D6-EVALUATION` acquisition is preserved as
 process progress, mutable-state trajectory grading, repeated-run reliability, and
 actual-user satisfaction. The cross-domain transfer claim remains `needs_review`;
 the packet creates neither a Chapter 3 method decision nor a Zotero write approval.
+
+The completed `AQ-OI-D5-KNOWLEDGE` acquisition is preserved as
+`packets/knowledge_evidence_governance_2026/`. Its four-source ledger separates EO
+workflow provenance, claim-evidence challenge graphs, epistemic/scope qualifiers,
+and context-sensitive applicability plus validation state. `KEG-C5` remains
+`needs_review`: the packet does not prove that combining these representation
+primitives improves a remote-sensing Agent, and it creates neither a Chapter 2
+method decision nor a Zotero write approval.

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T18:57:03+08:00",
+  "updated_at": "2026-09-01T19:14:31+08:00",
   "policy": {
     "source_of_truth": "registry/human_gates.json",
     "decision_owner": "researcher",
@@ -60,6 +60,22 @@
       "blocks": ["four_agent_evaluation_parent_item_imports", "stable_zotero_and_bibtex_identity_reconciliation"],
       "required_evidence": [
         "explicit authorization to import the four screened Agent-evaluation records",
+        "confirmed destination collection"
+      ],
+      "next_action": "Import only after explicit authorization, then reconcile item keys, citation keys, tags, and SeaDrive PDFs."
+    },
+    {
+      "gate_id": "lit-knowledge-governance-zotero-import",
+      "category": "zotero_write",
+      "status": "pending_authorization",
+      "decision_owner": "researcher",
+      "repository_id": "idea-control-plane",
+      "artifact_path": "evidence/literature/packets/knowledge_evidence_governance_2026/intake_decision.md",
+      "source_action_id": "lit-knowledge-governance-zotero-import",
+      "gate": "explicit_user_authorization",
+      "blocks": ["four_knowledge_governance_parent_item_imports", "stable_zotero_and_bibtex_identity_reconciliation"],
+      "required_evidence": [
+        "explicit authorization to import the four screened knowledge-governance records",
         "confirmed destination collection"
       ],
       "next_action": "Import only after explicit authorization, then reconcile item keys, citation keys, tags, and SeaDrive PDFs."
