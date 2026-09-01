@@ -8,14 +8,16 @@ This repository has three deliberately separated surfaces:
 3. the research incubation surface (`studies/`), whose findings remain
    non-canonical until accepted through an explicit proposal.
 
-For thesis-facing work, read in this order:
+For a fresh thesis-facing session, follow the same canonical order as the root
+entry and `REPO_MAP.md`:
 
-1. `IDEA_VERSION.md`;
+1. `REPO_MAP.md`;
 2. `THESIS_STATE.md`;
 3. `process/current_execution_plan_20260802.md`;
-4. `ideas/chapter_ideas.md`;
-5. `claims/key_claims.md`;
-6. `evidence/opening_evidence_matrix.md`.
+4. `IDEA_VERSION.md` when release or acceptance status matters;
+5. `ideas/chapter_ideas.md` when chapter relationships matter;
+6. `claims/key_claims.md` and `evidence/opening_evidence_matrix.md` only when
+   claim or evidence status matters.
 
 `THESIS_STATE.md` and `process/current_execution_plan_20260802.md` are the only
 thesis-wide surfaces that should be maintained continuously. The former is the
@@ -82,6 +84,9 @@ coordinates work but never changes a scientific claim or evidence status.
 
 ## Downstream map
 
+- `REPO_MAP.md` is the single human-readable authority for cross-repository
+  paths, ownership, and active entry points. Keep the summary below aligned but
+  do not expand it into a second registry.
 - Required core workspace uses the portable `sibling-v1` layout documented in
   `process/workspace_bootstrap.md`: this control plane, `URSA`,
   `chapter2-urban-forest-knowledge`, and `urbfo-agent-demo` are sibling

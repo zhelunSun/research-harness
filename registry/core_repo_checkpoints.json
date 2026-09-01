@@ -12,16 +12,16 @@
     {
       "id": "chapter-2-knowledge",
       "branch": "l2-task-distillation",
-      "remote_sha": "9dc0e01dc6d200c66ec2bb7934398577b2388b0d",
+      "remote_sha": "4f8e8fff29b5a33f570ffe6ba0035e9cde112f8b",
       "verified_at": "2026-09-01",
-      "purpose": "Chapter 2 G4 reviewer-ready shallow-review batches after 41-check validation"
+      "purpose": "Chapter 2 G4 reviewer-ready state with tightened fresh-agent navigation and immutable legacy snapshots"
     },
     {
       "id": "chapter-3-evaluation",
       "branch": "backup/ch3-routeb-20260831",
-      "remote_sha": "d560bb0eb7140701409dc4a35187ab2c9581ce69",
+      "remote_sha": "ee939505a40ce8def0aafbd0939de1838db5eedb",
       "verified_at": "2026-09-01",
-      "purpose": "Chapter 3 static asset-task-grader-claim audit checkpoint"
+      "purpose": "Chapter 3 static asset audit with evaluation-aligned active navigation"
     }
   ]
 }

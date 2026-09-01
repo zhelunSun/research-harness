@@ -3,14 +3,20 @@
   "max_local_only_days": 3,
   "workspace": {
     "layout": "sibling-v1",
-    "description": "research-harness and required chapter repositories are siblings"
+    "description": "research-harness and required chapter repositories are siblings",
+    "navigation": {
+      "control_plane_dir": "research-harness",
+      "root_entry_files": ["README.md", "AGENTS.md", "phd-thesis.code-workspace"],
+      "deprecated_markers": ["thesis-harness", "phd-research"],
+      "recovery_marker": ".recovery-only.json"
+    }
   },
   "repositories": [
     {
       "id": "idea-control-plane",
       "name": "idea-control-plane",
       "aliases": ["idea", "thesis", "opening", "开题", "总控"],
-      "entry_docs": ["AGENTS.md", "THESIS_STATE.md", "process/current_execution_plan_20260802.md"],
+      "entry_docs": ["REPO_MAP.md", "AGENTS.md", "THESIS_STATE.md", "process/current_execution_plan_20260802.md"],
       "kind": "control_plane",
       "required": true,
       "path": ".",
@@ -43,7 +49,7 @@
       "id": "chapter-3-evaluation",
       "name": "chapter-3-evaluation",
       "aliases": ["ch3", "chapter 3", "evaluation", "asset audit", "第三章", "资产评审"],
-      "entry_docs": ["AGENTS.md", "docs/plans/ch3_asset_eval_claim_audit_handoff_20260831.md"],
+      "entry_docs": ["AGENTS.md", "PLAN.md", "docs/plans/ch3_asset_eval_claim_audit_handoff_20260831.md"],
       "kind": "chapter",
       "required": true,
       "path": "../urbfo-agent-demo",

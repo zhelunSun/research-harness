@@ -17,7 +17,9 @@ control plane and three required chapter repositories. The layout is named
 
 `config/repository_sync.json` lists only the four required core repositories.
 It records each canonical GitHub `origin_repo`, expected working branch, and
-relative path. `registry/core_repo_checkpoints.json` records the immutable
+relative path. `REPO_MAP.md` is the human-readable authority for repository
+ownership and entry points; the registry is its machine-readable mirror.
+`registry/core_repo_checkpoints.json` records the immutable
 downstream chapter SHA last verified by the control plane. The control plane's
 own branch is checked directly against its upstream because recording its own
 commit SHA in the same commit would create a self-reference cycle. These files
@@ -32,16 +34,24 @@ Run the plan first from an existing, trusted `research-harness` checkout:
 python scripts/bootstrap_workspace.py --workspace-root D:/Projects/phd-thesis
 ```
 
-The default is dry-run only. Review every destination and remote/branch. The
-script creates no directories until `--apply` is supplied. It refuses any
-pre-existing destination; `--skip-existing` merely leaves that directory
-untouched after the operator has checked it. It never moves a legacy checkout,
-merges histories, rewrites branches, or pushes data.
+The default is dry-run only. Review every destination, remote/branch, and root
+navigation asset. The script creates no directories or files until `--apply`
+is supplied. It refuses any pre-existing destination; `--skip-existing`
+merely leaves that directory untouched after the operator has checked it. It
+preserves compatible hand-written root entries and blocks incompatible
+unmanaged ones. It never moves a legacy checkout, merges histories, rewrites
+branches, or pushes data. See `workspace_navigation_policy.md` for generated
+asset ownership and conflict handling.
 
 ```powershell
 python scripts/bootstrap_workspace.py --workspace-root D:/Projects/phd-thesis --apply
 python scripts/audit_repo_sync.py --all --fetch
+python scripts/audit_workspace_navigation.py
 ```
+
+For an already cloned workspace, review and then apply only missing navigation
+assets with `--skip-existing` as documented in
+`workspace_navigation_policy.md`.
 
 If a private GitHub repository requires authentication, configure Git access
 before `--apply`; do not embed credentials in the registry or command line.
@@ -78,9 +88,9 @@ being promoted deliberately into the required registry.
 
 ## Daily use
 
-Open `research-harness/phd-thesis.code-workspace` from the workspace root (or
-`phd-thesis.code-workspace` from inside `research-harness`) for a single
-four-repository editor view. At
+Open `D:/Projects/phd-thesis/phd-thesis.code-workspace` for the canonical
+four-repository editor view. The control-plane-local
+`research-harness/phd-thesis.code-workspace` remains a portable fallback. At
 the start of substantive work, run the core audit with `--fetch`. At the end,
 validate in the owning repository, commit and push there, verify `ahead=0`, and
 then update the downstream SHA registry here. Keep the old
