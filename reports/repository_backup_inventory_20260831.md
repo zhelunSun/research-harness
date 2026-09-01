@@ -1,5 +1,9 @@
 # Thesis repository backup inventory
 
+> Repository-location, Chapter 3 lineage, and active-branch status in this
+> snapshot are superseded by `repository_sync_audit_20260901.md`. Its
+> large-data and external-asset inventory remains relevant.
+
 > Date: 2026-08-31
 >
 > Scope: Git history, small tracked assets, LFS and external-data recovery
