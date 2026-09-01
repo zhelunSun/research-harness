@@ -12,16 +12,16 @@
     {
       "id": "chapter-2-knowledge",
       "branch": "l2-task-distillation",
-      "remote_sha": "807d5932d280d3500efe7fa5d786c8f2f90791fc",
+      "remote_sha": "9dc0e01dc6d200c66ec2bb7934398577b2388b0d",
       "verified_at": "2026-09-01",
-      "purpose": "Chapter 2 task-distillation checkpoint after JSONL line-ending validation repair"
+      "purpose": "Chapter 2 G4 reviewer-ready shallow-review batches after 41-check validation"
     },
     {
       "id": "chapter-3-evaluation",
       "branch": "backup/ch3-routeb-20260831",
-      "remote_sha": "4d841b7c10fe6a748610e98737db93db89f3990f",
+      "remote_sha": "d560bb0eb7140701409dc4a35187ab2c9581ce69",
       "verified_at": "2026-09-01",
-      "purpose": "Chapter 3 recovery checkpoint mirrored to the canonical Ch3 origin"
+      "purpose": "Chapter 3 static asset-task-grader-claim audit checkpoint"
     }
   ]
 }

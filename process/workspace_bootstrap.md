@@ -78,7 +78,9 @@ being promoted deliberately into the required registry.
 
 ## Daily use
 
-Open `phd-thesis.code-workspace` for a single four-repository editor view. At
+Open `research-harness/phd-thesis.code-workspace` from the workspace root (or
+`phd-thesis.code-workspace` from inside `research-harness`) for a single
+four-repository editor view. At
 the start of substantive work, run the core audit with `--fetch`. At the end,
 validate in the owning repository, commit and push there, verify `ahead=0`, and
 then update the downstream SHA registry here. Keep the old

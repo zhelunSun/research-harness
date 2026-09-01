@@ -39,12 +39,18 @@ The formal Chinese thesis outline is maintained separately in
 `thesis/outline_zh.md` once created. It must translate an accepted idea version;
 it must not silently redefine the idea.
 
-For cross-repository outline-freeze execution, also read
+For cross-repository coordination, parallel chapter work, session routing, or
+researcher-approval bandwidth, also read
 `process/outline_freeze_parallel_protocol_20260730.md`. For the non-blocking
 meta-harness study brief, read
 `ideas/scientific_research_harness_research_brief.md`. When working on that
 study, enter through `studies/scientific-harness/README.md`, then read only the
 target study file and its referenced rows in `sources.csv`.
+
+Before dispatching parallel writers, register their owning repository, file
+scope, dependency, and stop condition in `registry/active_work.json`. Do not
+dispatch overlapping locks. Close or expire the lock after review; the registry
+coordinates work but never changes a scientific claim or evidence status.
 
 ## Boundaries
 

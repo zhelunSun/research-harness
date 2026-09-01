@@ -9,6 +9,8 @@
     {
       "id": "idea-control-plane",
       "name": "idea-control-plane",
+      "aliases": ["idea", "thesis", "opening", "开题", "总控"],
+      "entry_docs": ["AGENTS.md", "THESIS_STATE.md", "process/current_execution_plan_20260802.md"],
       "kind": "control_plane",
       "required": true,
       "path": ".",
@@ -18,6 +20,8 @@
     {
       "id": "chapter-1-ursa",
       "name": "chapter-1-ursa",
+      "aliases": ["ch1", "chapter 1", "URSA", "workflow", "第一章"],
+      "entry_docs": ["AGENTS.md"],
       "kind": "chapter",
       "required": true,
       "path": "../URSA",
@@ -27,6 +31,8 @@
     {
       "id": "chapter-2-knowledge",
       "name": "chapter-2-knowledge",
+      "aliases": ["ch2", "chapter 2", "knowledge", "第二章"],
+      "entry_docs": ["AGENTS.md", "PLAN.md"],
       "kind": "chapter",
       "required": true,
       "path": "../chapter2-urban-forest-knowledge",
@@ -36,6 +42,8 @@
     {
       "id": "chapter-3-evaluation",
       "name": "chapter-3-evaluation",
+      "aliases": ["ch3", "chapter 3", "evaluation", "asset audit", "第三章", "资产评审"],
+      "entry_docs": ["AGENTS.md", "docs/plans/ch3_asset_eval_claim_audit_handoff_20260831.md"],
       "kind": "chapter",
       "required": true,
       "path": "../urbfo-agent-demo",

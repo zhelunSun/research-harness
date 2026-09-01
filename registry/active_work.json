@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-01T16:30:00+08:00",
+  "policy": {
+    "max_parallel_chapter_writers": 2,
+    "max_read_only_supervisor_tracks": 1,
+    "single_writer_per_file_scope": true,
+    "forbidden_parallel_scopes": ["thesis_claim", "scientific_gold", "method_version", "formal_title"]
+  },
+  "locks": [],
+  "last_closed": [
+    {
+      "task_id": "20260901-ch3-static-audit",
+      "owner": "ch3_static_audit",
+      "owning_repo": "chapter-3-evaluation",
+      "file_scope": ["docs/reports/ch3_asset_eval_claim_audit_20260831.md"],
+      "claim_or_method_scope": "none; static evidence mapping only",
+      "status": "completed",
+      "dependency": "current Ch3 P2 brief",
+      "stop_condition": "review-ready asset-task-grader-claim report",
+      "expires_on": "2026-09-02",
+      "closed_at": "2026-09-01T16:30:00+08:00",
+      "result": "urbfo-agent-demo@d560bb0"
+    },
+    {
+      "task_id": "20260901-ch2-g4-prep",
+      "owner": "ch2_g4_prep",
+      "owning_repo": "chapter-2-knowledge",
+      "file_scope": ["experiments/data/ch2-g3-high-recall-screening-v0.1/g4-shallow-review-batches-v0.1.md"],
+      "claim_or_method_scope": "none; no scientific judgment or evidence promotion",
+      "status": "completed",
+      "dependency": "G3 queue and current G4 gate",
+      "stop_condition": "mechanically validated low-bandwidth review packet",
+      "expires_on": "2026-09-02",
+      "closed_at": "2026-09-01T16:30:00+08:00",
+      "result": "chapter2-urban-forest-knowledge@9dc0e01"
+    }
+  ]
+}
