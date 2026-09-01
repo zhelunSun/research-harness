@@ -35,6 +35,7 @@ All four checkouts are siblings under `D:/Projects/phd-thesis`. Chapter reposito
 | What is the accepted thesis framing and chapter relationship? | `THESIS_STATE.md` |
 | What is the current milestone, next action, and human gate? | `process/current_execution_plan_20260802.md` |
 | Which files are currently locked for parallel work? | `registry/active_work.json` |
+| Which researcher decisions and external checks are currently open? | `registry/human_gates.json` |
 | Which branch, remote, entry docs, and checkpoint should automation verify? | `config/repository_sync.json` and `registry/core_repo_checkpoints.json` |
 | Which bibliography, linked PDF, evidence packet, literature gate, chapter route, and writing intake is authoritative? | Zotero Desktop, SeaDrive, `evidence/literature/packet_registry.json`, `evidence/literature/maintenance_queue.json`, `evidence/literature/consumer_routes.json`, and `evidence/literature/writing_intakes.json`, respectively |
 
@@ -49,7 +50,8 @@ disagrees with those machine surfaces is navigation drift, not a second tip.
 
 For routine maintenance, start with `python scripts/audit_thesis_workspace.py
 --fetch`. It combines repository, navigation, literature freshness, local
-Zotero/SeaDrive evidence, and pending human gates without writing Zotero or
+Zotero/SeaDrive evidence, and every gate registered in
+`registry/human_gates.json` without writing Zotero or
 tracked content.
 
 ## Recovery boundary

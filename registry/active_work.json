@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-01T18:20:36+08:00",
+  "updated_at": "2026-09-01T18:31:40+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,29 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260901-thesis-human-gate-registry",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "registry/human_gates.json",
+        "scripts/audit_human_gates.py",
+        "scripts/audit_thesis_workspace.py",
+        "tests/test_audit_human_gates.py",
+        "tests/test_audit_thesis_workspace.py",
+        "REPO_MAP.md",
+        "process/repository_sync_policy.md",
+        "process/current_execution_plan_20260802.md",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "machine-readable reporting of existing human gates only; no gate resolution, researcher decision, claim promotion, scientific gold, method version, Zotero write, or opening-report edit",
+      "status": "completed",
+      "dependency": "current literature maintenance queue, Chapter 2 G4 Batch A gate, Chapter 3 route-selection gate, and unified thesis audit",
+      "stop_condition": "unified audit deterministically reports all five current human gates without inferring state from prose",
+      "expires_on": "2026-09-02",
+      "closed_at": "2026-09-01T18:31:40+08:00",
+      "result": "uncommitted working tree; 5/5 current gates across five categories; gate, literature, and navigation audits 0 issues; 47 tests pass"
+    },
     {
       "task_id": "20260901-thesis-maintenance-unified-audit",
       "owner": "root",

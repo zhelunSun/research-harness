@@ -7,10 +7,11 @@
 
 ## 0. Resume here：每次新会话先读这里
 
-### 0.1 只维护两个论文级入口
+### 0.1 只维护两个论文级人类入口和一个机器登记
 
 1. `THESIS_STATE.md`：慢更新，维护总科学问题、三项研究角色、贡献边界和正式风险；
-2. 本文件：快更新，维护当前里程碑、下一动作、人工门禁、证据状态和会话恢复点。
+2. 本文件：快更新，维护当前里程碑、下一动作、人工门禁的人类可读摘要、证据状态和会话恢复点；
+3. `registry/human_gates.json`：机器可读的当前人工门禁全集，统一记录 maintenance/external、Zotero、writing、Ch2 scientific evidence 与 Ch3 scientific route 状态。
 
 下游 `PLAN.md`、experiment brief、chapter plan 和报告仍是所属仓库的执行/证据文件，
 但不再与本文件竞争“当前总计划”。职业材料只由
@@ -28,7 +29,7 @@
 | M2 遥感科学知识表示与推理 | core method accepted；formal effect open | Chapter 2 已形成知识／证据资产，章级主术语统一为面向智能体的遥感科学知识表示与推理；G3 已完成 150 条高召回筛选和 60 条 G4 队列；低／边界优先、来源平衡的六个十条浅审批次已形成，G4 evidence baseline 为 `l2-task-distillation@9dc0e01`，仓库验证为 41 PASS；当前远端 tip 由 checkpoint registry 判定 | 先由研究者完成批次 A 的 10 条低／边界抽查，再决定是否继续五个核心批次；scientific gold、最小表示与运行界面、知识推理闭环和分层匹配效果均未完成 |
 | M3 城市森林遥感任务系统评测 | core direction and minimum path accepted | 静态资产—任务—grader—claim 审计已完成，确认 Route B 只读离线治理链为最低新增工作的推荐首路，RSS 故障状态链为备选；static-audit baseline 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@d560bb0`，当前远端 tip 由 checkpoint registry 判定 | 需研究者确认首轮路径；随后才实现首批 task/environment/outcome schema、确定性 grader 与公平比较适配器；用户研究、生态有效性和正式系统效果仍未开始 |
 | M4 用户／专家校准与经验驱动适应 | deferred increment | 目标用户／专家角色与 episode reservoir 已界定 | 二者均不进入第三章最低承诺；伦理／数据门禁、rubric 校准、episode 化和学习实验均未启动 |
-| L0 文献证据控制面 | two packets audited; sustainable maintenance integrated with repository governance | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；`runtime_scan.json` 已按路径脱敏记录本机 5/5 registered item、5/5 linked file 和 5/5 SeaDrive resolution；`refresh_literature_runtime.py` 可重复执行只读刷新；`audit_thesis_workspace.py` 将 repo sync、workspace navigation、literature freshness、runtime snapshot 与人工门统一为一个入口；两包合计 9 source / 14 claim / 21 link，8 条 exact consumer routes 与开题 writing intake 均纳入确定性审计 | 跨设备同构尚需在另一台电脑实测；第二包 Zotero 身份与附件写入等待明确授权；旧笔记与开题准入均非 writing eligible，`GAC-C6` 仍为 `needs_review`，writing bridge 未进入任何正式写作 contract |
+| L0 文献证据控制面 | two packets audited; sustainable maintenance integrated with repository governance | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；`runtime_scan.json` 已按路径脱敏记录本机 5/5 registered item、5/5 linked file 和 5/5 SeaDrive resolution；`refresh_literature_runtime.py` 可重复执行只读刷新；`audit_thesis_workspace.py` 将 repo sync、workspace navigation、literature freshness、runtime snapshot 与 `registry/human_gates.json` 的五类人工门统一为一个入口；两包合计 9 source / 14 claim / 21 link，8 条 exact consumer routes 与开题 writing intake 均纳入确定性审计 | 跨设备同构、第二包 Zotero 授权、开题 writing acceptance、Ch2 G4 Batch A 浅审与 Ch3 首轮路线选择均保持 researcher-owned；旧笔记与开题准入仍非 writing eligible，`GAC-C6` 仍为 `needs_review` |
 | O0 选题材料 | source definition and working titles aligned | `opening_report_outline_zh.md` v0.4 用于汇报和人工润色；`opening_report_draft_zh.md` v0.5 维护唯一章级源定义并完成 O1 连续正文 writer pass；三章路线矩阵 v0.1 与开题证据矩阵 v0.8 已对齐；文献准入审查确认第 1.2、2.2 与 2.4 节为未来拆段候选，但未修改正文或 O1 contract | O1 尚需独立 fresh-context V1 审阅；新增引文、拆段和标记移除均须在后续 writing contract 中显式接受；最终送审题目、引用、图件和导师讨论包仍待收口 |
 
 ### 0.3 当前唯一下一动作
@@ -47,8 +48,9 @@ V1 可把 `evidence/literature/packets/ai4science_frontier_2026/` 作为 AI4Scie
 GeoDisaster 的第一轮对照证据；当前 BibTeX 键为临时 intake 身份，Zotero 去重未发现既有条目，但导入与 PDF 关联须等
 研究者明确授权后执行。其 GAC-C6 仍保留 `[REF-MISSING:GAC-C6]`，不得据此提前宣称 Ch1 或 Ch3 的新颖性。
 
-与该动作并行只保留两个低带宽人工门：Ch3 是否接受 Route B 为首轮 Evaluation MVP，以及 Ch2
+与该动作并行只保留两个低带宽科学门：Ch3 是否接受 Route B 为首轮 Evaluation MVP，以及 Ch2
 批次 A 的 10 条低／边界浅审。前者没有确认前不实现评测 MVP；后者不阻塞 O1 正文与导师讨论包。
+这两项与三项文献／写作维护门统一登记在 `registry/human_gates.json`；自动化只能报告和校验，不能替研究者关闭。
 
 本动作只做写作和证据映射，不启动新实验，也不发布新 Idea。当前决定状态为：
 

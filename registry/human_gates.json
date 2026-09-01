@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-01T18:25:49+08:00",
+  "policy": {
+    "source_of_truth": "registry/human_gates.json",
+    "decision_owner": "researcher",
+    "open_statuses": [
+      "pending_external_verification",
+      "pending_authorization",
+      "pending_task_specific_review",
+      "pending_researcher_review",
+      "pending_researcher_decision"
+    ],
+    "automatic_resolution_forbidden": true,
+    "literature_queue_binding_required": true
+  },
+  "gates": [
+    {
+      "gate_id": "lit-cross-device-seadrive-verification",
+      "category": "maintenance_external",
+      "status": "pending_external_verification",
+      "decision_owner": "researcher",
+      "repository_id": "idea-control-plane",
+      "artifact_path": "evidence/literature/runtime_scan.json",
+      "source_action_id": "lit-cross-device-seadrive-verification",
+      "gate": "second_device_access",
+      "blocks": ["cross_device_data_and_attachment_equivalence_claim"],
+      "required_evidence": [
+        "registered Zotero parent item is visible on the second computer",
+        "SeaDrive linked attachment resolves and opens on the second computer",
+        "one Nature PDF and one official-report PDF open successfully"
+      ],
+      "next_action": "Run the documented second-device check and record device-local evidence; do not infer equivalence from this computer."
+    },
+    {
+      "gate_id": "lit-geospatial-agent-zotero-import",
+      "category": "zotero_write",
+      "status": "pending_authorization",
+      "decision_owner": "researcher",
+      "repository_id": "idea-control-plane",
+      "artifact_path": "evidence/literature/packets/geospatial_agent_comparators_2026/intake_decision.md",
+      "source_action_id": "lit-geospatial-agent-zotero-import",
+      "gate": "explicit_user_authorization",
+      "blocks": ["four_parent_item_imports", "stable_zotero_and_bibtex_identity_reconciliation"],
+      "required_evidence": [
+        "explicit authorization to import the four prepared records",
+        "confirmed destination collection"
+      ],
+      "next_action": "Import only after explicit authorization, then reconcile item keys, citation keys, tags, and SeaDrive PDFs."
+    },
+    {
+      "gate_id": "lit-opening-v05-contract-merge",
+      "category": "writing_acceptance",
+      "status": "pending_task_specific_review",
+      "decision_owner": "researcher",
+      "repository_id": "idea-control-plane",
+      "artifact_path": "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json",
+      "source_action_id": "lit-opening-v05-contract-merge",
+      "gate": "fresh_context_v1_and_explicit_contract_acceptance",
+      "blocks": ["opening_report_citation_insertion", "ref_missing_marker_removal"],
+      "required_evidence": [
+        "fresh-context V1 review",
+        "explicit acceptance into a task-specific opening-report writing contract"
+      ],
+      "next_action": "Review the intake independently; keep all current REF-MISSING markers until contract acceptance."
+    },
+    {
+      "gate_id": "ch2-g4-batch-a-researcher-review",
+      "category": "scientific_evidence",
+      "status": "pending_researcher_review",
+      "decision_owner": "researcher",
+      "repository_id": "chapter-2-knowledge",
+      "artifact_path": "experiments/data/ch2-g3-high-recall-screening-v0.1/g4-shallow-review-batches-v0.1.md",
+      "gate": "researcher_review_batch_a_10_low_boundary_items",
+      "blocks": ["continuation_of_five_core_shallow_review_batches", "scientific_gold_promotion"],
+      "required_evidence": [
+        "researcher decisions for all 10 Batch A low or boundary items",
+        "explicit continue, narrow, or stop decision for the remaining five batches"
+      ],
+      "next_action": "Researcher reviews Batch A; automation may prepare context but must not promote screening output to scientific gold."
+    },
+    {
+      "gate_id": "ch3-first-evaluation-route-selection",
+      "category": "scientific_route",
+      "status": "pending_researcher_decision",
+      "decision_owner": "researcher",
+      "repository_id": "chapter-3-evaluation",
+      "artifact_path": "docs/reports/ch3_asset_eval_claim_audit_20260831.md",
+      "gate": "researcher_select_route_b_or_rss_first_round",
+      "blocks": ["first_evaluation_mvp_implementation"],
+      "required_evidence": [
+        "researcher accepts Route B as the recommended first Evaluation MVP, selects the RSS path, or explicitly defers both",
+        "decision preserves the current method and evidence boundaries"
+      ],
+      "next_action": "Present the bounded Route B recommendation and RSS fallback; do not start implementation before the researcher decides."
+    }
+  ]
+}

@@ -28,13 +28,33 @@ def literature_result(*, exit_code: int = 0) -> dict[str, object]:
         "packets_total": 2,
         "sources_total": 9,
         "runtime_scan": {"registered_zotero_items": 5},
-        "open_actions": [
+        "open_actions": [],
+        "issues": [],
+    }
+
+
+def human_gate_result(*, exit_code: int = 0) -> dict[str, object]:
+    gates = [
+        ("lit-cross-device-seadrive-verification", "maintenance_external", "pending_external_verification"),
+        ("lit-geospatial-agent-zotero-import", "zotero_write", "pending_authorization"),
+        ("lit-opening-v05-contract-merge", "writing_acceptance", "pending_task_specific_review"),
+        ("ch2-g4-batch-a-researcher-review", "scientific_evidence", "pending_researcher_review"),
+        ("ch3-first-evaluation-route-selection", "scientific_route", "pending_researcher_decision"),
+    ]
+    return {
+        "exit_code": exit_code,
+        "gates_total": 5,
+        "category_counts": {category: 1 for _, category, _ in gates},
+        "open_gates": [
             {
-                "action_id": "lit-cross-device-seadrive-verification",
-                "kind": "external_verification",
-                "status": "pending_external_verification",
-                "gate": "second_device_access",
+                "gate_id": gate_id,
+                "category": category,
+                "status": status,
+                "gate": "test_gate",
+                "repository_id": "idea-control-plane",
+                "next_action": "wait for researcher",
             }
+            for gate_id, category, status in gates
         ],
         "issues": [],
     }
@@ -59,7 +79,12 @@ class ThesisControlAuditTests(unittest.TestCase):
     def tearDown(self) -> None:
         self.temp.cleanup()
 
-    def run_audit(self, repo: dict[str, object], literature: dict[str, object]):
+    def run_audit(
+        self,
+        repo: dict[str, object],
+        literature: dict[str, object],
+        human_gates: dict[str, object] | None = None,
+    ):
         with (
             patch(
                 "scripts.audit_thesis_workspace.audit_workspace",
@@ -68,14 +93,20 @@ class ThesisControlAuditTests(unittest.TestCase):
             patch("scripts.audit_thesis_workspace.load_targets", return_value=[self.target]),
             patch("scripts.audit_thesis_workspace.audit_repository", return_value=repo),
             patch("scripts.audit_thesis_workspace.audit_literature_control", return_value=literature),
+            patch(
+                "scripts.audit_thesis_workspace.audit_human_gates",
+                return_value=human_gates or human_gate_result(),
+            ),
         ):
             return audit_thesis_control(self.root, as_of=date(2026, 9, 1))
 
     def test_ready_workspace_preserves_pending_human_gate(self) -> None:
         result = self.run_audit(repository_result(), literature_result())
         self.assertEqual((result["exit_code"], result["readiness"]), (0, "ready"))
-        self.assertEqual(len(result["pending_human_gates"]), 1)
-        self.assertIn("second_device_access", render_text(result))
+        self.assertEqual(len(result["pending_human_gates"]), 5)
+        rendered = render_text(result)
+        self.assertIn("ch2-g4-batch-a-researcher-review", rendered)
+        self.assertIn("ch3-first-evaluation-route-selection", rendered)
 
     def test_repository_warning_requires_attention(self) -> None:
         warning = repository_result(
@@ -97,6 +128,13 @@ class ThesisControlAuditTests(unittest.TestCase):
         result = self.run_audit(repository_result(), literature)
         self.assertEqual(result["exit_code"], 2)
         self.assertIn("read_only_scan_overdue", render_text(result))
+
+    def test_human_gate_warning_is_not_hidden(self) -> None:
+        human_gates = human_gate_result(exit_code=2)
+        human_gates["issues"] = [{"code": "missing_current_human_gate", "message": "missing"}]
+        result = self.run_audit(repository_result(), literature_result(), human_gates)
+        self.assertEqual(result["exit_code"], 2)
+        self.assertIn("missing_current_human_gate", render_text(result))
 
 
 if __name__ == "__main__":

@@ -55,8 +55,10 @@ python scripts/bootstrap_workspace.py --workspace-root D:/Projects/phd-thesis
 
 `audit_thesis_workspace.py` is the routine first command. It composes the
 repository sync audit, sibling-workspace navigation audit, literature control
-audit, Zotero/SeaDrive runtime-snapshot freshness, and pending human gates into
-one read-only result. Use the component commands only when the unified result
+audit, Zotero/SeaDrive runtime-snapshot freshness, and the thesis-wide
+`registry/human_gates.json` into one read-only result. The gate audit validates
+the five current maintenance, Zotero, writing, Ch2 evidence, and Ch3 route
+decisions without inferring their state from prose. Use the component commands only when the unified result
 identifies a specific surface that needs diagnosis.
 
 The audit never commits or pushes. Exit `0` is clean and synchronized; exit `2`

@@ -23,6 +23,7 @@ from scripts.audit_literature_control import (
     ControlError as LiteratureControlError,
     audit_literature_control,
 )
+from scripts.audit_human_gates import GateAuditError, audit_human_gates
 from scripts.audit_repo_sync import (
     ConfigError as RepoConfigError,
     audit_repository,
@@ -39,10 +40,10 @@ DEFAULT_CONFIG = ROOT / "config" / "repository_sync.json"
 DEFAULT_CHECKPOINTS = ROOT / "registry" / "core_repo_checkpoints.json"
 
 
-def _combined_exit_code(navigation_code: int, repositories_code: int, literature_code: int) -> int:
-    if repositories_code == 1 or navigation_code == 1 or literature_code == 1:
+def _combined_exit_code(*codes: int) -> int:
+    if 1 in codes:
         return 1
-    if any(code == 2 for code in (navigation_code, repositories_code, literature_code)):
+    if 2 in codes:
         return 2
     return 0
 
@@ -85,21 +86,15 @@ def audit_thesis_control(
     ]
     repositories_code = repo_exit_code(repositories)
     literature = audit_literature_control(resolved_root, as_of=as_of or date.today())
+    human_gates = audit_human_gates(resolved_root)
     overall_code = _combined_exit_code(
         int(navigation["exit_code"]),
         repositories_code,
         int(literature["exit_code"]),
+        int(human_gates["exit_code"]),
     )
     readiness = "ready" if overall_code == 0 else "attention_required" if overall_code == 2 else "blocked"
-    gates = [
-        {
-            "action_id": action["action_id"],
-            "kind": action["kind"],
-            "status": action["status"],
-            "gate": action["gate"],
-        }
-        for action in literature.get("open_actions", [])
-    ]
+    gates = list(human_gates.get("open_gates", []))
     return {
         "schema_version": "1.0",
         "audited_at": datetime.now().astimezone().isoformat(timespec="seconds"),
@@ -113,6 +108,7 @@ def audit_thesis_control(
                 "items": repositories,
             },
             "literature": literature,
+            "human_gates": human_gates,
         },
         "pending_human_gates": gates,
     }
@@ -124,6 +120,7 @@ def render_text(result: dict[str, Any]) -> str:
     navigation = components["navigation"]
     repositories = components["repositories"]
     literature = components["literature"]
+    human_gates = components["human_gates"]
     runtime = literature.get("runtime_scan", {})
     lines = [
         f"[{label}] thesis control: readiness={result['readiness']} root={result['workspace_root']}",
@@ -131,6 +128,8 @@ def render_text(result: dict[str, Any]) -> str:
         f"  repositories: exit={repositories['exit_code']} count={len(repositories['items'])}",
         f"  literature: exit={literature['exit_code']} packets={literature['packets_total']} "
         f"sources={literature['sources_total']} runtime_items={runtime.get('registered_zotero_items')}",
+        f"  human gates: exit={human_gates['exit_code']} total={human_gates['gates_total']} "
+        f"open={len(human_gates['open_gates'])}",
     ]
     for repository in repositories["items"]:
         repository_issues = repository.get("issues", [])
@@ -144,9 +143,12 @@ def render_text(result: dict[str, Any]) -> str:
         lines.append(f"  - NAV {issue['code']}: {issue['message']}")
     for issue in literature["issues"]:
         lines.append(f"  - LIT {issue['code']}: {issue['message']}")
+    for issue in human_gates["issues"]:
+        lines.append(f"  - GATE-REGISTRY {issue['code']}: {issue['message']}")
     for gate in result["pending_human_gates"]:
         lines.append(
-            f"  - GATE {gate['action_id']}: {gate['status']} ({gate['gate']})"
+            f"  - GATE {gate['gate_id']}: {gate['status']} "
+            f"[{gate['category']}] ({gate['gate']})"
         )
     lines.append(
         f"summary: exit={result['exit_code']} pending_human_gates={len(result['pending_human_gates'])}"
@@ -184,6 +186,7 @@ def main(argv: list[str] | None = None) -> int:
         NavigationConfigError,
         NavigationAuditError,
         LiteratureControlError,
+        GateAuditError,
     ) as exc:
         payload = {"exit_code": 1, "configuration_error": str(exc)}
         print(json.dumps(payload, ensure_ascii=False, indent=2) if args.json else f"[CRITICAL] thesis control: {exc}")
