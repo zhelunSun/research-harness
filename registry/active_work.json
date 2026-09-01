@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-01T16:30:00+08:00",
+  "updated_at": "2026-09-01T17:35:00+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,29 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260901-opening-o1-draft",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "thesis/opening_report_draft_zh.md",
+        "thesis/writing_contracts/opening_report_o1_v0.5.*",
+        "thesis/opening_three_chapter_route_matrix_zh.md",
+        "thesis/writing_contracts/opening_three_chapter_route_matrix_v0.1.*",
+        "evidence/opening_evidence_matrix.md",
+        "IDEA_VERSION.md",
+        "thesis/README.md",
+        "process/current_execution_plan_20260802.md",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "argument continuity only; no thesis claim, scientific gold, method version, or formal title change",
+      "status": "completed",
+      "dependency": "opening_three_chapter_route_matrix_zh.md v0.1 and current opening evidence matrix",
+      "stop_condition": "O1 argument draft passes deterministic audit and is pushed with V1 review debt explicit",
+      "expires_on": "2026-09-02",
+      "closed_at": "2026-09-01T17:35:00+08:00",
+      "result": "research-harness@ed98042"
+    },
     {
       "task_id": "20260901-ch3-static-audit",
       "owner": "ch3_static_audit",
