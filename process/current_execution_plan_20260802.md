@@ -1,6 +1,6 @@
 # 当前执行计划：开题源定义收口与三章最小闭环
 
-> 版本：v2026.09.01
+> 版本：v2026.09.02
 > 对齐 Idea：`idea-v2026.08.02`
 > 状态：active；保留原文件名作为稳定入口，不再按日期新建论文总执行计划
 > 触发：固定简历与面试路径已形成；研究内容一已有最小原型；研究内容二核心机制仍待验证
@@ -27,20 +27,19 @@
 | M0 固定简历与证据边界 | completed | 固定华为 PDF、claims、面试风险口径 | 不作为论文结果升级 |
 | M1 面向用户的多智能体科学分析系统 | opening evidence accepted；formal effect open | ExpertsRS 提供角色分工与基本工作流的已发表基础；URSA v0.5.3、代码基线 `0efd090`、冻结 5×3 live 集成闭环支持新增运行机制；当前电脑的 repo-local `.venv`、121 项测试、两个 no-API closeout 和 LFS 已复核，canonical tip 为 `codex/ch1-v2-e1-structured-planning@0ccc3fc` | 完整系统叙事需与增量机制分层；正式匹配效果、科学精度和跨任务泛化仍为 open |
 | M2 遥感科学知识表示与推理 | core method accepted；formal effect open | Chapter 2 已形成知识／证据资产，章级主术语统一为面向智能体的遥感科学知识表示与推理；G3 已完成 150 条高召回筛选和 60 条 G4 队列；低／边界优先、来源平衡的六个十条浅审批次已形成，G4 evidence baseline 为 `l2-task-distillation@9dc0e01`，仓库验证为 41 PASS；当前远端 tip 由 checkpoint registry 判定 | 先由研究者完成批次 A 的 10 条低／边界抽查，再决定是否继续五个核心批次；scientific gold、最小表示与运行界面、知识推理闭环和分层匹配效果均未完成 |
-| M3 城市森林遥感任务系统评测 | core direction and minimum path accepted | 静态资产—任务—grader—claim 审计已完成，确认 Route B 只读离线治理链为最低新增工作的推荐首路，RSS 故障状态链为备选；static-audit baseline 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@d560bb0`，当前远端 tip 由 checkpoint registry 判定 | 需研究者确认首轮路径；随后才实现首批 task/environment/outcome schema、确定性 grader 与公平比较适配器；用户研究、生态有效性和正式系统效果仍未开始 |
+| M3 城市森林遥感任务系统评测 | core direction and minimum path accepted | 静态资产—任务—grader—claim 审计已完成；Route B 只读离线治理链是推荐的首个低成本评测任务，本地核心栖息地与 RSS 是接口稳定后的候选任务族，三者共同服务同一版本化城市任务环境而非互斥章级路线；static-audit baseline 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@d560bb0`，当前远端 tip 由 checkpoint registry 判定 | 需研究者确认 Route B 的首轮实施顺序；随后才实现首批 task/environment/outcome schema、确定性 grader 与公平比较适配器；跨任务依赖和故障传播的候选创新仍需与 ThinkGeo、ClimateAgent 等最近工作做全文构念比较 |
 | M4 用户／专家校准与经验驱动适应 | deferred increment | 目标用户／专家角色与 episode reservoir 已界定 | 二者均不进入第三章最低承诺；伦理／数据门禁、rubric 校准、episode 化和学习实验均未启动 |
 | L0 文献证据控制面 | six packets audited; acquisition queue exhausted | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；`runtime_scan.json` 已按路径脱敏记录本机 5/5 registered item、5/5 linked file 和 5/5 SeaDrive resolution；`refresh_literature_runtime.py` 可重复执行只读刷新；`audit_thesis_workspace.py` 将 repo sync、workspace navigation、literature freshness、runtime snapshot 与 `registry/human_gates.json` 的五类人工门统一为一个入口；六包合计 25 source / 34 claim / 53 link，8 条 exact consumer routes 与开题 writing intake 均纳入确定性审计；前三个 acquisition 包分别闭合评测、知识治理和科学智能体缺口，`AQ-OI-D1-BACKGROUND` 又以 4 篇全文分开记录多源／多时相／多尺度输入、用途—尺度—分辨率方法选择、多阶段分类链和生态服务的地方／社会解释边界；`acquisition_queue.json` 当前 actionable=0、`active_work_item_id=null`，新检索只能由新的 writing gap 重新路由 | 跨设备同构、五个 prepared packet 的 Zotero 授权、开题 writing acceptance、Ch2 G4 Batch A 浅审与 Ch3 首轮路线选择均保持 researcher-owned；旧笔记与开题准入仍非 writing eligible，`GAC-C6`、`AEV-C5`、`KEG-C5`、`SAW-C5` 与 `UFR-C5` 均为 `needs_review`；原 OI-D1 的总体门槛下降判断仍未解决，检索发现本身不得移除正文缺口标记 |
-| O0 选题材料 | source definition and working titles aligned；V1 findings open | `opening_report_outline_zh.md` v0.4 用于汇报和人工润色；`opening_report_draft_zh.md` v0.5 维护唯一章级源定义并完成 O1 连续正文 writer pass；三章路线矩阵 v0.1 与开题证据矩阵 v0.8 已对齐；独立 fresh-context V1 已形成 `thesis/reviews/opening_report_o1_v0.5_v1_review_20260902.md`，记录 2 个 P1 与 2 个 P2，未在同一遍审阅中改写正文 | 先由独立 writer pass 关闭两个 P1，再做 V0 与只读差异复核；新增引文、拆段和标记移除均须在后续 writing contract 中显式接受；最终送审题目、引用、图件和导师讨论包仍待收口 |
+| O0 选题材料 | urban-forest-first v0.6 writer pass completed；fresh-context V1 pending | `opening_report_draft_zh.md` v0.6 已把问题提出改为“城市森林任务依赖—Agent 方法缺口—三章回应”，固定当前开题阶段三个标题，并关闭 v0.5 V1 的 2 个 P1 与 2 个 P2；三章路线矩阵同步为 v0.2；两份 writing-contract V0 审计均为 0 error / 0 warning；五篇相邻 benchmark 的 candidate study 已形成 5 source / 6 claim / 8 link 且账本审计无问题 | 需要一名未参与改稿的 reviewer 对 v0.6 做 fresh-context V1；候选文献只有摘要级证据，不得插入正文或宣称 Ch3 新颖性；最终引用、图件和导师讨论包仍待收口 |
 
 ### 0.3 当前唯一下一动作
 
-当前唯一下一动作是在独立 writer pass 中只修复
-`thesis/reviews/opening_report_o1_v0.5_v1_review_20260902.md` 的 P1-01 与 P1-02：为第一章预期创新局部附着
-`[待验证]` 状态并把效果性措辞改为待检验关系；恢复第二章 canonical term“面向智能体的遥感科学知识表示与推理”，
-把来源、适用条件和证据状态保留为表示与推理需要处理的属性。writer 不处理引用、不删除 `[REF-MISSING]`，
-不改变 claim、scientific gold、方法版本或正式题目。完成后重新运行 O1 writing-contract V0 审计并做一次只读差异复核；
-两个 P1 关闭且没有新增 P1 后，才以 v0.5 和路线矩阵形成导师讨论包首轮。两个 P2 只在不扩展 file scope、
-不改变章级评价对象时机械收窄，否则继续作为可见 review debt。
+当前唯一下一动作是对 `thesis/opening_report_draft_zh.md` v0.6 和三章路线矩阵 v0.2 开展一次独立
+fresh-context V1 审阅。reviewer 只读取新 writing contract、v0.5 V1 findings、v0.6 主稿、v0.2
+路线矩阵和开题证据矩阵，检查城市森林问题牵引是否真正控制第一、二项论证，术语是否稳定，
+Route B 是否被正确限定为首个评测任务，以及新增“共享版本化制品—跨任务依赖—故障传播”表述是否
+超过当前证据。reviewer 不在同一遍中改稿、不插入引用、不删除 `[REF-MISSING]`，也不接受 Ch3
+新颖性。V1 无新增 P1 后，才用 v0.6 和 v0.2 形成导师讨论包首轮。
 
 V1 可把 `evidence/literature/packets/ai4science_frontier_2026/` 作为 AI4Science 相邻背景与比较维度的候选输入；
 其 writing bridge 当前不得直接并入 O1 contract。只有任务特定审阅接受 AFS claim 与引用键后，才允许替换对应
@@ -65,7 +64,7 @@ GeoDisaster 的第一轮对照证据；当前 BibTeX 键为临时 intake 身份�
 已无 actionable item，`active_work_item_id=null`。这些包均不修改 O1 正文，也不取代上述 thesis-wide 唯一下一动作；候选发现、
 Zotero 入库和 writing contract 接受仍分别受 full-text、明确授权和任务特定审阅门约束。
 
-与该动作并行只保留两个低带宽科学门：Ch3 是否接受 Route B 为首轮 Evaluation MVP，以及 Ch2
+与该动作并行只保留两个低带宽科学门：Ch3 是否接受 Route B 为首个 Evaluation MVP 的实施顺序，以及 Ch2
 批次 A 的 10 条低／边界浅审。前者没有确认前不实现评测 MVP；后者不阻塞 O1 正文与导师讨论包。
 这两项与七项文献／写作维护门统一登记在 `registry/human_gates.json`；自动化只能报告和校验，不能替研究者关闭。
 
@@ -75,11 +74,12 @@ Zotero 入库和 writing contract 接受仍分别受 full-text、明确授权和
    小规模 live 集成证据已接受，正式效果仍为 open；
 2. 第二章章级主术语统一为“面向智能体的遥感科学知识表示与推理”；证据状态是方法属性，具体
    表示、运行界面和方法效果仍待最小闭环；
-3. 第三章以城市森林遥感任务的多阶段依赖、任务链组织和系统评测为核心，先核对现有资产，再以
-   2--3 条任务链、真实故障和确定性检查器形成最低可执行路径；用户效用与经验驱动适应仅为候选增量。
+3. 第三章以同一城市版本化制品上的多阶段依赖、任务链组织和系统评测为核心；Route B 是推荐的
+   首个评测任务，本地核心栖息地与 RSS 是后续候选任务族；城市级本身不是创新，跨任务依赖与故障
+   传播的差异化仍需全文比较和可执行评测共同检验。
 
-三项开题工作标题、共同对象链和用户定义已由
-`DEC-2026-0831-opening-consensus-and-working-titles.md` 接受并同步；最终送审题目仍待后续人工
+三项开题阶段标题、共同对象链、用户定义和城市森林问题牵引已由
+`DEC-2026-0902-opening-urban-forest-problem-framing.md` 接受并同步；最终送审题目仍待后续人工
 确认。`idea-v2026.08.02` 不变。
 
 ### 0.4 2026-08-29 定时任务未创建记录
@@ -136,9 +136,9 @@ M2 的科学门禁。
 | 截止 | 主任务 | 最小交付物 | 停止条件 |
 | --- | --- | --- | --- |
 | 09-02（09-01 已提前完成） | Ch3 P2 资产—评测—结论审计 | `asset–task–grader–claim` 矩阵、Route B 推荐路径、RSS 备选路径和阻塞项已提交 | 不运行新实验、不晋级证据 |
-| 09-03（09-01 已提前完成） | 三章技术路线对照 | v0.1 路线矩阵已形成；共同对象链、局部机制验证与第三章系统评测无冲突 | 不预设未冻结算法或效果 |
+| 09-03（09-02 已更新） | 三章技术路线对照 | v0.2 路线矩阵已传播城市森林问题牵引，并将 Route B 收窄为首个 Evaluation MVP | 不预设未冻结算法或效果 |
 | 09-04 | Ch2 G4 第一门 | 10 条低／边界项人工复核记录；确定是否继续 50 条核心浅审 | 不把机器筛选当 scientific gold |
-| 09-05（09-01 已提前完成 writer pass） | 开题正文 O1 首轮 | v0.5 已衔接研究不足、科学问题、目标、内容、路线和前期基础；`[REF-MISSING]` 保留；V0 通过，V1 待独立审阅 | 不用占位引用制造完成感 |
+| 09-05（09-02 已更新 writer pass） | 开题正文 O1 首轮 | v0.6 已从城市森林任务依赖重构问题提出并关闭上一轮 P1/P2；`[REF-MISSING]` 保留；V0 通过，v0.6 V1 待独立审阅 | 不用占位引用制造完成感 |
 | 09-06 | 导师讨论包 | 修改版大纲、三章路线矩阵、证据缺口和最多 5 个待导师判断问题 | 不制作大而全答辩稿 |
 | 09-07 | 导师讨论 checkpoint | 记录反馈、未决问题和 retain/narrow/reject 决策候选 | 未经研究者确认不发布新 Idea |
 | 09-08 至 09-10 | 反馈吸收与 Ch2 主线 | 形成 decision 或保持原版本的记录；推进 G4 核心浅审和 12--20 candidate list | 不提前冻结六个 gold cases |

@@ -40,7 +40,7 @@ REQUIRED_CURRENT_GATE_IDS = {
     "lit-knowledge-governance-zotero-import",
     "lit-scientific-agent-workflows-zotero-import",
     "lit-urban-forest-background-zotero-import",
-    "lit-opening-v05-contract-merge",
+    "lit-opening-v06-contract-merge",
     "ch2-g4-batch-a-researcher-review",
     "ch3-first-evaluation-route-selection",
 }

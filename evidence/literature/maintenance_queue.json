@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T19:46:00+08:00",
+  "updated_at": "2026-09-02T15:44:48+08:00",
   "policy": {
     "zotero_write_gate": "explicit_user_authorization",
     "writing_merge_gate": "task_specific_contract_review",
@@ -151,11 +151,11 @@
       ]
     },
     {
-      "action_id": "lit-opening-v05-contract-merge",
+      "action_id": "lit-opening-v06-contract-merge",
       "kind": "writing_merge",
       "status": "pending_task_specific_review",
       "gate": "fresh_context_v1_and_explicit_contract_acceptance",
-      "intake_id": "opening-report-v05-literature-intake-20260901",
+      "intake_id": "opening-report-v06-literature-intake-20260902",
       "completion_effect": "accepted candidate citations and paragraph splits may be merged into a future opening-report contract; marker removal remains separately justified"
     },
     {

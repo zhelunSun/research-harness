@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-02T15:17:17+08:00",
+  "updated_at": "2026-09-02T15:57:35+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,43 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260902-opening-urban-forest-problem-framing",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "thesis/opening_report_draft_zh.md",
+        "thesis/opening_three_chapter_route_matrix_zh.md",
+        "thesis/README.md",
+        "thesis/writing_contracts/opening_three_chapter_route_matrix_v0.2.*",
+        "thesis/writing_contracts/opening_report_o1_v0.6.*",
+        "decisions/DEC-2026-0902-opening-urban-forest-problem-framing.md",
+        "decisions/README.md",
+        "evidence/literature/writing_intakes.json",
+        "evidence/literature/writing_intakes/opening_report_v06_20260902/**",
+        "evidence/literature/acquisition_queue.json",
+        "evidence/literature/consumer_routes.json",
+        "evidence/literature/maintenance_queue.json",
+        "scripts/audit_literature_control.py",
+        "scripts/audit_human_gates.py",
+        "tests/test_audit_literature_control.py",
+        "tests/test_audit_human_gates.py",
+        "THESIS_STATE.md",
+        "ideas/chapter_ideas.md",
+        "studies/README.md",
+        "studies/city-scale-composite-agent-evaluation/**",
+        "process/current_execution_plan_20260802.md",
+        "registry/human_gates.json",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "researcher-authorized opening-stage title acceptance and urban-forest-first argument revision plus candidate literature study; no evidence promotion, citation insertion, scientific gold, Chapter 3 method freeze, Zotero write, or experiment execution",
+      "status": "completed",
+      "dependency": "researcher feedback on 2026-09-02, accepted chapter source definitions, O1 v0.5 V1 findings, current Chapter 3 static asset audit, and five primary-source benchmark abstracts",
+      "stop_condition": "v0.6 rewrites the problem chain from urban-forest tasks, closes existing P1 findings, records the Route B first-fixture versus wider task-suite boundary, and delivers an audited candidate evidence ledger without promoting novelty",
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-02T15:57:35+08:00",
+      "result": "opening report v0.6 and route matrix v0.2 completed; seven content evidence gaps routed through a version-specific intake; five-source candidate study audited; writing and literature audits have 0 issues; 54 tests pass"
+    },
     {
       "task_id": "20260902-opening-o1-v1-review",
       "owner": "root",

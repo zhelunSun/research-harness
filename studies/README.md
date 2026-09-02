@@ -26,3 +26,6 @@ Agent 不应默认加载整个 `studies/`。进入一个 study 时只读取：
 
 - [`scientific-harness/`](scientific-harness/)：面向长流程 Agent 科研的状态、
   证据、评测、分支和人类门禁研究。
+- [`city-scale-composite-agent-evaluation/`](city-scale-composite-agent-evaluation/)：比较遥感、
+  科学工作流与共享环境 benchmark，检验“真实城市共享制品与跨任务依赖评测”是否具有差异化；
+  当前仅为 candidate study。

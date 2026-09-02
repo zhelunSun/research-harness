@@ -38,7 +38,7 @@ class HumanGateAuditTests(unittest.TestCase):
             "evidence/literature/packets/knowledge_evidence_governance_2026/intake_decision.md",
             "evidence/literature/packets/scientific_agent_workflow_boundaries_2026/intake_decision.md",
             "evidence/literature/packets/urban_forest_remote_sensing_context_2026/intake_decision.md",
-            "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json",
+            "evidence/literature/writing_intakes/opening_report_v06_20260902/decision_matrix.json",
         ]
         for relative in control_artifacts:
             path = self.root / relative
@@ -103,7 +103,7 @@ class HumanGateAuditTests(unittest.TestCase):
                 "gate": "explicit_user_authorization",
             },
             {
-                "action_id": "lit-opening-v05-contract-merge",
+                "action_id": "lit-opening-v06-contract-merge",
                 "kind": "writing_merge",
                 "status": "pending_task_specific_review",
                 "gate": "fresh_context_v1_and_explicit_contract_acceptance",
@@ -194,13 +194,13 @@ class HumanGateAuditTests(unittest.TestCase):
                 "lit-urban-forest-background-zotero-import",
             ),
             self._gate(
-                "lit-opening-v05-contract-merge",
+                "lit-opening-v06-contract-merge",
                 "writing_acceptance",
                 "pending_task_specific_review",
                 "idea-control-plane",
-                "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json",
+                "evidence/literature/writing_intakes/opening_report_v06_20260902/decision_matrix.json",
                 "fresh_context_v1_and_explicit_contract_acceptance",
-                "lit-opening-v05-contract-merge",
+                "lit-opening-v06-contract-merge",
             ),
             self._gate(
                 "ch2-g4-batch-a-researcher-review",

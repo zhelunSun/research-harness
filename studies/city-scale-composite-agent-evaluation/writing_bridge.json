@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "city-scale-composite-agent-evaluation-2026",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "chen_scienceagentbench_2025",
+      "jansen_discoveryworld_2024",
+      "kim_climateagent_2026",
+      "shabbir_thinkgeo_2026",
+      "xu_agentcompany_2025"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "CSE-C1",
+      "marker": "[CLAIM:CSE-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "shabbir_thinkgeo_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C1]"
+    },
+    {
+      "id": "CSE-C2",
+      "marker": "[CLAIM:CSE-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "chen_scienceagentbench_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C2]"
+    },
+    {
+      "id": "CSE-C3",
+      "marker": "[CLAIM:CSE-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "jansen_discoveryworld_2024"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C3]"
+    },
+    {
+      "id": "CSE-C4",
+      "marker": "[CLAIM:CSE-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "kim_climateagent_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C4]"
+    },
+    {
+      "id": "CSE-C5",
+      "marker": "[CLAIM:CSE-C5]",
+      "marker_required": false,
+      "required_citations": [
+        "xu_agentcompany_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C5]"
+    },
+    {
+      "id": "CSE-C6",
+      "marker": "[CLAIM:CSE-C6]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:CSE-C6]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[REF-MISSING:CSE-C1]",
+      "[REF-MISSING:CSE-C2]",
+      "[REF-MISSING:CSE-C3]",
+      "[REF-MISSING:CSE-C4]",
+      "[REF-MISSING:CSE-C5]",
+      "[REF-MISSING:CSE-C6]"
+    ]
+  }
+}

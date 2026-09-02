@@ -1,0 +1,12 @@
+{
+  "ledger_id": "city-scale-composite-agent-evaluation-2026",
+  "ok": true,
+  "summary": {
+    "sources": 5,
+    "claims": 6,
+    "links": 8,
+    "errors": 0,
+    "warnings": 0
+  },
+  "findings": []
+}

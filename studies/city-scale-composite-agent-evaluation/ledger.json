@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "city-scale-composite-agent-evaluation-2026",
+  "research_question": "相邻 Agent 与科学评测工作是否已经覆盖一个真实城市任务环境中多条科学任务共享版本化数据与中间制品并评价跨任务依赖和故障传播的设计？",
+  "sources": [
+    {
+      "source_id": "S-CSE-001",
+      "title": "ThinkGeo: Evaluating Tool-Augmented Agents for Remote Sensing Tasks",
+      "bibtex_key": "shabbir_thinkgeo_2026",
+      "zotero_item_key": "PUSEGPQQ",
+      "locator": "https://arxiv.org/abs/2505.23752",
+      "identifiers": {"arxiv": "2505.23752"},
+      "read_state": "abstract",
+      "evidence_status": "evidence_candidate"
+    },
+    {
+      "source_id": "S-CSE-002",
+      "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+      "bibtex_key": "chen_scienceagentbench_2025",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2410.05080",
+      "identifiers": {"arxiv": "2410.05080"},
+      "read_state": "abstract",
+      "evidence_status": "evidence_candidate"
+    },
+    {
+      "source_id": "S-CSE-003",
+      "title": "DiscoveryWorld: A Virtual Environment for Developing and Evaluating Automated Scientific Discovery Agents",
+      "bibtex_key": "jansen_discoveryworld_2024",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2406.06769",
+      "identifiers": {"arxiv": "2406.06769"},
+      "read_state": "abstract",
+      "evidence_status": "evidence_candidate"
+    },
+    {
+      "source_id": "S-CSE-004",
+      "title": "ClimateAgent: Multi-Agent Orchestration for Complex Climate Data Science Workflows",
+      "bibtex_key": "kim_climateagent_2026",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2511.20109",
+      "identifiers": {"arxiv": "2511.20109"},
+      "read_state": "abstract",
+      "evidence_status": "evidence_candidate"
+    },
+    {
+      "source_id": "S-CSE-005",
+      "title": "TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks",
+      "bibtex_key": "xu_agentcompany_2025",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2412.14161",
+      "identifiers": {"arxiv": "2412.14161"},
+      "read_state": "abstract",
+      "evidence_status": "evidence_candidate"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "CSE-C1",
+      "text": "ThinkGeo 已用结构化工具调用、多步规划、专家核验步骤和最终答案评价遥感 Agent，但首轮摘要证据不足以判断其是否表示共享城市制品上的跨任务依赖。",
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C1]"
+    },
+    {
+      "claim_id": "CSE-C2",
+      "text": "ScienceAgentBench 明确以科学工作流中的单项任务为评测单位，并把每项输出统一为自包含程序，因此可作为原子化科学任务对照。",
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C2]"
+    },
+    {
+      "claim_id": "CSE-C3",
+      "text": "DiscoveryWorld 在模拟环境中评价完整科学发现循环及任务相关行动和解释性知识，但不是基于真实城市遥感制品的环境。",
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C3]"
+    },
+    {
+      "claim_id": "CSE-C4",
+      "text": "ClimateAgent 已把真实 API、异构数据、多步分析、错误恢复和报告生成组织为端到端气候任务，是城市森林复合工作流最接近的领域对照。",
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C4]"
+    },
+    {
+      "claim_id": "CSE-C5",
+      "text": "TheAgentCompany 以自包含软件公司环境承载网页、代码、程序和协作任务，为单一共享数字环境中的异构长程评测提供跨领域对照。",
+      "evidence_status": "evidence_candidate",
+      "unresolved_marker": "[REF-MISSING:CSE-C5]"
+    },
+    {
+      "claim_id": "CSE-C6",
+      "text": "以真实城市和版本化空间制品作为共享任务环境，显式评价跨任务科学依赖与故障传播，可能构成现有遥感原子任务、科学工作流和通用环境 benchmark 之间的差异化交叉点。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:CSE-C6]"
+    }
+  ],
+  "links": [
+    {
+      "claim_id": "CSE-C1",
+      "source_id": "S-CSE-001",
+      "relation": "supports",
+      "entailment_status": "abstract_consistent",
+      "source_excerpt": "structured agentic tasks",
+      "source_location": "official arXiv abstract, lines 16-19",
+      "note": "The absence or presence of cross-task city-state dependencies requires full-text and dataset inspection."
+    },
+    {
+      "claim_id": "CSE-C2",
+      "source_id": "S-CSE-002",
+      "relation": "supports",
+      "entailment_status": "abstract_consistent",
+      "source_excerpt": "individual tasks in a scientific workflow",
+      "source_location": "official arXiv abstract, lines 15-19",
+      "note": "Atomicity is explicit, but the full benchmark structure still needs dataset-level review."
+    },
+    {
+      "claim_id": "CSE-C3",
+      "source_id": "S-CSE-003",
+      "relation": "supports",
+      "entailment_status": "abstract_consistent",
+      "source_excerpt": "complete cycles of novel scientific discovery",
+      "source_location": "official arXiv abstract, lines 15-18",
+      "note": "The abstract explicitly describes a simulated text-based environment."
+    },
+    {
+      "claim_id": "CSE-C4",
+      "source_id": "S-CSE-004",
+      "relation": "supports",
+      "entailment_status": "abstract_consistent",
+      "source_excerpt": "end-to-end climate data analytic workflows",
+      "source_location": "official arXiv abstract; TMLR Section 4 search extract",
+      "note": "A full-text construct comparison is required before asserting a difference."
+    },
+    {
+      "claim_id": "CSE-C5",
+      "source_id": "S-CSE-005",
+      "relation": "supports",
+      "entailment_status": "abstract_consistent",
+      "source_excerpt": "self-contained environment",
+      "source_location": "official arXiv abstract",
+      "note": "This is a workplace rather than scientific-domain environment."
+    },
+    {
+      "claim_id": "CSE-C6",
+      "source_id": "S-CSE-001",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Remote-sensing task comparator; novelty gap not established."
+    },
+    {
+      "claim_id": "CSE-C6",
+      "source_id": "S-CSE-004",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Closest domain-workflow comparator; requires full-text matrix."
+    },
+    {
+      "claim_id": "CSE-C6",
+      "source_id": "S-CSE-005",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Shared-environment comparator outside science."
+    }
+  ]
+}

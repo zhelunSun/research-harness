@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T18:04:04+08:00",
+  "updated_at": "2026-09-02T15:44:48+08:00",
   "policy": {
     "accepted_route_gate": "task_specific_contract_review",
     "candidate_route_is_not_writing_eligible": true,
@@ -16,7 +16,7 @@
       "status": "candidate",
       "relation": "adjacent_background_and_boundary_only",
       "boundary": "AFS-C8 remains needs_review and no current REF-MISSING marker is removed",
-      "writing_intake": "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json"
+      "writing_intake": "evidence/literature/writing_intakes/opening_report_v06_20260902/decision_matrix.json"
     },
     {
       "route_id": "afs-ch2-co-scientist-note",
@@ -51,7 +51,7 @@
       "status": "candidate",
       "relation": "remote_sensing_agent_comparator_candidate",
       "boundary": "GAC-C6 remains needs_review and cannot establish thesis novelty",
-      "writing_intake": "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json"
+      "writing_intake": "evidence/literature/writing_intakes/opening_report_v06_20260902/decision_matrix.json"
     },
     {
       "route_id": "gac-ch1-claim-registry",

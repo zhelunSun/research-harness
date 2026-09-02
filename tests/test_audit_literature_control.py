@@ -411,6 +411,14 @@ class LiteratureControlAuditTests(unittest.TestCase):
         result = self.audit()
         self.assertIn("intake_marker_count_drift", {item["code"] for item in result["issues"]})
 
+    def test_retired_writing_intake_preserves_historical_marker_count(self) -> None:
+        intakes = json.loads(self.intakes.read_text(encoding="utf-8"))
+        intakes["intakes"][0]["status"] = "retired"
+        intakes["intakes"][0]["observed_ref_missing_occurrences"] = 2
+        self._write_json(self.intakes, intakes)
+        result = self.audit()
+        self.assertNotIn("intake_marker_count_drift", {item["code"] for item in result["issues"]})
+
     def test_needs_review_claim_cannot_be_candidate_support(self) -> None:
         ledger_path = self.packet / "ledger.json"
         ledger = json.loads(ledger_path.read_text(encoding="utf-8"))

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T18:04:04+08:00",
+  "updated_at": "2026-09-02T15:44:48+08:00",
   "policy": {
     "merge_gate": "task_specific_contract_review",
     "candidate_intake_is_not_a_writing_contract": true,
@@ -16,12 +16,36 @@
         "ai4science-frontier-2026",
         "geospatial-agent-comparators-2026"
       ],
-      "status": "reviewed_candidate",
+      "status": "retired",
       "reviewed_at": "2026-09-01",
       "decision_artifact": "evidence/literature/writing_intakes/opening_report_v05_20260901/decision_matrix.json",
       "contract_fragment": "evidence/literature/writing_intakes/opening_report_v05_20260901/candidate_contract_fragment.json",
       "observed_ref_missing_occurrences": 7,
       "content_ref_missing_markers": 6,
+      "content_markers_removable_now": 0,
+      "writing_contract_merged": false,
+      "retired_at": "2026-09-02",
+      "superseded_by": "opening-report-v06-literature-intake-20260902"
+    },
+    {
+      "intake_id": "opening-report-v06-literature-intake-20260902",
+      "target_repository_id": "idea-control-plane",
+      "target_document": "thesis/opening_report_draft_zh.md",
+      "target_contract": "thesis/writing_contracts/opening_report_o1_v0.6.contract.json",
+      "source_packets": [
+        "urban-forest-remote-sensing-context-2026",
+        "ai4science-frontier-2026",
+        "geospatial-agent-comparators-2026",
+        "scientific-agent-workflow-boundaries-2026",
+        "knowledge-evidence-governance-2026",
+        "agent-evaluation-user-validity-2026"
+      ],
+      "status": "reviewed_candidate",
+      "reviewed_at": "2026-09-02",
+      "decision_artifact": "evidence/literature/writing_intakes/opening_report_v06_20260902/decision_matrix.json",
+      "contract_fragment": "evidence/literature/writing_intakes/opening_report_v06_20260902/candidate_contract_fragment.json",
+      "observed_ref_missing_occurrences": 8,
+      "content_ref_missing_markers": 7,
       "content_markers_removable_now": 0,
       "writing_contract_merged": false
     }

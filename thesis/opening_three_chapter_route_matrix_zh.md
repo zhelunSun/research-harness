@@ -1,9 +1,9 @@
 # 开题三章技术路线对照矩阵
 
-> 版本：v0.1，2026-09-01
+> 版本：v0.2，2026-09-02
 > 对齐：`idea-v2026.08.02`
 > 状态：导师讨论前的派生工作稿，不替代 `opening_report_draft_zh.md` 第 0 节的章级源定义
-> 写作合同：[`writing_contracts/opening_three_chapter_route_matrix_v0.1.contract.json`](writing_contracts/opening_three_chapter_route_matrix_v0.1.contract.json)
+> 写作合同：[`writing_contracts/opening_three_chapter_route_matrix_v0.2.contract.json`](writing_contracts/opening_three_chapter_route_matrix_v0.2.contract.json)
 
 ## 1. 总体问题牵引与递进关系
 
@@ -23,12 +23,12 @@
 
 ### 问题
 
-以非遥感专家为主的领域用户提出开放需求后，系统如何组织角色、数据、方法和工具，将需求转化为
+面向城市森林制图与格局分析，领域用户提出开放需求后，系统如何组织角色、数据、方法和工具，将需求转化为
 可执行的遥感科学分析工作流，并依据真实反馈调整后续计划、处理局部失败和交付可解释结果？
 
 ### 方法与步骤
 
-`用户开放需求 → 需求与任务表示 → 多智能体协作与工作流生成 → 工具调用和自动执行 → 结果解释与交付`
+`城市森林领域用户开放需求 → 需求与任务表示 → 多智能体协作与工作流生成 → 工具调用和自动执行 → 结果解释与交付`
 
 在系统主线上增加：
 
@@ -52,8 +52,9 @@
 
 后续匹配设计采用相同任务、环境、工具和结果要求，比较原始对话、静态预先规划、根据真实反馈
 调整计划并更新过程图、以及从检查点局部恢复等条件。具体编号和重复方案只有在实验 brief 冻结后
-生效。评价分别记录需求保持、执行闭合、反馈后正确改道、错误成功报告、恢复范围、过程记录完整性
-和成本；科学适用性与复杂场景系统表现分别由研究内容二、三承担。
+生效。评价分别记录需求保持、执行闭合、反馈后正确改道、失败误报为成功、恢复范围、过程记录完整性
+和成本；研究内容二评价知识与证据机制的科学意图、严重错误和不必要干预，研究内容三评价固定
+城市森林任务中的系统结果、依赖、故障和适用边界。
 
 ### 边界与下一门
 
@@ -66,7 +67,7 @@
 
 ### 问题
 
-分散的遥感科学知识如何表示其来源、适用条件、证据角色、冲突、未知状态和结论有效性边界，并
+城市森林遥感任务及其可迁移的遥感分析问题所需知识，如何表示其来源、适用条件、证据角色、冲突、未知状态和结论有效性边界，并
 支持智能体围绕原始科学问题组织观测、分析、验证、解释和结论校准？
 
 ### 方法与步骤
@@ -116,12 +117,14 @@
 
 ### 方法与步骤
 
-`真实城市森林资产 → 少量复合任务链及冻结案例 → 版本化 Environment → 可观察 TrialTrace → Outcome → 分层 Evaluation`
+`同一城市及版本化制品 → 少量复合任务链及冻结案例 → 版本化 Environment → 可观察 TrialTrace → Outcome → 分层 Evaluation`
 
 首轮候选采用 Route B 只读离线治理链，检查样本来源、方法版本、分支依赖、中间制品和禁止结论；
-该路线是**推荐但待研究者确认**的 Evaluation MVP。遥感空间网络分析（RSS）故障状态与边界化
-交付链作为备选，重点检查 quick corridor baseline、完整 RSS、network-only 与
-resistance-supported 状态是否被正确区分。
+该路线是**推荐但待研究者确认**的首个 Evaluation MVP，不等于第三章全部任务。“离线”只表示
+读取冻结制品与记录并禁止 GEE／Drive 写入，不表示 GEE 专业流程已经迁移为本地算法。随后可把
+同一环境接口扩展到本地植被斑块与核心栖息地识别，以及遥感空间网络分析（RSS）的廊道、网络和
+阻力状态；重点检查 quick corridor baseline、完整 RSS、network-only 与 resistance-supported
+状态是否被正确区分。
 
 ### 材料与已有证据
 
@@ -147,9 +150,9 @@ resistance-supported 状态是否被正确区分。
 
 ### 边界与下一门
 
-在研究者确认 Route B 首路前，不实现评测 MVP；确认后先冻结只读 snapshot、任务／环境／结果 schema、
-reference decision 和确定性 grader，再进行最小 smoke comparison。RSS 只有在首路不足以覆盖空间
-制品依赖，或环境恢复成本得到批准后才进入端到端 replay。入口见
+在研究者确认 Route B 首轮实施顺序前，不实现评测 MVP；确认后先冻结只读 snapshot、任务／环境／结果 schema、
+reference decision 和确定性 grader，再进行最小 smoke comparison。核心栖息地与 RSS 不是互斥章级路线，
+只有在首轮接口可复用且所需空间制品能够版本化时才进入后续 replay。入口见
 [Ch3 静态审计](../../urbfo-agent-demo/docs/reports/ch3_asset_eval_claim_audit_20260831.md)。
 
 ## 5. 跨章接口、冲突检查与当前结论
@@ -165,7 +168,7 @@ reference decision 和确定性 grader，再进行最小 smoke comparison。RSS 
 
 当前路线没有发现必须改写 `idea-v2026.08.02` 的跨章冲突。三章可以并行准备无悔资产，但不能并行
 修改同一 claim、scientific gold、方法版本或正式题目。当前唯一会阻塞新实现的人工决定是：是否
-接受 Route B 只读离线治理链作为第三章首轮 Evaluation MVP；Ch2 批次 A 的人工浅审不阻塞开题
+接受 Route B 只读离线治理链作为第三章首个 Evaluation MVP 的实施顺序；Ch2 批次 A 的人工浅审不阻塞开题
 正文和路线图写作。
 
 ## 6. 本节点交付与未决项

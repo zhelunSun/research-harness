@@ -685,7 +685,7 @@ def _audit_writing_intakes(
 
         target_document = target_files.get("target_document")
         observed_markers = intake.get("observed_ref_missing_occurrences")
-        if target_document and target_document.is_file():
+        if status != "retired" and target_document and target_document.is_file():
             actual_markers = _read_text(target_document, f"intake target for {intake_id}").count("[REF-MISSING]")
             if observed_markers != actual_markers:
                 _add_issue(
@@ -928,6 +928,8 @@ def _audit_acquisition_queue(
     for intake in intake_items:
         if not isinstance(intake, dict):
             raise ControlError("writing intake registry contains a non-object intake")
+        if intake.get("status") == "retired":
+            continue
         intake_id = intake.get("intake_id")
         artifact_value = intake.get("decision_artifact")
         if not isinstance(intake_id, str) or not isinstance(artifact_value, str):

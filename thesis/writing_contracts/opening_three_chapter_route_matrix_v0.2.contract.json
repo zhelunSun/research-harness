@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "opening-three-chapter-route-matrix-v0.2",
+    "title": "开题三章技术路线对照矩阵：城市森林问题牵引修订",
+    "mode": "argument-edit",
+    "authority": [
+      "THESIS_STATE.md",
+      "decisions/DEC-2026-0902-opening-urban-forest-problem-framing.md",
+      "thesis/opening_report_draft_zh.md",
+      "evidence/opening_evidence_matrix.md",
+      "urbfo-agent-demo/docs/reports/ch3_asset_eval_claim_audit_20260831.md"
+    ]
+  },
+  "terms": [
+    {"canonical": "面向开放需求的多智能体遥感科学分析系统", "variants": ["基于多智能体的城市森林遥感工作流构建"], "severity": "error"},
+    {"canonical": "面向智能体的遥感科学知识表示与推理", "variants": ["科学知识表示与证据约束推理"], "severity": "error"},
+    {"canonical": "面向城市森林遥感任务的智能体系统评测", "variants": ["面向用户的城市森林遥感智能体系统验证"], "severity": "error"},
+    {"canonical": "随执行更新的过程图", "variants": ["EventLedger", "RunGraph", "materializer"], "severity": "error"}
+  ],
+  "abbreviations": [
+    {"short": "RSS", "long_forms": ["遥感空间网络分析", "remote sensing spatial"], "require_definition": true}
+  ],
+  "protected_literals": [
+    {"value": "idea-v2026.08.02", "aliases": [], "required": true, "label": "Idea 版本"},
+    {"value": "可调整的分层规划", "aliases": [], "required": true, "label": "第一章方法对象"},
+    {"value": "任务条件化科学知识表示", "aliases": [], "required": true, "label": "第二章方法对象"},
+    {"value": "Route B 只读离线治理链", "aliases": [], "required": true, "label": "第三章首个候选"},
+    {"value": "推荐但待研究者确认", "aliases": [], "required": true, "label": "第三章路径状态"},
+    {"value": "首个 Evaluation MVP", "aliases": [], "required": true, "label": "Route B 角色"},
+    {"value": "manual 301", "aliases": [], "required": true, "label": "人工校准样本角色"},
+    {"value": "scientific gold", "aliases": [], "required": true, "label": "第二章禁止晋级边界"},
+    {"value": "121/121", "aliases": [], "required": true, "label": "第一章回归检查"},
+    {"value": "15/15", "aliases": [], "required": true, "label": "第一章集成闭合"}
+  ],
+  "protected_numbers": [
+    {"value": "150", "aliases": [], "required": true, "label": "第二章 G3 队列"},
+    {"value": "60", "aliases": [], "required": true, "label": "第二章 G4 队列"},
+    {"value": "10", "aliases": [], "required": true, "label": "第二章首批人工浅审"}
+  ],
+  "comparison": {
+    "preserve_all_numbers": false,
+    "preserve_all_measurements": false,
+    "preserve_all_citations": true,
+    "preserve_all_reference_tokens": true,
+    "preserve_cross_reference_sequence": true,
+    "preserve_markers": ["[待验证]"]
+  },
+  "citations": {"require_known_keys": false, "required_keys": [], "forbidden_keys": []},
+  "claims": [
+    {"id": "ROUTE-C1", "marker": "[CLAIM:ROUTE-C1]", "marker_required": false, "required_citations": [], "required_literals": ["工程与小规模真实模型集成闭环"], "forbidden_patterns": ["已经证明规划优越", "已经证明跨任务泛化"]},
+    {"id": "ROUTE-C2", "marker": "[CLAIM:ROUTE-C2]", "marker_required": false, "required_citations": [], "required_literals": ["不支持方法优越性"], "forbidden_patterns": ["已经形成科学约束库", "已经冻结 scientific gold"]},
+    {"id": "ROUTE-C3", "marker": "[CLAIM:ROUTE-C3]", "marker_required": false, "required_citations": [], "required_literals": ["不支持智能体系统已经得到验证"], "forbidden_patterns": ["manual 301 是独立验证", "quick corridor baseline 等于完整 RSS"]}
+  ],
+  "method_states": [
+    {"id": "CH1-STATE", "required_literals": ["正式机制效果仍为 open"], "forbidden_patterns": ["正式机制效果已验证"]},
+    {"id": "CH2-STATE", "required_literals": ["reviewer-ready; pending human shallow review"], "forbidden_patterns": ["scientific gold 已冻结"]},
+    {"id": "CH3-STATE", "required_literals": ["只读离线", "首个 Evaluation MVP"], "forbidden_patterns": ["resistance-supported RSS result"]}
+  ],
+  "cross_references": {"require_targets": true, "required_labels": []},
+  "style": {"max_sentence_chars": 180, "max_paragraph_chars": 550, "forbidden_patterns": ["全面提升", "填补了空白", "赋能", "国际领先", "打造"]}
+}
