@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "intake_id": "opening-report-v06-literature-intake-20260902",
+  "research_question": "开题报告 v0.6 的七处正文证据缺口分别由哪些现有证据包约束，哪些综合判断仍须保留标记？",
+  "target": {
+    "document": "thesis/opening_report_draft_zh.md",
+    "contract": "thesis/writing_contracts/opening_report_o1_v0.6.contract.json",
+    "snapshot": "2026-09-02",
+    "observed_ref_missing_occurrences": 8,
+    "content_ref_missing_markers": 7
+  },
+  "decisions": [
+    {
+      "decision_id": "O6-D1",
+      "decision_scope": "content_ref_missing_gap",
+      "target_section": "1.1 城市森林遥感科学任务的现实需求",
+      "snapshot_line": 90,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "urban-forest-remote-sensing-context-2026", "claim_id": "UFR-C1"},
+        {"packet_id": "urban-forest-remote-sensing-context-2026", "claim_id": "UFR-C2"},
+        {"packet_id": "urban-forest-remote-sensing-context-2026", "claim_id": "UFR-C5"}
+      ],
+      "rationale": "UFR-C1/C2 支持多源、多尺度和用途条件；跨任务依赖的总体概括仍属于 needs_review 的 UFR-C5，故保留标记。"
+    },
+    {
+      "decision_id": "O6-D2",
+      "decision_scope": "content_ref_missing_gap",
+      "target_section": "1.2 智能体为遥感分析提供的新路径",
+      "snapshot_line": 101,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C1"}
+      ],
+      "rationale": "GAC-C1 提供遥感多智能体工作流实例，但不能单独支撑关于整个技术路径的宽泛判断。"
+    },
+    {
+      "decision_id": "O6-D3",
+      "decision_scope": "content_ref_missing_gap",
+      "target_section": "1.3 科学智能体与遥感研究智能体",
+      "snapshot_line": 113,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C1"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C4"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C5"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C6"}
+      ],
+      "rationale": "能力实例已有候选证据；城市森林任务中的调整、知识、恢复和系统验证缺口仍需全文级近邻比较。"
+    },
+    {
+      "decision_id": "O6-D4",
+      "decision_scope": "content_ref_missing_gap",
+      "target_section": "2.1 大语言模型智能体与科学智能体研究",
+      "snapshot_line": 127,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "scientific-agent-workflow-boundaries-2026", "claim_id": "SAW-C1"},
+        {"packet_id": "scientific-agent-workflow-boundaries-2026", "claim_id": "SAW-C2"},
+        {"packet_id": "scientific-agent-workflow-boundaries-2026", "claim_id": "SAW-C5"}
+      ],
+      "rationale": "SAW-C1/C2 提供工作流和反馈实例，但关于一次性规划、隐式状态与结果自评的一般局限仍是 SAW-C5 的待审综合。"
+    },
+    {
+      "decision_id": "O6-D5",
+      "decision_scope": "content_ref_missing_gap",
+      "target_section": "2.2 面向遥感与地理空间分析的智能体研究",
+      "snapshot_line": 133,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C1"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C2"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C4"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C5"},
+        {"packet_id": "geospatial-agent-comparators-2026", "claim_id": "GAC-C6"}
+      ],
+      "rationale": "现有工作覆盖若干能力组件；科学充分性与复杂开放场景系统评价的领域综合仍为 needs_review。"
+    },
+    {
+      "decision_id": "O6-D6",
+      "decision_scope": "content_ref_missing_gap",
+      "target_section": "2.3 科学知识表示、检索与推理研究",
+      "snapshot_line": 138,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C1"},
+        {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C2"},
+        {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C3"},
+        {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C4"},
+        {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C5"}
+      ],
+      "rationale": "来源、限定词、认知状态和适用性已有相邻表示；它们在城市森林智能体中的组合与效果仍未建立。"
+    },
+    {
+      "decision_id": "O6-D7",
+      "decision_scope": "content_ref_missing_gap",
+      "target_section": "2.4 智能体系统评测与真实用户验证",
+      "snapshot_line": 148,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "agent-evaluation-user-validity-2026", "claim_id": "AEV-C1"},
+        {"packet_id": "agent-evaluation-user-validity-2026", "claim_id": "AEV-C2"},
+        {"packet_id": "agent-evaluation-user-validity-2026", "claim_id": "AEV-C3"},
+        {"packet_id": "agent-evaluation-user-validity-2026", "claim_id": "AEV-C4"},
+        {"packet_id": "agent-evaluation-user-validity-2026", "claim_id": "AEV-C5"}
+      ],
+      "rationale": "结果、过程、状态依赖、重复可靠性和真实用户评价均有相邻实例；其城市森林领域有效性仍须第三章证明。"
+    }
+  ],
+  "summary": {
+    "content_markers_removable_now": 0,
+    "writing_contract_merged": false,
+    "zotero_write_performed": false,
+    "prior_intake": "opening-report-v05-literature-intake-20260901",
+    "prior_intake_status": "retired"
+  }
+}

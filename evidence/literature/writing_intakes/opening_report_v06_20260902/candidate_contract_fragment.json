@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "opening-report-v06-literature-intake-20260902",
+    "title": "开题报告 v0.6 文献写作准入候选片段",
+    "mode": "argument-edit",
+    "authority": [
+      "thesis/writing_contracts/opening_report_o1_v0.6.contract.json",
+      "evidence/literature/writing_intakes/opening_report_v06_20260902/decision_matrix.json"
+    ]
+  },
+  "terms": [],
+  "abbreviations": [],
+  "protected_literals": [
+    {"value": "reviewed_candidate", "aliases": [], "required": true, "label": "intake status"},
+    {"value": "[REF-MISSING]", "aliases": [], "required": true, "label": "preserved evidence marker"},
+    {"value": "needs_review", "aliases": [], "required": true, "label": "synthesis boundary"}
+  ],
+  "protected_numbers": [
+    {"value": "8", "aliases": [], "required": true, "label": "literal REF-MISSING occurrences"},
+    {"value": "7", "aliases": [], "required": true, "label": "content evidence gaps"},
+    {"value": "0", "aliases": [], "required": true, "label": "removable content markers"}
+  ],
+  "comparison": {
+    "preserve_all_numbers": false,
+    "preserve_all_measurements": false,
+    "preserve_all_citations": true,
+    "preserve_all_reference_tokens": true,
+    "preserve_cross_reference_sequence": true,
+    "preserve_markers": ["[REF-MISSING]"]
+  },
+  "citations": {"require_known_keys": false, "required_keys": [], "forbidden_keys": []},
+  "claims": [],
+  "method_states": [],
+  "cross_references": {"require_targets": false, "required_labels": []},
+  "style": {"max_sentence_chars": 300, "max_paragraph_chars": 1200, "forbidden_patterns": ["全面证明", "填补空白"]}
+}
