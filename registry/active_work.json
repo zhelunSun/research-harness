@@ -1,13 +1,14 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-01T19:17:42+08:00",
+  "updated_at": "2026-09-02T15:17:17+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
     "single_writer_per_file_scope": true,
     "forbidden_parallel_scopes": ["thesis_claim", "scientific_gold", "method_version", "formal_title"]
   },
-  "locks": [
+  "locks": [],
+  "last_closed": [
     {
       "task_id": "20260902-opening-o1-v1-review",
       "owner": "root",
@@ -18,13 +19,13 @@
         "registry/active_work.json"
       ],
       "claim_or_method_scope": "fresh-context review findings only; no opening-report rewrite, REF-MISSING removal, citation insertion, claim promotion, scientific gold, method version, or formal title change",
-      "status": "active",
+      "status": "completed",
       "dependency": "opening report O1 v0.5 contract, adjacent route-matrix contract, opening draft v0.5, three-chapter route matrix, and opening evidence matrix",
       "stop_condition": "one read-only V1 report records prioritized claim-evidence, chapter-transition, scope, qualifier, and evaluation-responsibility findings with deterministic V0 checks; no same-pass rewrite",
-      "expires_on": "2026-09-03"
-    }
-  ],
-  "last_closed": [
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-02T15:17:17+08:00",
+      "result": "research-harness@3c135f7; 2 P1 and 2 P2 findings recorded; main draft and evidence inputs unchanged; O1 and route-matrix deterministic audits 0 errors / 0 warnings"
+    },
     {
       "task_id": "20260901-knowledge-evidence-governance-literature",
       "owner": "root",

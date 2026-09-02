@@ -20,7 +20,7 @@
 除非总题目、章节角色或核心 claim 发生变化，不再新建 thesis-wide roadmap、handoff 或
 “最新版计划”。新会话通过本节恢复，不依赖翻找历史 chat。
 
-### 0.2 2026-09-01 当前快照
+### 0.2 2026-09-02 当前快照
 
 | 里程碑 | 状态 | 已有证据 | 当前缺口 |
 | --- | --- | --- | --- |
@@ -30,15 +30,17 @@
 | M3 城市森林遥感任务系统评测 | core direction and minimum path accepted | 静态资产—任务—grader—claim 审计已完成，确认 Route B 只读离线治理链为最低新增工作的推荐首路，RSS 故障状态链为备选；static-audit baseline 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@d560bb0`，当前远端 tip 由 checkpoint registry 判定 | 需研究者确认首轮路径；随后才实现首批 task/environment/outcome schema、确定性 grader 与公平比较适配器；用户研究、生态有效性和正式系统效果仍未开始 |
 | M4 用户／专家校准与经验驱动适应 | deferred increment | 目标用户／专家角色与 episode reservoir 已界定 | 二者均不进入第三章最低承诺；伦理／数据门禁、rubric 校准、episode 化和学习实验均未启动 |
 | L0 文献证据控制面 | six packets audited; acquisition queue exhausted | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；`runtime_scan.json` 已按路径脱敏记录本机 5/5 registered item、5/5 linked file 和 5/5 SeaDrive resolution；`refresh_literature_runtime.py` 可重复执行只读刷新；`audit_thesis_workspace.py` 将 repo sync、workspace navigation、literature freshness、runtime snapshot 与 `registry/human_gates.json` 的五类人工门统一为一个入口；六包合计 25 source / 34 claim / 53 link，8 条 exact consumer routes 与开题 writing intake 均纳入确定性审计；前三个 acquisition 包分别闭合评测、知识治理和科学智能体缺口，`AQ-OI-D1-BACKGROUND` 又以 4 篇全文分开记录多源／多时相／多尺度输入、用途—尺度—分辨率方法选择、多阶段分类链和生态服务的地方／社会解释边界；`acquisition_queue.json` 当前 actionable=0、`active_work_item_id=null`，新检索只能由新的 writing gap 重新路由 | 跨设备同构、五个 prepared packet 的 Zotero 授权、开题 writing acceptance、Ch2 G4 Batch A 浅审与 Ch3 首轮路线选择均保持 researcher-owned；旧笔记与开题准入仍非 writing eligible，`GAC-C6`、`AEV-C5`、`KEG-C5`、`SAW-C5` 与 `UFR-C5` 均为 `needs_review`；原 OI-D1 的总体门槛下降判断仍未解决，检索发现本身不得移除正文缺口标记 |
-| O0 选题材料 | source definition and working titles aligned | `opening_report_outline_zh.md` v0.4 用于汇报和人工润色；`opening_report_draft_zh.md` v0.5 维护唯一章级源定义并完成 O1 连续正文 writer pass；三章路线矩阵 v0.1 与开题证据矩阵 v0.8 已对齐；文献准入审查确认第 1.2、2.2 与 2.4 节为未来拆段候选，但未修改正文或 O1 contract | O1 尚需独立 fresh-context V1 审阅；新增引文、拆段和标记移除均须在后续 writing contract 中显式接受；最终送审题目、引用、图件和导师讨论包仍待收口 |
+| O0 选题材料 | source definition and working titles aligned；V1 findings open | `opening_report_outline_zh.md` v0.4 用于汇报和人工润色；`opening_report_draft_zh.md` v0.5 维护唯一章级源定义并完成 O1 连续正文 writer pass；三章路线矩阵 v0.1 与开题证据矩阵 v0.8 已对齐；独立 fresh-context V1 已形成 `thesis/reviews/opening_report_o1_v0.5_v1_review_20260902.md`，记录 2 个 P1 与 2 个 P2，未在同一遍审阅中改写正文 | 先由独立 writer pass 关闭两个 P1，再做 V0 与只读差异复核；新增引文、拆段和标记移除均须在后续 writing contract 中显式接受；最终送审题目、引用、图件和导师讨论包仍待收口 |
 
 ### 0.3 当前唯一下一动作
 
-当前唯一下一动作是对 `thesis/opening_report_draft_zh.md` v0.5 开展独立 fresh-context V1 审阅。审阅者只读
-`thesis/writing_contracts/opening_report_o1_v0.5.brief.md`、相邻 contract、主稿 v0.5、三章路线矩阵和开题证据矩阵，
-按 claim–evidence、章节衔接、范围漂移、限定语附着和三章评价责任报告 findings，不在同一遍审阅中重写正文。
-若无 P1 或更高问题，再以 v0.5 和路线矩阵形成导师讨论包首轮；不得删除 `[REF-MISSING]`、补写未核验引用，
-或把候选路线、预期创新和诊断证据改成已冻结方法或已验证效果。
+当前唯一下一动作是在独立 writer pass 中只修复
+`thesis/reviews/opening_report_o1_v0.5_v1_review_20260902.md` 的 P1-01 与 P1-02：为第一章预期创新局部附着
+`[待验证]` 状态并把效果性措辞改为待检验关系；恢复第二章 canonical term“面向智能体的遥感科学知识表示与推理”，
+把来源、适用条件和证据状态保留为表示与推理需要处理的属性。writer 不处理引用、不删除 `[REF-MISSING]`，
+不改变 claim、scientific gold、方法版本或正式题目。完成后重新运行 O1 writing-contract V0 审计并做一次只读差异复核；
+两个 P1 关闭且没有新增 P1 后，才以 v0.5 和路线矩阵形成导师讨论包首轮。两个 P2 只在不扩展 file scope、
+不改变章级评价对象时机械收窄，否则继续作为可见 review debt。
 
 V1 可把 `evidence/literature/packets/ai4science_frontier_2026/` 作为 AI4Science 相邻背景与比较维度的候选输入；
 其 writing bridge 当前不得直接并入 O1 contract。只有任务特定审阅接受 AFS claim 与引用键后，才允许替换对应
