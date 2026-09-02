@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-02T16:01:44+08:00",
+  "updated_at": "2026-09-02T16:33:23+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,32 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260902-opening-atomic-outline-and-routeb-acceptance",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "decisions/DEC-2026-0902-ch3-routeb-first-evaluation-order.md",
+        "decisions/README.md",
+        "THESIS_STATE.md",
+        "thesis/opening_report_draft_zh.md",
+        "thesis/opening_three_chapter_route_matrix_zh.md",
+        "thesis/opening_report_atomic_section_map_v0.1.md",
+        "thesis/README.md",
+        "thesis/writing_contracts/opening_report_o1_v0.6.*",
+        "thesis/writing_contracts/opening_three_chapter_route_matrix_v0.2.*",
+        "process/current_execution_plan_20260802.md",
+        "registry/human_gates.json",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "record explicit researcher acceptance of Route B as the first bounded Ch3 implementation order and create an atomic opening-report section map; no Ch3 experiment, citation insertion, evidence promotion, final title freeze, or DOCX modification",
+      "status": "completed",
+      "dependency": "researcher message on 2026-09-02, opening report v0.6, V2.0 heading reference, V2.1 historical content reference, and current writing contracts",
+      "stop_condition": "Route B human gate is closed with boundaries preserved; V2.0/V2.1 roles are recorded; every opening-report subsection has a bounded section job, atomic content, evidence slot, and transition before further prose expansion",
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-02T16:33:23+08:00",
+      "result": "Route B route gate completed by explicit researcher decision; atomic section map created for all seven opening-report blocks; reference DOCX files remained read-only; human-gate, literature, and two writing-contract audits have 0 issues; 54 tests pass"
+    },
     {
       "task_id": "20260902-opening-terminology-polish",
       "owner": "root",

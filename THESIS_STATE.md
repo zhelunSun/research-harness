@@ -157,8 +157,8 @@ Chapter 3 历史直接合并或强推覆盖。
 - 研究内容二提供任务条件化科学知识表示和知识—证据运行界面，支持智能体依据当前证据进行观测、
   分析、验证、解释和结论校准，但复用第一项的运行与恢复机制；
 - 研究内容三把同一城市、同一版本数据与中间制品上的跨学科指标及其依赖组织为复合任务，并以
-  版本化环境、可观察过程、结果和评价表示一次系统试验。Route B 只读离线治理链只是推荐的首个
-  评测任务；本地核心栖息地与 RSS 分析是接口稳定后的候选任务族，不是互斥的章级路线。
+  版本化环境、可观察过程、结果和评价表示一次系统试验。Route B 只读离线治理链已由研究者确认
+  为首个评测任务；本地核心栖息地与 RSS 分析是接口稳定后的候选任务族，不是互斥的章级路线。
 
 第一项不依赖第二项全部实现也能研究规划；第二项可在稳定任务上研究科学约束；第三项可比较冻结版本和外部方法，不要求前三个仓库强耦合为单一产品。弱耦合指实现与实验可独立，不代表论文叙事割裂。
 
@@ -198,6 +198,7 @@ Chapter 3 历史直接合并或强推覆盖。
 - 开题目标、内容与技术路线校准：`decisions/DEC-2026-0831-opening-objectives-content-and-route-alignment.md`；
 - 开题简洁共识与工作标题：`decisions/DEC-2026-0831-opening-consensus-and-working-titles.md`；
 - 城市森林问题牵引与当前开题标题：`decisions/DEC-2026-0902-opening-urban-forest-problem-framing.md`；
+- 第三项研究首轮实施顺序：`decisions/DEC-2026-0902-ch3-routeb-first-evaluation-order.md`；
 - 当前框架与优先级决策：`decisions/DEC-2026-0802-advisor-reported-frame-and-ch2-priority.md`；
 - 当前执行计划：`process/current_execution_plan_20260802.md`；
 - 前沿方向 context：`ideas/agent_frontier_alignment.md`；

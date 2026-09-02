@@ -7,12 +7,12 @@
 - Authoritative sources: `DEC-2026-0902-opening-urban-forest-problem-framing.md`; O1 v0.6; Ch3 static audit.
 - Approved claims: 三个开题阶段标题固定；Route B 是首个实现顺序；核心栖息地与 RSS 是后续可复用接口承载的任务族。
 - Evidence route for each claim: human feedback and decision for framing; repository audit for Ch3 assets and boundaries.
-- Method/data/evaluation state: all prior evidence states preserved; no system-effect promotion.
+- Method/data/evaluation state: all prior evidence states preserved; Route B first implementation order accepted; no system-effect promotion.
 - Required limitations: offline is a side-effect boundary, not a GEE-to-local migration; city scale is not novelty by itself.
 - Canonical terms and English anchors: three chapter titles; `Environment`; `TrialTrace`; `Outcome`; `Evaluation`; RSS.
 - Protected numbers and literals: see adjacent contract.
 - Required citations: none.
-- Unresolved markers: Ch3 first implementation order remains pending researcher confirmation.
+- Unresolved markers: Ch3 first implementation order is resolved; all method-effect and evidence-status questions remain open.
 - Explicit non-goals: no experiment execution, algorithm freeze, user study, or novelty acceptance.
 - Paragraph function map: common urban-forest problem → chapter-local methods → shared city task environment → evaluation boundaries.
 
@@ -23,3 +23,4 @@
 | M1 | argument | Ch1/Ch2 questions begin at generic remote-sensing Agent capability | Questions begin at urban-forest workflows and knowledge needs while retaining RS transfer scope | researcher feedback; `DEC-2026-0902` |
 | M2 | argument | Route B and RSS read as alternative chapter routes | Route B is first MVP; local habitat/RSS tasks are later task families if interfaces are reusable | Ch3 static audit; researcher feedback |
 | M3 | language | “错误成功报告” and broad “scientific applicability” responsibility | “失败误报为成功” and narrow chapter-specific evaluation responsibility | O1 v0.5 V1 P2 findings |
+| M4 | status | Route B first implementation order pending | Route B accepted as the first bounded evaluation implementation; later task-family and evidence boundaries unchanged | researcher decision on 2026-09-02; `DEC-2026-0902-ch3-routeb-first-evaluation-order.md` |

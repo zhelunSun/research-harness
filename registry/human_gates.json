@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-02T15:45:00+08:00",
+  "updated_at": "2026-09-02T16:26:05+08:00",
   "policy": {
     "source_of_truth": "registry/human_gates.json",
     "decision_owner": "researcher",
@@ -146,7 +146,7 @@
     {
       "gate_id": "ch3-first-evaluation-route-selection",
       "category": "scientific_route",
-      "status": "pending_researcher_decision",
+      "status": "completed",
       "decision_owner": "researcher",
       "repository_id": "chapter-3-evaluation",
       "artifact_path": "docs/reports/ch3_asset_eval_claim_audit_20260831.md",
@@ -157,7 +157,14 @@
         "decision keeps local core-habitat and RSS analyses as later candidate task families rather than mutually exclusive thesis routes",
         "decision preserves the current method and evidence boundaries"
       ],
-      "next_action": "Present Route B as the bounded first implementation order, not the whole Chapter 3 route; do not start implementation before the researcher decides."
+      "next_action": "Enter the Chapter 3 repository through its current plan and implement only the bounded Route B first evaluation fixture before considering core-habitat or RSS task families.",
+      "resolved_at": "2026-09-02T16:26:05+08:00",
+      "resolution": {
+        "decided_at": "2026-09-02T16:26:05+08:00",
+        "decided_by": "researcher",
+        "evidence": "Researcher explicitly accepted Route B as the first bounded implementation order while keeping local core-habitat and RSS analyses as later task families and preserving all method and evidence boundaries.",
+        "decision_artifact": "decisions/DEC-2026-0902-ch3-routeb-first-evaluation-order.md"
+      }
     }
   ]
 }

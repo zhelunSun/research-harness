@@ -26,7 +26,7 @@
     {"value": "可调整的分层规划", "aliases": [], "required": true, "label": "第一章方法对象"},
     {"value": "任务条件化科学知识表示", "aliases": [], "required": true, "label": "第二章方法对象"},
     {"value": "Route B 只读离线治理链", "aliases": [], "required": true, "label": "第三章首个候选"},
-    {"value": "推荐但待研究者确认", "aliases": [], "required": true, "label": "第三章路径状态"},
+    {"value": "已由研究者确认为首个最小评测实现", "aliases": [], "required": true, "label": "第三章路径状态"},
     {"value": "首个最小评测实现", "aliases": [], "required": true, "label": "Route B 角色"},
     {"value": "manual 301", "aliases": [], "required": true, "label": "人工校准样本角色"},
     {"value": "scientific gold", "aliases": [], "required": true, "label": "第二章禁止晋级边界"},

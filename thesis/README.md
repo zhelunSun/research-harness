@@ -11,7 +11,8 @@
 4. [`opening_report_outline_zh.md`](opening_report_outline_zh.md)：接近既有 V1.1 篇幅的导师汇报大纲；
 5. [`opening_report_draft_zh.md`](opening_report_draft_zh.md)：为大纲提供详细论证和证据边界的后台工作稿；
 6. [`opening_three_chapter_route_matrix_zh.md`](opening_three_chapter_route_matrix_zh.md)：导师讨论前按同构字段核对三章技术路线、评价责任和边界；
-7. 按所写章节进入下方对应的“章节材料包”，不要先扫描历史计划或聊天记录。
+7. [`opening_report_atomic_section_map_v0.1.md`](opening_report_atomic_section_map_v0.1.md)：按“小节职责—原子论述—证据槽位—边界—转接”推进正文；
+8. 按所写章节进入下方对应的“章节材料包”，不要先扫描历史计划或聊天记录。
 
 两份选题材料采用同一套“背景意义—研究动态—科学问题与研究内容—方法与技术路线—前期基础—
 特色创新—后续安排”结构。`opening_report_outline_zh.md` 是汇报和人工润色入口；
@@ -30,7 +31,7 @@
 | 总题目、研究问题、三项研究关系 | 当前正式工作框架 | [`outline_zh.md`](outline_zh.md)、[`../ideas/chapter_ideas.md`](../ideas/chapter_ideas.md) | [`../claims/key_claims.md`](../claims/key_claims.md)、[`../evidence/opening_evidence_matrix.md`](../evidence/opening_evidence_matrix.md) |
 | 研究内容一：面向开放需求的多智能体遥感科学分析系统 | 完整系统为核心，工作流贯通为载体，动态规划、过程图和错误调节为增量 | [`../../URSA/docs/thesis/ch1_evidence_system/README.md`](../../URSA/docs/thesis/ch1_evidence_system/README.md)、[`../../URSA/docs/thesis/ch1_evidence_system/ch1_v053_draft.md`](../../URSA/docs/thesis/ch1_evidence_system/ch1_v053_draft.md) | [`../../URSA/docs/thesis/ch1_evidence_system/v053_evidence_index.md`](../../URSA/docs/thesis/ch1_evidence_system/v053_evidence_index.md)、[`../../URSA/docs/thesis/ch1_evidence_system/claim_registry.md`](../../URSA/docs/thesis/ch1_evidence_system/claim_registry.md) |
 | 研究内容二：面向智能体的遥感科学知识表示与推理 | 章级主术语已统一；具体表示、运行界面和作用效果仍待最小闭环 | [`../../chapter2-urban-forest-knowledge/sync/upstream_proposals/20260829_ch2_c0_idea_and_opening_handoff.md`](../../chapter2-urban-forest-knowledge/sync/upstream_proposals/20260829_ch2_c0_idea_and_opening_handoff.md) | [`../../chapter2-urban-forest-knowledge/docs/20260829_ch2_academic_terminology_alignment_decision_v0.1.md`](../../chapter2-urban-forest-knowledge/docs/20260829_ch2_academic_terminology_alignment_decision_v0.1.md) 是方法输入；当前总控边界见 [`../decisions/DEC-2026-0831-opening-consensus-and-working-titles.md`](../decisions/DEC-2026-0831-opening-consensus-and-working-titles.md) |
-| 研究内容三：面向城市森林遥感任务的智能体系统评测 | 多阶段依赖、任务链组织和分层系统评测；静态资产—评测—结论审计已完成，首轮路线待研究者确认 | [`../../urbfo-agent-demo/docs/reports/ch3_asset_eval_claim_audit_20260831.md`](../../urbfo-agent-demo/docs/reports/ch3_asset_eval_claim_audit_20260831.md) | [`../../urbfo-agent-demo/docs/plans/ch3_asset_to_eval_and_hitl_plan_20260731.md`](../../urbfo-agent-demo/docs/plans/ch3_asset_to_eval_and_hitl_plan_20260731.md)、[`../decisions/DEC-2026-0831-opening-consensus-and-working-titles.md`](../decisions/DEC-2026-0831-opening-consensus-and-working-titles.md) |
+| 研究内容三：面向城市森林遥感任务的智能体系统评测 | 多阶段依赖、任务链组织和分层系统评测；Route B 首轮实施顺序已确认 | [`../../urbfo-agent-demo/docs/reports/ch3_asset_eval_claim_audit_20260831.md`](../../urbfo-agent-demo/docs/reports/ch3_asset_eval_claim_audit_20260831.md) | [`../../urbfo-agent-demo/docs/plans/ch3_asset_to_eval_and_hitl_plan_20260731.md`](../../urbfo-agent-demo/docs/plans/ch3_asset_to_eval_and_hitl_plan_20260731.md)、[`../decisions/DEC-2026-0902-ch3-routeb-first-evaluation-order.md`](../decisions/DEC-2026-0902-ch3-routeb-first-evaluation-order.md) |
 
 ### 第一章开题材料的最短访问路径
 

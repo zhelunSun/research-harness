@@ -49,7 +49,7 @@
     {"value": "idea-v2026.08.02", "aliases": [], "required": true, "label": "Idea 版本"},
     {"value": "城市森林遥感任务", "aliases": [], "required": true, "label": "共同问题牵引"},
     {"value": "Route B 只读离线治理链", "aliases": [], "required": true, "label": "Ch3 首轮候选"},
-    {"value": "推荐但待研究者确认", "aliases": [], "required": true, "label": "Ch3 路线状态"},
+    {"value": "已由研究者确认为首个评测任务", "aliases": [], "required": true, "label": "Ch3 路线状态"},
     {"value": "首个评测任务", "aliases": [], "required": true, "label": "Route B 角色"},
     {"value": "不表示原专业流程已经从 GEE 迁移为本地算法", "aliases": [], "required": true, "label": "离线边界"},
     {"value": "manual 301 误当独立验证", "aliases": [], "required": true, "label": "manual 301 禁止边界"},
@@ -111,7 +111,7 @@
   "method_states": [
     {"id": "CH1-STATE", "required_literals": ["正式机制效果仍待匹配实验"], "forbidden_patterns": ["正式机制效果已验证"]},
     {"id": "CH2-STATE", "required_literals": ["待人工浅审队列"], "forbidden_patterns": ["scientific gold 已冻结"]},
-    {"id": "CH3-STATE", "required_literals": ["推荐但待研究者确认", "首个评测任务"], "forbidden_patterns": ["智能体系统已经得到验证"]}
+    {"id": "CH3-STATE", "required_literals": ["已由研究者确认为首个评测任务"], "forbidden_patterns": ["智能体系统已经得到验证"]}
   ],
   "cross_references": {"require_targets": true, "required_labels": []},
   "style": {

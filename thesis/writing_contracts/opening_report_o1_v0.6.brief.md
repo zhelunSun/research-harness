@@ -7,12 +7,12 @@
 - Authoritative sources: researcher feedback on 2026-09-02; `DEC-2026-0902-opening-urban-forest-problem-framing.md`; `THESIS_STATE.md`; accepted 2026-08-30/31 opening decisions; O1 v0.5 V1 review; current Ch3 static audit.
 - Approved claims: 城市森林问题是共同出发点；第一、二项方法可在其他遥感任务检验可迁移性；Route B 是首个评测任务而非第三章全部路线；本地核心栖息地与 RSS 可作为后续任务族；城市级本身不是创新。
 - Evidence route for each claim: human decision and canonical Idea for framing; Chapter 3 static audit for asset/task boundary; literature study only motivates later novelty review and is not writing eligible.
-- Method/data/evaluation state: Ch1 formal effect open; Ch2 scientific gold and method effect open; Ch3 system effect open and first route pending researcher confirmation.
+- Method/data/evaluation state: Ch1 formal effect open; Ch2 scientific gold and method effect open; Ch3 system effect open; Route B first implementation order accepted by the researcher.
 - Required limitations: no citation insertion; no `[REF-MISSING]` removal; no new experimental result; no full RSS/quick baseline collapse; no GEE-to-local migration claim.
 - Canonical terms and English anchors: three accepted chapter titles; 城市森林遥感任务；复合任务；版本化环境；Route B 只读离线治理链；RSS；quick corridor baseline；scientific gold.
 - Protected numbers and literals: `2,228 / 150 / 60 / 107 / 63 / 2–3`; `manual 301`; `idea-v2026.08.02`.
 - Required citations: none added in this pass.
-- Unresolved markers: all existing `[REF-MISSING]` and `[待确认]`; literature-study markers remain outside the draft.
+- Unresolved markers: all existing `[REF-MISSING]` and unrelated `[待确认]`; literature-study markers remain outside the draft. The Route B implementation-order gate is resolved.
 - Explicit non-goals: final thesis-title freeze; novelty acceptance; Chapter 3 implementation; Zotero import; reference-marker resolution.
 - Paragraph function map: 城市森林任务需求与依赖 → Agent 提供的新路径及其不足 → 三项研究不足 → 三个方法对象 → 局部验证与系统评测 → 证据与创新边界。
 
@@ -29,3 +29,4 @@
 | U7 | language | “错误成功报告”语义不明 | 统一为“失败误报为成功” | O1 v0.5 V1 P2-01 |
 | U8 | scope | “科学适用性”笼统交给第二、三项 | 分别写明 Ch2 的知识／证据机制责任与 Ch3 的固定任务系统结果责任 | O1 v0.5 V1 P2-02 |
 | U9 | provenance | 关键词比较了 recovery-only 旧材料 | 仅在决策中记录路径和未采用状态，不作为当前论证权威 | Recovery Workspace Guard |
+| U10 | status | Route B 首轮顺序为“推荐但待确认” | 研究者已确认 Route B 为首个评测任务；核心栖息地与 RSS 仍是后续任务族 | researcher decision on 2026-09-02; `DEC-2026-0902-ch3-routeb-first-evaluation-order.md` |
