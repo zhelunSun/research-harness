@@ -27,7 +27,7 @@
     {"value": "任务条件化科学知识表示", "aliases": [], "required": true, "label": "第二章方法对象"},
     {"value": "Route B 只读离线治理链", "aliases": [], "required": true, "label": "第三章首个候选"},
     {"value": "推荐但待研究者确认", "aliases": [], "required": true, "label": "第三章路径状态"},
-    {"value": "首个 Evaluation MVP", "aliases": [], "required": true, "label": "Route B 角色"},
+    {"value": "首个最小评测实现", "aliases": [], "required": true, "label": "Route B 角色"},
     {"value": "manual 301", "aliases": [], "required": true, "label": "人工校准样本角色"},
     {"value": "scientific gold", "aliases": [], "required": true, "label": "第二章禁止晋级边界"},
     {"value": "121/121", "aliases": [], "required": true, "label": "第一章回归检查"},
@@ -55,7 +55,7 @@
   "method_states": [
     {"id": "CH1-STATE", "required_literals": ["正式机制效果仍为 open"], "forbidden_patterns": ["正式机制效果已验证"]},
     {"id": "CH2-STATE", "required_literals": ["reviewer-ready; pending human shallow review"], "forbidden_patterns": ["scientific gold 已冻结"]},
-    {"id": "CH3-STATE", "required_literals": ["只读离线", "首个 Evaluation MVP"], "forbidden_patterns": ["resistance-supported RSS result"]}
+    {"id": "CH3-STATE", "required_literals": ["只读离线", "首个最小评测实现"], "forbidden_patterns": ["resistance-supported RSS result"]}
   ],
   "cross_references": {"require_targets": true, "required_labels": []},
   "style": {"max_sentence_chars": 180, "max_paragraph_chars": 550, "forbidden_patterns": ["全面提升", "填补了空白", "赋能", "国际领先", "打造"]}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-02T15:57:35+08:00",
+  "updated_at": "2026-09-02T16:01:44+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,24 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260902-opening-terminology-polish",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "thesis/opening_report_draft_zh.md",
+        "thesis/opening_three_chapter_route_matrix_zh.md",
+        "thesis/writing_contracts/opening_three_chapter_route_matrix_v0.2.*",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "language-only terminology normalization; no claim, evidence, method, route, title, or citation change",
+      "status": "completed",
+      "dependency": "researcher request to unify terminology and avoid unnecessary coined expressions",
+      "stop_condition": "engineering placeholders in the opening draft and route matrix are replaced with stable Chinese terms without changing method handles or evidence state",
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-02T16:01:44+08:00",
+      "result": "English engineering placeholders normalized; both writing-contract audits have 0 errors / 0 warnings; 54 tests pass"
+    },
     {
       "task_id": "20260902-opening-urban-forest-problem-framing",
       "owner": "root",
