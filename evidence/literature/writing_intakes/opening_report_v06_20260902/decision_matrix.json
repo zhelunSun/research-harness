@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "intake_id": "opening-report-v06-literature-intake-20260902",
-  "research_question": "开题报告 v0.6 的七处正文证据缺口分别由哪些现有证据包约束，哪些综合判断仍须保留标记？",
+  "research_question": "开题报告 v0.6.1 的八处正文证据缺口分别由哪些现有证据包约束，哪些综合判断仍须保留标记？",
   "target": {
     "document": "thesis/opening_report_draft_zh.md",
     "contract": "thesis/writing_contracts/opening_report_o1_v0.6.contract.json",
-    "snapshot": "2026-09-02",
-    "observed_ref_missing_occurrences": 8,
-    "content_ref_missing_markers": 7
+    "snapshot": "2026-09-03",
+    "observed_ref_missing_occurrences": 9,
+    "content_ref_missing_markers": 8
   },
   "decisions": [
     {
@@ -54,8 +54,24 @@
     {
       "decision_id": "O6-D4",
       "decision_scope": "content_ref_missing_gap",
-      "target_section": "2.1 大语言模型智能体与科学智能体研究",
-      "snapshot_line": 127,
+      "target_section": "2.1 城市森林遥感任务与方法基础",
+      "snapshot_line": 128,
+      "outcome": "partial_split_required",
+      "marker_retained": true,
+      "source_claims": [
+        {"packet_id": "urban-forest-remote-sensing-context-2026", "claim_id": "UFR-C1"},
+        {"packet_id": "urban-forest-remote-sensing-context-2026", "claim_id": "UFR-C2"},
+        {"packet_id": "urban-forest-remote-sensing-context-2026", "claim_id": "UFR-C3"},
+        {"packet_id": "urban-forest-remote-sensing-context-2026", "claim_id": "UFR-C4"},
+        {"packet_id": "urban-forest-remote-sensing-context-2026", "claim_id": "UFR-C5"}
+      ],
+      "rationale": "UFR-C1--C4 支持多源、多尺度、用途、处理和解释边界；上游定义与数据选择对下游可比性和适用范围的总体综合仍属于 needs_review 的 UFR-C5，故保留标记。"
+    },
+    {
+      "decision_id": "O6-D4a",
+      "decision_scope": "content_ref_missing_gap",
+      "target_section": "2.2 大语言模型智能体与科学智能体研究",
+      "snapshot_line": 137,
       "outcome": "partial_split_required",
       "marker_retained": true,
       "source_claims": [
@@ -68,8 +84,8 @@
     {
       "decision_id": "O6-D5",
       "decision_scope": "content_ref_missing_gap",
-      "target_section": "2.2 面向遥感与地理空间分析的智能体研究",
-      "snapshot_line": 133,
+      "target_section": "2.3 面向遥感与地理空间分析的智能体研究",
+      "snapshot_line": 143,
       "outcome": "partial_split_required",
       "marker_retained": true,
       "source_claims": [
@@ -84,8 +100,8 @@
     {
       "decision_id": "O6-D6",
       "decision_scope": "content_ref_missing_gap",
-      "target_section": "2.3 科学知识表示、检索与推理研究",
-      "snapshot_line": 138,
+      "target_section": "2.4 科学知识表示、检索与推理研究",
+      "snapshot_line": 148,
       "outcome": "partial_split_required",
       "marker_retained": true,
       "source_claims": [
@@ -93,15 +109,20 @@
         {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C2"},
         {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C3"},
         {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C4"},
-        {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C5"}
+        {"packet_id": "knowledge-evidence-governance-2026", "claim_id": "KEG-C5"},
+        {"packet_id": "ch2-knowledge-action-interfaces-2026", "claim_id": "KAI-C1"},
+        {"packet_id": "ch2-knowledge-action-interfaces-2026", "claim_id": "KAI-C2"},
+        {"packet_id": "ch2-knowledge-action-interfaces-2026", "claim_id": "KAI-C3"},
+        {"packet_id": "ch2-knowledge-action-interfaces-2026", "claim_id": "KAI-C4"},
+        {"packet_id": "ch2-knowledge-action-interfaces-2026", "claim_id": "KAI-C5"}
       ],
-      "rationale": "来源、限定词、认知状态和适用性已有相邻表示；它们在城市森林智能体中的组合与效果仍未建立。"
+      "rationale": "来源、限定词、认知状态、适用性、工作流模板、动作转移、可执行工具约束和经验 insight 均有相邻表示或机制；它们在城市森林智能体中的组合与效果仍未建立。"
     },
     {
       "decision_id": "O6-D7",
       "decision_scope": "content_ref_missing_gap",
-      "target_section": "2.4 智能体系统评测与真实用户验证",
-      "snapshot_line": 148,
+      "target_section": "2.5 智能体系统评测与真实用户验证",
+      "snapshot_line": 158,
       "outcome": "partial_split_required",
       "marker_retained": true,
       "source_claims": [

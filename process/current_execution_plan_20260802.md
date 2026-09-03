@@ -29,46 +29,29 @@
 | M2 遥感科学知识表示与推理 | core method accepted；formal effect open | Chapter 2 已形成知识／证据资产，章级主术语统一为面向智能体的遥感科学知识表示与推理；G3 已完成 150 条高召回筛选和 60 条 G4 队列；低／边界优先、来源平衡的六个十条浅审批次已形成，G4 evidence baseline 为 `l2-task-distillation@9dc0e01`，仓库验证为 41 PASS；当前远端 tip 由 checkpoint registry 判定 | 先由研究者完成批次 A 的 10 条低／边界抽查，再决定是否继续五个核心批次；scientific gold、最小表示与运行界面、知识推理闭环和分层匹配效果均未完成 |
 | M3 城市森林遥感任务系统评测 | first implementation order accepted；MVP brief ready | 静态资产审计和 Route B-first 决策已落到 Ch3；`routeb_readonly_evaluation_mvp_v0.1.md` 固定 strict500 正常闭合、manual 301 角色误置、variant lineage 混淆三个只读案例，并分开 protocol closure 与 scientific validity；canonical checkpoint 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@c16f1ff` | 下一步只实现本地 schema、provenance 和确定性 grader smoke tests；不运行 GEE／Drive／重训／外部模型；跨任务依赖和故障传播的候选创新仍需近邻全文比较与可执行评测共同检验 |
 | M4 用户／专家校准与经验驱动适应 | deferred increment | 目标用户／专家角色与 episode reservoir 已界定 | 二者均不进入第三章最低承诺；伦理／数据门禁、rubric 校准、episode 化和学习实验均未启动 |
-| L0 文献证据控制面 | seven packets audited; acquisition queue exhausted | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；统一审计覆盖仓库、导航、文献 freshness、runtime snapshot 与人工门；七包合计 29 source / 39 claim / 61 link，8 条 exact consumer routes 与开题 writing intake 均纳入确定性审计；新增 Ch2 knowledge-action packet 分开记录工作流模板、动作转移、ontology-to-tools 约束与经验复用，跨来源定位 `KAI-C5` 仍为 `needs_review`；`acquisition_queue.json` 当前 actionable=0、`active_work_item_id=null` | 跨设备同构、五个 prepared packet 的 Zotero 授权、开题 writing acceptance 与 Ch2 G4 Batch A 浅审保持 researcher-owned；所有跨来源综合与原 OI-D1“总体门槛下降”判断仍不得因检索完成而晋级或移除缺口标记 |
-| O0 选题材料 | urban-forest-first v0.6.1；V1 P1 closed；advisor packet ready | 独立 V1 后的 separate writer pass 已补齐城市森林遥感方法入口并同步 Route B-first 状态；导师讨论包 v0.1 已压缩为修改版大纲、三章最低闭环与五个问题，专用 writing contract 为 0 error / 0 warning | P2/P3、正式引文准入、图件和写作合同接受仍待后续；当前稿和讨论包可供快速检查，但不能称为引用完成或正式定稿 |
+| L0 文献证据控制面 | seven packets audited; v0.6.1 citation readiness done | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；七包合计 29 source / 39 claim / 61 link 均通过 ledger 审计；开题 v0.6.1 citation-readiness 已把 9 次字符串级 `[REF-MISSING]` 区分为 1 个说明性 marker 与 8 个正文证据槽，opening intake、acquisition queue 与候选 contract fragment 已同步且文献控制审计 0 issue | 跨设备同构、五个 prepared packet 的 Zotero 授权、开题 writing acceptance 与 Ch2 G4 Batch A 浅审保持 researcher-owned；所有跨来源综合仍不得因检索完成而晋级或移除缺口标记 |
+| O0 选题材料 | urban-forest-first v0.6.1；V1 P1 closed；advisor packet ready；citation readiness mapped | 独立 V1 后的 separate writer pass 已补齐城市森林遥感方法入口并同步 Route B-first 状态；导师讨论包 v0.1 已压缩为修改版大纲、三章最低闭环与五个问题，专用 writing contract 为 0 error / 0 warning；引用准入审计已确认 8 个正文槽位均可映射到现有 evidence packets 但暂不可直接移除 | P2/P3、正式 citation insertion、图件和写作合同接受仍待后续；当前稿和讨论包可供快速检查，但不能称为引用完成或正式定稿 |
 
 ### 0.3 当前唯一下一动作
 
-独立 fresh-context V1、两项 P1 separate writer pass、只读差异复核和导师讨论包 v0.1 均已完成。
-当前唯一自动推进动作是对 v0.6.1 的 9 个 `[REF-MISSING]` 做一次 citation-readiness 审计：只把每个
-槽位映射到现有 evidence packet、claim ID、read state、entailment 状态和仍缺的研究者接受动作，
-不插入引用、不删除标记、不新搜无明确 writing gap 的文献。该审计与研究者快速查看
-`thesis/advisor_discussion_packet_20260907_v0.1.md` 并行；研究者当前无需逐句润色。
+独立 fresh-context V1、两项 P1 separate writer pass、只读差异复核、导师讨论包 v0.1 和
+v0.6.1 citation-readiness 审计均已完成。当前稿仍保留 8 个正文 `[REF-MISSING]`；这些槽位
+已经映射到现有 evidence packet 和 claim ID，但只有 task-specific writing contract 经研究者接受后，
+才允许插入 BibTeX key 或删除标记。`UFR-C5`、`GAC-C6`、`SAW-C5`、`KEG-C5`、`KAI-C5`、
+`AEV-C5`、`AFS-C8` 等跨来源综合仍为 `needs_review`。
 
-V1 可把 `evidence/literature/packets/ai4science_frontier_2026/` 作为 AI4Science 相邻背景与比较维度的候选输入；
-其 writing bridge 当前不得直接并入 O1 contract。只有任务特定审阅接受 AFS claim 与引用键后，才允许替换对应
-`[REF-MISSING]`；AFS-C8 自身仍保留 `[REF-MISSING:AFS-C8]`。
+当前低带宽人工并行项是：研究者快速查看
+`thesis/advisor_discussion_packet_20260907_v0.1.md` 的一句话主线、三章最低闭环和五个导师问题；
+无需逐句润色，也无需现在判断全部候选引文。Ch2 批次 A 的 10 条低／边界浅审仍是 researcher-owned
+科学门，不阻塞 O1 和导师讨论包。
 
-`evidence/literature/packets/geospatial_agent_comparators_2026/` 已补齐 ExpertsRS、Spatial-Agent、GeoAgentBench 与
-GeoDisaster 的第一轮对照证据；当前 BibTeX 键为临时 intake 身份，Zotero 去重未发现既有条目，但导入与 PDF 关联须等
-研究者明确授权后执行。其 GAC-C6 仍保留 `[REF-MISSING:GAC-C6]`，不得据此提前宣称 Ch1 或 Ch3 的新颖性。
+当前唯一自动推进动作转为进入 Ch3 所属仓库 `urbfo-agent-demo/`：在已接受的 Route B-first 顺序下，
+只实现本地 schema、provenance 和 deterministic grader smoke tests，覆盖 strict500 正常闭合、
+manual 301 角色误置和 variant lineage 混淆三个只读案例。不运行 GEE／Drive／重训／外部模型，
+不把 protocol closure 写成 scientific validity，不接入本地核心栖息地或 RSS 任务族，直到首个
+Route B 评测接口被验证。
 
-`AQ-OI-D6-EVALUATION` 已按4篇目标完成全文筛选并形成
-`evidence/literature/packets/agent_evaluation_user_validity_2026/`：四个窄义 claim 可定位，跨来源领域迁移
-`AEV-C5` 仍为 `needs_review`。`AQ-OI-D5-KNOWLEDGE` 也已按4篇目标形成
-`evidence/literature/packets/knowledge_evidence_governance_2026/`：四个窄义 claim 分别覆盖 EO 工作流来历、
-支持／挑战论证图、epistemic／scope qualifiers 与情境适用性／验证状态；跨来源的 Agent 效果转移
-`KEG-C5` 仍为 `needs_review`。`AQ-OI-D3-SCIENTIFIC-AGENTS` 已按4篇目标形成
-`evidence/literature/packets/scientific_agent_workflow_boundaries_2026/`：能力事实与局限事实分栏，分别覆盖
-树搜索与节点状态、角色协作与人工反馈、跨轮观测、实验工具调用及原文自评／模拟／半自主边界；跨来源综合
-`SAW-C5` 仍为 `needs_review`。`AQ-OI-D1-BACKGROUND` 已按4篇目标形成
-`evidence/literature/packets/urban_forest_remote_sensing_context_2026/`：分别定位多源／多时相／多尺度输入、
-用途—尺度—分辨率方法选择、多阶段 LiDAR--高光谱分类链，以及生态服务的地方／社会解释边界；跨来源综合
-`UFR-C5` 仍为 `needs_review`，原 OI-D1 的“总体门槛下降”判断也未被这些来源修复。当前 acquisition queue
-已无 actionable item，`active_work_item_id=null`。这些包均不修改 O1 正文，也不取代上述 thesis-wide 唯一下一动作；候选发现、
-Zotero 入库和 writing contract 接受仍分别受 full-text、明确授权和任务特定审阅门约束。
-
-与该动作并行只保留 Ch2 批次 A 的 10 条低／边界浅审这一低带宽科学门；它不阻塞 O1 正文与
-导师讨论包。Route B 首轮实施顺序已由研究者确认并登记，后续实现仍须进入 Ch3 所属仓库。
-其余外部、Zotero、写作和 Ch2 门统一登记在 `registry/human_gates.json`；自动化只能报告和校验，
-不能替研究者关闭。
-
-本动作只做写作和证据映射，不启动新实验，也不发布新 Idea。当前决定状态为：
+当前决定状态为：
 
 1. 第一章以完整的面向用户多智能体科学分析系统为核心，动态规划和错误调节为增量；工程与
    小规模 live 集成证据已接受，正式效果仍为 open；

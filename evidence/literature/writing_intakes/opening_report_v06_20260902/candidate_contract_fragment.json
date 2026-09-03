@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "document": {
     "id": "opening-report-v06-literature-intake-20260902",
-    "title": "开题报告 v0.6 文献写作准入候选片段",
+    "title": "开题报告 v0.6.1 文献写作准入候选片段",
     "mode": "argument-edit",
     "authority": [
       "thesis/writing_contracts/opening_report_o1_v0.6.contract.json",
@@ -17,8 +17,8 @@
     {"value": "needs_review", "aliases": [], "required": true, "label": "synthesis boundary"}
   ],
   "protected_numbers": [
-    {"value": "8", "aliases": [], "required": true, "label": "literal REF-MISSING occurrences"},
-    {"value": "7", "aliases": [], "required": true, "label": "content evidence gaps"},
+    {"value": "9", "aliases": [], "required": true, "label": "literal REF-MISSING occurrences including marker definition"},
+    {"value": "8", "aliases": [], "required": true, "label": "content evidence gaps"},
     {"value": "0", "aliases": [], "required": true, "label": "removable content markers"}
   ],
   "comparison": {
