@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "advisor-discussion-packet-20260907-v0.1",
+    "title": "2026-09-07 开题大纲与三项研究最低路线导师讨论包",
+    "mode": "draft",
+    "authority": [
+      "THESIS_STATE.md",
+      "process/current_execution_plan_20260802.md",
+      "thesis/opening_report_draft_zh.md",
+      "thesis/opening_three_chapter_route_matrix_zh.md",
+      "thesis/opening_report_atomic_section_map_v0.1.md",
+      "thesis/reviews/opening_report_o1_v0.6_v1_review_20260903.md",
+      "urbfo-agent-demo/experiments/briefs/routeb_readonly_evaluation_mvp_v0.1.md"
+    ]
+  },
+  "terms": [
+    {
+      "canonical": "面向开放需求的多智能体遥感科学分析系统",
+      "variants": ["基于多智能体的城市森林遥感工作流构建"],
+      "severity": "error"
+    },
+    {
+      "canonical": "面向智能体的遥感科学知识表示与推理",
+      "variants": ["科学知识表示与证据约束推理"],
+      "severity": "error"
+    },
+    {
+      "canonical": "面向城市森林遥感任务的智能体系统评测",
+      "variants": ["面向用户的城市森林遥感智能体系统验证"],
+      "severity": "error"
+    }
+  ],
+  "abbreviations": [
+    {
+      "short": "RSS",
+      "long_forms": ["遥感空间网络分析", "remote sensing spatial"],
+      "require_definition": true
+    }
+  ],
+  "protected_literals": [
+    {
+      "value": "idea-v2026.08.02",
+      "aliases": [],
+      "required": true,
+      "label": "Idea 版本"
+    },
+    {
+      "value": "面向开放需求的多智能体遥感科学分析系统",
+      "aliases": [],
+      "required": true,
+      "label": "研究内容一标题"
+    },
+    {
+      "value": "面向智能体的遥感科学知识表示与推理",
+      "aliases": [],
+      "required": true,
+      "label": "研究内容二标题"
+    },
+    {
+      "value": "面向城市森林遥感任务的智能体系统评测",
+      "aliases": [],
+      "required": true,
+      "label": "研究内容三标题"
+    },
+    {
+      "value": "Route B-first",
+      "aliases": ["Route B"],
+      "required": true,
+      "label": "第三章首轮顺序"
+    },
+    {
+      "value": "manual 301",
+      "aliases": [],
+      "required": true,
+      "label": "人工校准样本角色"
+    },
+    {
+      "value": "scientific gold",
+      "aliases": [],
+      "required": true,
+      "label": "第二章证据门"
+    },
+    {
+      "value": "protocol closure 不等于 scientific validity",
+      "aliases": [],
+      "required": true,
+      "label": "第三章评价边界"
+    },
+    {
+      "value": "grader 和 adapters 尚未实现",
+      "aliases": [],
+      "required": true,
+      "label": "第三章实现状态"
+    },
+    {
+      "value": "[REF-MISSING]",
+      "aliases": [],
+      "required": true,
+      "label": "未准入引文状态"
+    }
+  ],
+  "protected_numbers": [
+    {
+      "value": "2,228",
+      "aliases": [],
+      "required": true,
+      "label": "第二章冻结任务池"
+    },
+    {
+      "value": "150",
+      "aliases": [],
+      "required": true,
+      "label": "第二章高召回结果"
+    },
+    {
+      "value": "60",
+      "aliases": [],
+      "required": true,
+      "label": "第二章 G4 队列"
+    },
+    {
+      "value": "10",
+      "aliases": [],
+      "required": true,
+      "label": "Batch A 人工浅审数量"
+    }
+  ],
+  "comparison": {
+    "preserve_all_numbers": false,
+    "preserve_all_measurements": false,
+    "preserve_all_citations": true,
+    "preserve_all_reference_tokens": true,
+    "preserve_cross_reference_sequence": true,
+    "preserve_markers": ["[REF-MISSING]"]
+  },
+  "citations": {
+    "require_known_keys": false,
+    "required_keys": [],
+    "forbidden_keys": []
+  },
+  "claims": [],
+  "method_states": [
+    {
+      "id": "CH1-STATE",
+      "required_literals": ["正式机制效果"],
+      "forbidden_patterns": ["正式机制效果已验证", "多智能体普遍优于"]
+    },
+    {
+      "id": "CH2-STATE",
+      "required_literals": ["scientific gold"],
+      "forbidden_patterns": ["scientific gold 已冻结", "知识很多构成贡献"]
+    },
+    {
+      "id": "CH3-STATE",
+      "required_literals": ["grader 和 adapters 尚未实现", "protocol closure 不等于 scientific validity"],
+      "forbidden_patterns": ["Route B benchmark 已完成", "manual 301 是独立验证", "城市级本身构成创新"]
+    }
+  ],
+  "cross_references": {
+    "require_targets": false,
+    "required_labels": []
+  },
+  "style": {
+    "max_sentence_chars": 320,
+    "max_paragraph_chars": 700,
+    "forbidden_patterns": ["全面提升", "填补了空白", "赋能", "国际领先", "打造"]
+  }
+}

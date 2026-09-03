@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-03T11:56:54+08:00",
+  "updated_at": "2026-09-03T12:04:20+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,25 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260903-advisor-packet-v01",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "thesis/opening_three_chapter_route_matrix_zh.md",
+        "thesis/advisor_discussion_packet_20260907_v0.1.md",
+        "thesis/writing_contracts/advisor_discussion_packet_20260907_v0.1.contract.json",
+        "process/current_execution_plan_20260802.md",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "build a low-bandwidth advisor discussion packet from accepted source definitions and synchronize stale Route B status in the route matrix; no citation admission, REF-MISSING removal, title freeze, P2/P3 acceptance, claim promotion, scientific gold, method version, or experiment execution",
+      "status": "completed",
+      "dependency": "opening draft v0.6.1, route matrix v0.2, atomic section map, V1 review and current chapter checkpoints",
+      "stop_condition": "one compact packet states the revised outline, three chapter question-method-route-evidence-gap rows and at most five advisor questions; route matrix no longer says the accepted Route B order is unresolved; deterministic audits pass",
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-03T12:04:20+08:00",
+      "result": "advisor discussion packet v0.1 with revised outline, one-sentence thesis chain, three chapter minimum loops, five advisor questions and low-bandwidth reading order; dedicated writing contract audits at 0 errors and 0 warnings; independent Ch3 review found no content blocker"
+    },
     {
       "task_id": "20260903-opening-v061-p1-writer-pass",
       "owner": "root",

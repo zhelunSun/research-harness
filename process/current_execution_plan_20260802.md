@@ -30,15 +30,15 @@
 | M3 城市森林遥感任务系统评测 | first implementation order accepted；MVP brief ready | 静态资产审计和 Route B-first 决策已落到 Ch3；`routeb_readonly_evaluation_mvp_v0.1.md` 固定 strict500 正常闭合、manual 301 角色误置、variant lineage 混淆三个只读案例，并分开 protocol closure 与 scientific validity；canonical checkpoint 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@c16f1ff` | 下一步只实现本地 schema、provenance 和确定性 grader smoke tests；不运行 GEE／Drive／重训／外部模型；跨任务依赖和故障传播的候选创新仍需近邻全文比较与可执行评测共同检验 |
 | M4 用户／专家校准与经验驱动适应 | deferred increment | 目标用户／专家角色与 episode reservoir 已界定 | 二者均不进入第三章最低承诺；伦理／数据门禁、rubric 校准、episode 化和学习实验均未启动 |
 | L0 文献证据控制面 | seven packets audited; acquisition queue exhausted | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；统一审计覆盖仓库、导航、文献 freshness、runtime snapshot 与人工门；七包合计 29 source / 39 claim / 61 link，8 条 exact consumer routes 与开题 writing intake 均纳入确定性审计；新增 Ch2 knowledge-action packet 分开记录工作流模板、动作转移、ontology-to-tools 约束与经验复用，跨来源定位 `KAI-C5` 仍为 `needs_review`；`acquisition_queue.json` 当前 actionable=0、`active_work_item_id=null` | 跨设备同构、五个 prepared packet 的 Zotero 授权、开题 writing acceptance 与 Ch2 G4 Batch A 浅审保持 researcher-owned；所有跨来源综合与原 OI-D1“总体门槛下降”判断仍不得因检索完成而晋级或移除缺口标记 |
-| O0 选题材料 | urban-forest-first v0.6.1；V1 P1 closed | 独立 V1 后的 separate writer pass 已补齐“城市森林遥感任务与方法基础”，并同步 Route B-first 的已接受状态；独立差异复核无新 P1，两份 writing audit 均为 0 error / 0 warning，全部旧 `[REF-MISSING]` 保留 | P2/P3、正式引文准入、图件和写作合同接受仍待后续；当前稿可进入导师讨论包，但不能称为引用完成或正式定稿 |
+| O0 选题材料 | urban-forest-first v0.6.1；V1 P1 closed；advisor packet ready | 独立 V1 后的 separate writer pass 已补齐城市森林遥感方法入口并同步 Route B-first 状态；导师讨论包 v0.1 已压缩为修改版大纲、三章最低闭环与五个问题，专用 writing contract 为 0 error / 0 warning | P2/P3、正式引文准入、图件和写作合同接受仍待后续；当前稿和讨论包可供快速检查，但不能称为引用完成或正式定稿 |
 
 ### 0.3 当前唯一下一动作
 
-独立 fresh-context V1、两项 P1 separate writer pass 和只读差异复核均已完成。当前唯一下一动作是
-以 `opening_report_draft_zh.md` v0.6.1、三章路线矩阵 v0.2 和原子论述图生成一个低带宽导师讨论包：
-只包含修改版大纲、三章各自的科学问题／方法对象／最低路线／当前证据与缺口，以及最多 5 个需要
-导师判断的问题。讨论包不得移除 `[REF-MISSING]`、准入候选引用、宣称 Ch3 新颖性或把 P2/P3 静默
-改成已接受术语。完成后先交研究者快速检查，不制作答辩级长稿。
+独立 fresh-context V1、两项 P1 separate writer pass、只读差异复核和导师讨论包 v0.1 均已完成。
+当前唯一自动推进动作是对 v0.6.1 的 9 个 `[REF-MISSING]` 做一次 citation-readiness 审计：只把每个
+槽位映射到现有 evidence packet、claim ID、read state、entailment 状态和仍缺的研究者接受动作，
+不插入引用、不删除标记、不新搜无明确 writing gap 的文献。该审计与研究者快速查看
+`thesis/advisor_discussion_packet_20260907_v0.1.md` 并行；研究者当前无需逐句润色。
 
 V1 可把 `evidence/literature/packets/ai4science_frontier_2026/` 作为 AI4Science 相邻背景与比较维度的候选输入；
 其 writing bridge 当前不得直接并入 O1 contract。只有任务特定审阅接受 AFS claim 与引用键后，才允许替换对应
@@ -139,7 +139,7 @@ M2 的科学门禁。
 | 09-03（09-02 已更新） | 三章技术路线与逐节论述对照 | v0.2 路线矩阵和原子论述图已传播城市森林问题牵引，并将 Route B 收窄为首个最小评测实现 | 不预设未冻结算法或效果 |
 | 09-04 | Ch2 G4 第一门 | 10 条低／边界项人工复核记录；确定是否继续 50 条核心浅审 | 不把机器筛选当 scientific gold |
 | 09-05（09-03 已提前完成） | 开题正文 O1 首轮 | v0.6.1 已从城市森林任务依赖重构问题提出；原子论述图固定逐节职责与证据槽位；独立 V1 的两项 P1 已关闭且差异复核无新 P1；全部 `[REF-MISSING]` 保留 | 不用占位引用制造完成感 |
-| 09-06 | 导师讨论包 | 修改版大纲、三章路线矩阵、证据缺口和最多 5 个待导师判断问题 | 不制作大而全答辩稿 |
+| 09-06（09-03 已提前形成 v0.1） | 导师讨论包 | 修改版大纲、三章路线矩阵、证据缺口和 5 个待导师判断问题已压缩成低带宽包 | 不制作大而全答辩稿；研究者快速检查后再冻结会前版本 |
 | 09-07 | 导师讨论 checkpoint | 记录反馈、未决问题和 retain/narrow/reject 决策候选 | 未经研究者确认不发布新 Idea |
 | 09-08 至 09-10 | 反馈吸收与 Ch2 主线 | 形成 decision 或保持原版本的记录；推进 G4 核心浅审和 12--20 candidate list | 不提前冻结六个 gold cases |
 | 09-11 | 三章路线冻结候选 | 三章技术路线、共享接口和局部／系统评价边界一致 | 仍有核心冲突则标 open，不强行冻结 |
