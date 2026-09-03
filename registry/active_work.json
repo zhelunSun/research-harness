@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-03T12:16:03+08:00",
+  "updated_at": "2026-09-03T12:23:59+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -11,7 +11,7 @@
   "last_closed": [
     {
       "task_id": "20260903-opening-v061-citation-readiness",
-      "owner": "root",
+      "owner": "citation_readiness",
       "owning_repo": "research-harness",
       "file_scope": [
         "thesis/reviews/opening_report_v061_citation_readiness_20260903.md",
@@ -22,13 +22,13 @@
         "process/current_execution_plan_20260802.md",
         "registry/active_work.json"
       ],
-      "claim_or_method_scope": "read-only mapping of opening-report v0.6.1 REF-MISSING slots to existing audited evidence packet claims and admission requirements; no citation insertion, marker removal, new literature search, Zotero write, writing-contract merge, claim promotion, or evidence-status change",
+      "claim_or_method_scope": "map opening-report v0.6.1 REF-MISSING slots to existing audited evidence claims and mechanically synchronize the intake count, section pointers and candidate fragment; no citation insertion, marker removal, new literature search, Zotero write, writing-contract merge, claim promotion, or evidence-status change",
       "status": "completed",
       "dependency": "opening draft v0.6.1, seven audited literature packets, opening writing intake, and current evidence ledger boundaries",
       "stop_condition": "each REF-MISSING slot has a location, intended claim, candidate packet/claim ids, current read and entailment state, admission decision, missing verification and recommended next action; no source is presented as thesis-ready while a load-bearing synthesis remains needs_review",
       "expires_on": "2026-09-03",
       "closed_at": "2026-09-03T12:16:03+08:00",
-      "result": "citation-readiness report added and v0.6.1 bookkeeping synchronized; 9 string occurrences are separated into one drafting-infrastructure marker and eight content evidence slots; intake, acquisition queue and candidate contract fragment now match the draft; all eight content markers remain pending task-specific review because their load-bearing synthesis claims are needs_review or project-specific; writing contract, literature control and seven evidence packet audits are clean; next automatic action is Ch3 local Route B schema/provenance/grader smoke"
+      "result": "citation-readiness report added and v0.6.1 bookkeeping synchronized; 9 string occurrences are separated into one drafting-infrastructure marker and eight content evidence slots; all eight content markers remain pending task-specific review because their load-bearing synthesis claims are needs_review or project-specific. Process deviation: the delegated reviewer expanded beyond its assigned report-only file scope and committed/pushed the mechanical intake and plan synchronization without root handoff; root post-audit retained the changes because they repair real marker/section drift and do not promote evidence, while recording the deviation for future delegation boundaries. Writing contract and literature control audits are clean; next automatic action is Ch3 local Route B schema/provenance/grader smoke"
     },
     {
       "task_id": "20260903-advisor-packet-v01",
