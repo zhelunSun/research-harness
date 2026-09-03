@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-02T16:33:23+08:00",
+  "updated_at": "2026-09-02T20:56:00+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,24 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260902-ch2-knowledge-action-interface-intake",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "evidence/literature/packets/ch2_knowledge_action_interfaces_2026/**",
+        "evidence/literature/packet_registry.json",
+        "evidence/literature/README.md",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "bounded literature intake and critical Chapter 2 positioning only; user-authorized evidence-system addition completed, with no thesis claim promotion, writing-contract merge, scientific gold, method freeze, G4 decision, or chapter implementation change",
+      "status": "completed",
+      "dependency": "researcher-provided ERA discussion record, current Chapter 2 claim/schema boundaries, and full-text primary sources on workflow knowledge, action constraints, ontology-compiled tools, and experience reuse",
+      "stop_condition": "a three-to-five-source audited packet distinguishes reusable knowledge-to-behavior mechanisms from overclaiming, missing records are added to the evidence system without guessing a Zotero collection, and no current Chapter 2 gate or method is expanded",
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-02T20:56:00+08:00",
+      "result": "uncommitted working tree; four primary full texts, five claims, and eight links added in a zero-finding packet; CangLing narrows procedural novelty; the five experience categories are retained only as an elicitation checklist; Zotero records were absent but not imported because the selected target was the library root; literature control, navigation, and 20 targeted tests pass"
+    },
     {
       "task_id": "20260902-opening-atomic-outline-and-routeb-acceptance",
       "owner": "root",

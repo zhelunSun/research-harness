@@ -1,12 +1,27 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-01T19:46:00+08:00",
+  "updated_at": "2026-09-02T17:20:00+08:00",
   "source_of_truth": {
     "bibliography": "local Zotero Desktop",
     "linked_attachments": "SeaDrive",
     "evidence_packets": "research-harness/evidence/literature/packets"
   },
   "packets": [
+    {
+      "packet_id": "ch2-knowledge-action-interfaces-2026",
+      "path": "evidence/literature/packets/ch2_knowledge_action_interfaces_2026",
+      "research_question": "已有研究通过哪些机制把显式知识从可检索内容转化为 Agent 的行动引导、约束、修复或经验复用，这些工作为第二章留下的可防守边界是什么？",
+      "status": "audited_pending_zotero_authorization",
+      "source_count": 4,
+      "zotero_item_keys": [],
+      "candidate_routes": [
+        "chapter-2-evidence-constrained-knowledge-representation",
+        "chapter-1-procedural-workflow-and-repair-comparators",
+        "research-agent-experience-governance-idea-library"
+      ],
+      "writing_eligibility": "not_merged_into_any_writing_contract",
+      "last_audited": "2026-09-02"
+    },
     {
       "packet_id": "ai4science-frontier-2026",
       "path": "evidence/literature/packets/ai4science_frontier_2026",

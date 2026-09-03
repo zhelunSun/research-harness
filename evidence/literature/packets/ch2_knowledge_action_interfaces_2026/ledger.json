@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "ch2-knowledge-action-interfaces-2026",
+  "research_question": "已有研究通过哪些机制把显式知识从可检索内容转化为 Agent 的行动引导、约束、修复或经验复用，这些工作为第二章留下的可防守边界是什么？",
+  "sources": [
+    {
+      "source_id": "S-KAI-001",
+      "title": "CangLing-KnowFlow: A Unified Knowledge-and-Flow-fused Agent for Comprehensive Remote Sensing Applications",
+      "bibtex_key": "chen_cangling_2025",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2512.15231",
+      "identifiers": {"arxiv": "2512.15231"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-KAI-002",
+      "title": "KnowAgent: Knowledge-Augmented Planning for LLM-Based Agents",
+      "bibtex_key": "zhu_knowagent_2025",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.18653/v1/2025.findings-naacl.205",
+      "identifiers": {"doi": "10.18653/v1/2025.findings-naacl.205"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-KAI-003",
+      "title": "Ontology-to-tools compilation for executable semantic constraint enforcement in LLM agents",
+      "bibtex_key": "zhou_ontology-to-tools_2026",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/abs/2602.03439",
+      "identifiers": {"arxiv": "2602.03439"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    },
+    {
+      "source_id": "S-KAI-004",
+      "title": "ExpeL: LLM Agents Are Experiential Learners",
+      "bibtex_key": "zhao_expel_2024",
+      "zotero_item_key": null,
+      "locator": "https://doi.org/10.1609/aaai.v38i17.29936",
+      "identifiers": {"doi": "10.1609/aaai.v38i17.29936"},
+      "read_state": "full_text",
+      "evidence_status": "verified"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "KAI-C1",
+      "text": "CangLing-KnowFlow 将遥感专家程序知识表示为工具 schema 与层次化工作流模板，并以执行反馈触发图结构修复；任务后又把成功调整固化为带情境元数据的模板，把终止失败归纳为条件式 Pattern-Action 修复规则。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "KAI-C2",
+      "text": "KnowAgent 将 action knowledge 定义为动作集合及其允许的转移规则，以文本化知识约束规划路径；其知识构造包含领域专家提供任务知识、LLM 初拟、人工筛选修订与再次生成规则。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "KAI-C3",
+      "text": "Ontology-to-tools 工作把本体约束编译为 Agent 必须调用的工具接口，在创建知识图谱实例时检查类型、单位和必需字段，并以结构化错误反馈驱动修复，而不是只做事后校验。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "KAI-C4",
+      "text": "ExpeL 从成功与失败轨迹的比较以及跨任务成功轨迹中抽取自然语言 insight，并在推理时同时复用这些 insight 与相似成功轨迹；作者也报告反思文本可能产生幻觉并误导 insight 抽取。",
+      "evidence_status": "verified"
+    },
+    {
+      "claim_id": "KAI-C5",
+      "text": "这四项研究表明，知识进入 Agent 行为至少可通过工作流模板、动作转移规则、可执行工具约束和经验 insight 四种机制；但它们不能单独证明任务条件化的科学适用性、证据状态、禁止性推断与结论降级已经得到解决。第二章可据此收窄为知识和证据如何产生可审计的科学行动义务，而不应泛称首次把专家知识注入 Agent。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:KAI-C5]"
+    }
+  ],
+  "links": [
+    {
+      "claim_id": "KAI-C1",
+      "source_id": "S-KAI-001",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "solidifying successes into templates and distilling failures into repair rules",
+      "source_location": "Sections III-B and III-D; arXiv HTML lines 224-234 and 267-283; Section IV-A, lines 288-298",
+      "note": "The source is an arXiv preprint. Its workflow benchmark supports procedural planning and repair claims, not broad scientific-validity or evidence-governance claims."
+    },
+    {
+      "claim_id": "KAI-C2",
+      "source_id": "S-KAI-002",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "comprises a defined set of actions Ea and the rules R governing their transitions",
+      "source_location": "Section 3.1, PDF pp. 3-4 (printed pp. 3711-3712)",
+      "note": "The evaluation covers HotpotQA and ALFWorld, not scientific evidence use or remote-sensing conclusion validity."
+    },
+    {
+      "claim_id": "KAI-C3",
+      "source_id": "S-KAI-003",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "enforces constraints at creation time via tool calls with structured feedback",
+      "source_location": "Introduction and contribution statement, arXiv HTML lines 156-168; Methods 6.2, lines 285-291",
+      "note": "This is a proof-of-principle preprint for chemistry knowledge-graph construction; it does not establish a general compiler for open scientific reasoning."
+    },
+    {
+      "claim_id": "KAI-C4",
+      "source_id": "S-KAI-004",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "compare a failed trajectory with a successful trajectory for the same task",
+      "source_location": "Sections 4.1-4.3, arXiv HTML lines 143-167; ablation discussion, lines 389-398",
+      "note": "The paper evaluates generic deterministic interactive tasks; environment success is not scientific evidence, and extracted insights can be misleading."
+    },
+    {
+      "claim_id": "KAI-C5",
+      "source_id": "S-KAI-001",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Direct remote-sensing comparator for procedural workflows, execution repair, and experience memory; absence of the Chapter 2 epistemic interface is a positioning inference, not a source claim."
+    },
+    {
+      "claim_id": "KAI-C5",
+      "source_id": "S-KAI-002",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Action-transition constraints demonstrate that expert knowledge injection is already occupied as a generic planning contribution."
+    },
+    {
+      "claim_id": "KAI-C5",
+      "source_id": "S-KAI-003",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Executable compilation is a useful adjacent mechanism, but Chapter 2 lacks the formal ontology and enforcement guarantees needed to claim compilation."
+    },
+    {
+      "claim_id": "KAI-C5",
+      "source_id": "S-KAI-004",
+      "relation": "context",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Experience reuse motivates a future extension, but feedback-derived strategy must remain quarantined from scientific evidence status."
+    }
+  ]
+}
+

@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "ch2-knowledge-action-interfaces-2026",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "chen_cangling_2025",
+      "zhao_expel_2024",
+      "zhou_ontology-to-tools_2026",
+      "zhu_knowagent_2025"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "KAI-C1",
+      "marker": "[CLAIM:KAI-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "chen_cangling_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "KAI-C2",
+      "marker": "[CLAIM:KAI-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "zhu_knowagent_2025"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "KAI-C3",
+      "marker": "[CLAIM:KAI-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "zhou_ontology-to-tools_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "KAI-C4",
+      "marker": "[CLAIM:KAI-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "zhao_expel_2024"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "KAI-C5",
+      "marker": "[CLAIM:KAI-C5]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:KAI-C5]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[REF-MISSING:KAI-C5]"
+    ]
+  }
+}

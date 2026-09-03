@@ -155,3 +155,13 @@ knowledge-representation, or planning effect. The original OI-D1 claim that a
 natural-language interface lowers the overall analysis barrier remains
 unsupported. All actionable acquisition items are now exhausted;
 `active_work_item_id` is intentionally null until a new writing gap is routed.
+
+The researcher-requested Chapter 2 critical intake is preserved as
+`packets/ch2_knowledge_action_interfaces_2026/`. Its four-source ledger separates
+remote-sensing workflow templates and repair memory, generic action-transition
+knowledge, ontology-compiled tool constraints, and cross-task experiential insights.
+The cross-source positioning inference `KAI-C5` remains `needs_review`: the packet
+supports narrowing Chapter 2 toward auditable scientific action obligations, but does
+not establish a new taxonomy, a knowledge-to-policy compiler, or a thesis novelty
+claim. All four records were absent from Zotero; they were added to the evidence system
+rather than imported into an ambiguous root-library target.
