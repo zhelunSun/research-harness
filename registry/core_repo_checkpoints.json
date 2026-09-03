@@ -19,9 +19,9 @@
     {
       "id": "chapter-3-evaluation",
       "branch": "backup/ch3-routeb-20260831",
-      "remote_sha": "ee939505a40ce8def0aafbd0939de1838db5eedb",
-      "verified_at": "2026-09-01",
-      "purpose": "Chapter 3 static asset audit with evaluation-aligned active navigation"
+      "remote_sha": "c16f1ff32e6426e165dd71e69d9f4cb164d7ff89",
+      "verified_at": "2026-09-03",
+      "purpose": "Chapter 3 Route B-first read-only evaluation MVP brief with three bounded cases and a first local schema/grader task"
     }
   ]
 }

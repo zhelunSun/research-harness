@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-02T20:56:00+08:00",
+  "updated_at": "2026-09-03T11:48:12+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,58 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260903-v1-ch3-control-integration",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "thesis/reviews/opening_report_o1_v0.6_v1_review_20260903.md",
+        "process/current_execution_plan_20260802.md",
+        "registry/core_repo_checkpoints.json",
+        "registry/human_gates.json",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "integrate the independent O1 v0.6 V1 findings and synchronized Chapter 3 Route B MVP checkpoint; no opening-report rewrite, citation insertion, writing-contract acceptance, scientific-gold change, method freeze, or thesis claim promotion",
+      "status": "completed",
+      "dependency": "completed V1 review, pushed urbfo-agent-demo checkpoint c16f1ff, and two zero-warning writing audits",
+      "stop_condition": "the control plane points to the new Chapter 3 checkpoint, exposes both V1 P1 findings as the unique next writer pass, and keeps the writing gate researcher-owned",
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-03T11:48:12+08:00",
+      "result": "independent V1 report integrated; Chapter 3 checkpoint updated to c16f1ff; plan now routes a separate two-P1 argument edit and preserves all REF-MISSING and human gates"
+    },
+    {
+      "task_id": "20260903-ch3-routeb-evaluation-mvp-brief",
+      "owner": "ch3_routeb_fixture",
+      "owning_repo": "chapter-3-evaluation",
+      "file_scope": [
+        "PLAN.md",
+        "experiments/briefs/routeb_readonly_evaluation_mvp_v0.1.md",
+        "tasks/open/20260903-routeb-evaluation-mvp.md",
+        "sync/ACTIVE.md"
+      ],
+      "claim_or_method_scope": "synchronize the accepted Route B-first order and design the minimum read-only evaluation fixture; no mapping experiment, GEE/Drive write, benchmark claim, scientific-gold change, method freeze, external model run, or thesis-wide claim promotion",
+      "status": "completed",
+      "dependency": "DEC-2026-0902-ch3-routeb-first-evaluation-order.md, completed Chapter 3 static audit, current Route B freeze assets, and clean synchronized Chapter 3 repository",
+      "stop_condition": "the Chapter 3 entry surface records the accepted route and one implementation-ready brief fixes 2-3 bounded cases, input/output/provenance schemas, deterministic graders, adapter boundaries, failure replay, verification commands, and human stop points without executing experiments",
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-03T11:48:12+08:00",
+      "result": "urbfo-agent-demo@c16f1ff; Route B-first status synchronized; three read-only cases and their schema, graders, matched adapters, fault replay, stop points, and first implementation task recorded; registry validator and five focused tests pass; no experiment or external write"
+    },
+    {
+      "task_id": "20260903-opening-v06-fresh-context-v1",
+      "owner": "opening_v06_v1",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "thesis/reviews/opening_report_o1_v0.6_v1_review_20260903.md"
+      ],
+      "claim_or_method_scope": "fresh-context review findings only; no opening-report rewrite, citation insertion, REF-MISSING removal, writing-contract acceptance, claim promotion, scientific gold, method version, or formal title change",
+      "status": "completed",
+      "dependency": "opening report O1 v0.6, route matrix v0.2, atomic section map v0.1, current writing contracts, and accepted Route B decision",
+      "stop_condition": "one read-only V1 report records prioritized logic, terminology, claim-evidence, scope, and readability findings with deterministic V0 results; the reviewed source files remain unchanged",
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-03T11:48:12+08:00",
+      "result": "one V1 report with two P1, two P2, and one P3 finding; both deterministic writing audits report 0 errors and 0 warnings; all REF-MISSING markers and reviewed source files preserved"
+    },
     {
       "task_id": "20260902-ch2-knowledge-action-interface-intake",
       "owner": "root",
