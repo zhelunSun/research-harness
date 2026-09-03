@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-02T16:26:05+08:00",
+  "updated_at": "2026-09-03T14:48:08+08:00",
   "policy": {
     "source_of_truth": "registry/human_gates.json",
     "decision_owner": "researcher",
@@ -142,6 +142,22 @@
         "explicit continue, narrow, or stop decision for the remaining five batches"
       ],
       "next_action": "Researcher reviews Batch A; automation may prepare context but must not promote screening output to scientific gold."
+    },
+    {
+      "gate_id": "ch3-routeb-matched-adapter-entry",
+      "category": "scientific_route",
+      "status": "pending_researcher_decision",
+      "decision_owner": "researcher",
+      "repository_id": "chapter-3-evaluation",
+      "artifact_path": "tasks/open/20260903-routeb-evaluation-mvp.md",
+      "gate": "researcher_accept_routeb_protocol_smoke_and_matched_adapter_entry",
+      "blocks": ["professional_reference_generic_agent_ch1_adapter_comparison"],
+      "required_evidence": [
+        "researcher confirms that strict500 closure, manual-301 role misuse, and variant-lineage confusion are sufficient for the first Route B offline governance interface",
+        "researcher accepts the seven deterministic graders as protocol-only checks with scientific validity remaining not-assessed",
+        "professional reference, generic tool-agent, and Chapter 1 system versions plus matched input, tool, budget, network, and trace conditions are pinned before comparison"
+      ],
+      "next_action": "Recommended default: accept the current protocol smoke, but do not start adapter comparison until every adapter version and matched condition is pinned."
     },
     {
       "gate_id": "ch3-first-evaluation-route-selection",

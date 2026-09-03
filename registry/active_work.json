@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-03T12:23:59+08:00",
+  "updated_at": "2026-09-03T14:51:11+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,45 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260903-routeb-evaluation-mvp-checkpoint",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "registry/core_repo_checkpoints.json",
+        "process/current_execution_plan_20260802.md",
+        "registry/human_gates.json",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "accept the verified Chapter 3 protocol-smoke checkpoint and advance Resume here to the next researcher gate; no claim, scientific gold, method version, title, evidence-status, adapter comparison, or experiment change",
+      "status": "completed",
+      "dependency": "urbfo-agent-demo:backup/ch3-routeb-20260831@6f1482c is pushed with ahead=0, dirty=0 and focused protocol checks passing",
+      "stop_condition": "checkpoint registry and Resume here name 6f1482c, preserve scientific validity as not-assessed, expose one compressed researcher decision before adapter comparison, and control-plane audits pass",
+      "expires_on": "2026-09-04",
+      "closed_at": "2026-09-03T14:51:11+08:00",
+      "result": "Chapter 3 checkpoint advanced to 6f1482c; Resume here records local protocol smoke complete and stops at one matched-adapter researcher gate; human-gate audit reports 10 total, 9 open, 0 issues; navigation audit passes"
+    },
+    {
+      "task_id": "20260903-routeb-evaluation-mvp-implementation",
+      "owner": "root",
+      "owning_repo": "chapter-3-evaluation",
+      "file_scope": [
+        "configs/evaluation/routeb_readonly_mvp_v0.1.json",
+        "src/urban_forest_agent/evaluation/__init__.py",
+        "src/urban_forest_agent/evaluation/routeb_readonly.py",
+        "tools/grade_routeb_readonly_mvp.py",
+        "tests/test_routeb_readonly_evaluation.py",
+        "tasks/open/20260903-routeb-evaluation-mvp.md",
+        "PLAN.md"
+      ],
+      "claim_or_method_scope": "local protocol schema, provenance, deterministic graders, and smoke fixtures only; no scientific claim, gold, method version, adapter comparison, frozen asset, result, GEE, Drive, external model, or validation change",
+      "status": "completed",
+      "dependency": "accepted Route B-first decision, routeb_readonly_evaluation_mvp_v0.1 brief, tracked strict500 freeze and diagnostic artifacts, and clean strict sync/navigation gates",
+      "stop_condition": "three read-only cases validate locally; the normal case closes all seven protocol graders, the manual-301 and lineage replays are blocked by their expected graders, scientific validity remains not-assessed, and focused tests pass",
+      "expires_on": "2026-09-04",
+      "closed_at": "2026-09-03T14:48:08+08:00",
+      "result": "urbfo-agent-demo@6f1482c pushed with ahead=0 and dirty=0; seven deterministic protocol graders implemented; RB-01 passes, RB-02 and RB-03 block their expected replay faults; scientific validity remains not-assessed; 13 focused tests pass"
+    },
     {
       "task_id": "20260903-opening-v061-citation-readiness",
       "owner": "citation_readiness",

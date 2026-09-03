@@ -19,9 +19,9 @@
     {
       "id": "chapter-3-evaluation",
       "branch": "backup/ch3-routeb-20260831",
-      "remote_sha": "c16f1ff32e6426e165dd71e69d9f4cb164d7ff89",
+      "remote_sha": "6f1482cf07ca7ef5f3d21cd3bd3d888bb5a4cdc2",
       "verified_at": "2026-09-03",
-      "purpose": "Chapter 3 Route B-first read-only evaluation MVP brief with three bounded cases and a first local schema/grader task"
+      "purpose": "Chapter 3 Route B read-only protocol smoke with a versioned three-case fixture, seven deterministic graders, and scientific validity kept not-assessed"
     }
   ]
 }

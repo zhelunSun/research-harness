@@ -27,7 +27,7 @@
 | M0 固定简历与证据边界 | completed | 固定华为 PDF、claims、面试风险口径 | 不作为论文结果升级 |
 | M1 面向用户的多智能体科学分析系统 | opening evidence accepted；formal effect open | ExpertsRS 提供角色分工与基本工作流的已发表基础；URSA v0.5.3、代码基线 `0efd090`、冻结 5×3 live 集成闭环支持新增运行机制；当前电脑的 repo-local `.venv`、121 项测试、两个 no-API closeout 和 LFS 已复核，canonical tip 为 `codex/ch1-v2-e1-structured-planning@0ccc3fc` | 完整系统叙事需与增量机制分层；正式匹配效果、科学精度和跨任务泛化仍为 open |
 | M2 遥感科学知识表示与推理 | core method accepted；formal effect open | Chapter 2 已形成知识／证据资产，章级主术语统一为面向智能体的遥感科学知识表示与推理；G3 已完成 150 条高召回筛选和 60 条 G4 队列；低／边界优先、来源平衡的六个十条浅审批次已形成，G4 evidence baseline 为 `l2-task-distillation@9dc0e01`，仓库验证为 41 PASS；当前远端 tip 由 checkpoint registry 判定 | 先由研究者完成批次 A 的 10 条低／边界抽查，再决定是否继续五个核心批次；scientific gold、最小表示与运行界面、知识推理闭环和分层匹配效果均未完成 |
-| M3 城市森林遥感任务系统评测 | first implementation order accepted；MVP brief ready | 静态资产审计和 Route B-first 决策已落到 Ch3；`routeb_readonly_evaluation_mvp_v0.1.md` 固定 strict500 正常闭合、manual 301 角色误置、variant lineage 混淆三个只读案例，并分开 protocol closure 与 scientific validity；canonical checkpoint 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@c16f1ff` | 下一步只实现本地 schema、provenance 和确定性 grader smoke tests；不运行 GEE／Drive／重训／外部模型；跨任务依赖和故障传播的候选创新仍需近邻全文比较与可执行评测共同检验 |
+| M3 城市森林遥感任务系统评测 | first implementation order accepted；local protocol smoke complete | Route B 三个只读案例已有版本化 fixture 和 artifact/schema/provenance/dependency/freeze/environment/claim-boundary 七类确定性 grader；strict500 正常视图全通过，manual 301 角色误置与 variant lineage 混淆按预期阻断，scientific validity 保持 `not-assessed`；canonical checkpoint 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@6f1482c` | 研究者确认三个案例覆盖和 matched-adapter 条件后才进入 adapter 比较；不运行 GEE／Drive／重训／外部模型；跨任务依赖和故障传播的候选创新仍需近邻全文比较与可执行评测共同检验 |
 | M4 用户／专家校准与经验驱动适应 | deferred increment | 目标用户／专家角色与 episode reservoir 已界定 | 二者均不进入第三章最低承诺；伦理／数据门禁、rubric 校准、episode 化和学习实验均未启动 |
 | L0 文献证据控制面 | seven packets audited; v0.6.1 citation readiness done | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；七包合计 29 source / 39 claim / 61 link 均通过 ledger 审计；开题 v0.6.1 citation-readiness 已把 9 次字符串级 `[REF-MISSING]` 区分为 1 个说明性 marker 与 8 个正文证据槽，opening intake、acquisition queue 与候选 contract fragment 已同步且文献控制审计 0 issue | 跨设备同构、五个 prepared packet 的 Zotero 授权、开题 writing acceptance 与 Ch2 G4 Batch A 浅审保持 researcher-owned；所有跨来源综合仍不得因检索完成而晋级或移除缺口标记 |
 | O0 选题材料 | urban-forest-first v0.6.1；V1 P1 closed；advisor packet ready；citation readiness mapped | 独立 V1 后的 separate writer pass 已补齐城市森林遥感方法入口并同步 Route B-first 状态；导师讨论包 v0.1 已压缩为修改版大纲、三章最低闭环与五个问题，专用 writing contract 为 0 error / 0 warning；引用准入审计已确认 8 个正文槽位均可映射到现有 evidence packets 但暂不可直接移除 | P2/P3、正式 citation insertion、图件和写作合同接受仍待后续；当前稿和讨论包可供快速检查，但不能称为引用完成或正式定稿 |
@@ -45,11 +45,12 @@ v0.6.1 citation-readiness 审计均已完成。当前稿仍保留 8 个正文 `[
 无需逐句润色，也无需现在判断全部候选引文。Ch2 批次 A 的 10 条低／边界浅审仍是 researcher-owned
 科学门，不阻塞 O1 和导师讨论包。
 
-当前唯一自动推进动作转为进入 Ch3 所属仓库 `urbfo-agent-demo/`：在已接受的 Route B-first 顺序下，
-只实现本地 schema、provenance 和 deterministic grader smoke tests，覆盖 strict500 正常闭合、
-manual 301 角色误置和 variant lineage 混淆三个只读案例。不运行 GEE／Drive／重训／外部模型，
-不把 protocol closure 写成 scientific validity，不接入本地核心栖息地或 RSS 任务族，直到首个
-Route B 评测接口被验证。
+Ch3 首个 Route B 评测接口的本地 protocol smoke 已验证并推送到 `6f1482c`。当前自动推进停在
+研究者门禁，不继续接入 adapter、外部模型或新任务族。只提交一个压缩问题：是否接受 strict500
+正常闭合、manual 301 角色误置和 variant lineage 混淆三个案例及七类确定性 grader，作为首个
+Route B 离线治理接口，并按完全 matched 的输入、工具、预算、网络和 trace 条件进入 adapter 比较？
+推荐默认是：接受当前 protocol smoke，但在 professional reference、generic tool-agent 和 Chapter 1
+system 的版本与 matched 条件全部 pin 住前，不启动比较；scientific validity 继续保持 `not-assessed`。
 
 当前决定状态为：
 
