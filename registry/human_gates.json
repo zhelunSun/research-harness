@@ -126,7 +126,7 @@
         "fresh-context V1 review",
         "explicit acceptance into a task-specific opening-report writing contract"
       ],
-      "next_action": "Fresh-context V1 is complete. First resolve its two P1 findings in a separate writer pass; then the researcher reviews the intake and explicitly accepts any claim/citation into the task-specific contract. Keep all REF-MISSING markers until that acceptance."
+      "next_action": "Fresh-context V1 and its two-P1 writer pass are complete. The researcher may now review the intake and explicitly accept any claim/citation into the task-specific contract. Keep all REF-MISSING markers until that acceptance."
     },
     {
       "gate_id": "ch2-g4-batch-a-researcher-review",

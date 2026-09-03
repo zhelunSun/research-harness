@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-03T11:48:12+08:00",
+  "updated_at": "2026-09-03T11:56:54+08:00",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,25 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260903-opening-v061-p1-writer-pass",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "thesis/opening_report_draft_zh.md",
+        "thesis/reviews/opening_report_o1_v0.6_p1_writer_pass_20260903.md",
+        "process/current_execution_plan_20260802.md",
+        "registry/human_gates.json",
+        "registry/active_work.json"
+      ],
+      "claim_or_method_scope": "separate argument-edit pass limited to the two V1 P1 findings: restore the urban-forest methods entry in related work and synchronize accepted Route B-first status; no citation insertion, REF-MISSING removal, P2/P3 edit, claim promotion, scientific gold, method freeze, or formal title change",
+      "status": "completed",
+      "dependency": "opening_report_o1_v0.6_v1_review_20260903.md and existing v0.6 writing contract",
+      "stop_condition": "the two P1 findings are fixed with a before/after change ledger, deterministic audit and compare checks pass, all unresolved markers remain, and no other prose issue is edited in the same pass",
+      "expires_on": "2026-09-03",
+      "closed_at": "2026-09-03T11:56:54+08:00",
+      "result": "opening draft v0.6.1; both V1 P1 findings closed; independent diff review found no new P1 or state-boundary drift; two writing audits have 0 errors and 0 warnings; REF-MISSING count changed only by the new urban-forest methods evidence slot from 8 to 9"
+    },
     {
       "task_id": "20260903-v1-ch3-control-integration",
       "owner": "root",
