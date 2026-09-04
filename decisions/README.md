@@ -18,6 +18,10 @@
 
 ## 读取规则
 
+具体案例准入：`DEC-2026-0904-beijing-first-product-description-admission.md` 接受 strict500 2025 多类图＋BJuforebv4 的产品描述参考计算；连通性和分类制图为第二波候选，难度分级仅并行调研，不批准模型比较或真实面积／生态功能。
+
+候选选择修订：`DEC-2026-0904-beijing-difficulty-first-candidate.md` 记录研究者要求按难度选择北京首轮任务，指标体系不承担新颖性主张；不改变章级角色、优先级或已接受的 Route B 顺序。
+
 日常执行先读 `IDEA_VERSION.md` 和 `THESIS_STATE.md`，不必逐份重读历史决策。只有在
 修改题目、研究内容边界、核心 claim、证据状态或优先级时，才沿本索引回看相关决策。
 

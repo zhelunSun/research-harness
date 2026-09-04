@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-09-04T04:30:54.583703+00:00",
+  "kind": "read-only recovery candidate preflight",
+  "runtime": {
+    "python": "3.12.7",
+    "rasterio": "1.5.0"
+  },
+  "scientific_validity": "not-assessed",
+  "historical_byte_identity": "unknown: no historical raster hash located",
+  "recovery_writes": false,
+  "raster_copies": 0,
+  "new_maps": 0,
+  "solver_runs": 0,
+  "candidates": [
+    {
+      "id": "route_a_2025",
+      "relative_path": "data/raw/landcover/routeA_s2_threshold_2025/beijing_veg_mask.tif",
+      "source_locator": "configs/workflow_state.yaml",
+      "source_locator_sha256": "ac4effe731f94e6ada126ce09e79cf090bbf7cf0781203afaf82c5f3e1df0ff7",
+      "canonical_exists": false,
+      "recovery_path": "D:/Projects/phd-research/urbfo-mapping/data/raw/landcover/routeA_s2_threshold_2025/beijing_veg_mask.tif",
+      "recovery_exists": true,
+      "legacy_exists": false,
+      "status": "recovery-candidate-not-admitted",
+      "size_bytes": 13332144,
+      "sha256": "650af9e5afae9c41aa1b005e0e926f5812f74ae1e63cfaca3b5cbdd4d7639362",
+      "profile": {
+        "width": 23216,
+        "height": 18004,
+        "count": 1,
+        "dtype": "uint8",
+        "crs": "EPSG:4326",
+        "nodata": null,
+        "bounds": [
+          115.41375107310787,
+          39.441969853722185,
+          117.49927983671975,
+          41.05929669125097
+        ],
+        "transform": [
+          0.00008983152841195215,
+          0,
+          115.41375107310787,
+          0,
+          -0.00008983152841195215,
+          41.05929669125097,
+          0,
+          0,
+          1
+        ],
+        "block_shapes": [
+          [
+            256,
+            256
+          ]
+        ]
+      },
+      "decode_spot_checks": [
+        {
+          "fraction": 0.25,
+          "values": [
+            1
+          ],
+          "window": {
+            "col_off": 5804,
+            "row_off": 4501,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.5,
+          "values": [
+            1
+          ],
+          "window": {
+            "col_off": 11608,
+            "row_off": 9002,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.75,
+          "values": [
+            0
+          ],
+          "window": {
+            "col_off": 17412,
+            "row_off": 13503,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        }
+      ],
+      "decode_check_scope": "three 16x16 windows, not full raster decode or thematic validation"
+    },
+    {
+      "id": "esa_2021",
+      "relative_path": "data/external/landcover/esa_worldcover_2021/beijing_origin.tif",
+      "source_locator": "configs/datasets.yaml",
+      "source_locator_sha256": "9950863282707034a743d0fd2bc9a9ded8746cb94be1b4228fb2b6c5ab387d0d",
+      "canonical_exists": false,
+      "recovery_path": "D:/Projects/phd-research/urbfo-mapping/data/external/landcover/esa_worldcover_2021/beijing_origin.tif",
+      "recovery_exists": true,
+      "legacy_exists": false,
+      "status": "recovery-candidate-not-admitted",
+      "size_bytes": 16444042,
+      "sha256": "5de11d5bd604187ba99836a0e546cd182700527c7e3fe41094829264e7cd5349",
+      "profile": {
+        "width": 23215,
+        "height": 18005,
+        "count": 1,
+        "dtype": "uint8",
+        "crs": "EPSG:4326",
+        "nodata": null,
+        "bounds": [
+          115.41376596008541,
+          39.44194494016032,
+          117.49920489216888,
+          41.05936160921752
+        ],
+        "transform": [
+          0.00008983152841195215,
+          0,
+          115.41376596008541,
+          0,
+          -0.00008983152841195215,
+          41.05936160921752,
+          0,
+          0,
+          1
+        ],
+        "block_shapes": [
+          [
+            256,
+            256
+          ]
+        ]
+      },
+      "decode_spot_checks": [
+        {
+          "fraction": 0.25,
+          "values": [
+            0
+          ],
+          "window": {
+            "col_off": 5803,
+            "row_off": 4501,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.5,
+          "values": [
+            10
+          ],
+          "window": {
+            "col_off": 11607,
+            "row_off": 9002,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.75,
+          "values": [
+            0
+          ],
+          "window": {
+            "col_off": 17411,
+            "row_off": 13503,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        }
+      ],
+      "decode_check_scope": "three 16x16 windows, not full raster decode or thematic validation"
+    },
+    {
+      "id": "dw_2025",
+      "relative_path": "data/external/landcover/dynamic_world_2025/beijing_origin_label.tif",
+      "source_locator": "configs/datasets.yaml",
+      "source_locator_sha256": "9950863282707034a743d0fd2bc9a9ded8746cb94be1b4228fb2b6c5ab387d0d",
+      "canonical_exists": false,
+      "recovery_path": "D:/Projects/phd-research/urbfo-mapping/data/external/landcover/dynamic_world_2025/beijing_origin_label.tif",
+      "recovery_exists": true,
+      "legacy_exists": false,
+      "status": "recovery-candidate-not-admitted",
+      "size_bytes": 8390542,
+      "sha256": "c3e773a072f286ffcaedb479adde87adec6937159e2c21b996955fdb4ecc5770",
+      "profile": {
+        "width": 23216,
+        "height": 18004,
+        "count": 1,
+        "dtype": "uint8",
+        "crs": "EPSG:4326",
+        "nodata": null,
+        "bounds": [
+          115.41375107310787,
+          39.441969853722185,
+          117.49927983671975,
+          41.05929669125097
+        ],
+        "transform": [
+          0.00008983152841195215,
+          0,
+          115.41375107310787,
+          0,
+          -0.00008983152841195215,
+          41.05929669125097,
+          0,
+          0,
+          1
+        ],
+        "block_shapes": [
+          [
+            256,
+            256
+          ]
+        ]
+      },
+      "decode_spot_checks": [
+        {
+          "fraction": 0.25,
+          "values": [
+            0
+          ],
+          "window": {
+            "col_off": 5804,
+            "row_off": 4501,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.5,
+          "values": [
+            1,
+            2
+          ],
+          "window": {
+            "col_off": 11608,
+            "row_off": 9002,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.75,
+          "values": [
+            0
+          ],
+          "window": {
+            "col_off": 17412,
+            "row_off": 13503,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        }
+      ],
+      "decode_check_scope": "three 16x16 windows, not full raster decode or thematic validation"
+    },
+    {
+      "id": "strict500_binary_2025",
+      "relative_path": "data/processed/rf_maps/routeb_h07_cs8k_strict500_seasonal17_v2_20260708/beijing_rf_routeb_h07_cs8k_strict500_level1_urban_forest_20260708.tif",
+      "source_locator": "experiments/results/routeb_cs8k_strict500_level1_qa_20260708.json",
+      "source_locator_sha256": "dcf8487559f92f99c2a533e19397b42d61d5131b8ab478e908aab90f499f199b",
+      "canonical_exists": false,
+      "recovery_path": "D:/Projects/phd-research/urbfo-mapping/data/processed/rf_maps/routeb_h07_cs8k_strict500_seasonal17_v2_20260708/beijing_rf_routeb_h07_cs8k_strict500_level1_urban_forest_20260708.tif",
+      "recovery_exists": true,
+      "legacy_exists": false,
+      "status": "recovery-candidate-not-admitted",
+      "size_bytes": 12097885,
+      "sha256": "068a734c191055b43a00a842a4b4d5c426f4e94ba92cc5534c7da18bb9a7aceb",
+      "profile": {
+        "width": 23216,
+        "height": 18004,
+        "count": 1,
+        "dtype": "uint8",
+        "crs": "EPSG:4326",
+        "nodata": 255,
+        "bounds": [
+          115.41375107310787,
+          39.441969853722185,
+          117.49927983671975,
+          41.05929669125097
+        ],
+        "transform": [
+          0.00008983152841195215,
+          0,
+          115.41375107310787,
+          0,
+          -0.00008983152841195215,
+          41.05929669125097,
+          0,
+          0,
+          1
+        ],
+        "block_shapes": [
+          [
+            256,
+            256
+          ]
+        ]
+      },
+      "decode_spot_checks": [
+        {
+          "fraction": 0.25,
+          "values": [
+            255
+          ],
+          "window": {
+            "col_off": 5804,
+            "row_off": 4501,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.5,
+          "values": [
+            1
+          ],
+          "window": {
+            "col_off": 11608,
+            "row_off": 9002,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.75,
+          "values": [
+            255
+          ],
+          "window": {
+            "col_off": 17412,
+            "row_off": 13503,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        }
+      ],
+      "decode_check_scope": "three 16x16 windows, not full raster decode or thematic validation"
+    },
+    {
+      "id": "strict500_multiclass_2025",
+      "relative_path": "data/processed/rf_maps/routeb_h07_cs8k_strict500_seasonal17_v2_20260708/beijing_rf_routeb_h07_cs8k_strict500_seasonal17_v2_full_2025_20260708.tif",
+      "source_locator": "experiments/results/routeb_cs8k_strict500_map_qa_20260708.json",
+      "source_locator_sha256": "1dcd8e4138785524957a127e15ea6edc04afeceae4511804eb70cddedd4d0f08",
+      "canonical_exists": false,
+      "recovery_path": "D:/Projects/phd-research/urbfo-mapping/data/processed/rf_maps/routeb_h07_cs8k_strict500_seasonal17_v2_20260708/beijing_rf_routeb_h07_cs8k_strict500_seasonal17_v2_full_2025_20260708.tif",
+      "recovery_exists": true,
+      "legacy_exists": false,
+      "status": "recovery-candidate-not-admitted",
+      "size_bytes": 30494198,
+      "sha256": "fe89f6069f6cbd8d443c2ad249babd66b76f94653af63c1c6e6ae85f0deee369",
+      "profile": {
+        "width": 23216,
+        "height": 18004,
+        "count": 1,
+        "dtype": "uint8",
+        "crs": "EPSG:4326",
+        "nodata": 255,
+        "bounds": [
+          115.41375107310787,
+          39.441969853722185,
+          117.49927983671975,
+          41.05929669125097
+        ],
+        "transform": [
+          0.00008983152841195215,
+          0,
+          115.41375107310787,
+          0,
+          -0.00008983152841195215,
+          41.05929669125097,
+          0,
+          0,
+          1
+        ],
+        "block_shapes": [
+          [
+            256,
+            256
+          ]
+        ]
+      },
+      "decode_spot_checks": [
+        {
+          "fraction": 0.25,
+          "values": [
+            255
+          ],
+          "window": {
+            "col_off": 5804,
+            "row_off": 4501,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.5,
+          "values": [
+            0,
+            1,
+            2
+          ],
+          "window": {
+            "col_off": 11608,
+            "row_off": 9002,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        },
+        {
+          "fraction": 0.75,
+          "values": [
+            255
+          ],
+          "window": {
+            "col_off": 17412,
+            "row_off": 13503,
+            "width": 16,
+            "height": 16,
+            "band": 1
+          },
+          "location_rule": "int(dimension * fraction), zero-based offsets; original probe used rasterio.read(1, window=Window(col_off,row_off,16,16)), unmasked"
+        }
+      ],
+      "decode_check_scope": "three 16x16 windows, not full raster decode or thematic validation"
+    }
+  ],
+  "aoi": {
+    "components": [
+      {
+        "path": "D:/Projects/phd-thesis/urbfo-agent-demo/data/aoi/bejing_urban_forest_bound/BJuforebv4.shp",
+        "size_bytes": 24452,
+        "sha256": "ad80561d9fdf9b122b5ac784b66c15d1d93e95c39854d4d90b0ef0eebfb498f2"
+      },
+      {
+        "path": "D:/Projects/phd-thesis/urbfo-agent-demo/data/aoi/bejing_urban_forest_bound/BJuforebv4.shx",
+        "size_bytes": 108,
+        "sha256": "670f7918692ffe8fa111e9cff91a93ba348770f8a7c913cde7b86427ee994323"
+      },
+      {
+        "path": "D:/Projects/phd-thesis/urbfo-agent-demo/data/aoi/bejing_urban_forest_bound/BJuforebv4.dbf",
+        "size_bytes": 274,
+        "sha256": "c65bde307831e041813ef9b1bc685bb8873fa00da1f786291901e4f696d74cf5"
+      },
+      {
+        "path": "D:/Projects/phd-thesis/urbfo-agent-demo/data/aoi/bejing_urban_forest_bound/BJuforebv4.prj",
+        "size_bytes": 145,
+        "sha256": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4"
+      }
+    ],
+    "crs": "EPSG:4326",
+    "header_bbox": [
+      115.56463525701156,
+      39.45007211343733,
+      117.34778555825699,
+      40.69750976526353
+    ],
+    "bbox_epsg4326": [
+      115.56463525701156,
+      39.45007211343733,
+      117.34778555825699,
+      40.69750976526353
+    ],
+    "shx_record_count": 1,
+    "geometry_validity": "not-assessed",
+    "valid_observation_overlap": "not-computed"
+  },
+  "strict500_checks": {
+    "full_profile_matches_historical_qa": true,
+    "binary_full_grid_aligned": true,
+    "binary_derivation_pixels_verified": false,
+    "canonical_copy_available": false
+  },
+  "scan_roots": [
+    "D:/Projects/phd-thesis/urbfo-agent-demo",
+    "D:/Projects/phd-research/urbfo-mapping",
+    "D:/codes/urban-forest-agent"
+  ],
+  "scan_scope": "five exact source-derived relative raster paths under three known roots; no recursive drive scan",
+  "source_locator_role": "canonical metadata identifies recovery candidate; current hashes are new fingerprints, not historical identity proof"
+}

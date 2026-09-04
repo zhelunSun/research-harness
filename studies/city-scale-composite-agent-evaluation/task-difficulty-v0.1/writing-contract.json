@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "task-difficulty-v0.1",
+    "title": "任务步数、复杂性与难度：有限文献决策包",
+    "mode": "draft",
+    "authority": ["ledger.json", "section-brief.md", "writing-bridge.json", "current researcher acceptance of first Beijing product-description case"]
+  },
+  "terms": [],
+  "abbreviations": [],
+  "protected_literals": [
+    {"value": "strict500", "required": true},
+    {"value": "BJuforebv4", "required": true},
+    {"value": "needs_review", "required": true},
+    {"value": "[CRITICAL-CHECK:TD-C6]", "required": true},
+    {"value": "Wave2", "required": true}
+  ],
+  "protected_numbers": [{"value": "2025", "required": true}],
+  "comparison": {
+    "preserve_all_numbers": true,
+    "preserve_all_measurements": true,
+    "preserve_all_citations": true,
+    "preserve_all_reference_tokens": true,
+    "preserve_cross_reference_sequence": true,
+    "preserve_markers": ["[CRITICAL-CHECK:TD-C6]"]
+  },
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": ["sun_llm-based_2026", "mialon2023gaia", "shabbir_thinkgeo_2026", "li2025designing", "chen2024scienceagentbenchrigorousassessmentlanguage"],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {"id": "TD-C1", "marker": "[CLAIM:TD-C1]", "marker_required": true, "required_citations": ["sun_llm-based_2026"], "required_literals": [], "forbidden_patterns": [], "evidence_status": "verified", "unresolved_marker": null},
+    {"id": "TD-C2", "marker": "[CLAIM:TD-C2]", "marker_required": true, "required_citations": ["mialon2023gaia"], "required_literals": [], "forbidden_patterns": [], "evidence_status": "verified", "unresolved_marker": null},
+    {"id": "TD-C3", "marker": "[CLAIM:TD-C3]", "marker_required": true, "required_citations": ["shabbir_thinkgeo_2026"], "required_literals": [], "forbidden_patterns": [], "evidence_status": "verified", "unresolved_marker": null},
+    {"id": "TD-C4", "marker": "[CLAIM:TD-C4]", "marker_required": true, "required_citations": ["li2025designing"], "required_literals": [], "forbidden_patterns": [], "evidence_status": "verified", "unresolved_marker": null},
+    {"id": "TD-C5", "marker": "[CLAIM:TD-C5]", "marker_required": true, "required_citations": ["chen2024scienceagentbenchrigorousassessmentlanguage"], "required_literals": [], "forbidden_patterns": [], "evidence_status": "verified", "unresolved_marker": null},
+    {"id": "TD-C6", "marker": "[CLAIM:TD-C6]", "marker_required": true, "required_citations": [], "required_literals": ["needs_review", "[CRITICAL-CHECK:TD-C6]"], "forbidden_patterns": [], "evidence_status": "needs_review", "unresolved_marker": "[CRITICAL-CHECK:TD-C6]"}
+  ],
+  "method_states": [
+    {"id": "first-wave", "anchor": "首轮北京案例", "scope": "paragraph", "required_literals": ["2025", "strict500", "BJuforebv4", "不报告真实面积", "连通性", "生态功能"], "forbidden_patterns": []},
+    {"id": "wave2", "anchor": "Wave2", "scope": "paragraph", "required_literals": ["候选"], "forbidden_patterns": []}
+  ],
+  "cross_references": {"require_targets": true, "required_labels": []},
+  "style": {"max_sentence_chars": 110, "max_paragraph_chars": 550, "forbidden_patterns": ["全面提升", "填补了空白", "已确立通用难度标准"]},
+  "bridge_merge": "claims/citations/marker constraints merged from generated writing-bridge.json; not merged into a formal thesis contract"
+}

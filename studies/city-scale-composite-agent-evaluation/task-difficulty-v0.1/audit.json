@@ -1,0 +1,12 @@
+{
+  "ledger_id": "task-difficulty-v0.1",
+  "ok": true,
+  "summary": {
+    "sources": 5,
+    "claims": 6,
+    "links": 10,
+    "errors": 0,
+    "warnings": 0
+  },
+  "findings": []
+}

@@ -1,6 +1,6 @@
 # 当前执行计划：开题源定义收口与三章最小闭环
 
-> 版本：v2026.09.03
+> 版本：v2026.09.04
 > 对齐 Idea：`idea-v2026.08.02`
 > 状态：active；保留原文件名作为稳定入口，不再按日期新建论文总执行计划
 > 触发：固定简历与面试路径已形成；研究内容一已有最小原型；研究内容二核心机制仍待验证
@@ -20,19 +20,25 @@
 除非总题目、章节角色或核心 claim 发生变化，不再新建 thesis-wide roadmap、handoff 或
 “最新版计划”。新会话通过本节恢复，不依赖翻找历史 chat。
 
-### 0.2 2026-09-03 当前快照
+### 0.2 2026-09-04 当前快照
 
 | 里程碑 | 状态 | 已有证据 | 当前缺口 |
 | --- | --- | --- | --- |
 | M0 固定简历与证据边界 | completed | 固定华为 PDF、claims、面试风险口径 | 不作为论文结果升级 |
 | M1 面向用户的多智能体科学分析系统 | opening evidence accepted；formal effect open | ExpertsRS 提供角色分工与基本工作流的已发表基础；URSA v0.5.3、代码基线 `0efd090`、冻结 5×3 live 集成闭环支持新增运行机制；当前电脑的 repo-local `.venv`、121 项测试、两个 no-API closeout 和 LFS 已复核，canonical tip 为 `codex/ch1-v2-e1-structured-planning@0ccc3fc` | 完整系统叙事需与增量机制分层；正式匹配效果、科学精度和跨任务泛化仍为 open |
 | M2 遥感科学知识表示与推理 | core method accepted；formal effect open | Chapter 2 已形成知识／证据资产，章级主术语统一为面向智能体的遥感科学知识表示与推理；G3 已完成 150 条高召回筛选和 60 条 G4 队列；低／边界优先、来源平衡的六个十条浅审批次已形成，G4 evidence baseline 为 `l2-task-distillation@9dc0e01`，仓库验证为 41 PASS；当前远端 tip 由 checkpoint registry 判定 | 先由研究者完成批次 A 的 10 条低／边界抽查，再决定是否继续五个核心批次；scientific gold、最小表示与运行界面、知识推理闭环和分层匹配效果均未完成 |
-| M3 城市森林遥感任务系统评测 | first implementation order accepted；local protocol smoke complete | Route B 三个只读案例已有版本化 fixture 和 artifact/schema/provenance/dependency/freeze/environment/claim-boundary 七类确定性 grader；strict500 正常视图全通过，manual 301 角色误置与 variant lineage 混淆按预期阻断，scientific validity 保持 `not-assessed`；canonical checkpoint 为 `PandaBro666/urbfo-agent-demo:backup/ch3-routeb-20260831@6f1482c` | 研究者确认三个案例覆盖和 matched-adapter 条件后才进入 adapter 比较；不运行 GEE／Drive／重训／外部模型；跨任务依赖和故障传播的候选创新仍需近邻全文比较与可执行评测共同检验 |
+| M3 城市森林遥感任务系统评测 | protocol smoke complete；Beijing reference stage committed and pushed；system evaluation not started | Route B 三案例／七类 grader 保留。2025 strict500 多类图＋BJuforebv4 的脚本参考、任务卡、图文与代码已按研究者授权提交至 `backup/ch3-routeb-20260831@943d887`，远端 SHA 已核验。11 项测试、分块复算、图文审计及独立 V1 通过；输入／数值／图表可核对；没有调用 URSA 或第二章机制，scientific validity 为 `not-assessed` | 实际管理用途、解释评分、关联任务群代表性和系统效果仍未验证；参考不是 scientific gold。下一步仅准备同条件试跑规格，未满足既有比较门前不运行模型；分类制图／连通性为第二波候选。原始栅格、环境及其他线程未提交材料不在本轮 Git 同步覆盖内 |
 | M4 用户／专家校准与经验驱动适应 | deferred increment | 目标用户／专家角色与 episode reservoir 已界定 | 二者均不进入第三章最低承诺；伦理／数据门禁、rubric 校准、episode 化和学习实验均未启动 |
 | L0 文献证据控制面 | seven packets audited; v0.6.1 citation readiness done | 本地 Zotero 维护书目身份，SeaDrive 承载 linked PDF；七包合计 29 source / 39 claim / 61 link 均通过 ledger 审计；开题 v0.6.1 citation-readiness 已把 9 次字符串级 `[REF-MISSING]` 区分为 1 个说明性 marker 与 8 个正文证据槽，opening intake、acquisition queue 与候选 contract fragment 已同步且文献控制审计 0 issue | 跨设备同构、五个 prepared packet 的 Zotero 授权、开题 writing acceptance 与 Ch2 G4 Batch A 浅审保持 researcher-owned；所有跨来源综合仍不得因检索完成而晋级或移除缺口标记 |
 | O0 选题材料 | urban-forest-first v0.6.1；V1 P1 closed；advisor packet ready；citation readiness mapped | 独立 V1 后的 separate writer pass 已补齐城市森林遥感方法入口并同步 Route B-first 状态；导师讨论包 v0.1 已压缩为修改版大纲、三章最低闭环与五个问题，专用 writing contract 为 0 error / 0 warning；引用准入审计已确认 8 个正文槽位均可映射到现有 evidence packets 但暂不可直接移除 | P2/P3、正式 citation insertion、图件和写作合同接受仍待后续；当前稿和讨论包可供快速检查，但不能称为引用完成或正式定稿 |
 
 ### 0.3 当前唯一下一动作
+
+**09-04 第三章阶段收口：**本线程按研究者要求收口“一个真实北京问题能否形成可执行、可核验的任务实例”，不改变下列 Ch2 总体优先级。首个脚本参考已完成，不是 URSA／第二章知识机制运行。输入可得和数值复核已有证据；交付用途已有样例，但实际管理效用、解释评分、关联任务群代表性和系统效果仍未验证。报告入口现先回答研究问题、阶段、用途、生产方式、未证明内容及下一检查点，再显示图表；这一要求已写入协作协议 §6.2.1。当前授权动作仅为本线程代码、图文、参考记录、范围决策与难度文献的定向提交和同步，不含其他线程改动或原始栅格。下一次只准备一个同条件试跑规格，明确待测系统、可见输入、评价侧参考和成败条件；不重问首轮范围，不直接启动比较或第二波任务。
+
+09-04 北京后续执行已获研究者“基本同意”，具体准入门已关闭，见 `decisions/DEC-2026-0904-beijing-first-product-description-admission.md`。只接入一份 strict500 2025 多类图，源／目标 hash 一致；BJuforebv4 几何有效。原网格统计得 108,566,019 个有效像元、489,391 个 nodata，图、表和有限解释共用同一视图，不报告真实面积。结果入口 `../urbfo-agent-demo/experiments/results/beijing-product-description-v0.1/README.md`。11 项测试（收口新增换行字节稳定检查）、两种分块复算、图文审计和独立 1,950 个真实边界邻近像元核验通过；不是独立专题验证。任务卡已有输入、依赖、输出和候选验收，下一动作是核对用户实际用途与后续 solver/evaluator 快照／matched 条件，不重复首轮准入、不自行启动比较。
+
+并行难度文献包 `studies/city-scale-composite-agent-evaluation/task-difficulty-v0.1/README.md` 核对 5 个原始来源，找回 ExpertsRS 的 10 单步＋10 多步设置；附录 A2 的细定义仍未取得。本地只提出结构、当前实施负担、实测难度分开记录的候选口径，不冻结通用等级。连通性与土地覆被分类制图保留第二波候选，先区分冻结推理／重训及结构连通／生态功能；无需为准备工作新增人工审批。Ch2 优先级、Route B 顺序和原 matched-adapter 门不变。本线程决策和两个 study 包纳入已授权的总控阶段提交；Ch3 代码／参考／PNG／SVG 已推送 `943d887`。原始栅格仍外置，不能据 Git 一致推断跨设备数据已同步。
 
 独立 fresh-context V1、两项 P1 separate writer pass、只读差异复核、导师讨论包 v0.1 和
 v0.6.1 citation-readiness 审计均已完成。当前稿仍保留 8 个正文 `[REF-MISSING]`；这些槽位

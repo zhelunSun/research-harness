@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-03T14:48:08+08:00",
+  "updated_at": "2026-09-04T14:55:00+08:00",
   "policy": {
     "source_of_truth": "registry/human_gates.json",
     "decision_owner": "researcher",
@@ -181,6 +181,33 @@
         "evidence": "Researcher explicitly accepted Route B as the first bounded implementation order while keeping local core-habitat and RSS analyses as later task families and preserving all method and evidence boundaries.",
         "decision_artifact": "decisions/DEC-2026-0902-ch3-routeb-first-evaluation-order.md"
       }
+    },
+    {
+      "gate_id": "beijing-task-family-scope-review",
+      "category": "scientific_route",
+      "status": "completed",
+      "decision_owner": "researcher",
+      "repository_id": "idea-control-plane",
+      "artifact_path": "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/minimal_task.md",
+      "gate": "specific_strict500_beijing_product_description_task_admission",
+      "blocks": [
+        "new_beijing_task_family_scope_and_implementation_admission"
+      ],
+      "required_evidence": [
+        "researcher accepts strict500 2025 multiclass recovery candidate plus canonical BJuforebv4 as a product-description case with recorded fingerprints",
+        "researcher accepts necessary spatial output, valid-pixel composition and candidate reference rules; not true area, final map accuracy or ecological function"
+      ],
+      "accepted_direction": "Difficulty-first selection accepted on 2026-09-04; indicator-system novelty is not required; morphology and potential connectivity are no longer mandatory first candidates.",
+      "direction_decision": "decisions/DEC-2026-0904-beijing-difficulty-first-candidate.md",
+      "resolved_at": "2026-09-04T14:41:17+08:00",
+      "resolution": {
+        "decided_at": "2026-09-04T14:41:17+08:00",
+        "decided_by": "researcher",
+        "evidence": "decisions/DEC-2026-0904-beijing-first-product-description-admission.md",
+        "summary": "Researcher basically accepts the stated 2025 multiclass plus established Beijing boundary spatial distribution, valid-pixel composition and evidence-grounded interpretation loop; connectivity and land-cover mapping are Wave 2 candidates, with parallel difficulty literature study."
+      },
+      "decision_path": "decisions/DEC-2026-0904-beijing-first-product-description-admission.md",
+      "next_action": "Accepted product-description reference is complete and included in researcher-authorized stage closeout. Next prepare one matched-trial specification with solver inputs, withheld evaluation reference and success/failure conditions. Do not repeat case admission or start new mapping, RSS, model comparison, true-area or ecological inference. User utility/scientific gold remain unvalidated; Ch2 and the existing Route B adapter gate remain independent."
     }
   ]
 }

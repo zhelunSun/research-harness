@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-03T14:51:11+08:00",
+  "updated_at": "2026-09-04T07:43:00Z",
   "policy": {
     "max_parallel_chapter_writers": 2,
     "max_read_only_supervisor_tracks": 1,
@@ -9,6 +9,130 @@
   },
   "locks": [],
   "last_closed": [
+    {
+      "task_id": "20260904-beijing-stage-closeout",
+      "owner": "root:beijing-stage-closeout",
+      "owning_repo": "urbfo-agent-demo",
+      "file_scope": [
+        "urbfo-agent-demo/.gitignore",
+        "urbfo-agent-demo/.gitattributes",
+        "urbfo-agent-demo/PLAN.md",
+        "urbfo-agent-demo/experiments/results/beijing-product-description-v0.1/",
+        "urbfo-agent-demo/reports/figures/beijing-product-description-v0.1/",
+        "urbfo-agent-demo/scripts/local/beijing_product_reference.py",
+        "urbfo-agent-demo/tests/test_beijing_product_reference.py",
+        "urbfo-agent-demo/tasks/open/20260904-beijing-product-reference.md",
+        "research-harness/decisions/README.md",
+        "research-harness/decisions/DEC-2026-0904-beijing-difficulty-first-candidate.md",
+        "research-harness/decisions/DEC-2026-0904-beijing-first-product-description-admission.md",
+        "research-harness/studies/city-scale-composite-agent-evaluation/README.md",
+        "research-harness/studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/",
+        "research-harness/studies/city-scale-composite-agent-evaluation/task-difficulty-v0.1/",
+        "research-harness/process/outline_freeze_parallel_protocol_20260730.md",
+        "research-harness/process/current_execution_plan_20260802.md",
+        "research-harness/registry/active_work.json",
+        "research-harness/registry/human_gates.json",
+        "research-harness/registry/core_repo_checkpoints.json"
+      ],
+      "status": "completed",
+      "closed_at": "2026-09-04T07:43:00Z",
+      "result": "Human-readable stage purpose, producer, solved/partial/open questions and one next checkpoint added to existing report/PLAN/Resume/protocol, not a new roadmap. Independent closeout V1 P2 repaired and closed, 11 tests and figure/writing audits pass, same reference/partition counts retained. Windows byte/hash risk repaired; all 20 Ch3 staged files byte-identical before commit. Ch3 943d887 pushed and remote SHA verified; code/reference/report/PNG/SVG included, raster/environment external. Control-plane selected decision/study/registry updates prepared for this closeout commit; unrelated Ch2/literature dirty work preserved. No new model, classification, scientific gold, utility or method-effect promotion.",
+      "dependency": "researcher explicitly requested stage closeout, commit/sync and human-readable milestones; preserve other tasks' dirty files",
+      "stop_condition": "bounded stage meaning, authorship and next checkpoint readable; owned artifacts tested/reviewed, committed/pushed and remote SHA verified; no experiment or scientific promotion; raw raster remains externally stored",
+      "expires_on": "2026-09-05"
+    },
+    {
+      "task_id": "20260904-beijing-product-reference",
+      "owner": "root:beijing-product-reference",
+      "owning_repo": "urbfo-agent-demo",
+      "file_scope": [
+        "urbfo-agent-demo/scripts/local/beijing_product_reference.py",
+        "urbfo-agent-demo/tests/test_beijing_product_reference.py",
+        "urbfo-agent-demo/experiments/results/beijing-product-description-v0.1/",
+        "urbfo-agent-demo/reports/figures/beijing-product-description-v0.1/",
+        "urbfo-agent-demo/tasks/open/20260904-beijing-product-reference.md",
+        "urbfo-agent-demo/PLAN.md",
+        "urbfo-agent-demo/.venv/",
+        "urbfo-agent-demo/data/processed/rf_maps/routeb_h07_cs8k_strict500_seasonal17_v2_20260708/beijing_rf_routeb_h07_cs8k_strict500_seasonal17_v2_full_2025_20260708.tif",
+        "research-harness/decisions/DEC-2026-0904-beijing-first-product-description-admission.md",
+        "research-harness/decisions/README.md",
+        "research-harness/registry/human_gates.json",
+        "research-harness/registry/active_work.json",
+        "research-harness/process/current_execution_plan_20260802.md",
+        "research-harness/studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/minimal_task.md"
+      ],
+      "status": "completed",
+      "closed_at": "2026-09-04T07:00:17Z",
+      "result": "Accepted case admission recorded; one fingerprinted raster copied without recovery writes. Full decode and valid AOI reference complete: 108566019 valid, 489391 nodata. Table, PNG/SVG, bounded Chinese interpretation and candidate task card delivered. 10 tests, exact 512/257 partition invariance, figure/writing 0/0; independent V1 1950 real boundary-neighbour pixel checks with another library had zero differences. Initial CRS axis-declaration check and visual legend overlap fixed and documented. No unclosed V1 P1/P2. No agent run, new classification, connectivity, true area, scientific gold or claim promotion. Research uncommitted and ignored inputs/figures local only; existing Ch2 and adapter gates unchanged.",
+      "dependency": "researcher accepted strict500 2025 multiclass plus BJuforebv4 product-description case in current turn",
+      "stop_condition": "reference counts, spatial figure and bounded interpretation pass V0 and independent V1; stop on invalid AOI or taxonomy conflict; no model comparison, new mapping, connectivity, area or ecology",
+      "expires_on": "2026-09-05"
+    },
+    {
+      "task_id": "20260904-task-difficulty-literature",
+      "owner": "subagent:task-difficulty-literature",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "research-harness/studies/city-scale-composite-agent-evaluation/task-difficulty-v0.1/"
+      ],
+      "status": "completed",
+      "closed_at": "2026-09-04T07:00:17Z",
+      "result": "Five primary-source targeted-reading packet with six claims and ten links; ledger/writing0/0. ExpertsRS 10 single/10 multi-step verified at publisher3.2.2 and original request file; appendixA2 definition gap retained. Parent independently checked load-bearing source sections and closed a one-word ScienceAgentBench excerpt error via writer recheck. Structure, implementation burden and empirical difficulty separated as candidate TD-C6 needs_review, not a new accepted benchmark classification. No Zotero, official claims, runs or research commits.",
+      "dependency": "explicit researcher request for parallel literature study; read-only URSA and literature sources",
+      "stop_condition": "bounded 3-5 primary-source evidence packet and own-paper single/multi-step locator; candidate synthesis only, no official claims, taxonomy freeze, Zotero mutation or global plan edits",
+      "expires_on": "2026-09-05"
+    },
+    {
+      "task_id": "20260904-beijing-minimal-input-admission",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/minimal_*",
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/input_audit.json",
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/difficulty_review.md",
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/section_brief.md",
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/verification.md",
+        "process/current_execution_plan_20260802.md",
+        "registry/human_gates.json",
+        "registry/active_work.json"
+      ],
+      "status": "completed",
+      "closed_at": "2026-09-04T04:42:51Z",
+      "result": "Preparation goal reached one concrete scientific-admission gate. Five exact raster candidates found read-only in recovery root, fingerprinted and header/15-window checked; canonical copies and scientific reference remain pending. One strict5002025/BJuforebv4 product-description task/acceptance proposed. Writing audit0/0, original9tests, hash/link/gate/navigation checks pass; fresh V1 two P2 repaired and independently closed. No copies, new maps, model episodes or scientific promotion. Local-only research documents; Ch2 recovery remains independent."
+    },
+    {
+      "task_id": "20260904-beijing-difficulty-first",
+      "owner": "root",
+      "owning_repo": "research-harness",
+      "status": "completed",
+      "file_scope": [
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/difficulty*",
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/README.md",
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/verification.md",
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/section_brief.md",
+        "studies/city-scale-composite-agent-evaluation/README.md",
+        "decisions/DEC-2026-0904-beijing-difficulty-first-candidate.md",
+        "decisions/README.md",
+        "process/current_execution_plan_20260802.md",
+        "registry/human_gates.json",
+        "registry/active_work.json"
+      ],
+      "closed_at": "2026-09-04T03:48:56Z",
+      "result": "Difficulty-first candidate prepared; 15 groups across four cost axes; 11 input paths checked (4 present/7 absent); writing audit 0/0; original packet 9 tests and asset audit pass; independent V1 two P2 repaired/rechecked closed. Old scope question superseded, no immediate researcher action; no scientific or experiment promotion, local-only research content. Also coordinated direct source-thread user authorization for Ch2 pilot and registered its nonoverlapping writer lock."
+    },
+    {
+      "task_id": "20260903-beijing-task-family-decision-packet",
+      "owner": "thread:01a05afe-02c0-7fc2-b5bf-bcaafcffe6de",
+      "owning_repo": "research-harness",
+      "file_scope": [
+        "studies/city-scale-composite-agent-evaluation/beijing-task-family-v0.1/**",
+        "studies/city-scale-composite-agent-evaluation/README.md"
+      ],
+      "status": "completed",
+      "result": "prepared-for-scope-review; packet and verification read by routing owner; local-only research content, no experiment or scientific promotion",
+      "expires_on": "2026-09-04",
+      "closed_at": "2026-09-03T22:00:32+08:00"
+    },
     {
       "task_id": "20260903-routeb-evaluation-mvp-checkpoint",
       "owner": "root",

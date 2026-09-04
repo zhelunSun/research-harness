@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0",
+  "ledger_id": "beijing-task-family-v0.1",
+  "research_question": "相邻研究是否已覆盖证据驱动分析和共享环境任务，哪些差异仍需北京任务群自行验证？",
+  "sources": [
+    {
+      "source_id": "PQA",
+      "title": "Language agents achieve superhuman synthesis of scientific knowledge",
+      "bibtex_key": "skarlinski2024paperqa2",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/html/2409.13740",
+      "identifiers": {
+        "arxiv": "2409.13740"
+      },
+      "read_state": "full_text",
+      "read_scope": "Section 2, located paragraphs on Paper Search, Gather Evidence and iterative response generation; not a whole-paper review.",
+      "evidence_status": "needs_review"
+    },
+    {
+      "source_id": "CLA",
+      "title": "ClimateAgent: Multi-Agent Orchestration for Complex Climate Data Science Workflows",
+      "bibtex_key": "kim_climateagent_2026",
+      "zotero_item_key": null,
+      "locator": "https://arxiv.org/html/2511.20109",
+      "identifiers": {
+        "arxiv": "2511.20109"
+      },
+      "read_state": "full_text",
+      "read_scope": "Sections 4 and 4.1; cross-step dependencies and workflow task construction. Repository behavior not reproduced.",
+      "evidence_status": "needs_review"
+    },
+    {
+      "source_id": "EV",
+      "title": "EarthVerse: Benchmarking Scientific Agents Across Dynamic Earth Systems and Natural Hazards",
+      "bibtex_key": "cui_earthverse_2026",
+      "zotero_item_key": "XDTMS4WP",
+      "locator": "https://arxiv.org/html/2608.23525",
+      "identifiers": {
+        "arxiv": "2608.23525"
+      },
+      "read_state": "full_text",
+      "read_scope": "Section 3.3 and Appendix A.3.1; task grouping and oracle boundary. Existing Zotero identity reused, no new library read/write or attachment check.",
+      "evidence_status": "needs_review"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "BTF-C1",
+      "text": "PaperQA2 让检索、证据整理与回答生成迭代进行，可作为强检索基线的设计参照，不是城市森林分析效果证据。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:BTF-C1]"
+    },
+    {
+      "claim_id": "BTF-C2",
+      "text": "ClimateAgent 已把中间变量、基线和文件的跨步骤依赖纳入任务设计，不能把多步和复用本身作为新颖性。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:BTF-C2]"
+    },
+    {
+      "claim_id": "BTF-C3",
+      "text": "EarthVerse 在同一事件下设置多个研究任务；同一真实环境中的多个问题并非本地方案独有。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:BTF-C3]"
+    },
+    {
+      "claim_id": "BTF-C4",
+      "text": "EarthVerse 的 oracle 为诊断信息条件，不支持把效果单独归因为等信息条件下的结构化表示。",
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:BTF-C4]"
+    },
+    {
+      "claim_id": "BTF-C5",
+      "text": "共享城市产品上的跨子问题兼容、上游变化传播和总体问题完成可作为候选评价设计，但尚未确认独立新颖性与有效性。",
+      "evidence_status": "hypothesis",
+      "unresolved_marker": "[REF-MISSING:BTF-C5]"
+    }
+  ],
+  "links": [
+    {
+      "claim_id": "BTF-C1",
+      "source_id": "PQA",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "PaperQA2 decomposes RAG into tools",
+      "source_location": "Section 2, paragraph beginning PaperQA2 decomposes RAG into tools",
+      "note": "Located passage checked; transfer to RS analysis is not established."
+    },
+    {
+      "claim_id": "BTF-C2",
+      "source_id": "CLA",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "derived variables, climatological baselines, or intermediate files that must be reused downstream",
+      "source_location": "Section 4.1, Contextual Coordination",
+      "note": "Within-workflow dependency precedent; does not establish absence or presence of every cross-task comparison mechanism."
+    },
+    {
+      "claim_id": "BTF-C3",
+      "source_id": "EV",
+      "relation": "supports",
+      "entailment_status": "verified",
+      "source_excerpt": "Each event contributes two tasks",
+      "source_location": "Section 3.3, first paragraph",
+      "note": "Evidence for grouped real-event tasks, not proof of chained state across every event task."
+    },
+    {
+      "claim_id": "BTF-C4",
+      "source_id": "EV",
+      "relation": "qualifies",
+      "entailment_status": "verified",
+      "source_excerpt": "a diagnostic upper bound rather than a proposed deployment setting",
+      "source_location": "Appendix A.3.1, first paragraph",
+      "note": "Oracle identifies useful source information; not an information-equivalent representation comparison."
+    },
+    {
+      "claim_id": "BTF-C5",
+      "source_id": "CLA",
+      "relation": "motivates",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Local design inference, not a literature-established novelty claim."
+    },
+    {
+      "claim_id": "BTF-C5",
+      "source_id": "EV",
+      "relation": "motivates",
+      "entailment_status": "unassessed",
+      "source_excerpt": null,
+      "source_location": null,
+      "note": "Full comparison and executable validation remain pending."
+    }
+  ]
+}

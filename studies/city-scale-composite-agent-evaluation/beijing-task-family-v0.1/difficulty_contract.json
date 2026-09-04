@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "beijing-difficulty-review-20260904",
+    "title": "北京任务首轮难度评估与范围修订",
+    "mode": "argument-edit",
+    "authority": [
+      "../../../decisions/DEC-2026-0904-beijing-difficulty-first-candidate.md",
+      "../../../THESIS_STATE.md",
+      "../../../../urbfo-agent-demo/knowledge/urban_forest_virables.md",
+      "../../../../urbfo-agent-demo/configs/landcover_zonal_metrics.yaml"
+    ]
+  },
+  "terms": [{"canonical":"核心栖息地","variants":["核心斑块","核心对象"],"severity":"error"}],
+  "abbreviations": [],
+  "protected_literals": [
+    {"value":"候选","required":true},
+    {"value":"not-assessed","required":true},
+    {"value":"未运行实验","required":true},
+    {"value":"不承担指标体系新颖性主张","required":true},
+    {"value":"[CRITICAL-CHECK:object-and-scientific-acceptance]","required":true},
+    {"value":"不等于冠层覆盖度","required":true}
+  ],
+  "protected_numbers": [],
+  "comparison": {"preserve_all_reference_tokens":true,"preserve_markers":["[CRITICAL-CHECK:object-and-scientific-acceptance]"]},
+  "citations": {"require_known_keys":true,"required_keys":[],"forbidden_keys":[]},
+  "claims": [],
+  "method_states": [{"id":"candidate","required_literals":["未冻结"],"forbidden_patterns":["本研究首次建立","已完成城市森林基准","已证明知识增强优于"]}],
+  "cross_references": {"require_targets":false,"required_labels":[]},
+  "style": {"max_sentence_chars":180,"max_paragraph_chars":700,"forbidden_patterns":["全面提升","填补了空白"]}
+}

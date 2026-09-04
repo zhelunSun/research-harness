@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "document": {
+    "id": "beijing-minimal-input-admission-20260904",
+    "title": "北京最小任务输入与验收候选",
+    "mode": "draft",
+    "authority": [
+      "../../../decisions/DEC-2026-0904-beijing-difficulty-first-candidate.md",
+      "difficulty_review.md",
+      "input_audit.json",
+      "../../../../urbfo-agent-demo/experiments/results/routeb_cs8k_strict500_map_qa_20260708.json",
+      "../../../../urbfo-agent-demo/experiments/results/routeb_cs8k_strict500_level1_qa_20260708.json"
+    ]
+  },
+  "terms": [{"canonical":"核心栖息地","variants":["核心对象","核心斑块"],"severity":"error"}],
+  "abbreviations": [],
+  "protected_literals": [
+    {"value":"候选","required":true},
+    {"value":"not-assessed","required":true},
+    {"value":"未运行模型实验","required":true},
+    {"value":"未复制栅格","required":true},
+    {"value":"routeb_h07_cs8k_strict500_seasonal17_v2","required":true},
+    {"value":"BJuforebv4","required":true},
+    {"value":"EPSG:4326","required":true},
+    {"value":"0 tree / 1 shrub / 2 grass / 3 wetland / 4 impervious_surface / 5 water / 6 cropland / 7 bare_land","required":true},
+    {"value":"255","required":true},
+    {"value":"`255` 为 nodata，`0` 是乔木，不是背景","required":true},
+    {"value":"不能证明历史字节身份","required":true},
+    {"value":"不是面积占比","required":true},
+    {"value":"[CRITICAL-CHECK:beijing-task-admission]","required":true}
+  ],
+  "protected_numbers": [],
+  "comparison": {"preserve_markers":["[CRITICAL-CHECK:beijing-task-admission]"]},
+  "citations": {"require_known_keys":true,"required_keys":[],"forbidden_keys":[]},
+  "claims": [],
+  "method_states": [{"id":"candidate","required_literals":["未冻结"],"forbidden_patterns":["已完成城市森林基准","已验证生态功能","已证明知识增强优于"]}],
+  "cross_references": {"require_targets":false,"required_labels":[]},
+  "style": {"max_sentence_chars":180,"max_paragraph_chars":700,"forbidden_patterns":["全面提升","填补了空白"]}
+}

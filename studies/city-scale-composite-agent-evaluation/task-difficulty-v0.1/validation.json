@@ -1,0 +1,43 @@
+{
+  "artifact": "task-difficulty-v0.1",
+  "checked_on": "2026-09-04",
+  "v0": {
+    "ledger": {"sources": 5, "claims": 6, "links": 10, "errors": 0, "warnings": 0, "result_file": "audit.json"},
+    "chinese_writing": {"errors": 0, "warnings": 0, "result_file": "writing-audit.json"},
+    "quote_words_per_source": {"TD-S1": 6, "TD-S2": 6, "TD-S3": 13, "TD-S4": 10, "TD-S5": 6},
+    "quotation_policy": "One short source excerpt per source in ledger; verification logs a one-word correction; <=25 quoted words per source overall; README uses paraphrase.",
+    "local_source": "Original URSA 20-request JSON hash and current commit captured in ledger; repository treated read-only.",
+    "scope": "Only this newly created packet directory written; no Zotero, recovery directory, registry, thesis claims or other repository mutations.",
+    "commands": [
+      "python C:/Users/zhelunStation/.codex/skills/literature-evidence-ledger/scripts/audit_ledger.py ledger.json --bib references.bib --output audit.json --bridge-out writing-bridge.json",
+      "python C:/Users/zhelunStation/.codex/skills/zh-scientific-writing/scripts/zh_scientific_audit.py audit --text README.md --contract writing-contract.json --bib references.bib --json-out writing-audit.json --md-out writing-audit.md"
+    ]
+  },
+  "writer_judgment_audit": {
+    "not_independent_v1": true,
+    "scale_note": "0-2 writing quality review aid required by writing skill; not task difficulty scoring or scientific validity certification.",
+    "terminology": {"score": 2, "evidence": "Task structure, implementation burden and observed difficulty remain separate."},
+    "number_state": {"score": 2, "evidence": "20=10+10 preserved; TD-C6 and local categories remain needs_review."},
+    "claim_evidence_fit": {"score": 1, "evidence": "Five source-local facts located; no universal standard asserted; local synthesis and ExpertsRS appendix definition remain unresolved."},
+    "citation_integrity": {"score": 2, "evidence": "All five keys match stable identifiers; reused keys retain identity; no Zotero item key used as a citation key."},
+    "paragraph_function": {"score": 2, "evidence": "Outcome, primary-source comparison, historical provenance, candidate application and limitations have separate sections."},
+    "coherence": {"score": 2, "evidence": "Literature differences lead to explicitly provisional local labeling, not claimed consensus."},
+    "readability": {"score": 2, "evidence": "Final deterministic writing audit has no long-sentence warnings; causal and generalizing language is restrained."},
+    "scope_limits": {"score": 2, "evidence": "First-wave product description excludes true area, connectivity and ecology; Wave2 remains candidate."}
+  },
+  "parent_source_local_v1": {
+    "status": "completed",
+    "reviewer": "parent /root; independent of packet writing",
+    "scope": "Load-bearing primary paragraphs for TD-C1 through TD-C5; not a complete-paper review or local taxonomy acceptance.",
+    "finding": "One P2 exact-quotation mismatch in TD-C5; corrected after current arXiv v3 paragraph was rechecked.",
+    "record": "verification.md",
+    "local_synthesis_status": "TD-C6 remains needs_review"
+  },
+  "validation_debt": [
+    "Parent source-local V1 is complete; local task taxonomy and cross-source transfer still require researcher acceptance.",
+    "ExpertsRS Appendix Table A2 / supplementary DOCX not inspected; operational definition remains a bounded retrieval gap.",
+    "ThinkGeo exact cutoff/tie rules and GeoPlan-bench generation/filter code not reconstructed.",
+    "No empirical difficulty measurement for the Beijing task and no accepted local taxonomy.",
+    "No formal thesis writing-contract acceptance; packet remains local and uncommitted."
+  ]
+}

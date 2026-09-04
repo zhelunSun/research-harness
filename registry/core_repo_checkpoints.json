@@ -12,16 +12,16 @@
     {
       "id": "chapter-2-knowledge",
       "branch": "l2-task-distillation",
-      "remote_sha": "8bc34f68c7d17edaa543b0c3a26c3ba4559a26d5",
-      "verified_at": "2026-09-01",
-      "purpose": "Chapter 2 G4 reviewer-ready state with reconciled legacy literature boundaries and 41-pass repository validation"
+      "remote_sha": "3804abe90846ae350fb3cde4c8dd56443dd10156",
+      "verified_at": "2026-09-04",
+      "purpose": "Runtime-only engineering checkpoint: explicit SiliconFlow credential profile, typed tool parameters and lossless JSON-codeblock parsing. Verified remote ahead=0 behind=0. Authorized 8 development plus 24 confirmation episodes ended locally, but arithmetic-interface failures prevent a method-effect conclusion; research configuration, freezes, outputs and report remain local and uncommitted. This SHA is not a complete portable research release."
     },
     {
       "id": "chapter-3-evaluation",
       "branch": "backup/ch3-routeb-20260831",
-      "remote_sha": "6f1482cf07ca7ef5f3d21cd3bd3d888bb5a4cdc2",
-      "verified_at": "2026-09-03",
-      "purpose": "Chapter 3 Route B read-only protocol smoke with a versioned three-case fixture, seven deterministic graders, and scientific validity kept not-assessed"
+      "remote_sha": "943d8878a41eb7ed206177cc9188184b896fad95",
+      "verified_at": "2026-09-04",
+      "purpose": "Researcher-authorized Beijing product-description reference closeout: code, task card, exact reference and reviewed PNG/SVG pushed and remote SHA verified; 11 tests, partition invariance, figure/writing audits and independent V1 pass. No URSA/model comparison, new classification, scientific gold or user-utility validation. Original raster and local environment remain external. Existing Route B protocol smoke and matched-adapter gate are retained."
     }
   ]
 }

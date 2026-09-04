@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "task-difficulty-v0.1",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "chen2024scienceagentbenchrigorousassessmentlanguage",
+      "li2025designing",
+      "mialon2023gaia",
+      "shabbir_thinkgeo_2026",
+      "sun_llm-based_2026"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "TD-C1",
+      "marker": "[CLAIM:TD-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "sun_llm-based_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "TD-C2",
+      "marker": "[CLAIM:TD-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "mialon2023gaia"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "TD-C3",
+      "marker": "[CLAIM:TD-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "shabbir_thinkgeo_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "TD-C4",
+      "marker": "[CLAIM:TD-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "li2025designing"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "TD-C5",
+      "marker": "[CLAIM:TD-C5]",
+      "marker_required": false,
+      "required_citations": [
+        "chen2024scienceagentbenchrigorousassessmentlanguage"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "verified",
+      "unresolved_marker": null
+    },
+    {
+      "id": "TD-C6",
+      "marker": "[CLAIM:TD-C6]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[CRITICAL-CHECK:TD-C6]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[CRITICAL-CHECK:TD-C6]"
+    ]
+  }
+}

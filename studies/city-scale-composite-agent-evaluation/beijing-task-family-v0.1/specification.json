@@ -1,0 +1,477 @@
+{
+  "schema_version": "0.1",
+  "packet_id": "beijing-task-family-v0.1",
+  "status": "candidate",
+  "created_on": "2026-09-03",
+  "owning_repository": "research-harness",
+  "purpose": "Cross-chapter scope-review specification; not a released task suite, chapter-local rubric, reference answer or experiment configuration.",
+  "source_repository_revision": "6f1482cf07ca7ef5f3d21cd3bd3d888bb5a4cdc2",
+  "scope": {
+    "candidate_question": "北京既定研究区内，城市森林及关联植被景观呈现怎样的空间格局与潜在连通性，哪些空间差异和潜在薄弱环节值得进一步核查？",
+    "preferred_route": "bounded_spatial_pattern_and_potential_connectivity",
+    "sensitivity_extension": "Optional only after a scientifically comparable source or scale pair is available and separately admitted; not a required answer in the first scope.",
+    "approval_status": "pending_researcher_review",
+    "aoi_candidate": "data/aoi/bejing_urban_forest_bound/BJuforebv4.shp",
+    "observation_year_candidate": 2025,
+    "interpretation": "AOI identity, operational classes, temporal support and spatial comparison units require domain confirmation; 2021 contextual data cannot silently become 2025 observations.",
+    "excluded_from_minimum": [
+      "species_occurrence_or_biodiversity_validation",
+      "ecosystem_service_or_management_effect",
+      "citywide_area_adjusted_claim_without_independent_validation",
+      "cross_city_generalization",
+      "full_indicator_catalog_implementation",
+      "canopy_height_or_phenology_without_admitted_data"
+    ]
+  },
+  "approvals": {
+    "scope_accepted": false,
+    "scientific_gold_accepted": false,
+    "rubric_accepted": false,
+    "experiment_authorized": false
+  },
+  "inherited_gates": [
+    "ch3-routeb-matched-adapter-entry",
+    "ch2-specific-task-and-scientific-acceptance"
+  ],
+  "runtime_boundary": {
+    "network": "not_used_for_task_execution",
+    "external_writes": false,
+    "solver_runs": 0,
+    "geospatial_runs": 0,
+    "reference_solution_state": "not-created",
+    "public_task_package_ready": false
+  },
+  "external_inputs": [
+    "scope",
+    "raw_maps",
+    "source_metadata",
+    "method_config",
+    "matrix_context"
+  ],
+  "evaluation_only_inputs": [
+    "reference_results",
+    "scoring_thresholds",
+    "fault_labels",
+    "expected_actions"
+  ],
+  "solver_visible_inputs": [
+    "scope",
+    "raw_maps",
+    "source_metadata",
+    "method_config",
+    "matrix_context",
+    "knowledge_corpus"
+  ],
+  "tasks": [
+    {
+      "task_id": "T1",
+      "title": "底图口径与空间格局描述",
+      "question": "既定范围与时段内，哪些观测和类别定义能够支持城市森林及关联植被的空间分布描述？",
+      "depends_on": [],
+      "consumes": [
+        "scope",
+        "raw_maps",
+        "source_metadata"
+      ],
+      "produces": [
+        "base_map",
+        "object_definition",
+        "map_evidence"
+      ],
+      "asset_refs": [
+        "A11",
+        "A12",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18"
+      ],
+      "knowledge_support": [
+        "目标对象与观测类别的关系",
+        "数据时段、类别映射、验证样本角色"
+      ],
+      "required_output_candidate": [
+        "底图选择及类别口径说明",
+        "可追溯的空间格局描述与支持量",
+        "验证不足与不可支持的结论"
+      ],
+      "scientific_reference": "pending_researcher_review",
+      "execution_readiness": "blocked_missing_assets"
+    },
+    {
+      "task_id": "T2",
+      "title": "核心栖息地形态与空间差异",
+      "question": "在共同底图与明确形态学定义下，核心栖息地的分布和边缘特征有哪些可解释的空间差异？",
+      "depends_on": [
+        "T1"
+      ],
+      "consumes": [
+        "scope",
+        "base_map",
+        "object_definition",
+        "method_config"
+      ],
+      "produces": [
+        "core_objects",
+        "morphology_summary"
+      ],
+      "asset_refs": [
+        "A01",
+        "A07",
+        "A19"
+      ],
+      "knowledge_support": [
+        "形态学核心与物种栖息地证据的区别",
+        "分辨率、边界效应与对象统计方法"
+      ],
+      "required_output_candidate": [
+        "对象图层与父底图身份",
+        "空间差异的统计及解释",
+        "分析尺度和适用边界"
+      ],
+      "scientific_reference": "pending_researcher_review",
+      "execution_readiness": "blocked_missing_assets"
+    },
+    {
+      "task_id": "T3",
+      "title": "潜在连通性与基质背景分析",
+      "question": "同一组核心栖息地之间有哪些潜在连接及薄弱环节，现有网络、基质或阻力证据各能支持到什么程度？",
+      "depends_on": [
+        "T1",
+        "T2"
+      ],
+      "consumes": [
+        "scope",
+        "base_map",
+        "object_definition",
+        "core_objects",
+        "method_config",
+        "matrix_context"
+      ],
+      "produces": [
+        "connectivity_summary",
+        "network_objects",
+        "evidence_grade"
+      ],
+      "asset_refs": [
+        "A01",
+        "A08",
+        "A09",
+        "A10",
+        "A20",
+        "A21"
+      ],
+      "knowledge_support": [
+        "空间邻接、网络连通与生态功能的区别",
+        "背景数据时段和阻力证据的用途"
+      ],
+      "required_output_candidate": [
+        "共享对象上的网络关系及支持量",
+        "潜在薄弱位置及证据限定",
+        "缺失背景或阻力证据对结论的影响"
+      ],
+      "scientific_reference": "pending_researcher_review",
+      "execution_readiness": "blocked_missing_assets"
+    },
+    {
+      "task_id": "S",
+      "title": "总体问题综合回答",
+      "question": "上述结果共同支持哪些空间差异与潜在薄弱环节判断，哪些尚需补证？",
+      "depends_on": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "consumes": [
+        "scope",
+        "map_evidence",
+        "morphology_summary",
+        "connectivity_summary",
+        "evidence_grade"
+      ],
+      "produces": [
+        "synthesis",
+        "claim_source_table"
+      ],
+      "asset_refs": [
+        "A01",
+        "A05"
+      ],
+      "knowledge_support": [
+        "结果可比性、支持范围和不确定性解释"
+      ],
+      "required_output_candidate": [
+        "回答总体问题的综合论述",
+        "逐结论支持的产品、来源和限制",
+        "合理分歧及进一步调查需要"
+      ],
+      "scientific_reference": "pending_researcher_review",
+      "execution_readiness": "blocked_upstream"
+    }
+  ],
+  "dependence_tests_candidate": [
+    {
+      "id": "D1",
+      "description": "Compare object identities, parent product revisions and documented spatial/temporal transformations; equal but wrong products must not pass outcome validation.",
+      "scope": "cross_task_compatibility"
+    },
+    {
+      "id": "D2",
+      "description": "With admitted source variations, check whether changed base-map evidence reaches all dependent analyses and conclusions; do not change semantic definitions inside one frozen task.",
+      "scope": "upstream_propagation"
+    },
+    {
+      "id": "D3",
+      "description": "Evaluate isolated downstream tasks using reference intermediate inputs separately from actual chained runs; use these results to locate errors, not inflate independent sample size.",
+      "scope": "attribution"
+    }
+  ],
+  "comparison_design_candidate": {
+    "baseline": "Strong retrieval-capable tool agent, not a knowledge-deprived strawman.",
+    "whole_method": "Same accessible corpus/model/tools/budget/output requirements; record retrieval and expert preparation cost.",
+    "representation_probe": "Match semantic facts and relationships as well as sources; compare serialization/access without hiding facts from the text condition.",
+    "knowledge_interface_probe": "Report representation plus runtime feedback as a bundle unless separately isolated.",
+    "success": "Correctly complete required analysis with adequate evidence; unsupported refusal is not success.",
+    "non_independence": "The Beijing tasks share one environment and are not independent confirmation families; do not select an independent confirmation task from a descendant of the same assets."
+  },
+  "readiness": {
+    "specification": "prepared_for_review",
+    "scientific_validity": "not-assessed",
+    "benchmark_release": "not-ready",
+    "missing_asset_action": "Inventory and locate the specific external products after scope confirmation; do not regenerate or replace them silently.",
+    "reference_action": "Domain acceptance and reference validation before any scoring or solver comparison."
+  },
+  "assets": [
+    {
+      "path": "knowledge/urban_forest_virables.md",
+      "exists": true,
+      "sha256": "5a34c69e22c172bac699c7d81cec02dc475053eb863cd82b2369b57068953ecb",
+      "asset_id": "A01",
+      "role": "indicator_ontology",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "configs/indicators.yaml",
+      "exists": true,
+      "sha256": "0656f4ef6d196de82eb2a4d05a6ebc0df8feb2b06e6e7ee54199b39c5f03d1bc",
+      "asset_id": "A02",
+      "role": "indicator_registration",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "metadata/knowledge/urban_forest_variables_v2_profiles.json",
+      "exists": true,
+      "sha256": "da5a67136423e255ec182794aeacfd09550442d6d42177c5f568cabd54cf003e",
+      "asset_id": "A03",
+      "role": "knowledge_profiles",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "configs/workflow_state.yaml",
+      "exists": true,
+      "sha256": "ac4effe731f94e6ada126ce09e79cf090bbf7cf0781203afaf82c5f3e1df0ff7",
+      "asset_id": "A04",
+      "role": "historical_state_scaffold",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "2026-06-13 scaffold; not a current run status source."
+    },
+    {
+      "path": "PLAN.md",
+      "exists": true,
+      "sha256": "d3fbe64aa2e82476a7de4af730a729f7e58ea5bc355699a7e6c36a31c35c99a9",
+      "asset_id": "A05",
+      "role": "current_ch3_gate",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Protocol smoke completed; scientific validity remains not-assessed."
+    },
+    {
+      "path": "configs/evaluation/routeb_readonly_mvp_v0.1.json",
+      "exists": true,
+      "sha256": "226e7649d67cd6949edbd16d8d567637a5e6033fcc68d4d595c949aa06167b96",
+      "asset_id": "A06",
+      "role": "routeb_protocol_fixture",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "configs/mspa_like_segmentation.yaml",
+      "exists": true,
+      "sha256": "fb0c5eec01711652286105f89cb6a1ecade23d589161a529466ca492c15022e7",
+      "asset_id": "A07",
+      "role": "morphology_configuration",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Contains source-specific settings, including a Route B Level 1 alias. A config entry proves a declared route, not completed execution."
+    },
+    {
+      "path": "configs/rss_network_links.yaml",
+      "exists": true,
+      "sha256": "b56a7f35a36f513a597644ebaee4c7d9462cbcd576c6c2cbf7dcdda81e718236",
+      "asset_id": "A08",
+      "role": "network_configuration",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "configs/rss_cost_network.yaml",
+      "exists": true,
+      "sha256": "06708fa086e44f8e1fea3bc3fe76a46ce19ef79fd2c6958d339f3f6feb222580",
+      "asset_id": "A09",
+      "role": "resistance_configuration",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "configs/landcover_zonal_metrics.yaml",
+      "exists": true,
+      "sha256": "f6057e70e3314b0c1d981b58d2866e8d9cfeea163fdb02d1831fbd5a73df586a",
+      "asset_id": "A10",
+      "role": "proxy_metric_configuration",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Contains class-weighted canopy proxies and bsi_mean mapped to bare fractions; no equivalence to measured canopy cover or spectral BSI accepted."
+    },
+    {
+      "path": "experiments/results/routeb_strict500_review_package_20260709.json",
+      "exists": true,
+      "sha256": "b17cf8847239c68bcce47268dbf69160483c6039e0f61f803768582a545eab37",
+      "asset_id": "A11",
+      "role": "map_review_manifest",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Pointers to external outputs do not prove local materialization, scientific validity or recoverable cloud payloads."
+    },
+    {
+      "path": "experiments/results/routeb_cs8k_strict500_level1_qa_20260708.json",
+      "exists": true,
+      "sha256": "dcf8487559f92f99c2a533e19397b42d61d5131b8ab478e908aab90f499f199b",
+      "asset_id": "A12",
+      "role": "level1_taxonomy_and_qa",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Historical output paths remain provenance only; tree + shrub + grass + wetland is the recorded operational foreground, not a newly accepted ecological forest definition."
+    },
+    {
+      "path": "knowledge/indicator_cards/canopy_cover.md",
+      "exists": true,
+      "sha256": "2edf8b257ee0f6016a8cba693cbcd16a9cb4833f3e8bab8c9b96a427b8718a21",
+      "asset_id": "A13",
+      "role": "canopy_proxy_card",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "located_source_content_and_hash",
+      "source_note": "Draft card explicitly describes a broad vegetation cover proxy."
+    },
+    {
+      "path": "data/aoi/bejing_urban_forest_bound/BJuforebv4.shp",
+      "exists": true,
+      "sha256": "ad80561d9fdf9b122b5ac784b66c15d1d93e95c39854d4d90b0ef0eebfb498f2",
+      "asset_id": "A14",
+      "role": "aoi_geometry",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "presence_and_hash_only",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "data/aoi/bejing_urban_forest_bound/BJuforebv4.shx",
+      "exists": true,
+      "sha256": "670f7918692ffe8fa111e9cff91a93ba348770f8a7c913cde7b86427ee994323",
+      "asset_id": "A15",
+      "role": "aoi_index",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "presence_and_hash_only",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "data/aoi/bejing_urban_forest_bound/BJuforebv4.dbf",
+      "exists": true,
+      "sha256": "c65bde307831e041813ef9b1bc685bb8873fa00da1f786291901e4f696d74cf5",
+      "asset_id": "A16",
+      "role": "aoi_attributes",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "presence_and_hash_only",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "data/aoi/bejing_urban_forest_bound/BJuforebv4.prj",
+      "exists": true,
+      "sha256": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4",
+      "asset_id": "A17",
+      "role": "aoi_projection",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "presence_and_hash_only",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "data/processed/rf_maps/routeb_h07_cs8k_strict500_seasonal17_v2_20260708/beijing_rf_routeb_h07_cs8k_strict500_level1_urban_forest_20260708.tif",
+      "exists": false,
+      "sha256": null,
+      "asset_id": "A18",
+      "role": "level1_raster",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "declared_path_absent_on_current_device",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "data/processed/rss_v1/routeb_strict500_level1_uf_allroad_barrier_len1000/support_core_support.gpkg",
+      "exists": false,
+      "sha256": null,
+      "asset_id": "A19",
+      "role": "routeb_core_geometry",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "declared_path_absent_on_current_device",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "data/processed/rss_v1/routeb_strict500_level1_uf_allroad_barrier_len1000/network_nodes.gpkg",
+      "exists": false,
+      "sha256": null,
+      "asset_id": "A20",
+      "role": "routeb_network_nodes",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "declared_path_absent_on_current_device",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "data/processed/rss_v1/routeb_strict500_level1_uf_allroad_barrier_len1000/network_edges.gpkg",
+      "exists": false,
+      "sha256": null,
+      "asset_id": "A21",
+      "role": "routeb_network_edges",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "declared_path_absent_on_current_device",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "data/processed/rss_v1/veg2025_urban_forest/network_nodes.gpkg",
+      "exists": false,
+      "sha256": null,
+      "asset_id": "A22",
+      "role": "legacy_full_network_nodes",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "declared_path_absent_on_current_device",
+      "source_note": "Existence and provenance are not scientific validation."
+    },
+    {
+      "path": "data/processed/rss_v1/veg2025_uf_smoke/network_nodes.gpkg",
+      "exists": false,
+      "sha256": null,
+      "asset_id": "A23",
+      "role": "legacy_smoke_network_nodes",
+      "repository": "urbfo-agent-demo",
+      "verification_depth": "declared_path_absent_on_current_device",
+      "source_note": "Existence and provenance are not scientific validation."
+    }
+  ]
+}

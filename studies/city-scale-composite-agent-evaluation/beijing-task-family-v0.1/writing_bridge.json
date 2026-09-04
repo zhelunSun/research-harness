@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "extension": "literature-evidence-ledger/1.0",
+  "source_ledger_id": "beijing-task-family-v0.1",
+  "citations": {
+    "require_known_keys": true,
+    "required_keys": [
+      "cui_earthverse_2026",
+      "kim_climateagent_2026",
+      "skarlinski2024paperqa2"
+    ],
+    "forbidden_keys": []
+  },
+  "claims": [
+    {
+      "id": "BTF-C1",
+      "marker": "[CLAIM:BTF-C1]",
+      "marker_required": false,
+      "required_citations": [
+        "skarlinski2024paperqa2"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:BTF-C1]"
+    },
+    {
+      "id": "BTF-C2",
+      "marker": "[CLAIM:BTF-C2]",
+      "marker_required": false,
+      "required_citations": [
+        "kim_climateagent_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:BTF-C2]"
+    },
+    {
+      "id": "BTF-C3",
+      "marker": "[CLAIM:BTF-C3]",
+      "marker_required": false,
+      "required_citations": [
+        "cui_earthverse_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:BTF-C3]"
+    },
+    {
+      "id": "BTF-C4",
+      "marker": "[CLAIM:BTF-C4]",
+      "marker_required": false,
+      "required_citations": [
+        "cui_earthverse_2026"
+      ],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "needs_review",
+      "unresolved_marker": "[REF-MISSING:BTF-C4]"
+    },
+    {
+      "id": "BTF-C5",
+      "marker": "[CLAIM:BTF-C5]",
+      "marker_required": false,
+      "required_citations": [],
+      "required_literals": [],
+      "forbidden_patterns": [],
+      "evidence_status": "hypothesis",
+      "unresolved_marker": "[REF-MISSING:BTF-C5]"
+    }
+  ],
+  "comparison": {
+    "preserve_markers": [
+      "[REF-MISSING:BTF-C1]",
+      "[REF-MISSING:BTF-C2]",
+      "[REF-MISSING:BTF-C3]",
+      "[REF-MISSING:BTF-C4]",
+      "[REF-MISSING:BTF-C5]"
+    ]
+  }
+}
