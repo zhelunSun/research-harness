@@ -59,7 +59,7 @@ def discover_zotero_helper(codex_home: Path | None = None) -> Path:
 def _run_helper(helper: Path, *args: str) -> str:
     try:
         completed = subprocess.run(
-            [os.fspath(Path(sys.executable)), os.fspath(helper), *args],
+            [os.fspath(Path(sys.executable)), "-X", "utf8", os.fspath(helper), *args],
             capture_output=True,
             text=True,
             encoding="utf-8",
@@ -97,9 +97,8 @@ def _registered_zotero_keys(registry: dict[str, Any]) -> list[str]:
         ):
             raise RefreshError("packet zotero_item_keys must be a string list")
         keys.extend(packet_keys)
-    if len(keys) != len(set(keys)):
-        raise RefreshError("registered Zotero item keys are not unique")
-    return sorted(keys)
+    # A source may legitimately be reused by several question-bounded packets.
+    return sorted(set(keys))
 
 
 def _local_file_state(file_url: str) -> tuple[bool, str]:
@@ -127,6 +126,8 @@ def build_runtime_scan(
     registry = _read_json(registry_path, "packet registry")
     item_keys = _registered_zotero_keys(registry)
     status = json_runner(helper, "status", "--json")
+    if not isinstance(status, dict) or not status.get("api_running") or status.get("api_status") != 200:
+        raise RefreshError("Zotero local API unhealthy; runtime freshness was not advanced")
     target = json_runner(helper, "selected-target", "--json")
     if not isinstance(status, dict) or not isinstance(target, dict):
         raise RefreshError("Zotero status and selected target must be JSON objects")

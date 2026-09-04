@@ -6,7 +6,7 @@ import unittest
 from datetime import datetime, timezone
 from pathlib import Path
 
-from scripts.refresh_literature_runtime import build_runtime_scan, write_runtime_scan
+from scripts.refresh_literature_runtime import build_runtime_scan, write_runtime_scan, _registered_zotero_keys
 
 
 class LiteratureRuntimeRefreshTests(unittest.TestCase):
@@ -116,6 +116,16 @@ class LiteratureRuntimeRefreshTests(unittest.TestCase):
             write_runtime_scan(snapshot, self.snapshot, self.queue)
         queue = json.loads(self.queue.read_text(encoding="utf-8"))
         self.assertEqual(queue["read_only_scan"]["last_completed"], "2026-08-20")
+
+    def test_source_reuse_across_packets_is_not_duplicate_parent(self) -> None:
+        self.assertEqual(_registered_zotero_keys({"packets": [
+            {"zotero_item_keys": ["PARENT01"]},
+            {"zotero_item_keys": ["PARENT01", "PARENT02"]},
+        ]}), ["PARENT01", "PARENT02"])
+
+    def test_unhealthy_api_cannot_advance_runtime(self) -> None:
+        with self.assertRaisesRegex(RuntimeError, "unhealthy"):
+            build_runtime_scan(Path("fake"), self.registry, json_runner=lambda *a: {"api_running": False})
 
 
 if __name__ == "__main__":

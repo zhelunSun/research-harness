@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Retrieval hints over existing material, not a thesis outline or an accepted scientific taxonomy.",
+  "query_expansions": {
+    "经验": ["experiential", "experience", "insight"],
+    "专家": ["expert"],
+    "行动": ["action", "动作"],
+    "恢复": ["recovery", "repair", "修复"],
+    "验收": ["rubric", "success"],
+    "科学性": ["scientific validity", "科学有效性"],
+    "适用": ["applicability", "scope"],
+    "生态": ["ecological", "ecosystem"]
+  },
+  "facets": [
+    {"id": "knowledge-action", "label": "知识如何进入行动", "terms": ["专家经验", "知识行动", "知识约束", "程序知识", "经验复用", "知识表示", "knowledge", "KnowAgent", "CangLing", "ExpeL", "ontology"], "packets": ["ch2-knowledge-action-interfaces-2026", "knowledge-evidence-governance-2026"]},
+    {"id": "evidence-boundaries", "label": "证据、适用条件与结论边界", "terms": ["证据", "适用", "冲突", "科学性", "结论", "provenance", "evidence", "applicability", "conflict"], "packets": ["knowledge-evidence-governance-2026", "ch2-scientific-task-evaluation-2026"]},
+    {"id": "workflow-feedback", "label": "工作流、反馈与恢复", "terms": ["规划", "工作流", "恢复", "失败", "反馈", "planning", "workflow", "recovery", "feedback"], "packets": ["geospatial-agent-comparators-2026", "scientific-agent-workflow-boundaries-2026", "ch2-knowledge-action-interfaces-2026"]},
+    {"id": "task-evaluation", "label": "任务验收与评测有效性", "terms": ["验收", "评测", "评价", "评分", "评判", "任务成功", "benchmark", "rubric", "grader", "evaluation", "reliability"], "packets": ["ch2-scientific-task-evaluation-2026", "agent-evaluation-user-validity-2026", "geospatial-agent-comparators-2026"]},
+    {"id": "urban-forest", "label": "城市森林、遥感与生态解释", "terms": ["城市森林", "生态", "尺度", "树种", "urban forest", "forestry", "ecosystem", "hyperspectral", "LiDAR"], "packets": ["urban-forest-remote-sensing-context-2026"]},
+    {"id": "scientific-discovery", "label": "科研流程与发现边界", "terms": ["科研", "科学发现", "数学", "AI4Science", "Co-Scientist", "Robin", "ERA", "Claude", "Lean", "discovery"], "packets": ["ai4science-frontier-2026", "scientific-agent-workflow-boundaries-2026"]}
+  ]
+}

@@ -797,9 +797,9 @@ def _audit_runtime_scan(
     selected_target = snapshot.get("selected_target")
     if not isinstance(selected_target, dict) or not all(
         selected_target.get(field) not in {None, ""}
-        for field in ("library_id", "library_name", "collection_id", "collection_name")
+        for field in ("library_id", "library_name")
     ):
-        _add_issue(result, "invalid_runtime_target", "runtime scan needs a selected library and collection")
+        _add_issue(result, "invalid_runtime_target", "runtime scan needs a selected library")
     elif selected_target.get("editable") is not True:
         _add_issue(result, "runtime_target_not_editable", "selected Zotero target is not editable")
 

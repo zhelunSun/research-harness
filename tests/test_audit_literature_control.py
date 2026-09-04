@@ -451,6 +451,21 @@ class LiteratureControlAuditTests(unittest.TestCase):
         result = self.audit()
         self.assertIn("runtime_scan_date_drift", {item["code"] for item in result["issues"]})
 
+    def test_library_root_is_valid_for_read_only_scan(self) -> None:
+        runtime = json.loads(self.runtime.read_text(encoding="utf-8"))
+        runtime["selected_target"]["collection_id"] = None
+        runtime["selected_target"]["collection_name"] = "Library"
+        self._write_json(self.runtime, runtime)
+        result = self.audit()
+        self.assertNotIn("invalid_runtime_target", {item["code"] for item in result["issues"]})
+
+    def test_missing_library_identity_remains_invalid(self) -> None:
+        runtime = json.loads(self.runtime.read_text(encoding="utf-8"))
+        runtime["selected_target"]["library_id"] = None
+        self._write_json(self.runtime, runtime)
+        result = self.audit()
+        self.assertIn("invalid_runtime_target", {item["code"] for item in result["issues"]})
+
     def test_unrouted_content_gap_is_reported(self) -> None:
         acquisition = json.loads(self.acquisition.read_text(encoding="utf-8"))
         acquisition["work_items"] = []
