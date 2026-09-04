@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from scripts.literature_catalog import CACHE, arxiv, build_catalog, cache_delta, fingerprints, identity_matches, main, read_pages, search
+from scripts.literature_catalog import CACHE, arxiv, build_catalog, cache_delta, exact_lookup, fingerprints, identity_matches, main, read_pages, search
 
 
 def item(key="PARENT01", **fields):
@@ -120,6 +120,24 @@ class CatalogTests(unittest.TestCase):
 
     def test_unknown_facet_does_not_select_everything(self):
         self.assertEqual(search(self.build(), "", facet="unknown"), [])
+
+    def test_exact_doi_is_not_ranked_as_the_number_ten(self):
+        cat = {"entries": [{"id": "distractor", "title": "10 metre mapping"}, {"id": "target", "title": "Target", "zotero": {"doi": "10.1038/s41586-026-10644-y"}}]}
+        result = exact_lookup(cat, "https://doi.org/10.1038/S41586-026-10644-Y")
+        self.assertEqual(result["route"], "exact_doi")
+        self.assertEqual([e["id"] for e in result["results"]], ["target"])
+        self.assertEqual(exact_lookup(cat, "10.1038/does-not-exist")["results"], [])
+
+    def test_exact_doi_preserves_multiple_records_for_review(self):
+        cat = {"entries": [{"id": "one", "locator": "https://doi.org/10.1234/example"}, {"id": "two", "zotero": {"doi": "10.1234/example"}}]}
+        self.assertEqual(len(exact_lookup(cat, "10.1234/example")["results"]), 2)
+
+    def test_exact_key_and_title_do_not_merge_versions(self):
+        cat = self.build()
+        self.assertEqual(exact_lookup(cat, "paper_2026")["route"], "exact_key")
+        self.assertEqual(exact_lookup(cat, "PARENT01")["route"], "exact_key")
+        self.assertEqual(exact_lookup(cat, "Knowledge to Action")["route"], "exact_title")
+        self.assertIsNone(exact_lookup(cat, "a rough question about action"))
 
 
 if __name__ == "__main__":

@@ -224,6 +224,24 @@ def cache_delta(prior, current):
             "changed_entry_ids": sorted(k for k in old.keys() & new.keys() if old[k] != new[k])}
 
 
+def exact_lookup(catalog, query):
+    """Known identity handles bypass lexical ranking; an absent DOI stays absent."""
+    q = query.strip()
+    identifier = doi(q)
+    if re.fullmatch(r"10\.\d{4,9}/\S+", identifier):
+        matches = [e for e in catalog["entries"] if identifier in {
+            doi(e.get("zotero", {}).get("doi")), doi(e.get("locator"))}]
+        return {"route": "exact_doi", "results": matches}
+    matches = [e for e in catalog["entries"] if q.casefold() in {
+        str(value).casefold() for value in [e.get("bibtex_key"), *e.get("zotero_item_keys", [])] if value}]
+    if matches:
+        return {"route": "exact_key", "results": matches}
+    matches = [e for e in catalog["entries"] if q and norm(q) == norm(e.get("title"))]
+    if matches:
+        return {"route": "exact_title", "results": matches}
+    return None
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT)
@@ -259,7 +277,10 @@ def main(argv=None):
             if not args.text.strip() and not args.facet:
                 raise RuntimeError("provide a query or --facet")
             age = datetime.now(timezone.utc) - datetime.fromisoformat(catalog["observed_at"])
-            output = {"snapshot_at": catalog["observed_at"], "snapshot_age_hours": round(age.total_seconds() / 3600, 2), "zotero_metadata_may_have_changed": True, "refresh_recommended": age > timedelta(days=7), "results": search(catalog, args.text, max(1, min(args.limit, 30)), args.facet), "notice": "Candidate retrieval only; inspect linked evidence cards and exact source spans before making claims."}
+            limit = max(1, min(args.limit, 30))
+            exact = exact_lookup(catalog, args.text) if not args.facet else None
+            results = exact["results"][:limit] if exact is not None else search(catalog, args.text, limit, args.facet)
+            output = {"snapshot_at": catalog["observed_at"], "snapshot_age_hours": round(age.total_seconds() / 3600, 2), "zotero_metadata_may_have_changed": True, "refresh_recommended": age > timedelta(days=7), "retrieval_route": exact["route"] if exact is not None else "lexical_candidates", "results": results, "notice": "Candidate retrieval only; inspect linked evidence cards and exact source spans before making claims."}
         print(json.dumps(output, ensure_ascii=False, indent=2))
         return 0
     except (OSError, ValueError, KeyError, RuntimeError) as exc:

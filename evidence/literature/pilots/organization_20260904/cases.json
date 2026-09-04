@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Small local retrieval diagnostic; known-source anchors are not exhaustive relevance judgments or thesis evidence.",
+  "created_before_first_run": true,
+  "cases": [
+    {"id":"D1","group":"previous_smoke","query":"专家经验如何影响行动","anchors":["zhu_knowagent_2025","zhao_expel_2024","vogt_actionable_2026","chen_cangling_2025"],"rationale":"Existing KAI and KEG source-specific cards distinguish action transitions, experiential insights, applicability and repair templates."},
+    {"id":"D2","group":"previous_smoke","query":"任务成功不等于科学结论成立","anchors":["chen2024scienceagentbenchrigorousassessmentlanguage","majumder2024discoverybench","cui_earthverse_2026"],"rationale":"Existing STE cards distinguish execution, hypothesis matching and evidence/answer checks."},
+    {"id":"D3","group":"previous_smoke","query":"工作流失败后的恢复","anchors":["chen_cangling_2025","schmidgall_agent-laboratory_2025","boiko_autonomous_2023"],"rationale":"Located KAI/SAW cards record feedback-driven repair, staged rollback or API correction. Not a claim that all implement checkpoint recovery."},
+    {"id":"D4","group":"previous_smoke","query":"城市森林的多尺度生态解释","anchors":["li_remote-sensing-urban-forestry_2019","garcia-pardo_remote-sensing-assessment_2022","dobbs_framework_2011"],"rationale":"Existing UFR cards record scale, purpose, local conditions and service interpretation."},
+    {"id":"R1","group":"new_rephrasings","query":"过去做题得到的教训能不能迁移到下一次任务","anchors":["zhao_expel_2024","chen_cangling_2025"],"rationale":"Cross-task insight reuse and contextualized repaired templates; new wording, not independently adjudicated holdout."},
+    {"id":"R2","group":"new_rephrasings","query":"不再比较谁会写报告，改看研究助手有没有真正完成数据分析","anchors":["chen2024scienceagentbenchrigorousassessmentlanguage","majumder2024discoverybench","cui_earthverse_2026"],"rationale":"Intent shifts from research-output production toward task/outcome evaluation; these are known candidate references, not a complete relevant set."},
+    {"id":"R3","group":"new_rephrasings","query":"不做树种分类了，想讨论绿地带来的收益","anchors":["garcia-pardo_remote-sensing-assessment_2022","dobbs_framework_2011"],"rationale":"Changed intent points to ecosystem-service methods and indicators, not tree-species classification."},
+    {"id":"R4","group":"new_rephrasings","query":"不把服从规则当优点，错误知识和争议该怎么处理","anchors":["clark_micropublications_2014","magnusson_extracting_2021","vogt_actionable_2026"],"rationale":"Challenge relations, epistemic qualifiers and applicability/validation are relevant comparison material, not proof of handling wrong knowledge."},
+    {"id":"K1","group":"known_handles","query":"10.1038/s41586-026-10644-y","anchors":["gottweis_accelerating_2026"],"rationale":"Known DOI."},
+    {"id":"K2","group":"known_handles","query":"Ten Advances in Mathematics and Theoretical Computer Science","anchors":["openai_ten_2026"],"rationale":"Known exact title."},
+    {"id":"K3","group":"known_handles","query":"KnowAgent","anchors":["zhu_knowagent_2025"],"rationale":"Known name; conference source remains distinct from the related Zotero preprint."},
+    {"id":"K4","group":"known_handles","query":"AI4Science","anchors":["gottweis_accelerating_2026","ghareeb_multi-agent_2026","aygun_ai_2026","openai_ten_2026","claude_more_2026"],"rationale":"Known intake tag shared by the five imported records."}
+  ],
+  "keyword_queries": {
+    "D1":"knowledge action expert experiential insight",
+    "D2":"scientific agent benchmark evaluation discovery",
+    "D3":"workflow repair feedback recovery",
+    "D4":"urban forest ecosystem services remote sensing scale",
+    "R1":"experience experiential learning insight reuse",
+    "R2":"scientific data analysis agent benchmark evaluation",
+    "R3":"urban vegetation ecosystem services indicators",
+    "R4":"claims evidence qualifier challenge applicability"
+  },
+  "stale_view_probe": {"case_id":"R2","old_facet":"scientific-discovery"}
+}
